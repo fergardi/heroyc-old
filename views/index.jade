@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .row
+    .col-xs-12
+      h1 Panels
+  .row
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Panel Heading", "success", "home") We are a fairly small, flexible design studio that designs for print and web. We work flexibly with clients to fulfil their design needs. Whether you need to create a brand from scratch, including marketing materials and a beautiful and functional website or whether you are looking for a design refresh we are confident you will be pleased with the results.
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Panel Heading", "danger", "globe") We are a fairly small, flexible design studio that designs for print and web. We work flexibly with clients to fulfil their design needs. Whether you need to create a brand from scratch, including marketing materials and a beautiful and functional website or whether you are looking for a design refresh we are confident you will be pleased with the results.
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Panel Heading", "primary") We are a fairly small, flexible design studio that designs for print and web. We work flexibly with clients to fulfil their design needs. Whether you need to create a brand from scratch, including marketing materials and a beautiful and functional website or whether you are looking for a design refresh we are confident you will be pleased with the results.
+  .row
+    .col-xs-12
+      h1 Buttons
+  .row
+    .col-xs-12.text-center
+      +button("success", "#", "home") Success
+      +button("danger") Danger
+      +button("primary") Primary
+      +button("info") Info
+      +button("warning") Warning
+      +button("default") Default
+  .row
+    .col-xs-12
+      h1 Alerts
+  .row
+    .col-xs-12
+      +alert("warning", "home") Warning! Warning!
+      +alert("danger") Danger Will Robinson!
+      +alert("success") You succeeded :-)
+      +alert("info") Some information for you
+  .row
+    .col-md-4.col-sm-6.col-xs-12

@@ -1,0 +1,38 @@
+[
+  {
+    "model": "User",
+    "data": {
+      "firstname": "Fer",
+      "lastname": "Nando",
+      "email": "fer@nando.com",
+      "class": "primary"
+    }
+  },
+  {
+    "model": "User",
+    "data": {
+      "firstname": "Nando",
+      "lastname": "Fer",
+      "email": "fer@nando.com",
+      "class": "success"
+    }
+  },
+  {
+    "model": "User",
+    "data": {
+      "firstname": "Nando2",
+      "lastname": "Fer",
+      "email": "fer@nando.com",
+      "class": "info"
+    }
+  },
+  {
+    "model": "User",
+    "data": {
+      "firstname": "Nando2",
+      "lastname": "Fer222",
+      "email": "fer@nando.com",
+      "class": "info"
+    }
+  }
+]
