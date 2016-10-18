@@ -6,6 +6,10 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
+router.get('/api', function(req, res) {
+  res.render('api');
+});
+
 router.get('/users', function(req, res) {
   models.User.findAll().then(function(users) {
     res.render('users', {
