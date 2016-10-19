@@ -7,32 +7,5 @@
       "email": "fer@nando.com",
       "class": "panel-primary"
     }
-  },
-  {
-    "model": "User",
-    "data": {
-      "firstname": "Nando",
-      "lastname": "Fer",
-      "email": "fer@nando.com",
-      "class": "panel-success"
-    }
-  },
-  {
-    "model": "User",
-    "data": {
-      "firstname": "Nando2",
-      "lastname": "Fer",
-      "email": "fer@nando.com",
-      "class": "panel-info"
-    }
-  },
-  {
-    "model": "User",
-    "data": {
-      "firstname": "Nando2",
-      "lastname": "Fer222",
-      "email": "fer@nando.com",
-      "class": "panel-info"
-    }
   }
 ]
