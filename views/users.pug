@@ -5,19 +5,22 @@ block content
     .col-xs-12
       +pageader('Users','List')
       div#app
-        .col-xs-4(v-for='(item, index) in users')
+        .col-xs-4(v-for='item in users')
           .panel(v-bind:class='item.class')
             .panel-heading
               .panel-title
                 +fa('user') {{item.firstname}}
             .panel-body
-              ul
-                li {{item.firstname}}
-                li {{item.lastname}}
-                li {{item.email}}
-                li {{item.createdAt}}
-                li {{item.updatedAt}}
-              button(v-on:click='remove(item, index)', class='btn btn-danger btn-block')
+              form
+                .form-group
+                  input(v-model='item.firstname', class='form-control')
+                  input(v-model='item.lastname', class='form-control')
+                  input(v-model='item.email', class='form-control')
+                  input(v-model='item.createdAt', class='form-control')
+                  input(v-model='item.updatedAt', class='form-control')
+              button(v-on:click="update(item)", class='btn btn-success btn-block')
+                +fa('pencil') Save me!
+              button(v-on:click='remove(item)', class='btn btn-danger btn-block')
                 +fa('trash') Remove me!
         .col-xs-4
           +panel('New random user', 'info', 'plus')
@@ -29,7 +32,7 @@ block content
             button(v-on:click="create()", class='btn btn-success btn-block')
               +fa('plus') Add me!
             button(v-on:click="wipe()", class='btn btn-danger btn-block')
-              +fa('trash') Clear all!
+              +fa('trash') Remove all!
 
 block javascripts
   script.
@@ -41,7 +44,7 @@ block javascripts
           firstname: 'Firstname',
           lastname: 'Lastname',
           email: 'Email',
-          class: 'panel-success'
+          class: 'panel-primary'
         }
       },
       mounted: function() {
@@ -57,14 +60,13 @@ block javascripts
           self.user.lastname = Math.random().toString(36).substr(2, 20);
           self.user.email = Math.random().toString(36).substr(2, 5) + '@' + Math.random().toString(36).substr(2, 5) + '.com';
         },
-        remove: function(user, index) {
+        remove: function(user) {
           $.delete('/api/users/' + user.id, null, function(results) {
-            self.users.splice(index, 1);
+            self.get();
           });
         },
         create: function() {
           $.post('/api/users', self.user, function(results) {
-            self.users.push(self.user);
             self.get();
           });
         },
@@ -73,8 +75,10 @@ block javascripts
             self.get();  
           });
         },
-        update: function() {
-          //TODO
+        update: function(user) {
+          $.put('/api/users/' + user.id, user, function(results) {
+            self.get();
+          });
         }
       }
     });
