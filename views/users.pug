@@ -5,37 +5,76 @@ block content
     .col-xs-12
       +pageader('Users','List')
       div#app
-        .col-xs-4(v-for='(user, index) in users')
-          .panel(v-bind:class='user.class')
+        .col-xs-4(v-for='(item, index) in users')
+          .panel(v-bind:class='item.class')
             .panel-heading
               .panel-title
-                +fa('user') User {{user.id}}
+                +fa('user') {{item.firstname}}
             .panel-body
               ul
-                li {{user.firstname}}
-                li {{user.lastname}}
-                li {{user.email}}
-                li {{user.createdAt}}
-                li {{user.updatedAt}}
-              button(v-on:click="remove(index)", class='btn btn-danger btn-block')
-                +fa('trash') Remove Me!
+                li {{item.firstname}}
+                li {{item.lastname}}
+                li {{item.email}}
+                li {{item.createdAt}}
+                li {{item.updatedAt}}
+              button(v-on:click='remove(item, index)', class='btn btn-danger btn-block')
+                +fa('trash') Remove me!
+        .col-xs-4
+          +panel('New random user', 'info', 'plus')
+            form
+              .form-group
+                input(v-model='user.firstname', class='form-control')
+                input(v-model='user.lastname', class='form-control')
+                input(v-model='user.email', class='form-control')
+            button(v-on:click="create()", class='btn btn-success btn-block')
+              +fa('plus') Add me!
+            button(v-on:click="wipe()", class='btn btn-danger btn-block')
+              +fa('trash') Clear all!
 
 block javascripts
   script.
     var app = new Vue({
       el: '#app',
       data: {
-        users: []
+        users: [],
+        user: {
+          firstname: 'Firstname',
+          lastname: 'Lastname',
+          email: 'Email',
+          class: 'panel-success'
+        }
       },
       mounted: function() {
         self = this;
-        $.get('/api/users', function(results) {
-          self.users = results.data;
-        });
+        self.get();
       },
       methods: {
-        remove: function(index) {
-          self.users.splice(index, 1);
+        get: function() {
+          $.get('/api/users', function(results) {
+            self.users = results.data;
+          });
+          self.user.firstname = Math.random().toString(36).substr(2, 20);
+          self.user.lastname = Math.random().toString(36).substr(2, 20);
+          self.user.email = Math.random().toString(36).substr(2, 5) + '@' + Math.random().toString(36).substr(2, 5) + '.com';
+        },
+        remove: function(user, index) {
+          $.delete('/api/users/' + user.id, null, function(results) {
+            self.users.splice(index, 1);
+          });
+        },
+        create: function() {
+          $.post('/api/users', self.user, function(results) {
+            self.users.push(self.user);
+            self.get();
+          });
+        },
+        wipe: function() {
+          $.delete('/api/users', null, function(results) {
+            self.get();  
+          });
+        },
+        update: function() {
+          //TODO
         }
       }
     });

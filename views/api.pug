@@ -14,36 +14,16 @@ block content
     .col-md-3.col-xs-12
       h4 CREATE
       +code('POST /api/users')
-      +button('primary', 'createUser()', 'plus', true) Try it!
     .col-md-3.col-xs-12
       h4 RETRIEVE
       +code('GET /api/users/{id}')
-      +button('primary', 'getUser(1)', 'undo', true) Try it!
       h4 RETRIEVE ALL
       +code('GET /api/users')
-      +button('primary', 'getUser()', 'list', true) Try it!
     .col-md-3.col-xs-12
       h4 UPDATE
       +code('PUT /api/users/{id}')
-      +button('primary', 'updateUser()', 'pencil', true) Try it!
     .col-md-3.col-xs-12      
       h4 REMOVE
       +code('DELETE /api/users/{id}')
-      +button('primary', 'deleteUser(1)', 'remove', true) Try it!
       h4 REMOVE ALL
       +code('DELETE /api/users')
-      +button('primary', 'deleteUser()', 'trash', true) Try it!
-
-  script.
-    var getUser = function(id) {
-      console.log('Getting user...');
-    };
-    var createUser = function(user) {
-      console.log('Creating user...');
-    };
-    var updateUser = function(id, user) {
-      console.log('Updating user...');
-    };
-    var deleteUser = function(id) {
-      console.log('Deleting user...');
-    };
