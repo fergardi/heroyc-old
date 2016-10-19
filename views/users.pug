@@ -11,24 +11,36 @@ block content
               .panel-title
                 +fa('user') {{item.firstname}}
             .panel-body
-              form
+              form(v-on:change='update(item)')
                 .form-group
+                  label Firstname
                   input(v-model='item.firstname', class='form-control')
+                  label Lastname
                   input(v-model='item.lastname', class='form-control')
+                  label Email
                   input(v-model='item.email', class='form-control')
-                  input(v-model='item.createdAt', class='form-control')
-                  input(v-model='item.updatedAt', class='form-control')
-              button(v-on:click="update(item)", class='btn btn-success btn-block')
-                +fa('pencil') Save me!
+                  label CreatedAt
+                  input(v-model='item.createdAt', class='form-control', disabled)
+                  label UpdatedAt
+                  input(v-model='item.updatedAt', class='form-control', disabled)
+                  label Class
+                  select(v-model='item.class', class='form-control')
+                    option(v-for='color in colors') {{color}}
               button(v-on:click='remove(item)', class='btn btn-danger btn-block')
                 +fa('trash') Remove me!
         .col-xs-4
           +panel('New random user', 'info', 'plus')
             form
               .form-group
-                input(v-model='user.firstname', class='form-control')
-                input(v-model='user.lastname', class='form-control')
-                input(v-model='user.email', class='form-control')
+                label Firstname
+                input(v-model='user.firstname', type='text', class='form-control')
+                label Lastname
+                input(v-model='user.lastname', type='text', class='form-control')
+                label Email
+                input(v-model='user.email', type='text', class='form-control')
+                label Class
+                select(v-model='user.class', class='form-control')
+                  option(v-for='color in colors') {{color}}
             button(v-on:click="create()", class='btn btn-success btn-block')
               +fa('plus') Add me!
             button(v-on:click="wipe()", class='btn btn-danger btn-block')
@@ -45,20 +57,31 @@ block javascripts
           lastname: 'Lastname',
           email: 'Email',
           class: 'panel-primary'
-        }
+        },
+        colors: [
+          'panel-primary',
+          'panel-warning',
+          'panel-info',
+          'panel-success',
+          'panel-primary'
+        ]
       },
       mounted: function() {
         self = this;
         self.get();
       },
       methods: {
+        randomize: function() {
+          self.user.firstname = Math.random().toString(36).substr(2, 20);
+          self.user.lastname = Math.random().toString(36).substr(2, 20);
+          self.user.email = Math.random().toString(36).substr(2, 5) + '@' + Math.random().toString(36).substr(2, 5) + '.com';
+          self.user.class = self.colors[Math.floor(Math.random() * self.colors.length)];
+        },
         get: function() {
           $.get('/api/users', function(results) {
             self.users = results.data;
           });
-          self.user.firstname = Math.random().toString(36).substr(2, 20);
-          self.user.lastname = Math.random().toString(36).substr(2, 20);
-          self.user.email = Math.random().toString(36).substr(2, 5) + '@' + Math.random().toString(36).substr(2, 5) + '.com';
+          self.randomize();
         },
         remove: function(user) {
           $.delete('/api/users/' + user.id, null, function(results) {
