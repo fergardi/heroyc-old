@@ -8,7 +8,7 @@ app.set('port', process.env.PORT || 3000);
 models.sequelize.sync()
 .then(function() {
 	const fixtures = require('sequelize-fixtures');
-	fixtures.loadFile('./fixtures/user.json', models);
+	fixtures.loadFile('./fixtures/*.json', models);
 })
 .then(function() {
 	var server = app.listen(app.get('port'), function() {

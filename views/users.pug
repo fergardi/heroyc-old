@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .row
+    .col-xs-12
+      +pageader('Users','List')
+      div#app
+        .col-xs-4(v-for='(user, index) in users')
+          .panel(v-bind:class='user.class')
+            .panel-heading
+              .panel-title
+                +fa('user') User {{user.id}}
+            .panel-body
+              ul
+                li {{user.firstname}}
+                li {{user.lastname}}
+                li {{user.email}}
+                li {{user.createdAt}}
+                li {{user.updatedAt}}
+              button(v-on:click="remove(index)", class='btn btn-danger btn-block')
+                +fa('trash') Remove Me!
+
+block javascripts
+  script.
+    var app = new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      mounted: function() {
+        self = this;
+        $.get('/api/users', function(results) {
+          self.users = results.data;
+        });
+      },
+      methods: {
+        remove: function(index) {
+          self.users.splice(index, 1);
+        }
+      }
+    });

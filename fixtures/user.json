@@ -5,7 +5,7 @@
       "firstname": "Fer",
       "lastname": "Nando",
       "email": "fer@nando.com",
-      "class": "primary"
+      "class": "panel-primary"
     }
   },
   {
@@ -14,7 +14,7 @@
       "firstname": "Nando",
       "lastname": "Fer",
       "email": "fer@nando.com",
-      "class": "success"
+      "class": "panel-success"
     }
   },
   {
@@ -23,7 +23,7 @@
       "firstname": "Nando2",
       "lastname": "Fer",
       "email": "fer@nando.com",
-      "class": "info"
+      "class": "panel-info"
     }
   },
   {
@@ -32,7 +32,7 @@
       "firstname": "Nando2",
       "lastname": "Fer222",
       "email": "fer@nando.com",
-      "class": "info"
+      "class": "panel-info"
     }
   }
 ]

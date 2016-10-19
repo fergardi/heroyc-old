@@ -1,0 +1,100 @@
+mixin bootswatch(theme)
+  link(href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/' + theme + '/bootstrap.min.css', rel='stylesheet')
+
+mixin nav(title, icon, style)
+  - id = 'menu'
+  - style = style || 'default'
+  nav(role='navigation', class=['navbar', 'navbar-' + style])
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#' + id, aria-expanded='false', aria-controls='navbar')
+        span.sr-only Toggle navigation
+        +fa('bars')
+      a.navbar-brand(href='/')
+        +fa(icon)
+        = title
+    .collapse.navbar-collapse(id=id)
+      ul.nav.navbar-nav.navbar-right
+        block
+
+mixin nav_item(href, icon)
+  li: a(href=href)
+    +fa(icon)
+    block
+
+mixin nav_dropdown(title, icon)
+  li.dropdown
+    a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+      +fa(icon)
+      = title
+      +fa('caret-down')
+    ul.dropdown-menu(role='menu')
+      block
+
+mixin nav_divider
+  li.divider
+
+mixin nav_header
+  li.dropdown-header
+    block
+
+mixin panel(heading, style, icon)
+  - style = style || 'default'
+  div(class=['panel','panel-' + style])
+    .panel-heading
+      .panel-title
+        +fa(icon)
+        = heading
+    .panel-body
+      block
+
+mixin abutton(style, href, icon, full)
+  - style = style || 'default'
+  - href = href || '#'
+  - full = (typeof full === 'undefined') ? '' : 'btn-block'
+  a(class=['btn', 'btn-' + style, 'bgn-lg', full], href=href)
+    +fa(icon)
+    block
+
+mixin button(style, func, icon, full)
+  - style = style || 'default'
+  - href = href || '#'
+  - full = (typeof full === 'undefined') ? '' : 'btn-block'
+  a(class=['btn', 'btn-' + style, 'bgn-lg', full], onclick=func)
+    +fa(icon)
+    block
+
+mixin fa(icon)
+  if (typeof icon !== 'undefined' && icon !== '') 
+    i(class=['fa', 'fa-fw', 'fa-' + icon])
+    block
+
+mixin code(title)
+  pre
+    b= title
+    block
+
+mixin alert(style, icon)
+  div(class=['alert', 'alert-dismissable', 'alert-' + style])
+    button.close( type='button', data-dismiss='alert' )
+      +fa('times-circle')
+    +fa(icon)
+    block
+
+mixin pageader(title, subtitle)
+  .page-header
+    h1= title + ' '
+      small= subtitle
+
+mixin modal(id, title, text, status, no, yes)
+  - status = status || 'danger'
+  - no = no || 'No'
+  - yes = yes || 'Yes'
+  div.modal.fade(id=id)
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          h3= title
+        div.modal-body= text
+        div.modal-footer
+          button(type='button', class='btn', data-dismiss='modal', aria-hidden='true')= no
+          button(type='button', class='btn btn-#{status}', id='#{id}_confirm')= yes
