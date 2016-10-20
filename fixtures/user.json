@@ -2,9 +2,9 @@
   {
     "model": "User",
     "data": {
-      "firstname": "Fer",
-      "lastname": "Nando",
-      "email": "fer@nando.com",
+      "firstname": "Fernando",
+      "lastname": "Garcia",
+      "email": "fernando@garcia.com",
       "class": "panel-primary"
     }
   }

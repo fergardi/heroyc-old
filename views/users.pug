@@ -6,17 +6,16 @@ block content
       .col-xs-12
         .page-header
           h1 Users 
-            small {{users.length}} / {{users.length}}
+            small {{users.length}}
       .col-xs-12
         form.form-horizontal.form-group
           .input-group
             .input-group-addon
               +fa('search') Search
-            input(v-model='filter', type='text', class='form-control', placeholder='Find users by name...')
+            input(v-model='filter', type='text', class='form-control', placeholder='Find users by firstname, lastname, email...')
             .input-group-btn
-              button.btn.btn-danger(v-on:click='clearFilter()')
-                i.fa.fa-trash
-                = 'Clear'
+              a.btn.btn-danger(v-on:click='reset()')
+                +fa('trash') Clear
       .col-xs-4
         .panel(v-bind:class='user.class')
           .panel-heading
@@ -46,17 +45,17 @@ block content
                   select(v-model='user.class', class='form-control')
                     option(v-for='color in colors') {{color}}
             button(v-on:click="create()", class='btn btn-success btn-block')
-              +fa('plus') Add 1!
+              +fa('plus') Add 1 user!
             button(v-on:click="batch(10)", class='btn btn-info btn-block')
-              +fa('plus') Add 10!
+              +fa('plus') Add 10 users!
             button(v-on:click="clear()", class='btn btn-danger btn-block')
-              +fa('trash') Remove all!
+              +fa('trash') Remove all users!
 
-      .col-xs-4(v-for='(item, index) in filtered')
+      .col-xs-4(v-for='item in filtered')
         .panel(v-bind:class='item.class')
           .panel-heading
             .panel-title
-              +fa('user') {{item.firstname}}
+              +fa('user') {{item.id}}
           .panel-body
             form(v-on:change='update(item)', class='form-horizontal')
               .form-group
@@ -90,7 +89,7 @@ block content
                   label(class='control-label') UpdatedAt
                 .col-xs-9
                   input(v-model='item.updatedAt', type='text', class='form-control', disabled)
-            button(v-on:click='remove(item, index)', class='btn btn-danger btn-block')
+            button(v-on:click='remove(item)', class='btn btn-danger btn-block')
               +fa('trash') Remove me!
         
 block javascripts
@@ -120,6 +119,13 @@ block javascripts
         self.get();
         self.randomize();
       },
+      watch: {
+        users: function() {
+          setTimeout(function(){
+            $('select').selectpicker('refresh')
+          }, 0);
+        }
+      },
       methods: {
         randomize: function() {
           self.user.firstname = Math.random().toString(36).substr(2, 20);
@@ -132,9 +138,9 @@ block javascripts
             self.users = results.data;
           });
         },
-        remove: function(user, index) {
+        remove: function(user) {
           $.delete('/api/users/' + user.id, null, function(results) {
-            self.users.splice(index, 1);
+            self.users.splice(self.users.indexOf(user), 1);
           });
         },
         create: function() {
@@ -145,11 +151,12 @@ block javascripts
         },
         clear: function() {
           $.delete('/api/users', null, function(results) {
-            self.get();
+            self.users = [];
           });
         },
         update: function(user) {
           $.put('/api/users/' + user.id, user, function(results) {
+            self.users.splice(self.users.indexOf(user), 1, results.data);
           });
         },
         batch: function(num) {
@@ -158,14 +165,14 @@ block javascripts
             self.create();
           }
         },
-        clearFilter: function() {
+        reset: function() {
           self.filter = '';
         }
       },
       computed: {
         filtered: function() {
           return self.users.filter(function(user) {
-            return user.firstname.indexOf(self.filter) !== -1;
+            return (user.firstname.indexOf(self.filter) !== -1 || user.lastname.indexOf(self.filter) !== -1 || user.email.indexOf(self.filter) !== -1 || user.class.indexOf(self.filter) !== -1);
           });
         }
       }

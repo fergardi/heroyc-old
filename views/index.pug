@@ -3,11 +3,11 @@ extends layout
 block content
   .row
     .col-xs-12
-      +pageader('Overview', 'What is this?')
+      +pageader('Overview', 'What?')
       p This is just an NodeJS API example for learning purposes.
   .row
     .col-xs-12
-      +pageader('Architectures', 'Present')
+      +pageader('Architectures', 'Employed')
   .row
     .col-md-4.col-sm-6.col-xs-12
       +panel('NodeJS + NPM', 'success', 'server') A lightweight http JS server.
@@ -22,3 +22,29 @@ block content
       +panel('Pug/Jade + BootstrapCSS + Mixins', 'info', 'leaf') A template engine.
     .col-md-4.col-sm-6.col-xs-12
       +panel('VueJS + jQuery', 'default', 'refresh') A SPA framework.
+  .row
+    .col-xs-12
+      +pageader('API', 'Documentation')
+  .row
+    .col-md-3.col-xs-12
+      h4 CREATE
+      +code('POST /api/users')
+    .col-md-3.col-xs-12
+      h4 RETRIEVE
+      +code('GET /api/users/{id}')
+      h4 RETRIEVE ALL
+      +code('GET /api/users')
+    .col-md-3.col-xs-12
+      h4 UPDATE
+      +code('PUT /api/users/{id}')
+    .col-md-3.col-xs-12      
+      h4 REMOVE
+      +code('DELETE /api/users/{id}')
+      h4 REMOVE ALL
+      +code('DELETE /api/users')
+  .row
+    .col-xs-12
+      +pageader('Examples', 'Play')
+    .col-xs-12
+      +abutton('info', '/users', 'play', true) Go to Users API
+      +abutton('info', '/users', 'play', true) Go to Tasks API
