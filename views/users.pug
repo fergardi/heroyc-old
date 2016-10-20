@@ -58,21 +58,27 @@ block content
               +fa('user') {{item.id}}
           .panel-body
             form(v-on:change='update(item)', class='form-horizontal', data-toggle='validator', v-bind:id='item.id')
-              .form-group
+              .form-group(class='has-feedback')
                 .col-xs-3
                   label(class='control-label') Firstname
                 .col-xs-9
                   input(v-model='item.firstname', type='text', class='form-control', required, data-minlength='5')
-              .form-group
+                  span(class='glyphicon form-control-feedback')
+                  .help-block.with-errors
+              .form-group(class='has-feedback')
                 .col-xs-3
                   label(class='control-label') Lastname
                 .col-xs-9
                   input(v-model='item.lastname', type='text', class='form-control', required, data-minlength='5')
-              .form-group
+                  span(class='glyphicon form-control-feedback')
+                  .help-block.with-errors
+              .form-group(class='has-feedback')
                 .col-xs-3
                   label(class='control-label') Email
                 .col-xs-9
                   input(v-model='item.email', type='text', class='form-control', required, data-minlength='5')
+                  span(class='glyphicon form-control-feedback')
+                  .help-block.with-errors
               .form-group
                 .col-xs-3
                   label(class='control-label') Class
@@ -122,7 +128,8 @@ block javascripts
       watch: {
         users: function() {
           setTimeout(function(){
-            $('select').selectpicker('refresh')
+            $('select').selectpicker('refresh');
+            $('form').validator('validate');
           }, 0);
         }
       },
@@ -136,29 +143,36 @@ block javascripts
         get: function() {
           $.get('/api/users', function(results) {
             self.users = results.data;
+            self.info('Users loaded from database!')
           });
         },
         remove: function(user) {
           $.delete('/api/users/' + user.id, null, function(results) {
             self.users.splice(self.users.indexOf(user), 1);
+            self.error('User deleted!');
           });
         },
         create: function() {
           $.post('/api/users', self.user, function(results) {
             self.users.push(results.data);
           });
+          self.ok('User created!');
           self.randomize();
         },
         clear: function() {
           $.delete('/api/users', null, function(results) {
             self.users = [];
           });
+          self.error('All users have been cleared!');
         },
         update: function(user) {
           if (self.valid(user.id)) {
             $.put('/api/users/' + user.id, user, function(results) {
               self.users.splice(self.users.indexOf(user), 1, results.data);
-            });  
+              self.info('User updated!');
+            });
+          } else {
+            self.warn('Form error!');
           }
         },
         batch: function(num) {
@@ -172,6 +186,24 @@ block javascripts
         },
         valid: function(id) {
           return $('#' + id).has('.has-error').length === 0;
+        },
+        toast: function(text, type) {
+          $('.top-right').notify({
+            message: { text: text },
+            type: type
+          }).show();
+        },
+        ok: function(text) {
+          self.toast(text, 'success');
+        },
+        info: function(text) {
+          self.toast(text, 'info');
+        },
+        error: function(text) {
+          self.toast(text, 'danger');
+        },
+        warn: function(text) {
+          self.toast(text, 'warning');
         }
       },
       computed: {
