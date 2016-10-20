@@ -26,27 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api/users', users);
 
-var colors = [
-  'panel-primary',
-  'panel-warning',
-  'panel-info',
-  'panel-success',
-  'panel-primary'
-];
-
-var randomize = function() {
-	return user = {
-		firstname: Math.random().toString(36).substr(2, 20),
-		lastname: Math.random().toString(36).substr(2, 20),
-		email: Math.random().toString(36).substr(2, 5) + '@' + Math.random().toString(36).substr(2, 5) + '.com',
-		class: colors[Math.floor(Math.random() * colors.length)],
-	}
-}
-
-for (i=0; i<100; i++) {
-  models.User.create(randomize());
-}
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

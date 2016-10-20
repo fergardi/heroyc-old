@@ -1,93 +1,104 @@
 extends layout
 
 block content
-  .row
-    .col-xs-12
-      div#app
+  div#app
+    .row
+      .col-xs-12
         .page-header
           h1 Users 
-            small List
-            input(v-model='search', type='text', class='form-control', placeholder='Search...', v-on:change='search()')
-          .col-xs-4
-            .panel(v-bind:class='user.class')
-              .panel-heading
-                .panel-title
-                  +fa('plus') Random user data
-              .panel-body
-                form.form-horizontal
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Firstname
-                    .col-xs-9
-                      input(v-model='user.firstname', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Lastname
-                    .col-xs-9
-                      input(v-model='user.lastname', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Email
-                    .col-xs-9
-                      input(v-model='user.email', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Class
-                    .col-xs-9
-                      select(v-model='user.class', class='form-control')
-                        option(v-for='color in colors') {{color}}
-                button(v-on:click="create()", class='btn btn-success btn-block', id='go')
-                  +fa('plus') Add me!
-                button(v-on:click="wipe()", class='btn btn-danger btn-block')
-                  +fa('trash') Remove all!
+            small {{users.length}} / {{users.length}}
+      .col-xs-12
+        form.form-horizontal.form-group
+          .input-group
+            .input-group-addon
+              +fa('search') Search
+            input(v-model='filter', type='text', class='form-control', placeholder='Find users by name...')
+            .input-group-btn
+              button.btn.btn-danger(v-on:click='clearFilter()')
+                i.fa.fa-trash
+                = 'Clear'
+      .col-xs-4
+        .panel(v-bind:class='user.class')
+          .panel-heading
+            .panel-title
+              +fa('plus') Random user data
+          .panel-body
+            form.form-horizontal
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Firstname
+                .col-xs-9
+                  input(v-model='user.firstname', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Lastname
+                .col-xs-9
+                  input(v-model='user.lastname', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Email
+                .col-xs-9
+                  input(v-model='user.email', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Class
+                .col-xs-9
+                  select(v-model='user.class', class='form-control')
+                    option(v-for='color in colors') {{color}}
+            button(v-on:click="create()", class='btn btn-success btn-block')
+              +fa('plus') Add 1!
+            button(v-on:click="batch(10)", class='btn btn-info btn-block')
+              +fa('plus') Add 10!
+            button(v-on:click="clear()", class='btn btn-danger btn-block')
+              +fa('trash') Remove all!
 
-          .col-xs-4(v-for='item in users')
-            .panel(v-bind:class='item.class')
-              .panel-heading
-                .panel-title
-                  +fa('user') {{item.firstname}}
-              .panel-body
-                form(v-on:change='update(item)', class='form-horizontal')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Firstname
-                    .col-xs-9
-                      input(v-model='item.firstname', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Lastname
-                    .col-xs-9
-                      input(v-model='item.lastname', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Email
-                    .col-xs-9
-                      input(v-model='item.email', type='text', class='form-control')
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') Class
-                    .col-xs-9
-                      select(v-model='item.class', class='form-control')
-                        option(v-for='color in colors') {{color}}
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') CreatedAt
-                    .col-xs-9
-                      input(v-model='item.createdAt', type='text', class='form-control', disabled)
-                  .form-group
-                    .col-xs-3
-                      label(class='control-label') UpdatedAt
-                    .col-xs-9
-                      input(v-model='item.updatedAt', type='text', class='form-control', disabled)
-                button(v-on:click='remove(item)', class='btn btn-danger btn-block')
-                  +fa('trash') Remove me!
+      .col-xs-4(v-for='(item, index) in filtered')
+        .panel(v-bind:class='item.class')
+          .panel-heading
+            .panel-title
+              +fa('user') {{item.firstname}}
+          .panel-body
+            form(v-on:change='update(item)', class='form-horizontal')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Firstname
+                .col-xs-9
+                  input(v-model='item.firstname', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Lastname
+                .col-xs-9
+                  input(v-model='item.lastname', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Email
+                .col-xs-9
+                  input(v-model='item.email', type='text', class='form-control')
+              .form-group
+                .col-xs-3
+                  label(class='control-label') Class
+                .col-xs-9
+                  select(v-model='item.class', class='form-control')
+                    option(v-for='color in colors') {{color}}
+              .form-group
+                .col-xs-3
+                  label(class='control-label') CreatedAt
+                .col-xs-9
+                  input(v-model='item.createdAt', type='text', class='form-control', disabled)
+              .form-group
+                .col-xs-3
+                  label(class='control-label') UpdatedAt
+                .col-xs-9
+                  input(v-model='item.updatedAt', type='text', class='form-control', disabled)
+            button(v-on:click='remove(item, index)', class='btn btn-danger btn-block')
+              +fa('trash') Remove me!
         
 block javascripts
   script.
     var app = new Vue({
       el: '#app',
       data: {
-        search: '',
+        filter: '',
         users: [],
         user: {
           firstname: 'Firstname',
@@ -105,8 +116,9 @@ block javascripts
       },
       mounted: function() {
         self = this;
-        //self.wipe();
+        //self.clear();
         self.get();
+        self.randomize();
       },
       methods: {
         randomize: function() {
@@ -118,31 +130,43 @@ block javascripts
         get: function() {
           $.get('/api/users', function(results) {
             self.users = results.data;
-            self.randomize();
           });
         },
-        remove: function(user) {
+        remove: function(user, index) {
           $.delete('/api/users/' + user.id, null, function(results) {
-            self.get();
+            self.users.splice(index, 1);
           });
         },
         create: function() {
           $.post('/api/users', self.user, function(results) {
-            self.get();
+            self.users.push(results.data);
           });
+          self.randomize();
         },
-        wipe: function() {
+        clear: function() {
           $.delete('/api/users', null, function(results) {
-            self.get();  
+            self.get();
           });
         },
         update: function(user) {
           $.put('/api/users/' + user.id, user, function(results) {
-            self.get();
           });
         },
-        search: function() {
-
+        batch: function(num) {
+          for (i=0;i<num;i++) {
+            self.randomize();
+            self.create();
+          }
+        },
+        clearFilter: function() {
+          self.filter = '';
+        }
+      },
+      computed: {
+        filtered: function() {
+          return self.users.filter(function(user) {
+            return user.firstname.indexOf(self.filter) !== -1;
+          });
         }
       }
     });
