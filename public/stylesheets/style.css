@@ -4,3 +4,6 @@ i.fa {
 .page-header {
   margin: 23px 0;
 }
+.bootstrap-select {
+  border-radius: 6px;
+}
