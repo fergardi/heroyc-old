@@ -143,36 +143,36 @@ block javascripts
         get: function() {
           $.get('/api/users', function(results) {
             self.users = results.data;
-            self.info('Users loaded from database!')
+            notification.info('Users loaded from database!')
           });
         },
         remove: function(user) {
           $.delete('/api/users/' + user.id, null, function(results) {
             self.users.splice(self.users.indexOf(user), 1);
-            self.error('User deleted!');
+            notification.danger('User deleted!');
           });
         },
         create: function() {
           $.post('/api/users', self.user, function(results) {
             self.users.push(results.data);
           });
-          self.ok('User created!');
+          notification.success('User created!');
           self.randomize();
         },
         clear: function() {
           $.delete('/api/users', null, function(results) {
             self.users = [];
           });
-          self.error('All users have been cleared!');
+          notification.danger('All users have been cleared!');
         },
         update: function(user) {
-          if (self.valid(user.id)) {
+          if (!self.valid(user.id)) {
+            notification.warning('Form error!');
+          } else {
             $.put('/api/users/' + user.id, user, function(results) {
               self.users.splice(self.users.indexOf(user), 1, results.data);
-              self.info('User updated!');
+              notification.info('User updated!');
             });
-          } else {
-            self.warn('Form error!');
           }
         },
         batch: function(num) {
@@ -186,24 +186,6 @@ block javascripts
         },
         valid: function(id) {
           return $('#' + id).has('.has-error').length === 0;
-        },
-        toast: function(text, type) {
-          $('.top-right').notify({
-            message: { text: text },
-            type: type
-          }).show();
-        },
-        ok: function(text) {
-          self.toast(text, 'success');
-        },
-        info: function(text) {
-          self.toast(text, 'info');
-        },
-        error: function(text) {
-          self.toast(text, 'danger');
-        },
-        warn: function(text) {
-          self.toast(text, 'warning');
         }
       },
       computed: {
