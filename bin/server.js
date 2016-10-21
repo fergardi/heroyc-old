@@ -2,7 +2,6 @@
 var debug = require('debug')('nodapi');
 var app = require('../app');
 var models = require('../models');
-var constants = require('../config/constants')
 
 app.set('port', process.env.PORT || 3000);
 

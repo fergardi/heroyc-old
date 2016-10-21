@@ -1,7 +1,6 @@
 var notification = {
   alert: function(text, type, icon) {
     var msg = '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text;
-    console.log(msg);
     $('.alerts').notify({
       type: type,
       message: { html: msg },
