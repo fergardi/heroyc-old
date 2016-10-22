@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  div#app
+  div#users
     .row
       .col-xs-12
         .page-header
@@ -97,8 +97,8 @@ block content
         
 block javascripts
   script.
-    var app = new Vue({
-      el: '#app',
+    var users = new Vue({
+      el: '#users',
       data: {
         filter: '',
         users: [],
@@ -181,7 +181,7 @@ block javascripts
       },
       computed: {
         filtered: function() {
-          return self.users.filter(function(user) {
+          return this.users.filter(function(user) {
             return (user.firstname.indexOf(self.filter) !== -1 || user.lastname.indexOf(self.filter) !== -1 || user.email.indexOf(self.filter) !== -1 || user.class.indexOf(self.filter) !== -1);
           });
         }

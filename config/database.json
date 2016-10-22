@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "nodejs",
+    "database": "nodapi",
     "host": "localhost",
     "dialect": "mysql"
   }

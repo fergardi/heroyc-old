@@ -14,6 +14,7 @@ i.fa {
   position: fixed;
   left: 0;
   right: 0;
+  top: 5px;
   z-index: 9999;
   opacity: 0.95;
 }
@@ -22,4 +23,26 @@ i.fa {
 }
 .help-block, .help-block > ul {
   margin: 0;
+}
+.progress {
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.progress-bar-default {
+  background-color: #212121;
+}
+.progress-bar-default.progress-bar:last-child::before {
+  background-color: #f5f5f5;
+}
+.thumbnail {
+  display: inline-block;
+}
+.thumbnail.pixelated {
+  width: 100px;
+  -ms-interpolation-mode: nearest-neighbor; // IE 7+ (non-standard property)
+  image-rendering: -webkit-optimize-contrast; // Safari 6, UC Browser 9.9
+  image-rendering: -webkit-crisp-edges; // Safari 7+
+  image-rendering: -moz-crisp-edges; // Firefox 3.6+
+  image-rendering: -o-crisp-edges; // Opera 12
+  image-rendering: pixelated; // Chrome 41+ and Opera 26+
 }

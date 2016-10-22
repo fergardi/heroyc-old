@@ -1,0 +1,77 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Leather Helm",
+      "type": "helm",
+      "rarity": "default",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "shield",
+      "image": "leather"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Chain Helm",
+      "type": "helm",
+      "rarity": "success",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "chain"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Plate Helm",
+      "type": "helm",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "plate"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Wizard Helm",
+      "type": "helm",
+      "rarity": "warning",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "wizard"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Witch Helm",
+      "type": "helm",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "witch"
+    }
+  }
+]

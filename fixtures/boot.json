@@ -1,0 +1,107 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Winged Boots",
+      "type": "boot",
+      "rarity": "warning",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "shield",
+      "image": "winged"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Leather Boots",
+      "type": "boot",
+      "rarity": "default",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "leather"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Strong Boots",
+      "type": "boot",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "strong"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Elven Boots",
+      "type": "boot",
+      "rarity": "success",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "elven"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Dragon Boots",
+      "type": "boot",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "dragon"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Stone Boots",
+      "type": "boot",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "stone"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Hunter Boots",
+      "type": "boot",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "hunter"
+    }
+  }
+]

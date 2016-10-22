@@ -1,0 +1,17 @@
+.panel.text-center(v-bind:class='"panel-" + item.rarity')
+  .panel-heading
+    .panel-title
+      i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + item.icon')  
+      span {{item.name}}
+  .panel-body
+    img.thumbnail.pixelated(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"')
+    .progress
+      .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength + "%"')
+    .progress
+      .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence + "%"')
+    .progress
+      .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality + "%"')
+    .progress
+      .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility + "%"')
+    .progress
+      .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense + "%"')
