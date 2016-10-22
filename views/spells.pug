@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  div#spells
+    .row
+      .col-xs-12
+        .page-header
+          h1 Spells 
+            small Magic resources
+      .col-xs-12
+        form.form-horizontal.form-group
+          .input-group
+            .input-group-addon
+              +fa('search')
+            input(v-model='filter', type='text', class='form-control', placeholder='Find spells')
+            .input-group-btn
+              a.btn.btn-danger(v-on:click='reset()')
+                +fa('trash')
+      .col-md-3.col-xs-12(v-for='spell in filtered')
+        include spell
+        
+block javascripts
+  script.
+    var spells = new Vue({
+      el: '#spells',
+      data: {
+        filter: '',
+        spells: [],
+        spell: {
+          name: '',
+          icon: '',
+          image: '',
+          type: '',
+          family: '',
+          damage: 0,
+          multiple: false
+        }
+      },
+      mounted: function() {
+        self = this;
+        self.get();
+      },
+      methods: {
+        get: function() {
+          $.get('/api/spells', function(results) {
+            self.spells = results.data;
+            notification.info('Items loaded from database!')
+          });
+        },
+        reset: function() {
+          self.filter = '';
+        }
+      },
+      computed: {
+        filtered: function() {
+          return this.spells.filter(function(spell) {
+            return spell.name.indexOf(self.filter) !== -1;
+          });
+        }
+      }
+    });

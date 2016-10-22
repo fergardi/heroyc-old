@@ -1,0 +1,8 @@
+.panel.text-center(v-bind:class='"panel-" + spell.family')
+  .panel-heading
+    .panel-title
+      i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + spell.icon')  
+      span {{spell.name}}
+  .panel-body
+    h4 {{spell.damage}}
+    img.thumbnail.pixelated(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"')

@@ -9,6 +9,7 @@ var models = require('./models');
 var routes = require('./routes/index');
 var users = require('./routes/api/user');
 var items = require('./routes/api/item');
+var spells = require('./routes/api/spell');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api/users', users);
+app.use('/api/spells', spells);
 app.use('/api/items', items);
 
 // catch 404 and forward to error handler

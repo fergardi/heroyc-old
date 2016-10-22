@@ -1,0 +1,14 @@
+[
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Fire Ball",
+      "type": "fire",
+      "damage": 1,
+      "multiple": false,
+      "family": "danger",
+      "icon": "fire",
+      "image": "ball"
+    }
+  }
+]
