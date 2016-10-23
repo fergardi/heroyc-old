@@ -1,0 +1,107 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Silver Necklace",
+      "type": "necklace",
+      "rarity": "success",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "diamond",
+      "image": "silver"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Frozen Necklace",
+      "type": "necklace",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "frozen"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Love Necklace",
+      "type": "necklace",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "love"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Holy Necklace",
+      "type": "necklace",
+      "rarity": "warning",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "holy"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Love Necklace",
+      "type": "necklace",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "love"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Mana Necklace",
+      "type": "necklace",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "mana"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Life Necklace",
+      "type": "necklace",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "diamond",
+      "image": "life"
+    }
+  }
+]

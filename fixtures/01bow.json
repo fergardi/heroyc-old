@@ -1,0 +1,77 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Curve Bow",
+      "type": "bow",
+      "rarity": "default",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "bullseye",
+      "image": "curve"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Hunter Bow",
+      "type": "bow",
+      "rarity": "success",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "bullseye",
+      "image": "hunter"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Golden Bow",
+      "type": "bow",
+      "rarity": "warning",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "bullseye",
+      "image": "golden"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Sniper Bow",
+      "type": "bow",
+      "rarity": "info",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "bullseye",
+      "image": "sniper"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Phoenix Bow",
+      "type": "bow",
+      "rarity": "danger",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "bullseye",
+      "image": "phoenix"
+    }
+  }
+]

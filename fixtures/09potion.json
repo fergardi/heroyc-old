@@ -1,0 +1,77 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Agility Potion",
+      "type": "potion",
+      "rarity": "success",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "flask",
+      "image": "agility"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Intelligence Potion",
+      "type": "potion",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "flask",
+      "image": "intelligence"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Strength Potion",
+      "type": "potion",
+      "rarity": "warning",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "flask",
+      "image": "strength"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Defense Potion",
+      "type": "potion",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "flask",
+      "image": "defense"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Vitality Potion",
+      "type": "potion",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "flask",
+      "image": "vitality"
+    }
+  }
+]

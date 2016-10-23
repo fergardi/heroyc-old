@@ -1,0 +1,107 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Golden Armor",
+      "type": "armor",
+      "rarity": "warning",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "shield",
+      "image": "golden"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Leather Armor",
+      "type": "armor",
+      "rarity": "default",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "leather"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Chain Armor",
+      "type": "armor",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "chain"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Plate Armor",
+      "type": "armor",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "plate"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Dragon Armor",
+      "type": "armor",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "dragon"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Woolen Armor",
+      "type": "armor",
+      "rarity": "default",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "woolen"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Jacket Armor",
+      "type": "armor",
+      "rarity": "default",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "jacket"
+    }
+  }
+]

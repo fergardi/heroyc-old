@@ -1,0 +1,92 @@
+[
+  {
+    "model": "Item",
+    "data": {
+      "name": "Golden Shield",
+      "type": "shield",
+      "rarity": "warning",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "shield",
+      "image": "golden"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Wooden Shield",
+      "type": "shield",
+      "rarity": "default",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "wooden"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Metal Shield",
+      "type": "shield",
+      "rarity": "primary",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "metal"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Stone Shield",
+      "type": "shield",
+      "rarity": "info",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "stone"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Bone Shield",
+      "type": "shield",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "bone"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Mirror Shield",
+      "type": "shield",
+      "rarity": "danger",
+      "vitality": 23,
+      "strength": 60,
+      "agility": 43,
+      "intelligence": 10,
+      "defense": 12,
+      "icon": "shield",
+      "image": "mirror"
+    }
+  }
+]

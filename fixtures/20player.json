@@ -1,0 +1,22 @@
+[
+  {
+    "model": "Player",
+    "data": {
+      "name": "Warrior",
+      "level": 0,
+      "experience": 0,
+      "gold": 0,
+      "Items": [
+        { "name": "Curve Bow" },
+        { "name": "Plate Helm" },
+        { "name": "Silver Necklace" },
+        { "name": "Flaming Sword" },
+        { "name": "Dragon Armor" },
+        { "name": "Mirror Shield" },
+        { "name": "Intelligence Ring" },
+        { "name": "Stone Boots" },
+        { "name": "Vitality Potion" }
+      ]
+    }
+  }
+]
