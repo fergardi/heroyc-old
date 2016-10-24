@@ -42,10 +42,6 @@ i.fa {
 .label {
   font-size: 95%;
 }
-.popover {
-  max-width: 100%;
-  min-width: 250px;
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
+.spells(:last-child).progress, .items(:last-child).progress {
+  margin-bottom: 25px;
 }

@@ -8,7 +8,38 @@ block content
           h1 Player 
             small Yourself
       .col-md-4.col-xs-12
-        include stats
+        .panel.panel-default.text-center
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg.fa-user
+              span {{name}}
+          .panel-body
+            img.thumbnail.item(v-bind:src='"/images/player/" + image + ".png"')
+            ul.list-group.text-left
+              li.list-group-item
+                span.label.label-default Level
+                span.badge {{level}}
+              li.list-group-item
+                span.label.label-default Experience
+                span.badge {{experience}}
+              li.list-group-item
+                span.label.label-default Gold
+                span.badge {{gold}}
+              li.list-group-item
+                span.label.label-warning Strength
+                span.badge {{strength}}
+              li.list-group-item
+                span.label.label-primary Intelligence
+                span.badge {{intelligence}}
+              li.list-group-item
+                span.label.label-danger Vitality
+                span.badge {{vitality}}
+              li.list-group-item
+                span.label.label-success Agility
+                span.badge {{agility}}
+              li.list-group-item
+                span.label.label-info Defense
+                span.badge {{defense}}
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -18,7 +49,17 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='item in items')
-                include itemtooltip
+                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense + "%"')
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -28,7 +69,13 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='spell in spells')
-                include spelltooltip
+                img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana + "%"')
         
 block javascripts
   script.
@@ -70,32 +117,32 @@ block javascripts
           return str;
         },
         vitality: function() {
-          var str = 0;
+          var vit = 0;
           for(i=0;i<self.items.length;i++) {
-            str += self.items[i].vitality;
+            vit += self.items[i].vitality;
           }
-          return str;
+          return vit;
         },
         intelligence: function() {
-          var str = 0;
+          var int = 0;
           for(i=0;i<self.items.length;i++) {
-            str += self.items[i].intelligence;
+            int += self.items[i].intelligence;
           }
-          return str;
+          return int;
         },
         agility: function() {
-          var str = 0;
+          var agi = 0;
           for(i=0;i<self.items.length;i++) {
-            str += self.items[i].agility;
+            agi += self.items[i].agility;
           }
-          return str;
+          return agi;
         },
         defense: function() {
-          var str = 0;
+          var def = 0;
           for(i=0;i<self.items.length;i++) {
-            str += self.items[i].defense;
+            def += self.items[i].defense;
           }
-          return str;
+          return def;
         }
       }
     });
