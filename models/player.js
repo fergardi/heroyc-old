@@ -5,12 +5,15 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     level: DataTypes.INTEGER,
     experience: DataTypes.INTEGER,
-    gold: DataTypes.INTEGER
+    gold: DataTypes.INTEGER,
+    image: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        models.Player.belongsToMany(models.Item, {through: 'PlayerItem'});
         models.Item.belongsToMany(models.Player, {through: 'PlayerItem'});
+        models.Player.belongsToMany(models.Item, {through: 'PlayerItem'});
+        models.Spell.belongsToMany(models.Player, {through: 'PlayerSpell'});
+        models.Player.belongsToMany(models.Spell, {through: 'PlayerSpell'});
       }
     }
   });

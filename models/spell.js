@@ -6,6 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.STRING,
     family: DataTypes.STRING,
     damage: DataTypes.INTEGER,
+    heal: DataTypes.INTEGER,
+    mana: DataTypes.INTEGER,
     multiple: DataTypes.BOOLEAN,
     icon: DataTypes.STRING,
     image: DataTypes.STRING

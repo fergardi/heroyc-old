@@ -5,8 +5,8 @@ var router  = express.Router();
 // GET
 router.get('/', function(req, res) {
   models.Spell.findAll()
-  .then(function(items) {
-    res.json({status: 'ok', data: items});
+  .then(function(spells) {
+    res.json({status: 'ok', data: spells});
   });
 });
 

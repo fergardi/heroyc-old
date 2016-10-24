@@ -1,0 +1,338 @@
+[
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Fire",
+      "type": "fire",
+      "damage": 15,
+      "mana": 20,
+      "heal": 0,
+      "multiple": false,
+      "family": "danger",
+      "icon": "user",
+      "image": "fire"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Fire+",
+      "type": "fire",
+      "damage": 30,
+      "mana": 40,
+      "heal": 0,
+      "multiple": false,
+      "family": "danger",
+      "icon": "user",
+      "image": "fire+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Fire++",
+      "type": "fire",
+      "damage": 60,
+      "mana": 60,
+      "heal": 0,
+      "multiple": false,
+      "family": "danger",
+      "icon": "user",
+      "image": "fire++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Fire+++",
+      "type": "fire",
+      "damage": 30,
+      "mana": 80,
+      "heal": 0,
+      "multiple": true,
+      "family": "danger",
+      "icon": "users",
+      "image": "fire+++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Ice",
+      "type": "ice",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "default",
+      "icon": "user",
+      "image": "ice"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Ice+",
+      "type": "ice",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": false,
+      "family": "default",
+      "icon": "user",
+      "image": "ice+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Ice++",
+      "type": "ice",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "default",
+      "icon": "user",
+      "image": "ice++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Ice+++",
+      "type": "ice",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": true,
+      "family": "default",
+      "icon": "users",
+      "image": "ice+++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Water",
+      "type": "water",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "primary",
+      "icon": "user",
+      "image": "water"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Water+",
+      "type": "water",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": false,
+      "family": "primary",
+      "icon": "user",
+      "image": "water+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Water++",
+      "type": "water",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "primary",
+      "icon": "user",
+      "image": "water++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Water+++",
+      "type": "water",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": true,
+      "family": "primary",
+      "icon": "users",
+      "image": "water+++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Lightning",
+      "type": "lightning",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "warning",
+      "icon": "user",
+      "image": "lightning"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Lightning+",
+      "type": "lightning",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": false,
+      "family": "warning",
+      "icon": "user",
+      "image": "lightning+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Lightning++",
+      "type": "lightning",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "warning",
+      "icon": "user",
+      "image": "lightning++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Lightning+++",
+      "type": "lightning",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": true,
+      "family": "warning",
+      "icon": "users",
+      "image": "lightning+++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Shadow",
+      "type": "shadow",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "info",
+      "icon": "user",
+      "image": "shadow"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Shadow+",
+      "type": "shadow",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": false,
+      "family": "info",
+      "icon": "user",
+      "image": "shadow+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Shadow++",
+      "type": "shadow",
+      "damage": 1,
+      "mana": 10,
+      "heal": 0,
+      "multiple": false,
+      "family": "info",
+      "icon": "user",
+      "image": "shadow++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Shadow+++",
+      "type": "shadow",
+      "damage": 30,
+      "mana": 60,
+      "heal": 0,
+      "multiple": true,
+      "family": "info",
+      "icon": "users",
+      "image": "shadow+++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Heal",
+      "type": "heal",
+      "damage": 0,
+      "mana": 10,
+      "heal": 10,
+      "multiple": false,
+      "family": "success",
+      "icon": "user",
+      "image": "heal"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Heal+",
+      "type": "heal",
+      "damage": 0,
+      "mana": 60,
+      "heal": 30,
+      "multiple": false,
+      "family": "success",
+      "icon": "user",
+      "image": "heal+"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Heal++",
+      "type": "heal",
+      "damage": 0,
+      "mana": 60,
+      "heal": 80,
+      "multiple": false,
+      "family": "success",
+      "icon": "user",
+      "image": "heal++"
+    }
+  },
+  {
+    "model": "Spell",
+    "data": {
+      "name": "Heal+++",
+      "type": "heal",
+      "damage": 0,
+      "mana": 100,
+      "heal": 100,
+      "multiple": true,
+      "family": "success",
+      "icon": "users",
+      "image": "heal+++"
+    }
+  }
+]

@@ -6,6 +6,7 @@
       "level": 0,
       "experience": 0,
       "gold": 0,
+      "image": "fer",
       "Items": [
         { "name": "Curve Bow" },
         { "name": "Plate Helm" },
@@ -16,6 +17,11 @@
         { "name": "Intelligence Ring" },
         { "name": "Stone Boots" },
         { "name": "Vitality Potion" }
+      ],
+      "Spells": [
+        { "name": "Fire" },
+        { "name": "Heal" },
+        { "name": "Lightning" }
       ]
     }
   }

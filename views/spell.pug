@@ -4,5 +4,10 @@
       i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + spell.icon')  
       span {{spell.name}}
   .panel-body
-    h4 {{spell.damage}}
-    img.thumbnail.pixelated(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"')
+    img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"')
+    .progress
+      .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage + "%"')
+    .progress
+      .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal + "%"')
+    .progress
+      .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana + "%"')

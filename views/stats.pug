@@ -1,0 +1,32 @@
+.panel.panel-default.text-center
+  .panel-heading
+    .panel-title
+      i.fa.fa-fw.fa-lg.fa-user
+      span {{name}}
+  .panel-body(data-toggle="tooltip", data-placement="left", title="Tooltip on left")
+    img.thumbnail.item(v-bind:src='"/images/player/" + image + ".png"')
+    ul.list-group.text-left
+      li.list-group-item
+        span.label.label-default Level
+        span.badge {{level}}
+      li.list-group-item
+        span.label.label-default Experience
+        span.badge {{experience}}
+      li.list-group-item
+        span.label.label-default Gold
+        span.badge {{gold}}
+      li.list-group-item
+        span.label.label-warning Strength
+        span.badge {{strength}}
+      li.list-group-item
+        span.label.label-primary Intelligence
+        span.badge {{intelligence}}
+      li.list-group-item
+        span.label.label-danger Vitality
+        span.badge {{vitality}}
+      li.list-group-item
+        span.label.label-success Agility
+        span.badge {{agility}}
+      li.list-group-item
+        span.label.label-info Defense
+        span.badge {{defense}}

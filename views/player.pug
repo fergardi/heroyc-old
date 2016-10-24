@@ -7,16 +7,41 @@ block content
         .page-header
           h1 Player 
             small Yourself
-      .col-md-8.col-md-offset-2.col-xs-12
-        .col-md-4.col-xs-12(v-for='item in items')
-          include item
+      .col-md-4.col-xs-12
+        include stats
+      .col-md-4.col-xs-12
+        .panel.panel-default.text-center
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg.fa-wrench
+              span Equipment
+          .panel-body
+            .row
+              .col-md-4.col-xs-12(v-for='item in items')
+                include itemtooltip
+      .col-md-4.col-xs-12
+        .panel.panel-default.text-center
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg.fa-magic
+              span Spells
+          .panel-body
+            .row
+              .col-md-4.col-xs-12(v-for='spell in spells')
+                include spelltooltip
         
 block javascripts
   script.
     var player = new Vue({
       el: '#player',
       data: {
-        items: []
+        name: 'Name',
+        items: [],
+        spells: [],
+        image: 'fer',
+        level: 0,
+        experience: 0,
+        gold: 0
       },
       mounted: function() {
         self = this;
@@ -26,8 +51,51 @@ block javascripts
         get: function() {
           $.get('/api/player/1', function(results) {
             self.items = results.data.Items;
+            self.spells = results.data.Spells;
+            self.name = results.data.name;
+            self.level = results.data.level;
+            self.experience = results.data.experience;
+            self.gold = results.data.gold;
+            self.image = results.data.image;
             notification.info('Player loaded from database!')
           });
+        }
+      },
+      computed: {
+        strength: function() {
+          var str = 0;
+          for(i=0;i<self.items.length;i++) {
+            str += self.items[i].strength;
+          }
+          return str;
+        },
+        vitality: function() {
+          var str = 0;
+          for(i=0;i<self.items.length;i++) {
+            str += self.items[i].vitality;
+          }
+          return str;
+        },
+        intelligence: function() {
+          var str = 0;
+          for(i=0;i<self.items.length;i++) {
+            str += self.items[i].intelligence;
+          }
+          return str;
+        },
+        agility: function() {
+          var str = 0;
+          for(i=0;i<self.items.length;i++) {
+            str += self.items[i].agility;
+          }
+          return str;
+        },
+        defense: function() {
+          var str = 0;
+          for(i=0;i<self.items.length;i++) {
+            str += self.items[i].defense;
+          }
+          return str;
         }
       }
     });
