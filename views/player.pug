@@ -17,29 +17,25 @@ block content
             img.thumbnail.item(v-bind:src='"/images/player/" + image + ".png"')
             ul.list-group.text-left
               li.list-group-item
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+              li.list-group-item
                 span.label.label-default Level
                 span.badge {{level}}
               li.list-group-item
                 span.label.label-default Experience
-                span.badge {{experience}}
+                span.badge {{experience}} / {{1000 * level}}
               li.list-group-item
                 span.label.label-default Gold
                 span.badge {{gold}}
-              li.list-group-item
-                span.label.label-warning Strength
-                span.badge {{strength}}
-              li.list-group-item
-                span.label.label-primary Intelligence
-                span.badge {{intelligence}}
-              li.list-group-item
-                span.label.label-danger Vitality
-                span.badge {{vitality}}
-              li.list-group-item
-                span.label.label-success Agility
-                span.badge {{agility}}
-              li.list-group-item
-                span.label.label-info Defense
-                span.badge {{defense}}
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -49,17 +45,17 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='item in items')
-                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
+                img.thumbnail.slot.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
                 .progress
-                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength + "%"')
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence + "%"')
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality + "%"')
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility + "%"')
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense + "%"')
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -69,23 +65,23 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='spell in spells')
-                img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                img.thumbnail.slot.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
                 .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage + "%"')
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal + "%"')
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana + "%"')
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
         
 block javascripts
   script.
     var player = new Vue({
       el: '#player',
       data: {
-        name: 'Name',
+        name: '',
         items: [],
         spells: [],
-        image: 'fer',
+        image: '',
         level: 0,
         experience: 0,
         gold: 0
@@ -110,35 +106,35 @@ block javascripts
       },
       computed: {
         strength: function() {
-          var str = 0;
+          var str = self.level;
           for(i=0;i<self.items.length;i++) {
             str += self.items[i].strength;
           }
           return str;
         },
         vitality: function() {
-          var vit = 0;
+          var vit = self.level;
           for(i=0;i<self.items.length;i++) {
             vit += self.items[i].vitality;
           }
           return vit;
         },
         intelligence: function() {
-          var int = 0;
+          var int = self.level;
           for(i=0;i<self.items.length;i++) {
             int += self.items[i].intelligence;
           }
           return int;
         },
         agility: function() {
-          var agi = 0;
+          var agi = self.level;
           for(i=0;i<self.items.length;i++) {
             agi += self.items[i].agility;
           }
           return agi;
         },
         defense: function() {
-          var def = 0;
+          var def = self.level;
           for(i=0;i<self.items.length;i++) {
             def += self.items[i].defense;
           }

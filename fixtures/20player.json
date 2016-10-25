@@ -3,25 +3,23 @@
     "model": "Player",
     "data": {
       "name": "Warrior",
-      "level": 0,
+      "level": 1,
       "experience": 0,
       "gold": 0,
       "image": "fer",
       "Items": [
-        { "name": "Curve Bow" },
-        { "name": "Plate Helm" },
-        { "name": "Silver Necklace" },
-        { "name": "Flaming Sword" },
-        { "name": "Dragon Armor" },
-        { "name": "Mirror Shield" },
-        { "name": "Intelligence Ring" },
-        { "name": "Stone Boots" },
-        { "name": "Vitality Potion" }
+        { "name": "Novice Bow" },
+        { "name": "Novice Helm" },
+        { "name": "Novice Necklace" },
+        { "name": "Novice Sword" },
+        { "name": "Novice Armor" },
+        { "name": "Novice Shield" },
+        { "name": "Novice Ring" },
+        { "name": "Novice Boots" },
+        { "name": "Novice Potion" }
       ],
       "Spells": [
-        { "name": "Fire" },
-        { "name": "Heal" },
-        { "name": "Lightning" }
+        { "name": "Heal" }
       ]
     }
   }

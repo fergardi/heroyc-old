@@ -2,16 +2,16 @@
   {
     "model": "Item",
     "data": {
-      "name": "Leather Helm",
+      "name": "Novice Helm",
       "type": "helm",
       "rarity": "default",
-      "vitality": 20,
-      "strength": 30,
-      "agility": 60,
-      "intelligence": 7,
-      "defense": 23,
+      "vitality": 1,
+      "strength": 1,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
       "icon": "shield",
-      "image": "leather"
+      "image": "novice"
     }
   },
   {

@@ -73,5 +73,20 @@
       "icon": "flask",
       "image": "vitality"
     }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Novice Potion",
+      "type": "potion",
+      "rarity": "primary",
+      "vitality": 1,
+      "strength": 1,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
+      "icon": "flask",
+      "image": "novice"
+    }
   }
 ]

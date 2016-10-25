@@ -60,6 +60,9 @@ i.fa {
   background-image: url('https://www.transparenttextures.com/patterns/dust.png');
   background-repeat: repeat;
 }
-.thumbnail {
+.thumbnail.slot {
   margin-bottom: 5px;
+}
+.page-header h1 small {
+  color: inherit;
 }

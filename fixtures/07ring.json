@@ -73,5 +73,20 @@
       "icon": "diamond",
       "image": "defense"
     }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Novice Ring",
+      "type": "ring",
+      "rarity": "default",
+      "vitality": 1,
+      "strength": 1,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
+      "icon": "diamond",
+      "image": "novice"
+    }
   }
 ]

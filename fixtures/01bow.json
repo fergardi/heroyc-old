@@ -2,16 +2,16 @@
   {
     "model": "Item",
     "data": {
-      "name": "Curve Bow",
+      "name": "Novice Bow",
       "type": "bow",
       "rarity": "default",
-      "vitality": 20,
-      "strength": 30,
-      "agility": 60,
-      "intelligence": 7,
-      "defense": 23,
+      "vitality": 1,
+      "strength": 1,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
       "icon": "bullseye",
-      "image": "curve"
+      "image": "novice"
     }
   },
   {
