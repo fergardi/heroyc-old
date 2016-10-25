@@ -1,0 +1,242 @@
+[
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Gold",
+      "rarity": "default",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "gold"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Silver",
+      "rarity": "default",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "silver"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Copper",
+      "rarity": "default",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "copper"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Grape",
+      "rarity": "success",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "grape"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Lemmon",
+      "rarity": "success",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "lemmon"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Raspberry",
+      "rarity": "success",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "raspberry"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Strawberry",
+      "rarity": "success",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "strawberry"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Pear",
+      "rarity": "success",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "pear"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Wood",
+      "rarity": "danger",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "wood"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Stone",
+      "rarity": "danger",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "stone"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Coal",
+      "rarity": "danger",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "coal"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Flask",
+      "rarity": "danger",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "flask"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Gold Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "goldingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Silver Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "silveringot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Copper Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "copperingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Metal Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "metalingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Metal Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "metalingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Steel Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "steelingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Ebony Ingot",
+      "rarity": "primary",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "ebonyingot"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Amethist",
+      "rarity": "info",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "amethist"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Topaz",
+      "rarity": "info",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "topaz"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Saphire",
+      "rarity": "info",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "saphire"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Emmerald",
+      "rarity": "info",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "emmerald"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Ruby",
+      "rarity": "info",
+      "icon": "diamond",
+      "description": "Description",
+      "image": "ruby"
+    }
+  }
+]

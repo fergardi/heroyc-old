@@ -61,7 +61,7 @@ block javascripts
       computed: {
         filtered: function() {
           return this.items.filter(function(item) {
-            return item.name.indexOf(self.filter) !== -1;
+            return item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
           });
         }
       }

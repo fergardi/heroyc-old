@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Silver Necklace",
+      "name": "Stone Necklace",
       "type": "necklace",
       "rarity": "success",
       "vitality": 20,
@@ -11,7 +11,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "diamond",
-      "image": "silver"
+      "image": "stone"
     }
   },
   {

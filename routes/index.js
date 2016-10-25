@@ -14,6 +14,10 @@ router.get('/users', function(req, res) {
   res.render('users');
 });
 
+router.get('/resources', function(req, res) {
+  res.render('resources');
+});
+
 router.get('/player', function(req, res) {
   res.render('player');
 });

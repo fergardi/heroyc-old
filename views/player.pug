@@ -16,6 +16,7 @@ block content
               label.badge {{level}}
           .panel-body
             img.thumbnail.item(v-bind:src='"/images/player/" + image + ".png"')
+            hr
             .progress
               .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
             .progress
@@ -28,6 +29,16 @@ block content
               .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
             .progress
               .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+            hr
+            .row
+              .col-md-4.col-xs-12(v-for='resource in resources')
+                img.thumbnail.resource(v-bind:src='"/images/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                label.badge {{resource.PlayerResource.quantity}}
+            hr
+            .row
+              .col-md-4.col-xs-12(v-for='item in items')
+                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
+                label.badge 1
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -38,7 +49,7 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='item in items')
-                img.thumbnail.slot.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
+                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress
@@ -59,7 +70,7 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='spell in spells')
-                img.thumbnail.slot.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
                 .progress
                   .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
                 .progress
@@ -75,6 +86,7 @@ block javascripts
         name: '',
         items: [],
         spells: [],
+        resources: [],
         image: '',
         level: 0,
         experience: 0,
@@ -89,6 +101,7 @@ block javascripts
           $.get('/api/player/1', function(results) {
             self.items = results.data.Items;
             self.spells = results.data.Spells;
+            self.resources = results.data.Resources;
             self.name = results.data.name;
             self.level = results.data.level;
             self.experience = results.data.experience;

@@ -20,6 +20,13 @@
       ],
       "Spells": [
         { "name": "Heal" }
+      ],
+      "Resources": [
+        { "name": "Copper", 
+          "_through": {
+            "quantity": 10
+          }
+        }
       ]
     }
   }

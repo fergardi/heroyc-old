@@ -57,7 +57,7 @@ block javascripts
       computed: {
         filtered: function() {
           return this.spells.filter(function(spell) {
-            return spell.name.indexOf(self.filter) !== -1;
+            return spell.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
           });
         }
       }

@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/api/user');
 var items = require('./routes/api/item');
 var spells = require('./routes/api/spell');
+var resources = require('./routes/api/resource');
 var player = require('./routes/api/player');
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/spells', spells);
+app.use('/api/resources', resources);
 app.use('/api/player', player);
 app.use('/api/items', items);
 

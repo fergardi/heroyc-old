@@ -24,6 +24,7 @@ i.fa {
 }
 .alert {
   margin-bottom: 5px;
+  pointer-events: none;
 }
 .help-block,
 .help-block > ul {
@@ -40,26 +41,22 @@ i.fa {
 .progress-bar-default.progress-bar:last-child::before {
   background-color: #f5f5f5;
 }
-.item, .spell {
+.item, 
+.spell,
+.resource {
   display: inline-block;
   width: 90px;
 }
 .label {
   font-size: 95%;
 }
-.spells(:last-child).progress,
-.items(:last-child).progress {
-  margin-bottom: 25px;
-}
 .alert,
 .btn,
-.panel,
-.panel-body,
 .panel-heading {
   background-image: url('https://www.transparenttextures.com/patterns/dust.png');
   background-repeat: repeat;
 }
-.thumbnail.slot {
+.thumbnail {
   margin-bottom: 5px;
 }
 .page-header h1 small {
