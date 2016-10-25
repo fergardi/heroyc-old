@@ -25,15 +25,15 @@ block content
           .panel-body
             img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
             .progress
-              .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength + "%"')
+              .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence + "%"')
+              .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality + "%"')
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility + "%"')
+              .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense + "%"')
+              .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
         
 block javascripts
   script.

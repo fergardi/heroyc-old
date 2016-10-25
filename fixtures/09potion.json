@@ -79,7 +79,7 @@
     "data": {
       "name": "Novice Potion",
       "type": "potion",
-      "rarity": "primary",
+      "rarity": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,

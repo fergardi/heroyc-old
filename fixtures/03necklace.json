@@ -34,7 +34,7 @@
     "data": {
       "name": "Novice Necklace",
       "type": "necklace",
-      "rarity": "primary",
+      "rarity": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Love Necklace",
+      "name": "Gold Necklace",
       "type": "necklace",
       "rarity": "danger",
       "vitality": 23,
@@ -71,7 +71,7 @@
       "intelligence": 10,
       "defense": 12,
       "icon": "diamond",
-      "image": "love"
+      "image": "gold"
     }
   },
   {

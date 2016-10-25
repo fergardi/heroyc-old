@@ -25,11 +25,11 @@ block content
           .panel-body
             img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
             .progress
-              .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage + "%"')
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal + "%"')
+              .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
             .progress
-              .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana + "%"')
+              .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
         
 block javascripts
   script.
