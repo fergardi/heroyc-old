@@ -2,11 +2,11 @@
   {
     "model": "Player",
     "data": {
-      "name": "Warrior",
+      "name": "Fergardi",
       "level": 1,
       "experience": 0,
       "gold": 0,
-      "image": "fer",
+      "image": "avatar",
       "Items": [
         { "name": "Novice Bow", "_through": { "equiped": true } },
         { "name": "Novice Helm", "_through": { "equiped": true } },

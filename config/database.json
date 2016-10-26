@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "nodapi",
+    "database": "heroyc",
     "host": "localhost",
     "dialect": "mysql"
   }
