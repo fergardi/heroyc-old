@@ -11,6 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     multiple: DataTypes.BOOLEAN,
     icon: DataTypes.STRING,
     image: DataTypes.STRING
+  }, {
+    timestamps: false
   });
 
   return Spell;

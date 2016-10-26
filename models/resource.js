@@ -7,6 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.STRING,
     image: DataTypes.STRING,
     icon: DataTypes.STRING
+  }, {
+    timestamps: false
   });
 
   return Resource;

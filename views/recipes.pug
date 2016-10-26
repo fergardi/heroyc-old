@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  div#recipes
+    .row
+      .col-xs-12
+        .page-header
+          h1 Forge 
+            small Create things
+      .col-md-3.col-xs-12(v-for='recipe in recipes')
+        .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + recipe.Result.icon')  
+              span {{recipe.Result.name}}
+          .panel-body
+            .row
+              .col-xs-6
+                img.thumbnail.item(v-bind:src='"/images/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+              .col-xs-6
+                img.thumbnail.resource(v-bind:src='"/images/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+            .row
+              .col-xs-12
+                img.thumbnail.item(v-bind:src='"/images/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+          .panel-body
+            button.btn.btn-success.btn-block
+              +fa('check') Forge
+        
+block javascripts
+  script.
+    var recipes = new Vue({
+      el: '#recipes',
+      data: {
+        filter: '',
+        recipes: []
+      },
+      mounted: function() {
+        self = this;
+        self.get();
+      },
+      methods: {
+        get: function() {
+          $.get('/api/recipe', function(results) {
+            self.recipes = results.data;
+            console.log(self.recipes);
+            notification.info('Items loaded from database!')
+          });
+        },
+        reset: function() {
+          self.filter = '';
+        }
+      },
+      computed: {
+        filtered: function() {
+          return this.recipes.filter(function(recipe) {
+            return recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          });
+        }
+      }
+    });

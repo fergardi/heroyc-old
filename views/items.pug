@@ -49,7 +49,7 @@ block javascripts
       },
       methods: {
         get: function() {
-          $.get('/api/items', function(results) {
+          $.get('/api/item', function(results) {
             self.items = results.data;
             notification.info('Items loaded from database!')
           });

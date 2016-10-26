@@ -10,10 +10,16 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        // custom m2m association with "equiped" to distinguish between regular item and equiped one
+        var PlayerItem = sequelize.define('PlayerItem', {
+          equiped: DataTypes.BOOLEAN
+        });
         models.Item.belongsToMany(models.Player, {through: 'PlayerItem'});
         models.Player.belongsToMany(models.Item, {through: 'PlayerItem'});
+        // m2m association
         models.Spell.belongsToMany(models.Player, {through: 'PlayerSpell'});
         models.Player.belongsToMany(models.Spell, {through: 'PlayerSpell'});
+        // custom m2m association with "quantity" to count ammount of resources of the same type
         var PlayerResource = sequelize.define('PlayerResource', {
           quantity: DataTypes.INTEGER
         });

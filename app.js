@@ -7,10 +7,12 @@ var bodyParser = require('body-parser');
 var models = require('./models');
 
 var routes = require('./routes/index');
-var users = require('./routes/api/user');
-var items = require('./routes/api/item');
-var spells = require('./routes/api/spell');
-var resources = require('./routes/api/resource');
+var user = require('./routes/api/user');
+var item = require('./routes/api/item');
+var spell = require('./routes/api/spell');
+var store = require('./routes/api/store');
+var resource = require('./routes/api/resource');
+var recipe = require('./routes/api/recipe');
 var player = require('./routes/api/player');
 
 var app = express();
@@ -28,11 +30,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/api/users', users);
-app.use('/api/spells', spells);
-app.use('/api/resources', resources);
+app.use('/api/user', user);
+app.use('/api/spell', spell);
+app.use('/api/resource', resource);
 app.use('/api/player', player);
-app.use('/api/items', items);
+app.use('/api/recipe', recipe);
+app.use('/api/store', store);
+app.use('/api/item', item);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

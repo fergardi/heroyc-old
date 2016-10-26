@@ -8,25 +8,24 @@
       "gold": 0,
       "image": "fer",
       "Items": [
-        { "name": "Novice Bow" },
-        { "name": "Novice Helm" },
-        { "name": "Novice Necklace" },
-        { "name": "Novice Sword" },
-        { "name": "Novice Armor" },
-        { "name": "Novice Shield" },
-        { "name": "Novice Ring" },
-        { "name": "Novice Boots" },
-        { "name": "Novice Potion" }
+        { "name": "Novice Bow", "_through": { "equiped": true } },
+        { "name": "Novice Helm", "_through": { "equiped": true } },
+        { "name": "Novice Necklace", "_through": { "equiped": true } },
+        { "name": "Novice Sword", "_through": { "equiped": true } },
+        { "name": "Novice Armor", "_through": { "equiped": true } },
+        { "name": "Novice Shield", "_through": { "equiped": true } },
+        { "name": "Novice Ring", "_through": { "equiped": true } },
+        { "name": "Novice Boots", "_through": { "equiped": true } },
+        { "name": "Novice Potion", "_through": { "equiped": true } },
+        { "name": "Dragon Armor", "_through": { "equiped": false } }
       ],
       "Spells": [
         { "name": "Heal" }
       ],
       "Resources": [
-        { "name": "Copper", 
-          "_through": {
-            "quantity": 10
-          }
-        }
+        { "name": "Gold", "_through": { "quantity": 0 } },
+        { "name": "Silver", "_through": { "quantity": 0 } },
+        { "name": "Copper", "_through": { "quantity": 1 } }
       ]
     }
   }

@@ -12,6 +12,8 @@ module.exports = function(sequelize, DataTypes) {
     agility: DataTypes.INTEGER,
     image: DataTypes.STRING,
     icon: DataTypes.STRING
+  }, {
+    timestamps: false
   });
 
   return Item;

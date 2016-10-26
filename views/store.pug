@@ -1,0 +1,128 @@
+extends layout
+
+block content
+  div#store
+    .row
+      .col-xs-12
+        .page-header
+          h1 Store 
+            small Purchase stuff
+      .col-xs-12
+        form.form-horizontal.form-group
+          .input-group
+            .input-group-addon
+              +fa('search')
+            input(v-model='filter', type='text', class='form-control', placeholder='Find offers')
+            .input-group-btn
+              a.btn.btn-danger(v-on:click='reset()')
+                +fa('trash')
+      .col-md-3.col-xs-12(v-for='offer in offers')
+        template(v-if='offer.Item')
+          .panel.text-center(v-bind:class='"panel-" + offer.Item.rarity')
+            .panel-heading
+              .panel-title
+                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + offer.Item.icon')  
+                span {{offer.Item.name}}
+            .panel-body
+              img.thumbnail.item(v-bind:src='"/images/items/" + offer.Item.type + "/" + offer.Item.image + ".png"', v-bind:class='"panel-" + offer.Item.rarity')
+              .progress
+                .progress-bar.progress-bar-warning(v-bind:style='"width: " + offer.Item.strength * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-primary(v-bind:style='"width: " + offer.Item.intelligence * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-danger(v-bind:style='"width: " + offer.Item.vitality * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-success(v-bind:style='"width: " + offer.Item.agility * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-info(v-bind:style='"width: " + offer.Item.defense * 10 + "%"')
+              .row
+                .col-xs-4
+                  span.badge.gold {{offer.gold}}
+                .col-xs-4
+                  span.badge.silver {{offer.silver}}
+                .col-xs-4
+                  span.badge.copper {{offer.copper}}
+              .panel-body
+                .row
+                  button.btn.btn-success.btn-block
+                    +fa('check') Buy
+
+        template(v-if='offer.Resource')
+          .panel.text-center(v-bind:class='"panel-" + offer.Resource.rarity')
+            .panel-heading
+              .panel-title
+                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + offer.Resource.icon')  
+                span {{offer.Resource.name}}
+            .panel-body
+              img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Resource.image + ".png"', v-bind:class='"panel-" + offer.Resource.rarity')
+              .row
+                .col-xs-4
+                  span.badge.gold {{offer.gold}}
+                .col-xs-4
+                  span.badge.silver {{offer.silver}}
+                .col-xs-4
+                  span.badge.copper {{offer.copper}}
+              .panel-body
+                .row
+                  button.btn.btn-success.btn-block
+                    +fa('check') Buy
+                    
+        template(v-if='offer.Recipe')
+          .panel.text-center(v-bind:class='"panel-" + offer.Recipe.Result.rarity')
+            .panel-heading
+              .panel-title
+                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + offer.Recipe.Result.icon')  
+                span {{offer.Recipe.Result.name}}
+            .panel-body
+              .row
+                .col-xs-6
+                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Original.type + "/" + offer.Recipe.Original.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Original.rarity')
+                .col-xs-6
+                  img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Resource.family')
+              .row
+                .col-xs-12
+                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Result.type + "/" + offer.Recipe.Result.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Result.rarity')
+              .row
+                .col-xs-4
+                  span.badge.gold {{offer.gold}}
+                .col-xs-4
+                  span.badge.silver {{offer.silver}}
+                .col-xs-4
+                  span.badge.copper {{offer.copper}}
+              .panel-body
+                .row
+                  button.btn.btn-success.btn-block
+                    +fa('check') Buy
+            
+block javascripts
+  script.
+    var store = new Vue({
+      el: '#store',
+      data: {
+        filter: '',
+        offers: []
+      },
+      mounted: function() {
+        self = this;
+        self.get();
+      },
+      methods: {
+        get: function() {
+          $.get('/api/store', function(results) {
+            self.offers = results.data;
+            console.log(self.offers);
+            notification.info('Offers loaded from database!')
+          });
+        },
+        reset: function() {
+          self.filter = '';
+        }
+      },
+      computed: {
+        filtered: function() {
+          return this.offers.filter(function(offer) {
+            return offer.Item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          });
+        }
+      }
+    });

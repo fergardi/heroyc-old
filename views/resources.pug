@@ -40,7 +40,7 @@ block javascripts
       },
       methods: {
         get: function() {
-          $.get('/api/resources', function(results) {
+          $.get('/api/resource', function(results) {
             self.resources = results.data;
             notification.info('Resources loaded from database!')
           });

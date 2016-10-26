@@ -45,7 +45,7 @@ block javascripts
       },
       methods: {
         get: function() {
-          $.get('/api/spells', function(results) {
+          $.get('/api/spell', function(results) {
             self.spells = results.data;
             notification.info('Items loaded from database!')
           });

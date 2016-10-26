@@ -26,6 +26,14 @@ router.get('/spells', function(req, res) {
   res.render('spells');
 });
 
+router.get('/recipes', function(req, res) {
+  res.render('recipes');
+});
+
+router.get('/store', function(req, res) {
+  res.render('store');
+});
+
 router.get('/items', function(req, res) {
   res.render('items');
 });
