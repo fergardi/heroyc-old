@@ -1,50 +1,114 @@
 extends layout
 
 block content
-  .row
-    .col-xs-12
-      +pageader('Title', 'Subtitle')
-      p Just for testing.
-  .row
-    .col-xs-12
-      +pageader('Architectures', 'Employed')
-  .row
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('NodeJS + NPM', 'success', 'server') A lightweight http JS server.
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('ExpressJS + i18n', 'danger', 'map-signs') A middleware API routing engine.
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('SequelizeJS + Fixtures', 'primary', 'map') A codefirst database mapping ORM.
-  .row
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('MariaDB', 'warning', 'database') A forked MySQL database.
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('Pug/Jade + BootstrapCSS + Mixins', 'info', 'leaf') A template engine.
-    .col-md-4.col-sm-6.col-xs-12
-      +panel('VueJS + jQuery', 'default', 'refresh') A SPA framework.
-  .row
-    .col-xs-12
-      +pageader('API', 'CRUD')
-  .row
-    .col-md-3.col-xs-12
-      h4 CREATE
-      +code('POST /api/users')
-    .col-md-3.col-xs-12
-      h4 RETRIEVE
-      +code('GET /api/users/{id}')
-      h4 RETRIEVE ALL
-      +code('GET /api/users')
-    .col-md-3.col-xs-12
-      h4 UPDATE
-      +code('PUT /api/users/{id}')
-    .col-md-3.col-xs-12      
-      h4 DELETE
-      +code('DELETE /api/users/{id}')
-      h4 DELETE ALL
-      +code('DELETE /api/users')
-  .row
-    .col-xs-12
-      +pageader('Examples', 'Play')
-    .col-xs-12
-      +abutton('info', '/users', 'play', true) Go to Users API
-      +abutton('info', '/tasks', 'play', true) Go to Tasks API
+  .map-container
+    #map
+
+block javascripts
+  script.
+    var map = null;
+    var current = null;
+    var meters = 500;
+    var zoom = 15;
+    var center = [-5.56, 42.60];
+    var pitch = 60;
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+      pitch: pitch,
+      zoom: zoom,
+      center: center,
+      attributionControl: {
+        position: 'top-left'
+      }
+    });
+    // move
+    function move(lon, lat) {
+      map.flyTo({
+        center: [lon, lat],
+        speed: 1,
+        curve: 1,
+        zoom: zoom
+      });
+    }
+    // ask geolocation
+    function geolocation() {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          if (avatar === null) move(position.coords.longitude, position.coords.latitude);
+          current = position;
+          updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
+          //TODO update user latest position
+        },
+        function(error) {
+          console.error(error.code + ' ' + error.message);
+        }
+      );
+    }
+    // add marker for current position
+    var avatar = null;
+    function updatePosition(location) {
+      if (avatar === null) {
+        var marker = document.createElement('div');
+        marker.style.zIndex = 5;
+        marker.style.left = -30 + 'px';
+        marker.style.top = -77 + 'px';
+        // add an icon
+        var icon = document.createElement('img');
+        icon.src = '/images/player/avatar.png';
+        icon.className = 'map-avatar animated bounce infinite';
+        marker.appendChild(icon);
+        // add a shadow
+        var shadow = document.createElement('div');
+        shadow.className = 'map-avatar-shadow';
+        marker.appendChild(shadow);
+        marker.addEventListener('click', function(event) {
+          // prevent default
+          event.preventDefault();
+          // move to location
+          move(location.lng, location.lat);
+        });
+        // add marker to map
+        avatar = new mapboxgl.Marker(marker).setLngLat(location).addTo(map);
+      } else {
+          // move marker in map
+          avatar.setLngLat(location);
+      }
+    }
+    // geo calculations
+    var geo = {
+      // capable location
+      capable: function (location) {
+        return true;
+      },
+      // near location
+      near: function (location) {
+        return geo.distance(current.coords.longitude, current.coords.latitude, location.coordinates[0], location.coordinates[1]) <= meters;
+      },
+      // distance between two points
+      distance: function (lon1, lat1, lon2, lat2) {
+        var R = 6371000; // earth radius in meters
+        var x1 = lat2 - lat1;
+        var dLat = this._toRad(x1);
+        var x2 = lon2 - lon1;
+        var dLon = this._toRad(x2);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this._toRad(lat1)) * Math.cos(this._toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        dist = R * c;
+        return dist;
+      },
+      // to radians
+      _toRad: function (deg) {
+        return deg * Math.PI / 180;
+      },
+      // to degrees
+      _toDeg: function (rad) {
+        return rad * 180 / Math.PI;
+      }
+    };
+    // force move to current position every X seconds
+    setInterval(function(){
+        geolocation();
+    }, 5000);
+    geolocation();
