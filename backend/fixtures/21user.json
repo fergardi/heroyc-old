@@ -1,0 +1,11 @@
+[
+  {
+    "model": "User",
+    "data": {
+      "firstname": "Fernando",
+      "lastname": "Garcia",
+      "email": "fernando@garcia.com",
+      "class": "panel-primary"
+    }
+  }
+]

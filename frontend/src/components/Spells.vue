@@ -1,0 +1,66 @@
+<template lang="pug">
+  div#Spells
+    .row
+      .col-xs-12
+        .page-header
+          h1 Spells 
+            small Magic resources
+      .col-xs-12
+        form.form-horizontal.form-group
+          .input-group
+            .input-group-addon
+              i.fa.fa-search
+            input(v-model='filter', type='text', class='form-control', placeholder='Find spells')
+            .input-group-btn
+              a.btn.btn-danger(v-on:click='reset()')
+                i.fa.fa-trash
+      .col-md-3.col-xs-12(v-for='spell in filtered')
+        .panel.text-center(v-bind:class='"panel-" + spell.family')
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + spell.icon')  
+              span {{spell.name}}
+          .panel-body
+            img.thumbnail.spell(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+            .progress
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
+            .progress
+              .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
+            .progress
+              .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
+</template>
+
+<script>
+  import {spells} from '../services/api'
+  export default {
+    name: 'Spells',
+    data () { 
+      return {
+        filter: '',
+        spells: []
+      }
+    },
+    created: function() {
+      self = this;
+      spells().then((result) => {
+        self.spells = result.data;
+      });
+    },
+    methods: {
+      reset: function() {
+        self.filter = '';
+      }
+    },
+    computed: {
+      filtered: function() {
+        return this.spells.filter(function(spell) {
+          return spell.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+        });
+      }
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>

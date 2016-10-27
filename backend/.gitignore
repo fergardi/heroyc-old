@@ -1,0 +1,33 @@
+# WINDOWS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# LINUX
+!.gitkeep
+!.gitignore
+*~
+
+# MACOSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.SpotlighV100
+.Trashes
+
+# SUBLIMETEXT
+*.sublime-project
+*.sublime-workspace
+
+# PHPSTORM
+.idea
+.idea/
+.idea/*
+
+# NODEJS
+node_modules/
+node_modules/*
