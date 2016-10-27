@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import {spells} from '../services/api'
+  import factory from '../factories/factory'
   export default {
     name: 'Spells',
     data () { 
@@ -42,8 +42,8 @@
     },
     created: function() {
       self = this;
-      spells().then((result) => {
-        self.spells = result.data;
+      factory.getSpells((data) => {
+        self.spells = data;
       });
     },
     methods: {

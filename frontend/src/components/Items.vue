@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import {items} from '../services/api'
+  import factory from '../factories/factory'
   export default {
     name: 'Items',
     data () { 
@@ -46,17 +46,11 @@
     },
     created: function() {
       self = this;
-      items().then((result) => {
-        self.items = result.data;
+      factory.getItems((data) => {
+        self.items = data;
       });
     },
     methods: {
-      get: function() {
-        $.get('http://localhost:3000/api/item', function(results) {
-          self.items = results.data;
-          notification.info('Items loaded from database!')
-        });
-      },
       reset: function() {
         self.filter = '';
       }

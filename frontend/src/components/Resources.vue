@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import {resources} from '../services/api'
+  import factory from '../factories/factory'
   export default {
     name: 'Resources',
       data () {
@@ -37,8 +37,8 @@
       },
       created: function() {
         self = this;
-        resources().then((result) => {
-          self.resources = result.data;
+        factory.getResources((data) => {
+          self.resources = data;
         });
       },
       methods: {

@@ -1,0 +1,71 @@
+<template lang="pug">
+  div#Recipes
+    .row
+      .col-xs-12
+        .page-header
+          h1 Recipes 
+            small Coctails
+      .col-xs-12
+        form.form-horizontal.form-group
+          .input-group
+            .input-group-addon
+              i.fa.fa-search
+            input(v-model='filter', type='text', class='form-control', placeholder='Find recipes')
+            .input-group-btn
+              a.btn.btn-danger(v-on:click='reset()')
+                i.fa.fa-trash
+      .col-md-3.col-xs-12(v-for='recipe in recipes')
+        .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + recipe.Result.icon')  
+              span {{recipe.Result.name}}
+          .panel-body
+            .row
+              .col-xs-6
+                img.thumbnail(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity', data-toggle='tooltip', v-bind:title='recipe.Original.name')
+              .col-xs-6
+                img.thumbnail(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family', data-toggle='tooltip', v-bind:title='recipe.Resource.name')
+            .row
+              .col-xs-12
+                img.thumbnail.slot(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity', data-toggle='tooltip', v-bind:title='recipe.Result.name')
+          .panel-body
+            button.btn.btn-success.btn-block
+              i.fa.fa-lg.fa-check
+              = 'Forge'
+</template>
+
+<script>
+  import factory from '../factories/factory'
+  export default {
+    name: 'Recipes',
+    data () { 
+      return {
+        filter: '',
+        recipes: []
+      }
+    },
+    created: function() {
+      self = this;
+      factory.getRecipes((data) => {
+        self.recipes = data;
+      });
+    },
+    methods: {
+      reset: function() {
+        self.filter = '';
+      }
+    },
+    computed: {
+      filtered: function() {
+        return this.recipes.filter(function(recipe) {
+          return recipe.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+        });
+      }
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>

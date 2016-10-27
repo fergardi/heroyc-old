@@ -22,6 +22,18 @@
             router-link(to='/spells')
               i.fa.fa-lg.fa-fw.fa-magic
               = 'Spells'
+          li
+            router-link(to='/recipes')
+              i.fa.fa-lg.fa-fw.fa-magic
+              = 'Recipes'
+          li
+            router-link(to='/sales')
+              i.fa.fa-lg.fa-fw.fa-shopping-bag
+              = 'Sales'
+          li
+            router-link(to='/player')
+              i.fa.fa-lg.fa-fw.fa-user
+              = 'Player'
 </template>
 
 <script>
