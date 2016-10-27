@@ -93,3 +93,6 @@ i.fa {
   /* IE 10+ */
   color: inherit !important;
 }
+.map-container {
+  height: calc(100vh - 64px);
+}

@@ -14,7 +14,7 @@
             .input-group-btn
               a.btn.btn-danger(v-on:click='reset()')
                 i.fa.fa-lg.fa-trash
-      .col-md-3.col-xs-12(v-for='sale in sales')
+      .col-md-3.col-xs-12(v-for='sale in filtered')
         template(v-if='sale.Item')
           .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
             .panel-heading
@@ -117,8 +117,18 @@
     },
     computed: {
       filtered: function() {
-        return this.sales.filter(function(recipe) {
-          return true;
+        return this.sales.filter(function(sale) {
+          return (
+            sale.Item ? 
+              sale.Item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                sale.Resource ? 
+                  sale.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                    sale.Recipe ? 
+                      sale.Recipe.Original.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
+                      sale.Recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
+                      sale.Recipe.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                    true
+          );
         });
       }
     }

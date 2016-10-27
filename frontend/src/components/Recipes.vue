@@ -14,7 +14,7 @@
             .input-group-btn
               a.btn.btn-danger(v-on:click='reset()')
                 i.fa.fa-trash
-      .col-md-3.col-xs-12(v-for='recipe in recipes')
+      .col-md-3.col-xs-12(v-for='recipe in filtered')
         .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
           .panel-heading
             .panel-title
@@ -59,7 +59,7 @@
     computed: {
       filtered: function() {
         return this.recipes.filter(function(recipe) {
-          return recipe.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return (recipe.Original.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
         });
       }
     }

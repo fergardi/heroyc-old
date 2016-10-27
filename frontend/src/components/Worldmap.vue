@@ -16,10 +16,7 @@
   }
 </script>
 
-<style scoped>
-  .map-container {
-    height: calc(100vh - 64px);
-  }
+<style>
   #map {
     width: 100%;
     height: 100%;
