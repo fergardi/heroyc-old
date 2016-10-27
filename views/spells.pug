@@ -23,7 +23,7 @@ block content
               i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + spell.icon')  
               span {{spell.name}}
           .panel-body
-            img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+            img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
             .progress
               .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
             .progress

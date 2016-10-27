@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  div#recipes
+  div#forge
     .row
       .col-xs-12
         .page-header
@@ -16,20 +16,20 @@ block content
           .panel-body
             .row
               .col-xs-6
-                img.thumbnail.item(v-bind:src='"/images/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+                img.thumbnail(v-bind:src='"/images/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity', data-toggle='tooltip', v-bind:title='recipe.Original.name')
               .col-xs-6
-                img.thumbnail.resource(v-bind:src='"/images/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+                img.thumbnail(v-bind:src='"/images/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family', data-toggle='tooltip', v-bind:title='recipe.Resource.name')
             .row
               .col-xs-12
-                img.thumbnail.item(v-bind:src='"/images/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+                img.thumbnail.slot(v-bind:src='"/images/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity', data-toggle='tooltip', v-bind:title='recipe.Result.name')
           .panel-body
             button.btn.btn-success.btn-block
               +fa('check') Forge
         
 block javascripts
   script.
-    var recipes = new Vue({
-      el: '#recipes',
+    var forge = new Vue({
+      el: '#forge',
       data: {
         filter: '',
         recipes: []

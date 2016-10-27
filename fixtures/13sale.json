@@ -1,6 +1,6 @@
 [
   {
-    "model": "Store",
+    "model": "Sale",
     "data": {
       "gold": 1,
       "silver": 0,
@@ -10,7 +10,7 @@
     }
   },
   {
-    "model": "Store",
+    "model": "Sale",
     "data": {
       "gold": 0,
       "silver": 4,
@@ -20,7 +20,7 @@
     }
   },
   {
-    "model": "Store",
+    "model": "Sale",
     "data": {
       "gold": 0,
       "silver": 4,

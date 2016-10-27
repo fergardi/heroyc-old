@@ -15,7 +15,7 @@ block content
               span {{name}} 
               label.badge {{level}}
           .panel-body
-            img.thumbnail.item(v-bind:src='"/images/player/" + image + ".png"')
+            img.thumbnail.slot(v-bind:src='"/images/player/" + image + ".png"', data-toggle='tooltip', v-bind:title='name')
             hr
             .progress
               .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
@@ -32,7 +32,7 @@ block content
             hr
             .row
               .col-md-4.col-xs-12(v-for='resource in resources')
-                img.thumbnail.resource(v-bind:src='"/images/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
+                img.thumbnail.slot(v-bind:src='"/images/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
                 label.badge {{resource.PlayerResource.quantity}}
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
@@ -44,7 +44,7 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='item in equiped')
-                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
+                img.thumbnail.slot(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress
@@ -58,7 +58,7 @@ block content
             hr
             .row
               .col-md-4.col-xs-12(v-for='item in unequiped')
-                img.thumbnail.item(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
+                img.thumbnail.slot(v-bind:src='"/images/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress
@@ -79,7 +79,7 @@ block content
           .panel-body
             .row
               .col-md-4.col-xs-12(v-for='spell in spells')
-                img.thumbnail.spell(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+                img.thumbnail.slot(v-bind:src='"/images/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
                 .progress
                   .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
                 .progress

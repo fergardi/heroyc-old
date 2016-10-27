@@ -23,7 +23,7 @@ block content
               i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + resource.icon')  
               span {{resource.name}}
           .panel-body
-            img.thumbnail.resource(v-bind:src='"/images/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+            img.thumbnail.resource(v-bind:src='"/images/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
             p {{resource.description}}
         
 block javascripts

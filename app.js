@@ -6,15 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var models = require('./models');
 
-var routes = require('./routes/index');
-var user = require('./routes/api/user');
-var item = require('./routes/api/item');
-var spell = require('./routes/api/spell');
-var store = require('./routes/api/store');
-var resource = require('./routes/api/resource');
-var recipe = require('./routes/api/recipe');
-var player = require('./routes/api/player');
-
 var app = express();
 
 // view engine setup
@@ -29,14 +20,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/api/user', user);
-app.use('/api/spell', spell);
-app.use('/api/resource', resource);
-app.use('/api/player', player);
-app.use('/api/recipe', recipe);
-app.use('/api/store', store);
-app.use('/api/item', item);
+app.use('/', require('./routes/index'));
+app.use('/api/user', require('./routes/api/user'));
+app.use('/api/spell', require('./routes/api/spell'));
+app.use('/api/resource', require('./routes/api/resource'));
+app.use('/api/player', require('./routes/api/player'));
+app.use('/api/recipe', require('./routes/api/recipe'));
+app.use('/api/sale', require('./routes/api/sale'));
+app.use('/api/item', require('./routes/api/item'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

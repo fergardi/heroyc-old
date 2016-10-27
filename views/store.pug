@@ -24,7 +24,7 @@ block content
                 i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + offer.Item.icon')  
                 span {{offer.Item.name}}
             .panel-body
-              img.thumbnail.item(v-bind:src='"/images/items/" + offer.Item.type + "/" + offer.Item.image + ".png"', v-bind:class='"panel-" + offer.Item.rarity')
+              img.thumbnail.item(v-bind:src='"/images/items/" + offer.Item.type + "/" + offer.Item.image + ".png"', v-bind:class='"panel-" + offer.Item.rarity', data-toggle='tooltip', v-bind:title='offer.Item.name')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + offer.Item.strength * 10 + "%"')
               .progress
@@ -52,9 +52,9 @@ block content
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + offer.Resource.icon')  
-                span {{offer.Resource.name}}
+                span {{offer.Resource.name}} ({{offer.quantity}})
             .panel-body
-              img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Resource.image + ".png"', v-bind:class='"panel-" + offer.Resource.rarity')
+              img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Resource.image + ".png"', v-bind:class='"panel-" + offer.Resource.rarity', data-toggle='tooltip', v-bind:title='offer.Resource.name')
               .row
                 .col-xs-4
                   span.badge.gold {{offer.gold}}
@@ -76,12 +76,12 @@ block content
             .panel-body
               .row
                 .col-xs-6
-                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Original.type + "/" + offer.Recipe.Original.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Original.rarity')
+                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Original.type + "/" + offer.Recipe.Original.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Original.rarity', data-toggle='tooltip', v-bind:title='offer.Recipe.Original.name')
                 .col-xs-6
-                  img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Resource.family')
+                  img.thumbnail.resource(v-bind:src='"/images/resources/" + offer.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Resource.family', data-toggle='tooltip', v-bind:title='offer.Recipe.Resource.name')
               .row
                 .col-xs-12
-                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Result.type + "/" + offer.Recipe.Result.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Result.rarity')
+                  img.thumbnail.item(v-bind:src='"/images/items/" + offer.Recipe.Result.type + "/" + offer.Recipe.Result.image + ".png"', v-bind:class='"panel-" + offer.Recipe.Result.rarity', data-toggle='tooltip', v-bind:title='offer.Recipe.Result.name')
               .row
                 .col-xs-4
                   span.badge.gold {{offer.gold}}
@@ -108,7 +108,7 @@ block javascripts
       },
       methods: {
         get: function() {
-          $.get('/api/store', function(results) {
+          $.get('/api/sale', function(results) {
             self.offers = results.data;
             console.log(self.offers);
             notification.info('Offers loaded from database!')
