@@ -5,46 +5,159 @@
         .page-header
           h1 Battle 
             small Kick ass
-      
+    .row
+      .col-md-4.col-xs-6
+        .panel.panel-default.text-center.animated(v-bind:class='{ flash: states.player.magic }')
+          .panel-heading
+            .panel-title
+              i.fa.fa-fw.fa-lg.fa-user
+              span {{player.name}}
+          .panel-body
+            img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
+            hr
+            .progress
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + player.vitality + "%"')
+            .progress
+              .progress-bar.progress-bar-primary(v-bind:style='"width: " + player.mana + "%"')
+          .panel-buttons
+            #parent
+              .panel.list-group
+                a.list-group-item(data-toggle='collapse', data-target='#attack', data-parent='#parent')
+                  i.fa.fa-fw.fa-lg.fa-crosshairs
+                  span Attack
+                #attack.sublinks.collapse
+                  a.list-group-item(@click='melee(player.strength)', v-bind:class='{disabled: states.buttons}')
+                    img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
+                    span Melee
+                    span.label.label-danger {{player.strength}}
+                  a.list-group-item(@click='distance(player.strength)', v-bind:class='{disabled: states.buttons}')
+                    img.icon(v-bind:src='"dist/img/items/bow/" + player.bow + ".png"')
+                    span Distance
+                    span.label.label-danger {{player.strength}}
+                a.list-group-item(data-toggle='collapse', data-target='#magic', data-parent='#parent')
+                  i.fa.fa-fw.fa-lg.fa-magic
+                  span Magic
+                #magic.sublinks.collapse
+                  a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.damage, spell.heal, spell.mana)')
+                    img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                    span {{spell.name}}
+                    span.label.label-danger {{spell.damage}}
+                    span.label.label-primary {{spell.mana}}
+                    span.label.label-success {{spell.heal}}
+      .col-md-4.col-md-offset-4.col-xs-6
+        .panel.panel-danger.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }]')
+          .panel-heading
+            .panel-title
+              span Monster
+          .panel-body
+            img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', data-toggle='tooltip', v-bind:title='monster.name')
+            hr
+            .progress
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + monster.vitality + "%"')
+          .panel-buttons
+            .list-group.panel
+              a.list-group-item.disabled 
+                i.fa.fa-fw.fa-lg.fa-crosshairs
+                span Attack
+              a.list-group-item.disabled
+                i.fa.fa-fw.fa-lg.fa-magic
+                span Magic
 </template>
 
 <script>
-  import {items} from '../services/api'
+  import factory from '../factories/factory'
   export default {
-    name: 'Items',
-    data () { 
+    name: 'Battle',
+    data: function() { 
       return {
-        filter: '',
-        items: []
+        player: {
+          name: 'Fergardi',
+          image: 'avatar',
+          weapon: 'novice',
+          bow: 'novice',
+          spells: [],
+          vitality: 100,
+          mana: 100,
+          strength: 90
+        },
+        monster: {
+          name: 'Skeleton',
+          image: 'skeleton',
+          vitality: 100
+        },
+        states: {
+          buttons: false,
+          monster: {
+            melee: false,
+            distance: false,
+            magic: false,
+            dead: false
+          },
+          player: {
+            melee: false,
+            distance: false,
+            magic: false,
+            dead: false
+          }
+        }
       }
     },
     created: function() {
       self = this;
-      items().then((result) => {
-        self.items = result.data;
+      factory.getPlayer((data) => {
+        self.player.spells = data.Spells;
       });
     },
-    methods: {
-      get: function() {
-        $.get('http://localhost:3000/api/item', function(results) {
-          self.items = results.data;
-          notification.info('Items loaded from database!')
-        });
-      },
-      reset: function() {
-        self.filter = '';
+    watch: {
+      'monster.vitality': function(value) {
+        if(value <= 0) {
+          setTimeout(function() {
+            self.states.monster.dead = true;
+          }, 1500);
+        }
       }
     },
-    computed: {
-      filtered: function() {
-        return this.items.filter(function(item) {
-          return item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
-        });
+    methods: {
+      melee: function(dmg) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          self.states.monster.melee = true;
+          notification.warning('Melee attack!');
+          setTimeout(function(){
+            self.states.buttons = false;
+            self.states.monster.melee = false;
+            self.monster.vitality -= dmg;
+          }, 1500);
+        }
+      },
+      distance: function(dmg) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          self.states.monster.distance = true;
+          notification.danger('Distance attack!');
+          setTimeout(function(){
+            self.states.buttons = false;
+            self.states.monster.distance = false;
+            self.monster.vitality -= dmg;
+          }, 1500);  
+        }
+      },
+      magic: function(dmg, heal, mana) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          dmg === 0 ? self.states.player.magic = true : self.states.monster.magic = true;
+          notification.info('Magic attack!');
+          setTimeout(function(){
+            self.states.buttons = false;
+            dmg === 0 ? self.states.player.magic = false : self.states.monster.magic = false;
+            dmg === 0 ? self.player.vitality += heal : self.monster.vitality -= dmg;
+            self.player.mana -= mana;
+          }, 1500);  
+        }
       }
     }
   }
 </script>
 
 <style scoped>
-
 </style>

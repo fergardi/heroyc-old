@@ -77,22 +77,33 @@ i.fa {
   color: black;
   background-color: #bf8040;
 }
-/* do not group these rules */
-*::-webkit-input-placeholder {
-  color: inherit !important;
+.mana {
+  color: black;
+  background-color: blue;
 }
-*:-moz-placeholder {
-  /* FF 4-18 */
-  color: inherit !important;
+.heal {
+  color: black;
+  background-color: green;
 }
-*::-moz-placeholder {
-  /* FF 19+ */
-  color: inherit !important;
-}
-*:-ms-input-placeholder {
-  /* IE 10+ */
-  color: inherit !important;
+.damage {
+  color: black;
+  background-color: red;
 }
 .map-container {
   height: calc(100vh - 64px);
+}
+.icon {
+  width: 40px;
+  padding-right: 10px;
+}
+a.list-group-item-primary {
+  color: #2E64FE;
+  background-color: #A9BCF5;
+}
+a.list-group-item-primary:hover {
+  color: #0000FF;
+  background-color: #2E64FE;
+}
+span.label {
+  margin-left: 5px;
 }

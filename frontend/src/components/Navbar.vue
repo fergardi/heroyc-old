@@ -11,6 +11,10 @@
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
           li
+            router-link(to='/battle')
+              i.fa.fa-lg.fa-fw.fa-flag
+              = 'Battle'
+          li
             router-link(to='/items')
               i.fa.fa-lg.fa-fw.fa-cubes
               = 'Items'
