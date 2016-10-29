@@ -34,7 +34,7 @@
   import factory from '../factories/factory'
   export default {
     name: 'Spells',
-    data () { 
+    data: function() { 
       return {
         filter: '',
         spells: []

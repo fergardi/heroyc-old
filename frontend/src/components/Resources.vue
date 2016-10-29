@@ -29,7 +29,7 @@
   import factory from '../factories/factory'
   export default {
     name: 'Resources',
-      data () {
+      data: function() {
         return {
           filter: '',
           resources: []

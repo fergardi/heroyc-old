@@ -3,6 +3,22 @@ var express = require('express');
 var router  = express.Router();
 
 // GET
+router.get('/', function(req, res) {
+  models.Player.findAll({ 
+    include: [models.Item, models.Spell, models.Resource], 
+    order: [
+      [models.Item, 'id', 'ASC'], 
+      [models.Spell, 'id', 'ASC'], 
+      [models.Resource, 'id', 'ASC'],
+      [models.Resource, 'rarity', 'ASC']
+    ]
+  })
+  .then(function(players) {
+    res.json({status: 'ok', data: players});
+  });
+});
+
+// GET
 router.get('/:id', function(req, res) {
   models.Player.find({
     where: {

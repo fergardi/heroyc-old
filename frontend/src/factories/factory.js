@@ -4,6 +4,7 @@ var items = [];
 var resources = [];
 var recipes = [];
 var spells = [];
+var monsters = [];
 
 const factory = {
   getItems: function(callback) {
@@ -46,8 +47,33 @@ const factory = {
       callback(spells);
     }
   },
+  getMonsters: function(callback) {
+    if (monsters.length === 0) {
+      $.get(`${api}/monsters`).then(function(response){
+        monsters = response.data;
+        callback(monsters);
+      });
+    } else {
+      callback(monsters);
+    }
+  },
   getSales: function(callback) {
     $.get(`${api}/sales`).then(function(response){
+      callback(response.data);
+    });
+  },
+  getBattles: function(callback) {
+    $.get(`${api}/battles`).then(function(response){
+      callback(response.data);
+    });
+  },
+  getBattle: function(callback) {
+    $.get(`${api}/battles/1`).then(function(response){
+      callback(response.data);
+    });
+  },
+  getPlayers: function(callback) {
+    $.get(`${api}/players`).then(function(response){
       callback(response.data);
     });
   },

@@ -2,13 +2,13 @@ let map = null;
 //constants
 var current = null;
 var meters = 500;
-var zoom = 15;
+var zoom = 13;
 var center = [-5.56, 42.60];
 var pitch = 60;
 //token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ';
 
-export const init = function() {
+export const init = function(battles) {
   map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
@@ -20,11 +20,11 @@ export const init = function() {
     }
   });
   // widgets
-  map.boxZoom.disable();
-  map.dragPan.disable();
-  map.doubleClickZoom.disable();
-  map.scrollZoom.disable();
-  map.keyboard.disable();
+  //map.boxZoom.disable();
+  //map.dragPan.disable();
+  //map.doubleClickZoom.disable();
+  //map.scrollZoom.disable();
+  //map.keyboard.disable();
   //map.touchZoomRotate.disable();
   // move
   function move(lng, lat) {
@@ -53,6 +53,38 @@ export const init = function() {
         console.error(error.code + ' ' + error.message);
       }
     );
+  }
+  function addBattles(battles) {
+    for (var i = 0; i < battles.length; i++) {
+      console.log('adding ', battles[i]);
+      addBattle(battles[i]);
+    }
+  }
+  // add battle marker
+  function addBattle(battle) {
+      // create a marker in html
+      var marker = document.createElement('div');
+      marker.id = battle.id;
+      marker.style.zIndex = 1;
+      marker.style.left = -30 + 'px';
+      marker.style.top = -77 + 'px';
+      // add an icon
+      var icon = document.createElement('img');
+      icon.src = 'dist/img/monsters/' + battle.Monster.image + '.png';
+      icon.className = 'map-battle animated infinite';
+      marker.appendChild(icon);
+      // add a shadow
+      var shadow = document.createElement('div');
+      shadow.className = 'map-battle-shadow';
+      marker.appendChild(shadow);
+      marker.addEventListener('click', function(event) {
+          // prevent default
+          event.preventDefault();
+          // move to battle
+          move(battle.lat, battle.lng);
+      });
+      // add marker to map
+      new mapboxgl.Marker(marker).setLngLat([battle.lat, battle.lng]).addTo(map);
   }
   // add marker for current position
   var avatar = null;
@@ -117,6 +149,7 @@ export const init = function() {
   };
   // initial location
   geolocation();
+  addBattles(battles);
   // force move to current position every X seconds
   //setInterval(function(){
       //geolocation();

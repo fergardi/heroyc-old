@@ -6,11 +6,21 @@
 
 <script>
   import {init} from '../services/map.js'
+  import factory from '../factories/factory.js'
   export default {
     name: 'Worldmap',
-    mounted () {
-      this.$nextTick(function () {
-        init();
+    data: function() {
+      return {
+        battles: []
+      }
+    },
+    created: function() {
+      self = this;
+      factory.getBattles((data) => {
+        self.battles = data;
+        this.$nextTick(function () {
+          init(self.battles);
+        });
       });
     }
   }
@@ -23,11 +33,10 @@
     min-height: 100%;
   }
   .map-location,
-  .map-monster,
+  .map-battle,
   .map-avatar {
     width: 60px;
     height: 60px;
-    border-width: 4px;
   }
   .map-resource {
     width: 30px;
@@ -35,7 +44,7 @@
     border: none;
   }
   .map-location-shadow,
-  .map-monster-shadow,
+  .map-battle-shadow,
   .map-resource-shadow,
   .map-avatar-shadow {
     width: 20px;
@@ -46,7 +55,6 @@
     margin: 10px auto 0 auto;
   }
   .map-avatar {
-    border-color: #f5f5f5;
     border-radius: 50%;
   }
   /* fade */

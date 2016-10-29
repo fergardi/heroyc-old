@@ -7,37 +7,41 @@
           i.fa.fa-lg.fa-bars
         router-link.navbar-brand(to='/')
           i.fa.fa-map
-          = 'Map'
+          | Map
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
           li
             router-link(to='/battle')
               i.fa.fa-lg.fa-fw.fa-flag
-              = 'Battle'
+              | Battle
           li
             router-link(to='/items')
               i.fa.fa-lg.fa-fw.fa-cubes
-              = 'Items'
+              | Items
           li
             router-link(to='/resources')
               i.fa.fa-lg.fa-fw.fa-diamond
-              = 'Resources'
+              | Resources
           li
             router-link(to='/spells')
               i.fa.fa-lg.fa-fw.fa-magic
-              = 'Spells'
+              | Spells
           li
             router-link(to='/recipes')
               i.fa.fa-lg.fa-fw.fa-magic
-              = 'Recipes'
+              | Recipes
+          li
+            router-link(to='/monsters')
+              i.fa.fa-lg.fa-fw.fa-crosshairs
+              | Monsters
           li
             router-link(to='/sales')
               i.fa.fa-lg.fa-fw.fa-shopping-bag
-              = 'Sales'
+              | Sales
           li
             router-link(to='/player')
               i.fa.fa-lg.fa-fw.fa-user
-              = 'Player'
+              | Player
 </template>
 
 <script>

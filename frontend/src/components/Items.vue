@@ -38,7 +38,7 @@
   import factory from '../factories/factory'
   export default {
     name: 'Items',
-    data () { 
+    data: function() { 
       return {
         filter: '',
         items: []

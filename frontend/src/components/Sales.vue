@@ -80,6 +80,16 @@
               .row
                 .col-xs-12
                   img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity', data-toggle='tooltip', v-bind:title='sale.Recipe.Result.name')
+                  .progress
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + sale.Recipe.Result.intelligence * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + sale.Recipe.Result.vitality * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Recipe.Result.agility * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Recipe.Result.defense * 10 + "%"')
               .row
                 .col-xs-4
                   span.badge.gold {{sale.gold}}
@@ -98,7 +108,7 @@
   import factory from '../factories/factory'
   export default {
     name: 'Sales',
-    data () { 
+    data: function() { 
       return {
         filter: '',
         sales: []

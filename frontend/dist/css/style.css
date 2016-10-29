@@ -54,7 +54,10 @@ i.fa {
   font-size: 95%;
 }
 .alert,
-.panel-heading {
+.panel-heading,
+.btn,
+.list-group,
+.list-group-item {
   background-image: url('https://www.transparenttextures.com/patterns/dust.png');
   background-repeat: repeat;
 }
@@ -106,4 +109,6 @@ a.list-group-item-primary:hover {
 }
 span.label {
   margin-left: 5px;
+  border-radius: 50%;
+  border: 1px solid black;
 }

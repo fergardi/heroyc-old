@@ -1,0 +1,364 @@
+[
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Abomination",
+      "image": "abomination",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "danger",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow+++" },
+        { "name": "Heal+++" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Cyclops",
+      "image": "cyclops",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "info",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Heal++++" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Demon",
+      "image": "demon",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "danger",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Fire+" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Dragon",
+      "image": "dragon",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "danger",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Fire++++" },
+        { "name": "Heal++++" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Gargoyle",
+      "image": "gargoyle",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "warning",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Ghost",
+      "image": "ghost",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "info",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Golem",
+      "image": "golem",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "primary",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Knight",
+      "image": "knight",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Liche",
+      "image": "liche",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Medusa",
+      "image": "medusa",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Mummy",
+      "image": "mummy",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Phoenix",
+      "image": "phoenix",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Rat",
+      "image": "rat",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Skeleton",
+      "image": "skeleton",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Snake",
+      "image": "snake",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Spider",
+      "image": "spider",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Wolf",
+      "image": "wolf",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Worm",
+      "image": "worm",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Yeti",
+      "image": "yeti",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  },
+  {
+    "model": "Monster",
+    "data": {
+      "name": "Zombie",
+      "image": "zombie",
+      "strength": 1,
+      "vitality": 1,
+      "agility": 1,
+      "defense": 1,
+      "intelligence": 1,
+      "type": "default",
+      "icon": "crosshairs",
+      "experience": 1,
+      "Spells": [
+        { "name": "Shadow" }
+      ]
+    }
+  }
+]

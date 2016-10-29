@@ -16,9 +16,9 @@
             img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
             hr
             .progress
-              .progress-bar.progress-bar-danger(v-bind:style='"width: " + player.vitality + "%"')
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
             .progress
-              .progress-bar.progress-bar-primary(v-bind:style='"width: " + player.mana + "%"')
+              .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
           .panel-buttons
             #parent
               .panel.list-group
@@ -26,14 +26,14 @@
                   i.fa.fa-fw.fa-lg.fa-crosshairs
                   span Attack
                 #attack.sublinks.collapse
-                  a.list-group-item(@click='melee(player.strength)', v-bind:class='{disabled: states.buttons}')
+                  a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
                     img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                     span Melee
-                    span.label.label-danger {{player.strength}}
-                  a.list-group-item(@click='distance(player.strength)', v-bind:class='{disabled: states.buttons}')
+                    span.label.label-danger {{strength}}
+                  a.list-group-item(@click='distance(strength / 2)', v-bind:class='{disabled: states.buttons}')
                     img.icon(v-bind:src='"dist/img/items/bow/" + player.bow + ".png"')
                     span Distance
-                    span.label.label-danger {{player.strength}}
+                    span.label.label-danger {{strength / 2}}
                 a.list-group-item(data-toggle='collapse', data-target='#magic', data-parent='#parent')
                   i.fa.fa-fw.fa-lg.fa-magic
                   span Magic
@@ -45,10 +45,10 @@
                     span.label.label-primary {{spell.mana}}
                     span.label.label-success {{spell.heal}}
       .col-md-4.col-md-offset-4.col-xs-6
-        .panel.panel-danger.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }]')
+        .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + monster.type]')
           .panel-heading
             .panel-title
-              span Monster
+              span {{monster.name}}
           .panel-body
             img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', data-toggle='tooltip', v-bind:title='monster.name')
             hr
@@ -71,19 +71,24 @@
     data: function() { 
       return {
         player: {
-          name: 'Fergardi',
+          level: 0,
+          name: '',
           image: 'avatar',
           weapon: 'novice',
           bow: 'novice',
-          spells: [],
-          vitality: 100,
-          mana: 100,
-          strength: 90
+          items: [],
+          spells: []
         },
         monster: {
-          name: 'Skeleton',
+          name: '',
           image: 'skeleton',
-          vitality: 100
+          spells: [],
+          type: '',
+          vitality: 0,
+          intelligence: 0,
+          strength: 0,
+          defense: 0,
+          agility: 0
         },
         states: {
           buttons: false,
@@ -105,7 +110,22 @@
     created: function() {
       self = this;
       factory.getPlayer((data) => {
+        self.player.level = data.level;
+        self.player.items = data.Items;
         self.player.spells = data.Spells;
+        self.player.image = data.image;
+        self.player.name = data.name;
+      });
+      factory.getBattle((data) => {
+        self.monster.spells = data.Monster.Spells;
+        self.monster.image = data.Monster.image;
+        self.monster.name = data.Monster.name;
+        self.monster.vitality = data.Monster.vitality;
+        self.monster.intelligence = data.Monster.intelligence;
+        self.monster.strength = data.Monster.strength;
+        self.monster.defense = data.Monster.defense;
+        self.monster.agility = data.Monster.agility;
+        self.monster.type = data.Monster.type;
       });
     },
     watch: {
@@ -113,6 +133,13 @@
         if(value <= 0) {
           setTimeout(function() {
             self.states.monster.dead = true;
+          }, 1500);
+        }
+      },
+      'player.vitality': function(value) {
+        if(value <= 0) {
+          setTimeout(function() {
+            self.states.player.dead = true;
           }, 1500);
         }
       }
@@ -154,6 +181,48 @@
             self.player.mana -= mana;
           }, 1500);  
         }
+      }
+    },
+    computed: {
+      strength: function() {
+        var str = self.player.level;
+        for(var i = 0; i < self.equiped.length; i++) {
+          str += self.equiped[i].strength;
+        }
+        return str;
+      },
+      vitality: function() {
+        var vit = self.player.level;
+        for(var i = 0; i < self.equiped.length; i++) {
+          vit += self.equiped[i].vitality;
+        }
+        return vit;
+      },
+      intelligence: function() {
+        var int = self.player.level;
+        for(var i = 0; i < self.equiped.length; i++) {
+          int += self.equiped[i].intelligence;
+        }
+        return int;
+      },
+      agility: function() {
+        var agi = self.player.level;
+        for(var i = 0; i < self.equiped.length; i++) {
+          agi += self.equiped[i].agility;
+        }
+        return agi;
+      },
+      defense: function() {
+        var def = self.player.level;
+        for(var i = 0; i < self.equiped.length; i++) {
+          def += self.equiped[i].defense;
+        }
+        return def;
+      },
+      equiped: function() {
+        return this.player.items.filter(function(item) {
+          return item.PlayerItem.equiped;
+        });
       }
     }
   }

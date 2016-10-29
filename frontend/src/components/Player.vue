@@ -90,7 +90,7 @@
   import factory from '../factories/factory'
   export default {
     name: 'Player',
-      data () {
+      data: function() {
         return {
           name: '',
           items: [],
