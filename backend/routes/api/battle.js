@@ -5,7 +5,7 @@ var router  = express.Router();
 // GET
 router.get('/', function(req, res) {
   models.Battle.findAll({
-    include: [models.Monster, models.Item]
+    include: [models.Monster, models.Item, models.Resource]
   })
   .then(function(battles) {
     res.json({status: 'ok', data: battles});
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 router.get('/:id', function(req, res) {
   models.Battle.find({
     where: { id: req.params.id },
-    include: [models.Monster, models.Item]
+    include: [models.Monster, models.Item, models.Resource]
   })
   .then(function(battle) {
     res.json({status: 'ok', data: battle});

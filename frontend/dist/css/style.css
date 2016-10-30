@@ -109,6 +109,5 @@ a.list-group-item-primary:hover {
 }
 span.label {
   margin-left: 5px;
-  border-radius: 50%;
   border: 1px solid black;
 }

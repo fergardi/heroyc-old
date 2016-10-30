@@ -13,6 +13,9 @@ module.exports = function(sequelize, DataTypes) {
         // m2m association
         models.Item.hasMany(models.Battle);
         models.Battle.belongsTo(models.Item);
+        // m2m association
+        models.Resource.hasMany(models.Battle);
+        models.Battle.belongsTo(models.Resource);
       }
     }
   });

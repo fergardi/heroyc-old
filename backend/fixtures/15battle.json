@@ -4,8 +4,9 @@
     "data": {
       "lat": -5.56,
       "lng": 42.60,
-      "Monster": { "name": "Skeleton" },
-      "Item": { "name": "Novice Sword" }
+      "Monster": { "name": "Dragon" },
+      "Item": { "name": "Dragon Armor" },
+      "Resource": { "name": "Coal" } 
     }
   },
   {
@@ -13,34 +14,7 @@
     "data": {
       "lat": -5.565,
       "lng": 42.605,
-      "Monster": { "name": "Dragon" },
-      "Item": { "name": "Dragon Armor" }
-    }
-  },
-  {
-    "model": "Battle",
-    "data": {
-      "lat": -5.5625,
-      "lng": 42.6025,
-      "Monster": { "name": "Zombie" },
-      "Item": { "name": "Novice Sword" }
-    }
-  },
-  {
-    "model": "Battle",
-    "data": {
-      "lat": -5.56125,
-      "lng": 42.60125,
-      "Monster": { "name": "Yeti" },
-      "Item": { "name": "Novice Sword" }
-    }
-  },
-  {
-    "model": "Battle",
-    "data": {
-      "lat": -5.56005,
-      "lng": 42.60005,
-      "Monster": { "name": "Medusa" },
+      "Monster": { "name": "Skeleton" },
       "Item": { "name": "Novice Sword" }
     }
   }
