@@ -20,12 +20,13 @@
         { "name": "Dragon Armor", "_through": { "equiped": false } }
       ],
       "Spells": [
-        { "name": "Heal" }
+        { "name": "Heal" },
+        { "name": "Fire" }
       ],
       "Resources": [
         { "name": "Gold", "_through": { "quantity": 0 } },
         { "name": "Silver", "_through": { "quantity": 0 } },
-        { "name": "Copper", "_through": { "quantity": 1 } }
+        { "name": "Copper", "_through": { "quantity": 0 } }
       ]
     }
   }

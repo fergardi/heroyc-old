@@ -7,7 +7,7 @@
           i.fa.fa-lg.fa-bars
         router-link.navbar-brand(to='/')
           i.fa.fa-map
-          | Map
+          | World
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
           li

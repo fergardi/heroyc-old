@@ -29,9 +29,14 @@
               .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
             hr
             .row
-              .col-md-4.col-xs-12(v-for='resource in resources')
-                img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
-                label.badge {{resource.PlayerResource.quantity}}
+              .col-md-4.col-xs-12(v-for='spell in spells')
+                img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
       .col-md-4.col-xs-12
         .panel.panel-default.text-center
           .panel-heading
@@ -56,7 +61,7 @@
             hr
             .row
               .col-md-4.col-xs-12(v-for='item in unequiped')
-                img.thumbnail.slot(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
+                img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress
@@ -71,19 +76,14 @@
         .panel.panel-default.text-center
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg.fa-magic
-              span Spells 
-              label.badge {{spells.length}}
+              i.fa.fa-fw.fa-lg.fa-diamond
+              span Resources 
+              label.badge {{resources.length}}
           .panel-body
             .row
-              .col-md-4.col-xs-12(v-for='spell in spells')
-                img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
-                .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
+              .col-md-4.col-xs-12(v-for='resource in resources')
+                img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
+                label.badge {{resource.PlayerResource.quantity}}
 </template>
 
 <script>
@@ -92,6 +92,7 @@
     name: 'Player',
       data: function() {
         return {
+          id: 0,
           name: '',
           items: [],
           spells: [],
@@ -105,6 +106,7 @@
       created: function() {
         self = this;
         factory.getPlayer((data) => {
+          self.id = data.id;
           self.items = data.Items;
           self.spells = data.Spells;
           self.resources = data.Resources;
@@ -114,6 +116,14 @@
           self.gold = data.gold;
           self.image = data.image;
         });
+      },
+      methods: {
+        equip: function(item) {
+          factory.updateEquipment(self.id, item.id, (data) => {
+            self.items = data.Items;
+            notification.success('You equiped <strong>' + item.name + '</strong>');
+          });
+        }
       },
       computed: {
         strength: function() {

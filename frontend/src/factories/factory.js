@@ -9,7 +9,8 @@ var monsters = [];
 const factory = {
   getItems: function(callback) {
     if (items.length === 0) {
-      $.get(`${api}/items`).then(function(response){
+      $.get(`${api}/items`)
+      .then(function(response) {
         items = response.data;
         callback(items);
       });
@@ -19,7 +20,8 @@ const factory = {
   },
   getResources: function(callback) {
     if (resources.length === 0) {
-      $.get(`${api}/resources`).then(function(response){
+      $.get(`${api}/resources`)
+      .then(function(response) {
         resources = response.data;
         callback(resources);
       });
@@ -29,7 +31,8 @@ const factory = {
   },
   getRecipes: function(callback) {
     if (recipes.length === 0) {
-      $.get(`${api}/recipes`).then(function(response){
+      $.get(`${api}/recipes`)
+      .then(function(response) {
         recipes = response.data;
         callback(recipes);
       });
@@ -39,7 +42,8 @@ const factory = {
   },
   getSpells: function(callback) {
     if (spells.length === 0) {
-      $.get(`${api}/spells`).then(function(response){
+      $.get(`${api}/spells`)
+      .then(function(response) {
         spells = response.data;
         callback(spells);
       });
@@ -49,7 +53,8 @@ const factory = {
   },
   getMonsters: function(callback) {
     if (monsters.length === 0) {
-      $.get(`${api}/monsters`).then(function(response){
+      $.get(`${api}/monsters`)
+      .then(function(response) {
         monsters = response.data;
         callback(monsters);
       });
@@ -58,27 +63,38 @@ const factory = {
     }
   },
   getSales: function(callback) {
-    $.get(`${api}/sales`).then(function(response){
+    $.get(`${api}/sales`)
+    .then(function(response) {
       callback(response.data);
     });
   },
   getBattles: function(callback) {
-    $.get(`${api}/battles`).then(function(response){
+    $.get(`${api}/battles`)
+    .then(function(response) {
       callback(response.data);
     });
   },
   getBattle: function(callback) {
-    $.get(`${api}/battles/1`).then(function(response){
+    $.get(`${api}/battles/1`)
+    .then(function(response) {
       callback(response.data);
     });
   },
   getPlayers: function(callback) {
-    $.get(`${api}/players`).then(function(response){
+    $.get(`${api}/players`)
+    .then(function(response) {
       callback(response.data);
     });
   },
   getPlayer: function(callback) {
-    $.get(`${api}/players/1`).then(function(response){
+    $.get(`${api}/players/1`)
+    .then(function(response) {
+      callback(response.data);
+    });
+  },
+  updateEquipment: function(player, item, callback) {
+    $.post(`${api}/players/${player}/equip/${item}`)
+    .then(function(response) {
       callback(response.data);
     });
   }

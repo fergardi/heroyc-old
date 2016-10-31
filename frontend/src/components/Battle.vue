@@ -19,13 +19,13 @@
               .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
             .progress
               .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
-          .panel-buttons
+          .panel-body
             #parent
               .panel.list-group
                 a.list-group-item(data-toggle='collapse', data-target='#attack', data-parent='#parent')
                   i.fa.fa-fw.fa-lg.fa-crosshairs
                   span Attack
-                #attack.sublinks.collapse
+                #attack.collapse
                   a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
                     img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                     span Melee
@@ -37,7 +37,7 @@
                 a.list-group-item(data-toggle='collapse', data-target='#magic', data-parent='#parent')
                   i.fa.fa-fw.fa-lg.fa-magic
                   span Magic
-                #magic.sublinks.collapse
+                #magic.collapse
                   a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
                     img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                     span {{spell.name}}
@@ -80,14 +80,14 @@
             hr
             .progress
               .progress-bar.progress-bar-danger(v-bind:style='"width: " + battle.Monster.vitality + "%"')
-          .panel-buttons
+          .panel-body
             .list-group.panel
-              a.list-group-item.disabled 
-                i.fa.fa-fw.fa-lg.fa-crosshairs
-                span Attack
-              a.list-group-item.disabled
-                i.fa.fa-fw.fa-lg.fa-magic
-                span Magic
+              a.list-group-item(v-for='spell in battle.Monster.Spells', v-bind:class='["list-group-item-" + spell.family]')
+                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                span {{spell.name}}
+                span.label.label-danger {{spell.damage}}
+                span.label.label-primary {{spell.mana}}
+                span.label.label-success {{spell.heal}}
 </template>
 
 <script>
@@ -141,6 +141,7 @@
     watch: {
       'battle.Monster.vitality': function(value) {
         if(value <= 0) {
+          self.states.buttons = true;
           setTimeout(function() {
             self.states.monster.dead = true;
             notification.success('The <strong>' + self.battle.Monster.name + '</strong> has been defeated');
@@ -149,11 +150,12 @@
             self.states.monster.loot = true;
             notification.success('You looted <strong>' + self.battle.Item.name + '</strong>');
             notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
-          }, 4500);
+          }, 4000);
         }
       },
       'player.vitality': function(value) {
         if(value <= 0) {
+          self.states.buttons = true;
           setTimeout(function() {
             self.states.player.dead = true;
           }, 1500);
