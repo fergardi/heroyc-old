@@ -93,7 +93,19 @@ const factory = {
     });
   },
   updateEquipment: function(player, item, callback) {
-    $.post(`${api}/players/${player}/equip/${item}`)
+    $.put(`${api}/players/${player}/item/equip/${item}`)
+    .then(function(response) {
+      callback(response.data);
+    });
+  },
+  addItem: function(player, item, callback) {
+    $.post(`${api}/players/${player}/item/add/${item}`)
+    .then(function(response) {
+      callback(response.data);
+    });
+  },
+  addResource: function(player, resource, callback) {
+    $.post(`${api}/players/${player}/resource/add/${resource}`)
     .then(function(response) {
       callback(response.data);
     });

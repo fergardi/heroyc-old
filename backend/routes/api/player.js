@@ -36,7 +36,7 @@ router.get('/:id', function(req, res) {
 });
 
 // POST
-router.post('/:playerId/equip/:itemId', function(req, res) {
+router.put('/:playerId/item/equip/:itemId', function(req, res) {
   models.Player.find({
     include: [models.Item],
     where: { id: req.params.playerId }
@@ -65,6 +65,40 @@ router.post('/:playerId/equip/:itemId', function(req, res) {
           })  
         });
       });
+    });
+  });
+});
+
+router.post('/:playerId/item/add/:itemId', function(req, res) {
+  models.Player.find({
+    where: { id: req.params.playerId }
+  })
+  .then(function(player) {
+    models.Item.find({
+      where: { id: req.params.itemId }
+    })
+    .then(function(item) {
+      player.addItem(item, { equiped: false });
+    })
+    .then(function(player) {
+      res.json({status: 'ok', data: player});  
+    });
+  });
+});
+
+router.post('/:playerId/resource/add/:resourceId', function(req, res) {
+  models.Player.find({
+    where: { id: req.params.playerId }
+  })
+  .then(function(player) {
+    models.Resource.find({
+      where: { id: req.params.resourceId }
+    })
+    .then(function(resource) {
+      player.addResource(resource, { quantity: quantity + 1 });
+    })
+    .then(function(player) {
+      res.json({status: 'ok', data: player});  
     });
   });
 });

@@ -97,6 +97,7 @@
     data: function() { 
       return {
         player: {
+          id: 0,
           level: 0,
           name: '',
           image: 'avatar',
@@ -127,6 +128,7 @@
     created: function() {
       self = this;
       factory.getPlayer((data) => {
+        self.player.id = data.id;
         self.player.level = data.level;
         self.player.items = data.Items;
         self.player.spells = data.Spells;
@@ -148,8 +150,12 @@
           }, 1500);
           setTimeout(function() {
             self.states.monster.loot = true;
-            notification.success('You looted <strong>' + self.battle.Item.name + '</strong>');
-            notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
+            factory.addItem(self.player.id, self.battle.Item.id, (data) => {
+              notification.success('You looted <strong>' + self.battle.Item.name + '</strong>');  
+            });
+            factory.addResource(self.player.id, self.battle.Resource.id, (data) => {
+              notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
+            });
           }, 4000);
         }
       },
@@ -199,6 +205,11 @@
             self.player.mana -= mana;
           }, 1500);  
         }
+      },
+      addItem: function(item) {
+        factory.addItem(self.id, item.id, (data) => {
+          
+        });
       }
     },
     computed: {
