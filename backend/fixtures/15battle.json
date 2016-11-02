@@ -15,7 +15,8 @@
       "lat": -5.565,
       "lng": 42.605,
       "Monster": { "name": "Skeleton" },
-      "Item": { "name": "Novice Sword" }
+      "Item": { "name": "Novice Sword" },
+      "Resource": { "name": "Gold Ingot" } 
     }
   }
 ]

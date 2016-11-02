@@ -8,16 +8,16 @@
       "gold": 0,
       "image": "avatar",
       "Items": [
-        { "name": "Novice Bow", "_through": { "equiped": true } },
-        { "name": "Novice Helm", "_through": { "equiped": true } },
-        { "name": "Novice Necklace", "_through": { "equiped": true } },
-        { "name": "Novice Sword", "_through": { "equiped": true } },
-        { "name": "Novice Armor", "_through": { "equiped": true } },
-        { "name": "Novice Shield", "_through": { "equiped": true } },
-        { "name": "Novice Ring", "_through": { "equiped": true } },
-        { "name": "Novice Boots", "_through": { "equiped": true } },
-        { "name": "Novice Potion", "_through": { "equiped": true } },
-        { "name": "Dragon Armor", "_through": { "equiped": false } }
+        { "name": "Novice Bow", "_through": { "quantity": 2 } },
+        { "name": "Novice Helm", "_through": { "quantity": 1 } },
+        { "name": "Novice Necklace", "_through": { "quantity": 1 } },
+        { "name": "Novice Sword", "_through": { "quantity": 1 } },
+        { "name": "Novice Armor", "_through": { "quantity": 1 } },
+        { "name": "Novice Shield", "_through": { "quantity": 1 } },
+        { "name": "Novice Ring", "_through": { "quantity": 5 } },
+        { "name": "Novice Boots", "_through": { "quantity": 1 } },
+        { "name": "Novice Potion", "_through": { "quantity": 1 } },
+        { "name": "Dragon Armor", "_through": { "quantity": 1 } }
       ],
       "Spells": [
         { "name": "Heal" },
@@ -27,7 +27,16 @@
         { "name": "Gold", "_through": { "quantity": 0 } },
         { "name": "Silver", "_through": { "quantity": 0 } },
         { "name": "Copper", "_through": { "quantity": 0 } }
-      ]
+      ],
+      "Distance": { "name": "Novice Bow" },
+      "Helm": { "name": "Novice Helm" },
+      "Necklace": { "name": "Novice Necklace" },
+      "Weapon": { "name": "Novice Sword" },
+      "Armor": { "name": "Novice Armor" },
+      "Shield": { "name": "Novice Shield" },
+      "Ring": { "name": "Novice Ring" },
+      "Boots": { "name": "Novice Boots" },
+      "Potion": { "name": "Novice Potion" }
     }
   }
 ]

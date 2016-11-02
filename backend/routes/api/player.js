@@ -35,6 +35,33 @@ router.get('/:id', function(req, res) {
   });
 });
 
+// GET
+router.get('/:playerId/equipment', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    models.Item.findAll({
+      where: { 
+        id: { 
+          $in: [
+            player.DistanceId,
+            player.HelmId,
+            player.NecklaceId,
+            player.WeaponId,
+            player.ArmorId,
+            player.ShieldId,
+            player.RingId,
+            player.BootsId,
+            player.PotionId
+          ]
+        } 
+      }
+    })
+    .then(function(items){
+      res.json({status: 'ok', data: items});
+    })
+  });
+});
+
 // POST
 router.put('/:playerId/item/equip/:itemId', function(req, res) {
   models.Player.find({
@@ -69,36 +96,41 @@ router.put('/:playerId/item/equip/:itemId', function(req, res) {
   });
 });
 
-router.post('/:playerId/item/add/:itemId', function(req, res) {
-  models.Player.find({
-    where: { id: req.params.playerId }
-  })
+router.post('/:playerId/items/add/:itemId', function(req, res) {
+  models.Player.findById(req.params.playerId)
   .then(function(player) {
-    models.Item.find({
-      where: { id: req.params.itemId }
-    })
-    .then(function(item) {
-      player.addItem(item, { equiped: false });
-    })
-    .then(function(player) {
-      res.json({status: 'ok', data: player});  
+    models.Item.findById(req.params.itemId)
+    .then(function(item){
+      player.addItem(item, { equiped: false })
+      .then(function(){
+        res.json({status: 'ok', data: item});          
+      });
     });
   });
 });
 
-router.post('/:playerId/resource/add/:resourceId', function(req, res) {
-  models.Player.find({
-    where: { id: req.params.playerId }
-  })
+router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res) {
+  models.Player.findById(req.params.playerId)
   .then(function(player) {
-    models.Resource.find({
-      where: { id: req.params.resourceId }
-    })
-    .then(function(resource) {
-      player.addResource(resource, { quantity: quantity + 1 });
-    })
-    .then(function(player) {
-      res.json({status: 'ok', data: player});  
+    player.getResources({ where: { id: req.params.resourceId } })
+    .then(function(resources){
+      if(resources.length > 0){
+        resource = resources[0];
+        resource.PlayerResource.quantity += parseInt(req.params.quantity);
+        resource.PlayerResource.save();
+        res.json({status: 'ok', data: resource});
+      }else{
+        models.Resource.findById(req.params.resourceId)
+        .then(function(resource){
+          player.addResource(resource, { quantity: parseInt(req.params.quantity) })
+          .then(function(){
+            player.getResources({ where: { id: req.params.resourceId } })
+            .then(function(resources){
+              res.json({status: 'ok', data: resources[0]});
+            });
+          });
+        });
+      }
     });
   });
 });

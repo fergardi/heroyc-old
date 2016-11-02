@@ -68,6 +68,7 @@ export const init = function(battles) {
       marker.style.zIndex = 1;
       marker.style.left = -30 + 'px';
       marker.style.top = -77 + 'px';
+      marker.attr('@click', 'alert("hola");');
       // add an icon
       var icon = document.createElement('img');
       icon.src = 'dist/img/monsters/' + battle.Monster.image + '.png';
@@ -77,11 +78,13 @@ export const init = function(battles) {
       var shadow = document.createElement('div');
       shadow.className = 'map-battle-shadow';
       marker.appendChild(shadow);
+      var route = document.createElement('router-link');
       marker.addEventListener('click', function(event) {
           // prevent default
           event.preventDefault();
           // move to battle
           move(battle.lat, battle.lng);
+
       });
       // add marker to map
       new mapboxgl.Marker(marker).setLngLat([battle.lat, battle.lng]).addTo(map);

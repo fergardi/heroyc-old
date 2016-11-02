@@ -74,8 +74,8 @@ const factory = {
       callback(response.data);
     });
   },
-  getBattle: function(callback) {
-    $.get(`${api}/battles/1`)
+  getBattle: function(id, callback) {
+    $.get(`${api}/battles/${id}`)
     .then(function(response) {
       callback(response.data);
     });
@@ -88,8 +88,12 @@ const factory = {
   },
   getPlayer: function(callback) {
     $.get(`${api}/players/1`)
-    .then(function(response) {
-      callback(response.data);
+    .then(function(player) {
+      $.get(`${api}/players/1/equipment`)
+      .then(function(equipments) {
+        player.data.Equipments = equipments.data;
+        callback(player.data);
+      });
     });
   },
   updateEquipment: function(player, item, callback) {
@@ -98,17 +102,11 @@ const factory = {
       callback(response.data);
     });
   },
-  addItem: function(player, item, callback) {
-    $.post(`${api}/players/${player}/item/add/${item}`)
-    .then(function(response) {
-      callback(response.data);
-    });
+  addItem: function(player, item) {
+    $.post(`${api}/players/${player}/items/add/${item}`);
   },
-  addResource: function(player, resource, callback) {
-    $.post(`${api}/players/${player}/resource/add/${resource}`)
-    .then(function(response) {
-      callback(response.data);
-    });
+  addResource: function(player, resource, quantity) {
+    $.post(`${api}/players/${player}/resources/add/${resource}/${quantity}`);
   }
 }
 

@@ -10,14 +10,23 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        models.Player.belongsTo(models.Item, {as: 'Distance'});
+        models.Player.belongsTo(models.Item, {as: 'Helm'});
+        models.Player.belongsTo(models.Item, {as: 'Necklace'});
+        models.Player.belongsTo(models.Item, {as: 'Weapon'});
+        models.Player.belongsTo(models.Item, {as: 'Armor'});
+        models.Player.belongsTo(models.Item, {as: 'Shield'});
+        models.Player.belongsTo(models.Item, {as: 'Ring'});
+        models.Player.belongsTo(models.Item, {as: 'Boots'});
+        models.Player.belongsTo(models.Item, {as: 'Potion'});
         // custom m2m association with "equiped" to distinguish between regular item and equiped one
         var PlayerItem = sequelize.define('PlayerItem', {
-          equiped: DataTypes.BOOLEAN
+          quantity: DataTypes.INTEGER
         }, {
           timestamps: false
         });
-        models.Item.belongsToMany(models.Player, {through: 'PlayerItem'});
-        models.Player.belongsToMany(models.Item, {through: 'PlayerItem'});
+        models.Item.belongsToMany(models.Player, {through: PlayerItem});
+        models.Player.belongsToMany(models.Item, {through: PlayerItem});
         // m2m association
         models.Spell.belongsToMany(models.Player, {through: 'PlayerSpell'});
         models.Player.belongsToMany(models.Spell, {through: 'PlayerSpell'});

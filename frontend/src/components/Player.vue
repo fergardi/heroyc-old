@@ -46,21 +46,21 @@
               label.badge {{items.length}}
           .panel-body
             .row
-              .col-md-4.col-xs-12(v-for='item in equiped')
-                img.thumbnail.slot(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
+              .col-md-4.col-xs-12(v-for='equipment in equipments')
+                img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity', data-toggle='tooltip', v-bind:title='equipment.name')
                 .progress
-                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
                 .progress
-                  .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
             hr
             .row
-              .col-md-4.col-xs-12(v-for='item in unequiped')
+              .col-md-4.col-xs-12(v-for='item in items')
                 img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
@@ -95,6 +95,7 @@
           id: 0,
           name: '',
           items: [],
+          equipments: [],
           spells: [],
           resources: [],
           image: 'avatar',
@@ -107,6 +108,7 @@
         self = this;
         factory.getPlayer((data) => {
           self.id = data.id;
+          self.equipments = data.Equipments;
           self.items = data.Items;
           self.spells = data.Spells;
           self.resources = data.Resources;
@@ -128,48 +130,38 @@
       computed: {
         strength: function() {
           var str = self.level;
-          for(var i = 0; i < self.equiped.length; i++) {
-            str += self.equiped[i].strength;
+          for(var i = 0; i < self.equipments.length; i++) {
+            str += self.equipments[i].strength;
           }
           return str;
         },
         vitality: function() {
           var vit = self.level;
-          for(var i = 0; i < self.equiped.length; i++) {
-            vit += self.equiped[i].vitality;
+          for(var i = 0; i < self.equipments.length; i++) {
+            vit += self.equipments[i].vitality;
           }
           return vit;
         },
         intelligence: function() {
           var int = self.level;
-          for(var i = 0; i < self.equiped.length; i++) {
-            int += self.equiped[i].intelligence;
+          for(var i = 0; i < self.equipments.length; i++) {
+            int += self.equipments[i].intelligence;
           }
           return int;
         },
         agility: function() {
           var agi = self.level;
-          for(var i = 0; i < self.equiped.length; i++) {
-            agi += self.equiped[i].agility;
+          for(var i = 0; i < self.equipments.length; i++) {
+            agi += self.equipments[i].agility;
           }
           return agi;
         },
         defense: function() {
           var def = self.level;
-          for(var i = 0; i < self.equiped.length; i++) {
-            def += self.equiped[i].defense;
+          for(var i = 0; i < self.equipments.length; i++) {
+            def += self.equipments[i].defense;
           }
           return def;
-        },
-        equiped: function() {
-          return this.items.filter(function(item) {
-            return item.PlayerItem.equiped;
-          });
-        },
-        unequiped: function() {
-          return this.items.filter(function(item) {
-            return !item.PlayerItem.equiped;
-          });
         }
       }
     }

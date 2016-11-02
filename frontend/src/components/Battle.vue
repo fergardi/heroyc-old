@@ -135,7 +135,7 @@
         self.player.image = data.image;
         self.player.name = data.name;
       });
-      factory.getBattle((data) => {
+      factory.getBattle(this.$route.params.id, (data) => {
         self.battle = data;
         notification.danger('A wild <strong>' + self.battle.Monster.name + '</strong> appeared');
       });
@@ -150,12 +150,9 @@
           }, 1500);
           setTimeout(function() {
             self.states.monster.loot = true;
-            factory.addItem(self.player.id, self.battle.Item.id, (data) => {
-              notification.success('You looted <strong>' + self.battle.Item.name + '</strong>');  
-            });
-            factory.addResource(self.player.id, self.battle.Resource.id, (data) => {
-              notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
-            });
+            factory.addItem(self.player.id, self.battle.Item.id);
+            factory.addResource(self.player.id, self.battle.Resource.id, 1);
+            notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
           }, 4000);
         }
       },
@@ -205,11 +202,6 @@
             self.player.mana -= mana;
           }, 1500);  
         }
-      },
-      addItem: function(item) {
-        factory.addItem(self.id, item.id, (data) => {
-          
-        });
       }
     },
     computed: {
