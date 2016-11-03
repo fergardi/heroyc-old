@@ -66,6 +66,7 @@
 
 <script>
   import factory from '../factories/factory'
+  import {melee, distance, magic} from '../services/battle'
   export default {
     name: 'Mine',
     data: function() { 
@@ -140,41 +141,13 @@
     },
     methods: {
       melee: function(dmg) {
-        if (!self.states.buttons) {
-          self.states.buttons = true;
-          self.states.monster.melee = true;
-          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.mine.Monster.name + '</strong>');
-          setTimeout(function(){
-            self.states.buttons = false;
-            self.states.monster.melee = false;
-            self.mine.Monster.vitality -= dmg;
-          }, constants.notification.duration);
-        }
+        melee(self.states, self.mine, dmg);
       },
       distance: function(dmg) {
-        if (!self.states.buttons) {
-          self.states.buttons = true;
-          self.states.monster.distance = true;
-          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.mine.Monster.name + '</strong>');
-          setTimeout(function(){
-            self.states.buttons = false;
-            self.states.monster.distance = false;
-            self.mine.Monster.vitality -= dmg;
-          }, constants.notification.duration);  
-        }
+        distance(self.states, self.mine, dmg);
       },
-      magic: function(name, dmg, heal, mana) {
-        if (!self.states.buttons) {
-          self.states.buttons = true;
-          dmg === 0 ? self.states.player.magic = true : self.states.monster.magic = true;
-          dmg === 0 ? notification.success('You healed <strong>+' + heal + ' Vit</strong>') : notification.info('You caused <strong>-' + dmg + ' Vit</strong> to the ' + self.mine.Monster.name);
-          setTimeout(function(){
-            self.states.buttons = false;
-            dmg === 0 ? self.states.player.magic = false : self.states.monster.magic = false;
-            dmg === 0 ? self.player.vitality += heal : self.mine.Monster.vitality -= dmg;
-            self.player.mana -= mana;
-          }, constants.notification.duration);  
-        }
+      magic: function(name, dmg, heal, mana){
+        magic(self.states, self.mine, self.player, name, dmg, heal, mana);
       }
     },
     computed: {
