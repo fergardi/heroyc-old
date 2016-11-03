@@ -109,23 +109,17 @@
         marker.appendChild(shadow);
         marker.addEventListener('click', function(event) {
           switch(location.image){
-            case 'dungeon':
-              self.$router.push({ name: 'dungeon', params: { dungeonId: location.id }});
-              break;
             case 'city':
               self.$router.push({ name: 'city' });
               break;
-            case 'tower':
-              self.$router.push({ name: 'tower', params: { towerId: location.id }});
-              break;
-            case 'mine':
-              self.$router.push({ name: 'mine', params: { mineId: location.id }});
-              break;
-            case 'castle':
-              self.$router.push({ name: 'castle', params: { castleId: location.id }});
-              break;
             case 'forge':
               self.$router.push({ name: 'forge' });
+              break;
+            case 'dungeon':
+            case 'tower':
+            case 'mine':
+            case 'castle':
+              self.$router.push({ name: 'location', params: { locationId: location.id }});
               break;
           }
         });
