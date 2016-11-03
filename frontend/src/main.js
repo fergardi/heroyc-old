@@ -8,7 +8,7 @@ import Spells from './components/Spells.vue'
 import Recipes from './components/Recipes.vue'
 import Player from './components/Player.vue'
 import Monsters from './components/Monsters.vue'
-import City from './components/City.vue'
+import Inn from './components/Inn.vue'
 import Location from './components/Location.vue'
 import Forge from './components/Forge.vue'
 import World from './components/World.vue'
@@ -25,7 +25,7 @@ var router = new VueRouter({
     { path: '/recipes', component: Recipes, name: 'recipes' },
     { path: '/player', component: Player, name: 'player' },
     { path: '/monsters', component: Monsters, name: 'monsters' },
-    { path: '/city', component: City, name: 'city' },
+    { path: '/inn', component: Inn, name: 'inn' },
     { path: '/location', component: Location, name: 'location' },
     { path: '/forge', component: Forge, name: 'forge' },
     { path: '*', redirect: '/' }

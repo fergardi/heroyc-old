@@ -104,13 +104,13 @@
         icon.className = 'map-location';
         marker.appendChild(icon);
         // add a shadow
-        var shadow = document.createElement('div');
-        shadow.className = 'map-location-shadow';
-        marker.appendChild(shadow);
+        //var shadow = document.createElement('div');
+        //shadow.className = 'map-location-shadow';
+        //marker.appendChild(shadow);
         marker.addEventListener('click', function(event) {
           switch(location.image){
-            case 'city':
-              self.$router.push({ name: 'city' });
+            case 'inn':
+              self.$router.push({ name: 'inn' });
               break;
             case 'forge':
               self.$router.push({ name: 'forge' });
@@ -136,21 +136,15 @@
     height: 100%;
     min-height: 100%;
   }
-  .map-location,
-  .map-battle,
+  .map-location {
+    width: 80px;
+  }
   .map-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
   }
-  .map-battle {
-    background-color: rgba(0,0,0,0.4);
-    border-width: 4px;
-    padding: 2px;
-    border-style: solid;
-  }
   .map-location-shadow,
-  .map-battle-shadow,
   .map-avatar-shadow {
     width: 20px;
     height: 7px;

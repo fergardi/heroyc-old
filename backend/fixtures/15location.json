@@ -2,11 +2,11 @@
   {
     "model": "Location",
     "data": {
-      "name": "City of Foo",
+      "name": "Inn of Foo",
       "lat": -5.545,
       "lng": 42.608,
       "type": "success",
-      "image": "city"
+      "image": "inn"
     }
   },
   {
