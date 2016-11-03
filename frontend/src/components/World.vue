@@ -136,8 +136,11 @@
     height: 100%;
     min-height: 100%;
   }
+  .mapboxgl-canvas {
+    height: 100% !important;
+  }
   .map-location {
-    width: 80px;
+    width: 60px;
   }
   .map-avatar {
     width: 60px;
