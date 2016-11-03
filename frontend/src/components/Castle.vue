@@ -1,9 +1,9 @@
 <template lang="pug">
-  #Tower
+  #Castle
     .row
       .col-xs-12
         .page-header
-          h1 Tower 
+          h1 Castle 
             small Battle monsters for loot
     .row
       .col-xs-4
@@ -36,32 +36,43 @@
               span.label.label-primary {{spell.mana}}
               span.label.label-success {{spell.heal}}
       .col-xs-4
-        .panel.text-center.animated(v-bind:class='["panel-" + tower.Spell.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]')
+        .panel.text-center.animated(v-bind:class='["panel-" + castle.Recipe.Result.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]')
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + tower.Spell.icon')  
-              span {{tower.Spell.name}}
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + castle.Recipe.Result.icon')  
+              span {{castle.Recipe.Result.name}}
           .panel-body
-            img.thumbnail.spell(v-bind:src='"dist/img/spells/" + tower.Spell.type + "/" + tower.Spell.image + ".png"', v-bind:class='"panel-" + tower.Spell.family', data-toggle='tooltip', v-bind:title='tower.Spell.name')
-            .progress
-              .progress-bar.progress-bar-danger(v-bind:style='"width: " + tower.Spell.damage * 10 + "%"')
-            .progress
-              .progress-bar.progress-bar-success(v-bind:style='"width: " + tower.Spell.heal * 10 + "%"')
-            .progress
-              .progress-bar.progress-bar-primary(v-bind:style='"width: " + tower.Spell.mana * 10 + "%"')
+            .row
+              .col-xs-6
+                img.thumbnail(v-bind:src='"dist/img/items/" + castle.Recipe.Original.type + "/" + castle.Recipe.Original.image + ".png"', v-bind:class='"panel-" + castle.Recipe.Original.rarity', data-toggle='tooltip', v-bind:title='castle.Recipe.Original.name')
+              .col-xs-6
+                img.thumbnail(v-bind:src='"dist/img/resources/" + castle.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + castle.Recipe.Resource.family', data-toggle='tooltip', v-bind:title='castle.Recipe.Resource.name')
+            .row
+              .col-xs-12
+                img.thumbnail(v-bind:src='"dist/img/items/" + castle.Recipe.Result.type + "/" + castle.Recipe.Result.image + ".png"', v-bind:class='"panel-" + castle.Recipe.Result.rarity', data-toggle='tooltip', v-bind:title='castle.Recipe.Result.name')
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + castle.Recipe.Result.strength * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + castle.Recipe.Result.intelligence * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + castle.Recipe.Result.vitality * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + castle.Recipe.Result.agility * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + castle.Recipe.Result.defense * 10 + "%"')
       .col-xs-4
-        .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + tower.Monster.type]')
+        .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + castle.Monster.type]')
           .panel-heading
             .panel-title
-              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + tower.Monster.icon ')
-              span {{tower.Monster.name}}
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + castle.Monster.icon ')
+              span {{castle.Monster.name}}
           .panel-body
-            img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + tower.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='tower.Monster.name')
+            img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + castle.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='castle.Monster.name')
             hr
             .progress
-              .progress-bar.progress-bar-danger(v-bind:style='"width: " + tower.Monster.vitality + "%"')
+              .progress-bar.progress-bar-danger(v-bind:style='"width: " + castle.Monster.vitality + "%"')
             hr
-            a.list-group-item(v-for='spell in tower.Monster.Spells', v-bind:class='["list-group-item-" + spell.family]')
+            a.list-group-item(v-for='spell in castle.Monster.Spells', v-bind:class='["list-group-item-" + spell.family]')
               img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
               span {{spell.name}}
               span.label.label-danger {{spell.damage}}
@@ -72,7 +83,7 @@
 <script>
   import factory from '../factories/factory'
   export default {
-    name: 'Tower',
+    name: 'Castle',
     data: function() { 
       return {
         player: {
@@ -85,7 +96,7 @@
           equipments: [],
           spells: []
         },
-        tower: {},
+        castle: {},
         states: {
           buttons: false,
           monster: {
@@ -114,23 +125,23 @@
         self.player.image = data.image;
         self.player.name = data.name;
       });
-      factory.getLocation(this.$route.params.towerId || 1, (data) => {
-        self.tower = data;
-        notification.danger('A wild <strong>' + self.tower.Monster.name + '</strong> appeared');
+      factory.getLocation(this.$route.params.castleId || 1, (data) => {
+        self.castle = data;
+        notification.danger('A wild <strong>' + self.castle.Monster.name + '</strong> appeared');
       });
     },
     watch: {
-      'tower.Monster.vitality': function(value) {
+      'castle.Monster.vitality': function(value) {
         if(value <= 0) {
           self.states.buttons = true;
           setTimeout(function() {
             self.states.monster.dead = true;
-            notification.success('The <strong>' + self.tower.Monster.name + '</strong> has been defeated');
+            notification.success('The <strong>' + self.castle.Monster.name + '</strong> has been defeated');
           }, constants.notification.duration);
           setTimeout(function() {
             self.states.monster.loot = true;
-            factory.addSpell(self.player.id, self.tower.Spell.id);
-            notification.success('You looted <strong>' + self.tower.Spell.name + '</strong>');
+            factory.addRecipe(self.player.id, self.castle.Recipe.id);
+            notification.success('You looted a recipe for <strong>' + self.castle.Recipe.Result.name + '</strong>');
           }, constants.notification.duration * 2);
         }
       },
@@ -148,11 +159,11 @@
         if (!self.states.buttons) {
           self.states.buttons = true;
           self.states.monster.melee = true;
-          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.tower.Monster.name + '</strong>');
+          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.castle.Monster.name + '</strong>');
           setTimeout(function(){
             self.states.buttons = false;
             self.states.monster.melee = false;
-            self.tower.Monster.vitality -= dmg;
+            self.castle.Monster.vitality -= dmg;
           }, constants.notification.duration);
         }
       },
@@ -160,11 +171,11 @@
         if (!self.states.buttons) {
           self.states.buttons = true;
           self.states.monster.distance = true;
-          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.tower.Monster.name + '</strong>');
+          notification.danger('You caused <strong>-' + dmg + ' Vit</strong> to the <strong>' + self.castle.Monster.name + '</strong>');
           setTimeout(function(){
             self.states.buttons = false;
             self.states.monster.distance = false;
-            self.tower.Monster.vitality -= dmg;
+            self.castle.Monster.vitality -= dmg;
           }, constants.notification.duration);  
         }
       },
@@ -172,11 +183,11 @@
         if (!self.states.buttons) {
           self.states.buttons = true;
           dmg === 0 ? self.states.player.magic = true : self.states.monster.magic = true;
-          dmg === 0 ? notification.success('You healed <strong>+' + heal + ' Vit</strong>') : notification.info('You caused <strong>-' + dmg + ' Vit</strong> to the ' + self.tower.Monster.name);
+          dmg === 0 ? notification.success('You healed <strong>+' + heal + ' Vit</strong>') : notification.info('You caused <strong>-' + dmg + ' Vit</strong> to the ' + self.castle.Monster.name);
           setTimeout(function(){
             self.states.buttons = false;
             dmg === 0 ? self.states.player.magic = false : self.states.monster.magic = false;
-            dmg === 0 ? self.player.vitality += heal : self.tower.Monster.vitality -= dmg;
+            dmg === 0 ? self.player.vitality += heal : self.castle.Monster.vitality -= dmg;
             self.player.mana -= mana;
           }, constants.notification.duration);  
         }

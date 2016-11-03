@@ -5,11 +5,15 @@
         button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
           span.sr-only Toggle navigation
           i.fa.fa-fw.fa-lg.fa-bars
-        router-link.navbar-brand(to='/')
+        router-link.navbar-brand(to='/world')
           i.fa.fa-fw.fa-lg.fa-globe
           | World
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
+          li
+            router-link(to='/player')
+              i.fa.fa-lg.fa-fw.fa-user
+              | Player
           li
             router-link(to='/items')
               i.ra.ra-lg.ra-fw.ra-crossed-axes

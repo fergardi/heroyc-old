@@ -39,6 +39,9 @@ module.exports = function(sequelize, DataTypes) {
         });
         models.Resource.belongsToMany(models.Player, {through: PlayerResource});
         models.Player.belongsToMany(models.Resource, {through: PlayerResource});
+        // m2m association
+        models.Recipe.belongsToMany(models.Player, {through: 'PlayerRecipe'});
+        models.Player.belongsToMany(models.Recipe, {through: 'PlayerRecipe'});
       }
     }
   });

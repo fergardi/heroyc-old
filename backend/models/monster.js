@@ -15,8 +15,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        models.Spell.belongsToMany(models.Monster, {through: 'MonsterSpell'});
-        models.Monster.belongsToMany(models.Spell, {through: 'MonsterSpell'});
+        models.Spell.belongsToMany(models.Monster, {through: 'MonsterSpells'});
+        models.Monster.belongsToMany(models.Spell, {through: 'MonsterSpells'});
       }
     },
     timestamps: false

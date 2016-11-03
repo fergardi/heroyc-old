@@ -17,8 +17,8 @@ router.get('/:locationId', function(req, res) {
     include: [
       models.Item,
       models.Spell,
-      { model: models.Recipe, include: [{model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}] },
       models.Resource,
+      { model: models.Recipe, include: [{model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}] },
       { model: models.Monster, include: [models.Spell] }
     ]
   })

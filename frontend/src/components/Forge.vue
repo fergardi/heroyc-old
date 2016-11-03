@@ -4,7 +4,7 @@
       .col-xs-12
         .page-header
           h1 Forge 
-            small Craft things
+            small Crafting
       .col-xs-12
         form.form-horizontal.form-group
           .input-group
@@ -42,7 +42,7 @@
           .panel-body
             button.btn.btn-success.btn-block
               i.fa.fa-lg.fa-check
-              = 'Forge'
+              | Craft
 </template>
 
 <script>
@@ -57,7 +57,7 @@
     },
     created: function() {
       self = this;
-      factory.getLocation(this.$route.params.forgeId || 1, (data) => {
+      factory.getPlayer(this.$route.params.playerId || 1, (data) => {
         console.log(data);
         self.recipes = data.Recipes;
       });

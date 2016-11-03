@@ -42,7 +42,7 @@
           .panel-body
             button.btn.btn-success.btn-block
               i.fa.fa-lg.fa-check
-              = 'Forge'
+              | Craft
 </template>
 
 <script>

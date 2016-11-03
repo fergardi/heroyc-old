@@ -17,7 +17,8 @@
       "lng": 42.625,
       "type": "info",
       "image": "tower",
-      "Spells": [{ "name": "Fire+++" }]
+      "Monster": { "name": "Zombie" },
+      "Spell": { "name": "Fire+++" }
     }
   },
   {
@@ -29,8 +30,7 @@
       "type": "danger",
       "image": "dungeon",
       "Monster": { "name": "Dragon" },
-      "Item": { "name": "Dragon Armor" },
-      "Resource": { "name": "Coal" }
+      "Item": { "name": "Dragon Armor" }
     }
   },
   {
@@ -41,6 +41,7 @@
       "lng": 42.615,
       "type": "primary",
       "image": "mine",
+      "Monster": { "name": "Medusa" },
       "Resource": { "name": "Coal" }
     }
   },
@@ -50,9 +51,20 @@
       "name": "Forge of Fuu",
       "lat": -5.595,
       "lng": 42.635,
+      "type": "default",
+      "image": "forge"
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Castle of Feee",
+      "lat": -5.525,
+      "lng": 42.695,
       "type": "warning",
-      "image": "forge",
-      "Recipes": [1]
+      "image": "castle",
+      "Monster": { "name": "Yeti" },
+      "Recipe": 1
     }
   }
 ]

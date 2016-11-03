@@ -20,11 +20,11 @@ module.exports = function(sequelize, DataTypes) {
         models.Resource.hasMany(models.Location);
         models.Location.belongsTo(models.Resource);
         // m2m association
-        models.Recipe.belongsToMany(models.Location, { through: 'LocationRecipes' } );
-        models.Location.belongsToMany(models.Recipe, { through: 'LocationRecipes' } );
+        models.Spell.hasMany(models.Location);
+        models.Location.belongsTo(models.Spell);
         // m2m association
-        models.Spell.belongsToMany(models.Location, { through: 'LocationSpells' });
-        models.Location.belongsToMany(models.Spell, { through: 'LocationSpells' });
+        models.Recipe.hasMany(models.Location);
+        models.Location.belongsTo(models.Recipe);
       }
     },
     timestamps: false

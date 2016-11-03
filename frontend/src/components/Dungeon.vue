@@ -53,14 +53,6 @@
               .progress-bar.progress-bar-success(v-bind:style='"width: " + dungeon.Item.agility * 10 + "%"')
             .progress
               .progress-bar.progress-bar-info(v-bind:style='"width: " + dungeon.Item.defense * 10 + "%"')
-        .panel.text-center.animated(v-bind:class='["panel-" + dungeon.Resource.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]')
-          .panel-heading
-            .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + dungeon.Resource.icon')  
-              span {{dungeon.Resource.name}}
-          .panel-body
-            img.thumbnail.resource(v-bind:src='"dist/img/resources/" + dungeon.Resource.image + ".png"', v-bind:class='"panel-" + dungeon.Resource.rarity', data-toggle='tooltip', v-bind:title='dungeon.Resource.name')
-            p {{dungeon.Resource.description}}
       .col-xs-4
         .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + dungeon.Monster.type]')
           .panel-heading
@@ -138,14 +130,12 @@
           setTimeout(function() {
             self.states.monster.dead = true;
             notification.success('The <strong>' + self.dungeon.Monster.name + '</strong> has been defeated');
-          }, 1500);
+          }, constants.notification.duration);
           setTimeout(function() {
             self.states.monster.loot = true;
             factory.addItem(self.player.id, self.dungeon.Item.id);
             notification.success('You looted <strong>' + self.dungeon.Item.name + '</strong>');
-            factory.addResource(self.player.id, self.dungeon.Resource.id, 1);
-            notification.success('You looted <strong>' + self.dungeon.Resource.name + '</strong>');
-          }, 4000);
+          }, constants.notification.duration * 2);
         }
       },
       'player.vitality': function(value) {
@@ -153,7 +143,7 @@
           self.states.buttons = true;
           setTimeout(function() {
             self.states.player.dead = true;
-          }, 1500);
+          }, constants.notification.duration);
         }
       }
     },
@@ -167,7 +157,7 @@
             self.states.buttons = false;
             self.states.monster.melee = false;
             self.dungeon.Monster.vitality -= dmg;
-          }, 1500);
+          }, constants.notification.duration);
         }
       },
       distance: function(dmg) {
@@ -179,7 +169,7 @@
             self.states.buttons = false;
             self.states.monster.distance = false;
             self.dungeon.Monster.vitality -= dmg;
-          }, 1500);  
+          }, constants.notification.duration);  
         }
       },
       magic: function(name, dmg, heal, mana) {
@@ -192,7 +182,7 @@
             dmg === 0 ? self.states.player.magic = false : self.states.monster.magic = false;
             dmg === 0 ? self.player.vitality += heal : self.dungeon.Monster.vitality -= dmg;
             self.player.mana -= mana;
-          }, 1500);  
+          }, constants.notification.duration);  
         }
       }
     },

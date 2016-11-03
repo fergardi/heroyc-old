@@ -121,8 +121,11 @@
             case 'mine':
               self.$router.push({ name: 'mine', params: { mineId: location.id }});
               break;
+            case 'castle':
+              self.$router.push({ name: 'castle', params: { castleId: location.id }});
+              break;
             case 'forge':
-              self.$router.push({ name: 'forge', params: { forgeId: location.id }});
+              self.$router.push({ name: 'forge' });
               break;
           }
         });

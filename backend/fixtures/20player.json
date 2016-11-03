@@ -28,6 +28,7 @@
         { "name": "Silver", "_through": { "quantity": 0 } },
         { "name": "Copper", "_through": { "quantity": 0 } }
       ],
+      "Recipes": [1],
       "Distance": { "name": "Novice Bow" },
       "Helm": { "name": "Novice Helm" },
       "Necklace": { "name": "Novice Necklace" },

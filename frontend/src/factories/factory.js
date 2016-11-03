@@ -106,6 +106,12 @@ const factory = {
   },
   addResource: function(player, resource, quantity) {
     $.post(`${api}/players/${player}/resources/add/${resource}/${quantity}`);
+  },
+  addSpell: function(player, spell) {
+    $.post(`${api}/players/${player}/spells/add/${spell}`);
+  },
+  addRecipe: function(player, recipe) {
+    $.post(`${api}/players/${player}/recipes/add/${recipe}`);
   }
 }
 

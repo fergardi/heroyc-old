@@ -4,15 +4,7 @@ var router  = express.Router();
 
 // get all players
 router.get('/', function(req, res) {
-  models.Player.findAll({ 
-    include: [models.Item, models.Spell, models.Resource], 
-    order: [
-      [models.Item, 'id', 'ASC'], 
-      [models.Spell, 'id', 'ASC'], 
-      [models.Resource, 'id', 'ASC'],
-      [models.Resource, 'rarity', 'ASC']
-    ]
-  })
+  models.Player.findAll()
   .then(function(players) {
     res.json({status: 'OK', data: players});
   });
@@ -22,7 +14,7 @@ router.get('/', function(req, res) {
 router.get('/:playerId', function(req, res) {
   models.Player.find({
     where: { id: req.params.playerId }, 
-    include: [models.Item, models.Spell, models.Resource], 
+    include: [models.Item, models.Spell, models.Resource, { model: models.Recipe, include: [{ model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}]}], 
     order: [
       [models.Item, 'id', 'ASC'], 
       [models.Spell, 'id', 'ASC'], 
@@ -93,6 +85,34 @@ router.post('/:playerId/items/add/:itemId', function(req, res) {
       player.addItem(item, { equiped: false })
       .then(function(){
         res.json({status: 'OK', data: item});          
+      });
+    });
+  });
+});
+
+// add spell to player
+router.post('/:playerId/spells/add/:spellId', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    models.Spell.findById(req.params.spellId)
+    .then(function(spell){
+      player.addSpell(spell)
+      .then(function(){
+        res.json({status: 'OK', data: spell});          
+      });
+    });
+  });
+});
+
+// add recipe to player
+router.post('/:playerId/recipes/add/:recipeId', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    models.Recipe.findById(req.params.recipeId)
+    .then(function(recipe){
+      player.addRecipe(recipe)
+      .then(function(){
+        res.json({status: 'OK', data: recipe});          
       });
     });
   });
