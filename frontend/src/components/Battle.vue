@@ -127,7 +127,7 @@
     },
     created: function() {
       self = this;
-      factory.getPlayer((data) => {
+      factory.getPlayer(1, (data) => {
         self.player.id = data.id;
         self.player.level = data.level;
         self.player.items = data.Items;
@@ -151,6 +151,7 @@
           setTimeout(function() {
             self.states.monster.loot = true;
             factory.addItem(self.player.id, self.battle.Item.id);
+            notification.success('You looted <strong>' + self.battle.Item.name + '</strong>');
             factory.addResource(self.player.id, self.battle.Resource.id, 1);
             notification.success('You looted <strong>' + self.battle.Resource.name + '</strong>');
           }, 4000);

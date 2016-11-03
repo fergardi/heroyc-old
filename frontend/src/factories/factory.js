@@ -86,20 +86,19 @@ const factory = {
       callback(response.data);
     });
   },
-  getPlayer: function(callback) {
-    $.get(`${api}/players/1`)
-    .then(function(player) {
-      $.get(`${api}/players/1/equipment`)
-      .then(function(equipments) {
-        player.data.Equipments = equipments.data;
-        callback(player.data);
-      });
+  getPlayer: function(player, callback) {
+    $.get(`${api}/players/${player}`)
+    .then(function(response) {
+      callback(response.data);
     });
   },
   updateEquipment: function(player, item, callback) {
-    $.put(`${api}/players/${player}/item/equip/${item}`)
-    .then(function(response) {
-      callback(response.data);
+    $.put(`${api}/players/${player}/equipments/${item}`)
+    .then(function(ok) {
+      $.get(`${api}/players/${player}`)
+      .then(function(response){
+        callback(response.data);
+      })
     });
   },
   addItem: function(player, item) {

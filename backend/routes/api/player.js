@@ -2,7 +2,7 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
-// GET
+// get all players
 router.get('/', function(req, res) {
   models.Player.findAll({ 
     include: [models.Item, models.Spell, models.Resource], 
@@ -14,14 +14,14 @@ router.get('/', function(req, res) {
     ]
   })
   .then(function(players) {
-    res.json({status: 'ok', data: players});
+    res.json({status: 'OK', data: players});
   });
 });
 
-// GET
-router.get('/:id', function(req, res) {
+// get a single player
+router.get('/:playerId', function(req, res) {
   models.Player.find({
-    where: { id: req.params.id }, 
+    where: { id: req.params.playerId }, 
     include: [models.Item, models.Spell, models.Resource], 
     order: [
       [models.Item, 'id', 'ASC'], 
@@ -30,14 +30,6 @@ router.get('/:id', function(req, res) {
       [models.Resource, 'rarity', 'ASC']
     ]
   })
-  .then(function(player) {
-    res.json({status: 'ok', data: player});
-  });
-});
-
-// GET
-router.get('/:playerId/equipment', function(req, res) {
-  models.Player.findById(req.params.playerId)
   .then(function(player) {
     models.Item.findAll({
       where: { 
@@ -56,46 +48,43 @@ router.get('/:playerId/equipment', function(req, res) {
         } 
       }
     })
-    .then(function(items){
-      res.json({status: 'ok', data: items});
-    })
-  });
-});
-
-// POST
-router.put('/:playerId/item/equip/:itemId', function(req, res) {
-  models.Player.find({
-    include: [models.Item],
-    where: { id: req.params.playerId }
-  })
-  .then(function(player) {
-    models.Item.find({
-      where: { id: req.params.itemId }
-    })
-    .then(function(equip) {
-      models.Item.find({
-        include: [{ model: models.Player, through: { where: { PlayerId: player.id, equiped: true } }, required: true }],
-        where: { type: equip.type }
-      })
-      .then(function(unequip) {
-        player.addItem(unequip, { equiped: false })
-        .then(function(result) {
-          player.addItem(equip, { equiped: true })
-          .then(function(result) {
-            models.Player.find({
-              include: [models.Item],
-              where: { id: req.params.playerId }
-            })
-            .then(function(player) {
-              res.json({status: 'ok', data: player});  
-            });
-          })  
-        });
-      });
+    .then(function(equipments){
+      //need to add custom virtual attribute to sequelize object
+      player = player.toJSON();
+      player.Equipments = equipments;
+      res.json({status: 'OK', data: player });
     });
   });
 });
 
+// change equipment of player
+router.put('/:playerId/equipments/:itemId', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player){
+    player.getItems({
+      where: { id: req.params.itemId }
+    })
+    .then(function(items){
+      if(items.length > 0){
+        item = items[0];
+        switch(item.type){
+          case 'helm':
+            player.setHelm(item);
+            break;
+          case 'armor':
+            player.setArmor(item);
+            break;
+        }
+        player.save();
+        res.json({status: 'OK'});
+      }else{
+        res.json({status: 'KO'});
+      }
+    });
+  });
+});
+
+// add item to player
 router.post('/:playerId/items/add/:itemId', function(req, res) {
   models.Player.findById(req.params.playerId)
   .then(function(player) {
@@ -103,12 +92,13 @@ router.post('/:playerId/items/add/:itemId', function(req, res) {
     .then(function(item){
       player.addItem(item, { equiped: false })
       .then(function(){
-        res.json({status: 'ok', data: item});          
+        res.json({status: 'OK', data: item});          
       });
     });
   });
 });
 
+// add resource and quantity to player
 router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res) {
   models.Player.findById(req.params.playerId)
   .then(function(player) {
@@ -118,7 +108,7 @@ router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res)
         resource = resources[0];
         resource.PlayerResource.quantity += parseInt(req.params.quantity);
         resource.PlayerResource.save();
-        res.json({status: 'ok', data: resource});
+        res.json({status: 'OK', data: resource});
       }else{
         models.Resource.findById(req.params.resourceId)
         .then(function(resource){
@@ -126,7 +116,7 @@ router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res)
           .then(function(){
             player.getResources({ where: { id: req.params.resourceId } })
             .then(function(resources){
-              res.json({status: 'ok', data: resources[0]});
+              res.json({status: 'OK', data: resources[0]});
             });
           });
         });

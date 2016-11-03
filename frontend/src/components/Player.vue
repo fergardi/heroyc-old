@@ -4,9 +4,9 @@
       .col-xs-12
         .page-header
           h1 Player 
-            small Your character
+            small Yourself
       .col-md-4.col-xs-12
-        .panel.panel-default.text-center
+        .panel.panel-warning.text-center
           .panel-heading
             .panel-title
               i.fa.fa-fw.fa-lg.fa-user
@@ -17,6 +17,7 @@
             hr
             .progress
               .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
+            hr
             .progress
               .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
             .progress
@@ -27,21 +28,11 @@
               .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
             .progress
               .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
-            hr
-            .row
-              .col-md-4.col-xs-12(v-for='spell in spells')
-                img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
-                .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
       .col-md-4.col-xs-12
-        .panel.panel-default.text-center
+        .panel.panel-danger.text-center
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg.fa-wrench
+              i.fa.fa-fw.fa-lg.fa-sitemap
               span Equipment 
               label.badge {{items.length}}
           .panel-body
@@ -58,32 +49,58 @@
                   .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
                 .progress
                   .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
-            hr
-            .row
-              .col-md-4.col-xs-12(v-for='item in items')
-                img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
-                .progress
-                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
       .col-md-4.col-xs-12
-        .panel.panel-default.text-center
-          .panel-heading
-            .panel-title
-              i.fa.fa-fw.fa-lg.fa-diamond
-              span Resources 
-              label.badge {{resources.length}}
-          .panel-body
-            .row
-              .col-md-4.col-xs-12(v-for='resource in resources')
-                img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
-                label.badge {{resource.PlayerResource.quantity}}
+        .panel-group(id='parent')
+          .panel.panel-success.text-center
+            .panel-heading
+              .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#items')
+                i.fa.fa-fw.fa-lg.fa-archive
+                span Items 
+                label.badge {{items.length}}
+            .panel-collapse.collapse(id='items')
+              .panel-body
+                .row
+                  .col-md-4.col-xs-12(v-for='item in items')
+                    img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
+                    .progress
+                      .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
+          .panel.panel-primary.text-center
+            .panel-heading
+              .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#resources')
+                i.fa.fa-fw.fa-lg.fa-diamond
+                span Resources 
+                label.badge {{resources.length}}
+            .panel-collapse.collapse(id='resources')
+              .panel-body
+                .row
+                  .col-md-4.col-xs-12(v-for='resource in resources')
+                    img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
+                    label.badge {{resource.PlayerResource.quantity}}
+          .panel.panel-info.text-center
+            .panel-heading
+              .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#spells')
+                i.fa.fa-fw.fa-lg.fa-magic
+                span Spells 
+                label.badge {{spells.length}}
+            .panel-collapse.collapse(id='spells')
+              .panel-body
+                .row
+                  .col-md-4.col-xs-12(v-for='spell in spells')
+                    img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+                    .progress
+                      .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
 </template>
 
 <script>
@@ -92,7 +109,7 @@
     name: 'Player',
       data: function() {
         return {
-          id: 0,
+          id: 1,
           name: '',
           items: [],
           equipments: [],
@@ -106,7 +123,7 @@
       },
       created: function() {
         self = this;
-        factory.getPlayer((data) => {
+        factory.getPlayer(1, (data) => {
           self.id = data.id;
           self.equipments = data.Equipments;
           self.items = data.Items;
@@ -122,7 +139,7 @@
       methods: {
         equip: function(item) {
           factory.updateEquipment(self.id, item.id, (data) => {
-            self.items = data.Items;
+            self.equipments = data.Equipments;
             notification.success('You equiped <strong>' + item.name + '</strong>');
           });
         }
@@ -168,5 +185,12 @@
 </script>
 
 <style scoped>
-
+  .panel-heading .accordion-toggle:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+  }
+  .panel-heading .accordion-toggle.collapsed:after {
+    content: "\e080";
+  }
 </style>
