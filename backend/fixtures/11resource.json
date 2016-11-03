@@ -4,7 +4,7 @@
     "data": {
       "name": "Gold",
       "rarity": "default",
-      "icon": "diamond",
+      "icon": "crystals",
       "description": "Description",
       "image": "gold"
     }
@@ -14,7 +14,7 @@
     "data": {
       "name": "Silver",
       "rarity": "default",
-      "icon": "diamond",
+      "icon": "crystals",
       "description": "Description",
       "image": "silver"
     }
@@ -24,7 +24,7 @@
     "data": {
       "name": "Copper",
       "rarity": "default",
-      "icon": "diamond",
+      "icon": "crystals",
       "description": "Description",
       "image": "copper"
     }
@@ -34,7 +34,7 @@
     "data": {
       "name": "Grape",
       "rarity": "success",
-      "icon": "diamond",
+      "icon": "apple",
       "description": "Description",
       "image": "grape"
     }
@@ -44,7 +44,7 @@
     "data": {
       "name": "Lemmon",
       "rarity": "success",
-      "icon": "diamond",
+      "icon": "apple",
       "description": "Description",
       "image": "lemmon"
     }
@@ -54,7 +54,7 @@
     "data": {
       "name": "Raspberry",
       "rarity": "success",
-      "icon": "diamond",
+      "icon": "apple",
       "description": "Description",
       "image": "raspberry"
     }
@@ -64,7 +64,7 @@
     "data": {
       "name": "Strawberry",
       "rarity": "success",
-      "icon": "diamond",
+      "icon": "apple",
       "description": "Description",
       "image": "strawberry"
     }
@@ -74,7 +74,7 @@
     "data": {
       "name": "Pear",
       "rarity": "success",
-      "icon": "diamond",
+      "icon": "apple",
       "description": "Description",
       "image": "pear"
     }
@@ -84,7 +84,7 @@
     "data": {
       "name": "Wood",
       "rarity": "danger",
-      "icon": "diamond",
+      "icon": "rune-stone",
       "description": "Description",
       "image": "wood"
     }
@@ -94,7 +94,7 @@
     "data": {
       "name": "Stone",
       "rarity": "danger",
-      "icon": "diamond",
+      "icon": "rune-stone",
       "description": "Description",
       "image": "stone"
     }
@@ -104,7 +104,7 @@
     "data": {
       "name": "Coal",
       "rarity": "danger",
-      "icon": "diamond",
+      "icon": "rune-stone",
       "description": "Description",
       "image": "coal"
     }
@@ -114,7 +114,7 @@
     "data": {
       "name": "Flask",
       "rarity": "danger",
-      "icon": "diamond",
+      "icon": "flask",
       "description": "Description",
       "image": "flask"
     }
@@ -124,7 +124,7 @@
     "data": {
       "name": "Gold Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "goldingot"
     }
@@ -134,7 +134,7 @@
     "data": {
       "name": "Silver Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "silveringot"
     }
@@ -144,7 +144,7 @@
     "data": {
       "name": "Copper Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "copperingot"
     }
@@ -154,7 +154,7 @@
     "data": {
       "name": "Metal Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "metalingot"
     }
@@ -164,7 +164,7 @@
     "data": {
       "name": "Metal Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "metalingot"
     }
@@ -174,7 +174,7 @@
     "data": {
       "name": "Steel Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "steelingot"
     }
@@ -184,7 +184,7 @@
     "data": {
       "name": "Ebony Ingot",
       "rarity": "primary",
-      "icon": "diamond",
+      "icon": "gold-bar",
       "description": "Description",
       "image": "ebonyingot"
     }

@@ -18,7 +18,7 @@
         .panel.text-center(v-bind:class='"panel-" + resource.rarity')
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + resource.icon')  
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
               span {{resource.name}}
           .panel-body
             img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')

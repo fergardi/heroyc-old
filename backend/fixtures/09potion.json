@@ -10,7 +10,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "agility"
     }
   },
@@ -25,7 +25,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "intelligence"
     }
   },
@@ -40,7 +40,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "strength"
     }
   },
@@ -55,7 +55,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "defense"
     }
   },
@@ -70,7 +70,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "vitality"
     }
   },
@@ -85,7 +85,7 @@
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
-      "icon": "flask",
+      "icon": "round-bottom-flask",
       "image": "novice"
     }
   }

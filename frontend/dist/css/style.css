@@ -12,8 +12,11 @@ body {
 .navbar {
   margin-bottom: 0;
 }
-i.fa {
+i.fa, i.ra {
   margin-right: 5px;
+}
+i.ra-lg {
+  line-height: inherit;
 }
 .page-header {
   margin: 23px 0;

@@ -9,7 +9,7 @@
       "heal": 0,
       "multiple": false,
       "family": "danger",
-      "icon": "user",
+      "icon": "fire",
       "image": "fire"
     }
   },
@@ -23,7 +23,7 @@
       "heal": 0,
       "multiple": false,
       "family": "danger",
-      "icon": "user",
+      "icon": "fire",
       "image": "fire+"
     }
   },
@@ -37,7 +37,7 @@
       "heal": 0,
       "multiple": false,
       "family": "danger",
-      "icon": "user",
+      "icon": "fire",
       "image": "fire++"
     }
   },
@@ -51,7 +51,7 @@
       "heal": 0,
       "multiple": true,
       "family": "danger",
-      "icon": "users",
+      "icon": "fire",
       "image": "fire+++"
     }
   },
@@ -65,7 +65,7 @@
       "heal": 0,
       "multiple": false,
       "family": "default",
-      "icon": "user",
+      "icon": "ice-cube",
       "image": "ice"
     }
   },
@@ -79,7 +79,7 @@
       "heal": 0,
       "multiple": false,
       "family": "default",
-      "icon": "user",
+      "icon": "ice-cube",
       "image": "ice+"
     }
   },
@@ -93,7 +93,7 @@
       "heal": 0,
       "multiple": false,
       "family": "default",
-      "icon": "user",
+      "icon": "ice-cube",
       "image": "ice++"
     }
   },
@@ -107,7 +107,7 @@
       "heal": 0,
       "multiple": true,
       "family": "default",
-      "icon": "users",
+      "icon": "ice-cube",
       "image": "ice+++"
     }
   },
@@ -121,7 +121,7 @@
       "heal": 0,
       "multiple": false,
       "family": "primary",
-      "icon": "user",
+      "icon": "droplet-splash",
       "image": "water"
     }
   },
@@ -135,7 +135,7 @@
       "heal": 0,
       "multiple": false,
       "family": "primary",
-      "icon": "user",
+      "icon": "droplet-splash",
       "image": "water+"
     }
   },
@@ -149,7 +149,7 @@
       "heal": 0,
       "multiple": false,
       "family": "primary",
-      "icon": "user",
+      "icon": "droplet-splash",
       "image": "water++"
     }
   },
@@ -163,7 +163,7 @@
       "heal": 0,
       "multiple": true,
       "family": "primary",
-      "icon": "users",
+      "icon": "droplet-splash",
       "image": "water+++"
     }
   },
@@ -177,7 +177,7 @@
       "heal": 0,
       "multiple": false,
       "family": "warning",
-      "icon": "user",
+      "icon": "lightning-trio",
       "image": "lightning"
     }
   },
@@ -191,7 +191,7 @@
       "heal": 0,
       "multiple": false,
       "family": "warning",
-      "icon": "user",
+      "icon": "lightning-trio",
       "image": "lightning+"
     }
   },
@@ -205,7 +205,7 @@
       "heal": 0,
       "multiple": false,
       "family": "warning",
-      "icon": "user",
+      "icon": "lightning-trio",
       "image": "lightning++"
     }
   },
@@ -219,7 +219,7 @@
       "heal": 0,
       "multiple": true,
       "family": "warning",
-      "icon": "users",
+      "icon": "lightning-trio",
       "image": "lightning+++"
     }
   },
@@ -233,7 +233,7 @@
       "heal": 0,
       "multiple": false,
       "family": "info",
-      "icon": "user",
+      "icon": "bone-bite",
       "image": "shadow"
     }
   },
@@ -247,7 +247,7 @@
       "heal": 0,
       "multiple": false,
       "family": "info",
-      "icon": "user",
+      "icon": "bone-bite",
       "image": "shadow+"
     }
   },
@@ -261,7 +261,7 @@
       "heal": 0,
       "multiple": false,
       "family": "info",
-      "icon": "user",
+      "icon": "bone-bite",
       "image": "shadow++"
     }
   },
@@ -275,7 +275,7 @@
       "heal": 0,
       "multiple": true,
       "family": "info",
-      "icon": "users",
+      "icon": "bone-bite",
       "image": "shadow+++"
     }
   },
@@ -289,7 +289,7 @@
       "heal": 1,
       "multiple": false,
       "family": "success",
-      "icon": "user",
+      "icon": "zigzag-leaf",
       "image": "heal"
     }
   },
@@ -303,7 +303,7 @@
       "heal": 3,
       "multiple": false,
       "family": "success",
-      "icon": "user",
+      "icon": "zigzag-leaf",
       "image": "heal+"
     }
   },
@@ -317,7 +317,7 @@
       "heal": 5,
       "multiple": false,
       "family": "success",
-      "icon": "user",
+      "icon": "zigzag-leaf",
       "image": "heal++"
     }
   },
@@ -331,7 +331,7 @@
       "heal": 5,
       "multiple": true,
       "family": "success",
-      "icon": "users",
+      "icon": "zigzag-leaf",
       "image": "heal+++"
     }
   }

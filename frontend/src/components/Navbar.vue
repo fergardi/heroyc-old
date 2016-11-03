@@ -4,40 +4,40 @@
       .navbar-header
         button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
           span.sr-only Toggle navigation
-          i.fa.fa-lg.fa-bars
+          i.fa.fa-fw.fa-lg.fa-bars
         router-link.navbar-brand(to='/')
-          i.fa.fa-map
+          i.fa.fa-fw.fa-lg.fa-globe
           | World
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
           li
             router-link(to='/battle')
-              i.fa.fa-lg.fa-fw.fa-flag
+              i.ra.ra-lg.ra-fw.ra-lightning-sword
               | Battle
           li
             router-link(to='/items')
-              i.fa.fa-lg.fa-fw.fa-cubes
+              i.ra.ra-lg.ra-fw.ra-crossed-axes
               | Items
           li
             router-link(to='/resources')
-              i.fa.fa-lg.fa-fw.fa-diamond
+              i.ra.ra-lg.ra-fw.ra-diamond
               | Resources
           li
             router-link(to='/spells')
-              i.fa.fa-lg.fa-fw.fa-magic
+              i.ra.ra-lg.ra-fw.ra-crystal-wand
               | Spells
           li
             router-link(to='/recipes')
-              i.fa.fa-lg.fa-fw.fa-magic
+              i.ra.ra-lg.ra-fw.ra-scroll-unfurled
               | Recipes
           li
             router-link(to='/monsters')
-              i.fa.fa-lg.fa-fw.fa-crosshairs
+              i.ra.ra-lg.ra-fw.ra-hydra
               | Monsters
           li
             router-link(to='/sales')
               i.fa.fa-lg.fa-fw.fa-shopping-bag
-              | Sales
+              | Store
           li
             router-link(to='/player')
               i.fa.fa-lg.fa-fw.fa-user

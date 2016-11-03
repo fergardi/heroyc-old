@@ -18,7 +18,7 @@
         .panel.text-center(v-bind:class='"panel-" + spell.family')
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + spell.icon')  
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + spell.icon')  
               span {{spell.name}}
           .panel-body
             img.thumbnail.spell(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')

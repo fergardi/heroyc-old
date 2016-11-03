@@ -10,7 +10,7 @@
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "novice"
     }
   },
@@ -25,7 +25,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "elven"
     }
   },
@@ -40,7 +40,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "curve"
     }
   },
@@ -55,7 +55,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "gladius"
     }
   },
@@ -70,7 +70,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "mighty"
     }
   },
@@ -85,7 +85,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "thunder"
     }
   },
@@ -100,7 +100,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "flaming"
     }
   },
@@ -115,7 +115,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "frozen"
     }
   },
@@ -130,7 +130,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "acqua"
     }
   },
@@ -145,7 +145,7 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
-      "icon": "bullseye",
+      "icon": "relic-blade",
       "image": "dark"
     }
   },
@@ -160,7 +160,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "crystal-wand",
       "image": "lightning"
     }
   },
@@ -175,7 +175,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "crystal-wand",
       "image": "fire"
     }
   },
@@ -190,7 +190,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "crystal-wand",
       "image": "shadow"
     }
   },
@@ -205,7 +205,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "crystal-wand",
       "image": "ice"
     }
   },
@@ -220,7 +220,7 @@
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "crystal-wand",
       "image": "water"
     }
   }

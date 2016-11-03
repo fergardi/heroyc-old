@@ -18,7 +18,7 @@
         .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + recipe.Result.icon')  
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
               span {{recipe.Result.name}}
           .panel-body
             .row

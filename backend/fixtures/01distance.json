@@ -3,14 +3,14 @@
     "model": "Item",
     "data": {
       "name": "Novice Bow",
-      "type": "bow",
+      "type": "distance",
       "rarity": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
-      "icon": "bullseye",
+      "icon": "arrow-cluster",
       "image": "novice"
     }
   },
@@ -18,14 +18,14 @@
     "model": "Item",
     "data": {
       "name": "Hunter Bow",
-      "type": "bow",
+      "type": "distance",
       "rarity": "success",
       "vitality": 20,
       "strength": 30,
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "arrow-cluster",
       "image": "hunter"
     }
   },
@@ -33,14 +33,14 @@
     "model": "Item",
     "data": {
       "name": "Golden Bow",
-      "type": "bow",
+      "type": "distance",
       "rarity": "warning",
       "vitality": 20,
       "strength": 30,
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "arrow-cluster",
       "image": "golden"
     }
   },
@@ -48,14 +48,14 @@
     "model": "Item",
     "data": {
       "name": "Sniper Bow",
-      "type": "bow",
+      "type": "distance",
       "rarity": "info",
       "vitality": 20,
       "strength": 30,
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "arrow-cluster",
       "image": "sniper"
     }
   },
@@ -63,14 +63,14 @@
     "model": "Item",
     "data": {
       "name": "Phoenix Bow",
-      "type": "bow",
+      "type": "distance",
       "rarity": "danger",
       "vitality": 20,
       "strength": 30,
       "agility": 60,
       "intelligence": 7,
       "defense": 23,
-      "icon": "bullseye",
+      "icon": "arrow-cluster",
       "image": "phoenix"
     }
   }

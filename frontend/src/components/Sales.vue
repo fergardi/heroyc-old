@@ -19,7 +19,7 @@
           .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + sale.Item.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
                 span {{sale.Item.name}}
             .panel-body
               img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity', data-toggle='tooltip', v-bind:title='sale.Item.name')
@@ -49,7 +49,7 @@
           .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + sale.Resource.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
                 span {{sale.Resource.name}} ({{sale.quantity}})
             .panel-body
               img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity', data-toggle='tooltip', v-bind:title='sale.Resource.name')
@@ -69,7 +69,7 @@
           .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + sale.Recipe.Result.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
                 span {{sale.Recipe.Result.name}}
             .panel-body
               .row

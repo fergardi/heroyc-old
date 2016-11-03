@@ -4,9 +4,9 @@
       .col-xs-12
         .page-header
           h1 Player 
-            small Yourself
+            small Character
       .col-md-4.col-xs-12
-        .panel.panel-warning.text-center
+        .panel.panel-default.text-center
           .panel-heading
             .panel-title
               i.fa.fa-fw.fa-lg.fa-user
@@ -29,11 +29,11 @@
             .progress
               .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
       .col-md-4.col-xs-12
-        .panel.panel-danger.text-center
+        .panel.panel-warning.text-center
           .panel-heading
             .panel-title
               i.fa.fa-fw.fa-lg.fa-sitemap
-              span Equipment 
+              span Inventory 
               label.badge {{items.length}}
           .panel-body
             .row
@@ -54,7 +54,7 @@
           .panel.panel-success.text-center
             .panel-heading
               .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#items')
-                i.fa.fa-fw.fa-lg.fa-archive
+                i.ra.ra-fw.ra-lg.ra-crossed-axes
                 span Items 
                 label.badge {{items.length}}
             .panel-collapse.collapse(id='items')
@@ -75,7 +75,7 @@
           .panel.panel-primary.text-center
             .panel-heading
               .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#resources')
-                i.fa.fa-fw.fa-lg.fa-diamond
+                i.ra.ra-fw.ra-lg.ra-gold-bar
                 span Resources 
                 label.badge {{resources.length}}
             .panel-collapse.collapse(id='resources')
@@ -87,7 +87,7 @@
           .panel.panel-info.text-center
             .panel-heading
               .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#spells')
-                i.fa.fa-fw.fa-lg.fa-magic
+                i.ra.ra-fw.ra-lg.ra-crystal-wand
                 span Spells 
                 label.badge {{spells.length}}
             .panel-collapse.collapse(id='spells')

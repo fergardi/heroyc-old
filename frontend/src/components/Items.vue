@@ -18,7 +18,7 @@
         .panel.text-center(v-bind:class='"panel-" + item.rarity')
           .panel-heading
             .panel-title
-              i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + item.icon')  
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + item.icon')  
               span {{item.name}}
           .panel-body
             img.thumbnail.item(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')

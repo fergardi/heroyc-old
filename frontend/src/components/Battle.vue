@@ -23,7 +23,7 @@
             #parent
               .panel.list-group
                 a.list-group-item(data-toggle='collapse', data-target='#attack', data-parent='#parent')
-                  i.fa.fa-fw.fa-lg.fa-crosshairs
+                  i.ra.ra-fw.ra-lg.ra-lightning-sword
                   span Attack
                 #attack.collapse
                   a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
@@ -31,11 +31,11 @@
                     span Melee
                     span.label.label-danger {{strength}}
                   a.list-group-item(@click='distance(strength / 2)', v-bind:class='{disabled: states.buttons}')
-                    img.icon(v-bind:src='"dist/img/items/bow/" + player.bow + ".png"')
+                    img.icon(v-bind:src='"dist/img/items/distance/" + player.bow + ".png"')
                     span Distance
                     span.label.label-danger {{strength / 2}}
                 a.list-group-item(data-toggle='collapse', data-target='#magic', data-parent='#parent')
-                  i.fa.fa-fw.fa-lg.fa-magic
+                  i.ra.ra-fw.ra-lg.ra-crystal-wand
                   span Magic
                 #magic.collapse
                   a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
@@ -74,6 +74,7 @@
         .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + battle.Monster.type]')
           .panel-heading
             .panel-title
+              i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + battle.Monster.icon ')
               span {{battle.Monster.name}}
           .panel-body
             img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + battle.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='battle.Monster.name')
@@ -135,7 +136,7 @@
         self.player.image = data.image;
         self.player.name = data.name;
       });
-      factory.getBattle(this.$route.params.id, (data) => {
+      factory.getBattle(this.$route.params.id || 1, (data) => {
         self.battle = data;
         notification.danger('A wild <strong>' + self.battle.Monster.name + '</strong> appeared');
       });

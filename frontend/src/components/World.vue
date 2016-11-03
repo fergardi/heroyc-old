@@ -109,7 +109,7 @@
         // add an icon
         var icon = document.createElement('img');
         icon.src = 'dist/img/monsters/' + battle.Monster.image + '.png';
-        icon.className = 'map-battle animated infinite';
+        icon.className = 'map-battle animated infinite panel-' + battle.Monster.type;
         marker.appendChild(icon);
         // add a shadow
         var shadow = document.createElement('div');
@@ -136,15 +136,16 @@
   .map-avatar {
     width: 60px;
     height: 60px;
+    border-radius: 50%;
   }
-  .map-resource {
-    width: 30px;
-    height: 30px;
-    border: none;
+  .map-battle {
+    background-color: rgba(0,0,0,0.4);
+    border-width: 4px;
+    padding: 2px;
+    border-style: solid;
   }
   .map-location-shadow,
   .map-battle-shadow,
-  .map-resource-shadow,
   .map-avatar-shadow {
     width: 20px;
     height: 7px;
@@ -152,26 +153,5 @@
     background-color: black;
     opacity: .3;
     margin: 10px auto 0 auto;
-  }
-  .map-avatar {
-    border-radius: 50%;
-  }
-  /* fade */
-  .map-fade {
-    opacity: .75;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    position: absolute;
-    margin: auto;
-    pointer-events: none;
-    cursor: pointer;
-  }
-  .map-fade-day {
-    background: linear-gradient(rgba(62, 228, 216, 1) 10%, transparent 20%) left repeat;
-  }
-  .map-fade-night {
-    background: linear-gradient(black 30%, transparent 100%) left repeat;
   }
 </style>
