@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api/users', require('./routes/api/user'));
-app.use('/api/battles', require('./routes/api/battle'));
+app.use('/api/locations', require('./routes/api/location'));
 app.use('/api/monsters', require('./routes/api/monster'));
 app.use('/api/spells', require('./routes/api/spell'));
 app.use('/api/resources', require('./routes/api/resource'));

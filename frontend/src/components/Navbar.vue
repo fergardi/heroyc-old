@@ -11,10 +11,6 @@
       .collapse.navbar-collapse(id='#nav')
         ul.nav.navbar-nav.navbar-right
           li
-            router-link(to='/battle')
-              i.ra.ra-lg.ra-fw.ra-lightning-sword
-              | Battle
-          li
             router-link(to='/items')
               i.ra.ra-lg.ra-fw.ra-crossed-axes
               | Items
@@ -34,14 +30,6 @@
             router-link(to='/monsters')
               i.ra.ra-lg.ra-fw.ra-hydra
               | Monsters
-          li
-            router-link(to='/sales')
-              i.fa.fa-lg.fa-fw.fa-shopping-bag
-              | Store
-          li
-            router-link(to='/player')
-              i.fa.fa-lg.fa-fw.fa-user
-              | Player
 </template>
 
 <script>

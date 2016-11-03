@@ -1,0 +1,58 @@
+[
+  {
+    "model": "Location",
+    "data": {
+      "name": "City of Foo",
+      "lat": -5.545,
+      "lng": 42.608,
+      "type": "success",
+      "image": "city"
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Tower of Bla",
+      "lat": -5.585,
+      "lng": 42.625,
+      "type": "info",
+      "image": "tower",
+      "Spells": [{ "name": "Fire+++" }]
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Dungeon of Bleh",
+      "lat": -5.535,
+      "lng": 42.615,
+      "type": "danger",
+      "image": "dungeon",
+      "Monster": { "name": "Dragon" },
+      "Item": { "name": "Dragon Armor" },
+      "Resource": { "name": "Coal" }
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Mine of Faa",
+      "lat": -5.575,
+      "lng": 42.615,
+      "type": "primary",
+      "image": "mine",
+      "Resource": { "name": "Coal" }
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Forge of Fuu",
+      "lat": -5.595,
+      "lng": 42.635,
+      "type": "warning",
+      "image": "forge",
+      "Recipes": [1]
+    }
+  }
+]

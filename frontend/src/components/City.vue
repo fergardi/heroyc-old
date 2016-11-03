@@ -1,9 +1,9 @@
 <template lang="pug">
-  div#Sales
+  div#City
     .row
       .col-xs-12
         .page-header
-          h1 Sales 
+          h1 City 
             small Purchase stuff
       .col-xs-12
         form.form-horizontal.form-group
@@ -44,7 +44,7 @@
                 .row
                   button.btn.btn-success.btn-block
                     i.fa.fa-lg.fa-check
-                    = 'Buy'
+                    | Buy
         template(v-if='sale.Resource')
           .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
             .panel-heading
@@ -64,7 +64,7 @@
                 .row
                   button.btn.btn-success.btn-block
                     i.fa.fa-lg.fa-check
-                    = 'Buy'
+                    | Buy
         template(v-if='sale.Recipe')
           .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
             .panel-heading
@@ -101,13 +101,13 @@
                 .row
                   button.btn.btn-success.btn-block
                     i.fa.fa-lg.fa-check 
-                    = 'Buy'
+                    | Buy
 </template>
 
 <script>
   import factory from '../factories/factory'
   export default {
-    name: 'Sales',
+    name: 'City',
     data: function() { 
       return {
         filter: '',

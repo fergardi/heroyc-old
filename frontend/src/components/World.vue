@@ -10,7 +10,7 @@
     name: 'World',
     data: function() {
       return {
-        battles: [],
+        locations: [],
         map: {},
         current: {},
         options: {
@@ -27,15 +27,10 @@
       self = this;
       self.createMap();
       self.geoLocate();
-      factory.getBattles((data) => {
-        self.battles = data;
-        self.refreshBattles();
+      factory.getLocations((data) => {
+        self.locations = data;
+        self.refresh();
       });
-    },
-    watch: {
-      battles: function() {
-        self.refreshBattles();
-      }
     },
     methods: {
       createMap: function() {
@@ -82,10 +77,7 @@
           shadow.className = 'map-avatar-shadow';
           marker.appendChild(shadow);
           marker.addEventListener('click', function(event) {
-            // prevent default
-            event.preventDefault();
-            // move to location
-            self.move(location.lng, location.lat);
+            self.$router.push({ name: 'player' });
           });
           // add marker to map
           self.avatar = new mapboxgl.Marker(marker).setLngLat(location).addTo(self.map);
@@ -94,32 +86,48 @@
           self.avatar.setLngLat(location);
         }
       },
-      refreshBattles: function() {
-        for (var i = 0; i < self.battles.length; i++) {
-          self.addBattle(self.battles[i]);
+      refresh: function() {
+        for (var i = 0; i < self.locations.length; i++) {
+          self.addLocation(self.locations[i]);
         }
       },
-      addBattle: function(battle) {
+      addLocation: function(location) {
         // create a marker in html
         var marker = document.createElement('div');
-        marker.id = battle.id;
+        marker.id = location.id;
         marker.style.zIndex = 1;
         marker.style.left = -30 + 'px';
         marker.style.top = -77 + 'px';
         // add an icon
         var icon = document.createElement('img');
-        icon.src = 'dist/img/monsters/' + battle.Monster.image + '.png';
-        icon.className = 'map-battle animated infinite panel-' + battle.Monster.type;
+        icon.src = 'dist/img/locations/' + location.image + '.png';
+        icon.className = 'map-location';
         marker.appendChild(icon);
         // add a shadow
         var shadow = document.createElement('div');
-        shadow.className = 'map-battle-shadow';
+        shadow.className = 'map-location-shadow';
         marker.appendChild(shadow);
         marker.addEventListener('click', function(event) {
-          self.$router.push({ name: 'battle', params: { id: battle.id }})
+          switch(location.image){
+            case 'dungeon':
+              self.$router.push({ name: 'dungeon', params: { dungeonId: location.id }});
+              break;
+            case 'city':
+              self.$router.push({ name: 'city' });
+              break;
+            case 'tower':
+              self.$router.push({ name: 'tower', params: { towerId: location.id }});
+              break;
+            case 'mine':
+              self.$router.push({ name: 'mine', params: { mineId: location.id }});
+              break;
+            case 'forge':
+              self.$router.push({ name: 'forge', params: { forgeId: location.id }});
+              break;
+          }
         });
         // add marker to map
-        new mapboxgl.Marker(marker).setLngLat([battle.lat, battle.lng]).addTo(self.map);
+        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(self.map);
       }
     }
   }

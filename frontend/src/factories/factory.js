@@ -68,14 +68,14 @@ const factory = {
       callback(response.data);
     });
   },
-  getBattles: function(callback) {
-    $.get(`${api}/battles`)
+  getLocations: function(callback) {
+    $.get(`${api}/locations`)
     .then(function(response) {
       callback(response.data);
     });
   },
-  getBattle: function(id, callback) {
-    $.get(`${api}/battles/${id}`)
+  getLocation: function(id, callback) {
+    $.get(`${api}/locations/${id}`)
     .then(function(response) {
       callback(response.data);
     });
