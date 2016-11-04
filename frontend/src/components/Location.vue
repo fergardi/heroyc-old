@@ -85,7 +85,7 @@
             .panel-body
               img.thumbnail.resource(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity', data-toggle='tooltip', v-bind:title='location.Resource.name')
               p {{location.Resource.description}}
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Tower')
+          .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Spell')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
@@ -180,8 +180,24 @@
           }, constants.notification.duration);
           setTimeout(function() {
             self.states.monster.loot = true;
-            factory.addRecipe(self.player.id, self.location.Recipe.id);
-            notification.success('You looted a recipe for <strong>' + self.location.Recipe.Result.name + '</strong>');
+            switch(self.location.image){
+              case 'tower':
+                factory.addSpell(self.player.id, self.location.Spell.id);
+                notification.success('You learned <strong>' + self.location.Spell.name + '</strong>');
+                break;
+              case 'castle':
+                factory.addRecipe(self.player.id, self.location.Recipe.id);
+                notification.success('You obtained a recipe for crafting <strong>' + self.location.Recipe.Result.name + '</strong>');
+                break;
+              case 'mine':
+                factory.addResource(self.player.id, self.location.Resource.id, 1);
+                notification.success('You farmed <strong>' + self.location.Resource.name + '</strong>');
+                break;
+              case 'dungeon':
+                factory.addItem(self.player.id, self.location.Item.id);
+                notification.success('You looted <strong>' + self.location.Item.name + '</strong>');
+                break;
+            }
           }, constants.notification.duration * 2);
         }
       },

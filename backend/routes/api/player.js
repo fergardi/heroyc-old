@@ -82,7 +82,7 @@ router.post('/:playerId/items/add/:itemId', function(req, res) {
   .then(function(player) {
     models.Item.findById(req.params.itemId)
     .then(function(item){
-      player.addItem(item, { equiped: false })
+      player.addItem(item)
       .then(function(){
         res.json({status: 'OK', data: item});          
       });
