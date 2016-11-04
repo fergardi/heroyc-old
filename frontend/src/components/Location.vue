@@ -7,7 +7,7 @@
             h1 {{location.name}} 
               small Battle monsters for loot
       .row
-        .col-xs-4
+        .col-xs-6
           .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.magic }, { zoomOut: states.player.dead }]')
             .panel-heading
               .panel-title
@@ -35,7 +35,7 @@
                 span.label.label-danger {{spell.damage}}
                 span.label.label-primary {{spell.mana}}
                 span.label.label-success {{spell.heal}}
-        .col-xs-4
+        .col-xs-6
           .panel.text-center.animated(v-bind:class='["panel-" + location.Item.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Item')
             .panel-heading
               .panel-title
@@ -98,7 +98,6 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Spell.heal * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Spell.mana * 10 + "%"')
-        .col-xs-4
           .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
