@@ -38,7 +38,7 @@
                 label.badge {{items.length}}
             .panel-body
               .row
-                .col-md-4.col-xs-12(v-for='equipment in equipments')
+                .col-xs-4(v-for='equipment in equipments')
                   img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity', data-toggle='tooltip', v-bind:title='equipment.name')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
@@ -61,7 +61,7 @@
               .panel-collapse.collapse(id='items')
                 .panel-body
                   .row
-                    .col-md-4.col-xs-12(v-for='item in items')
+                    .col-xs-4(v-for='item in items')
                       img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
                       .progress
                         .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
@@ -82,8 +82,9 @@
               .panel-collapse.collapse(id='resources')
                 .panel-body
                   .row
-                    .col-md-4.col-xs-12(v-for='resource in resources')
+                    .col-xs-4(v-for='resource in resources')
                       img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
+                      br
                       label.badge {{resource.PlayerResource.quantity}}
             .panel.panel-info.text-center
               .panel-heading
@@ -94,7 +95,7 @@
               .panel-collapse.collapse(id='spells')
                 .panel-body
                   .row
-                    .col-md-4.col-xs-12(v-for='spell in spells')
+                    .col-xs-4(v-for='spell in spells')
                       img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
                       .progress
                         .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')

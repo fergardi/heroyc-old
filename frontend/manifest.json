@@ -1,0 +1,15 @@
+{
+  "lang": "en",
+  "name": "Heroyc",
+  "short_name": "Heroyc",
+  "orientation": "landscape",
+  "display": "fullscreen",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "app.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

@@ -15,7 +15,7 @@
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-lg.fa-trash
-        .col-md-3.col-xs-12(v-for='sale in filtered')
+        .col-md-3.col-xs-6(v-for='sale in filtered')
           template(v-if='sale.Item')
             .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
               .panel-heading

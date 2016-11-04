@@ -8,11 +8,12 @@ body {
   -o-background-size: cover;
   background-size: cover;
   box-sizing: border-box;
+  padding-top: 50px;
 }
 .navbar {
   margin-bottom: 0;
 }
-i.fa, i.ra {
+*:not(.navbar) i.fa, *:not(.navbar) i.ra {
   margin-right: 5px;
 }
 i.ra-lg {
@@ -33,7 +34,7 @@ i.ra-lg {
 }
 .alert {
   margin-bottom: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
   pointer-events: all;
 }
 .help-block,
@@ -96,7 +97,7 @@ i.ra-lg {
   background-color: red;
 }
 .map-container {
-  height: calc(100vh - 56px);
+  height: calc(100vh - 50px);
 }
 .icon {
   width: 40px;
@@ -111,7 +112,7 @@ a.list-group-item-primary:hover {
   background-color: #2E64FE;
 }
 span.label {
-  margin-left: 5px;
+  margin-left: 3px;
   border: 1px solid black;
 }
 .equip {

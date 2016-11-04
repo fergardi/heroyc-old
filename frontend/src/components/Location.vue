@@ -29,7 +29,6 @@
                 img.icon(v-bind:src='"dist/img/items/distance/" + player.bow + ".png"')
                 span Distance
                 span.label.label-danger {{strength / 2}}
-              hr
               a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}}
@@ -40,7 +39,7 @@
           .panel.text-center.animated(v-bind:class='["panel-" + location.Item.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Item')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + location.Item.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Item.icon')  
                 span {{location.Item.name}}
             .panel-body
               img.thumbnail.item(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity', data-toggle='tooltip', v-bind:title='location.Item.name')
@@ -81,7 +80,7 @@
           .panel.text-center.animated(v-bind:class='["panel-" + location.Resource.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Resource')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + location.Resource.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Resource.icon')  
                 span {{location.Resource.name}}
             .panel-body
               img.thumbnail.resource(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity', data-toggle='tooltip', v-bind:title='location.Resource.name')
@@ -89,7 +88,7 @@
           .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Tower')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg(v-bind:class='"fa-" + location.Spell.icon')  
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
                 span {{location.Spell.name}}
             .panel-body
               img.thumbnail.spell(v-bind:src='"dist/img/spells/" + location.Spell.type + "/" + location.Spell.image + ".png"', v-bind:class='"panel-" + location.Spell.family', data-toggle='tooltip', v-bind:title='location.Spell.name')
@@ -167,7 +166,9 @@
       });
       factory.getLocation(this.$route.params.locationId || 1, (data) => {
         self.location = data;
-        notification.danger('A wild <strong>' + self.location.Monster.name + '</strong> appeared');
+        setTimeout(function() {
+          notification.danger('A wild <strong>' + self.location.Monster.name + '</strong> appeared');
+        }, constants.notification.duration / 2);
       });
     },
     watch: {

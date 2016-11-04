@@ -15,7 +15,7 @@
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
-        .col-md-3.col-xs-12(v-for='monster in filtered')
+        .col-md-3.col-xs-6(v-for='monster in filtered')
           .panel.text-center(v-bind:class='"panel-" + monster.type')
             .panel-heading
               .panel-title

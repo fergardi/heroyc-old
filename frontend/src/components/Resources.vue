@@ -15,7 +15,7 @@
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-lg.fa-lg.fa-trash
-        .col-md-3.col-xs-12(v-for='resource in filtered')
+        .col-md-3.col-xs-6(v-for='resource in filtered')
           .panel.text-center(v-bind:class='"panel-" + resource.rarity')
             .panel-heading
               .panel-title

@@ -1,0 +1,16 @@
+@media all and (max-width : 768px) {
+  body {
+    font-size: 12px;
+  }
+  i.fa, i.ra {
+    margin-right: 2px;
+  }
+  .icon {
+    width: 25px;
+    padding-right: 5px;
+  }
+  button.navbar-toggle i {
+    color: white;
+    margin-right: 0;
+  }
+}
