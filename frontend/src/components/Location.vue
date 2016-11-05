@@ -25,10 +25,6 @@
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span Melee
                 span.label.label-danger {{strength}}
-              a.list-group-item(@click='distance(strength / 2)', v-bind:class='{disabled: states.buttons}')
-                img.icon(v-bind:src='"dist/img/items/distance/" + player.bow + ".png"')
-                span Distance
-                span.label.label-danger {{strength / 2}}
               a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}}
@@ -129,8 +125,7 @@
           level: 0,
           name: '',
           image: 'avatar',
-          weapon: 'novice',
-          bow: 'novice',
+          weapon: 'novicesword',
           equipments: [],
           spells: []
         },
@@ -162,6 +157,7 @@
         self.player.spells = data.Spells;
         self.player.image = data.image;
         self.player.name = data.name;
+        self.player.weapon = data.Equipments[3].image;
       });
       factory.getLocation(this.$route.params.locationId || 1, (data) => {
         self.location = data;

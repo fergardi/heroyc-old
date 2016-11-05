@@ -10,7 +10,7 @@
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
-      "icon": "helmet",
+      "icon": "knight-helmet",
       "image": "novice"
     }
   },
@@ -25,7 +25,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "helmet",
+      "icon": "knight-helmet",
       "image": "chain"
     }
   },
@@ -40,7 +40,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "helmet",
+      "icon": "knight-helmet",
       "image": "plate"
     }
   },
@@ -55,7 +55,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "helmet",
+      "icon": "knight-helmet",
       "image": "wizard"
     }
   },
@@ -70,7 +70,7 @@
       "agility": 43,
       "intelligence": 10,
       "defense": 12,
-      "icon": "helmet",
+      "icon": "knight-helmet",
       "image": "witch"
     }
   }

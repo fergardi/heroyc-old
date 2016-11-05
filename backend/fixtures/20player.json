@@ -8,16 +8,15 @@
       "gold": 0,
       "image": "avatar",
       "Items": [
-        { "name": "Novice Bow", "_through": { "quantity": 2 } },
+        { "name": "Novice Ring", "_through": { "quantity": 1 } },
         { "name": "Novice Helm", "_through": { "quantity": 1 } },
         { "name": "Novice Necklace", "_through": { "quantity": 1 } },
         { "name": "Novice Sword", "_through": { "quantity": 1 } },
         { "name": "Novice Armor", "_through": { "quantity": 1 } },
         { "name": "Novice Shield", "_through": { "quantity": 1 } },
-        { "name": "Novice Ring", "_through": { "quantity": 5 } },
+        { "name": "Novice Gloves", "_through": { "quantity": 1 } },
         { "name": "Novice Boots", "_through": { "quantity": 1 } },
-        { "name": "Novice Potion", "_through": { "quantity": 1 } },
-        { "name": "Dragon Armor", "_through": { "quantity": 1 } }
+        { "name": "Novice Potion", "_through": { "quantity": 1 } }
       ],
       "Spells": [
         { "name": "Heal" },
@@ -29,13 +28,13 @@
         { "name": "Copper", "_through": { "quantity": 0 } }
       ],
       "Recipes": [1],
-      "Distance": { "name": "Novice Bow" },
+      "Ring": { "name": "Novice Ring" },
       "Helm": { "name": "Novice Helm" },
       "Necklace": { "name": "Novice Necklace" },
       "Weapon": { "name": "Novice Sword" },
       "Armor": { "name": "Novice Armor" },
       "Shield": { "name": "Novice Shield" },
-      "Ring": { "name": "Novice Ring" },
+      "Gloves": { "name": "Novice Gloves" },
       "Boots": { "name": "Novice Boots" },
       "Potion": { "name": "Novice Potion" }
     }

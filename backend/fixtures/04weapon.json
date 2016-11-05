@@ -11,7 +11,7 @@
       "intelligence": 1,
       "defense": 1,
       "icon": "relic-blade",
-      "image": "novice"
+      "image": "novicesword"
     }
   },
   {
@@ -26,7 +26,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "elven"
+      "image": "elvensword"
     }
   },
   {
@@ -41,7 +41,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "curve"
+      "image": "curvesword"
     }
   },
   {
@@ -56,7 +56,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "gladius"
+      "image": "gladiussword"
     }
   },
   {
@@ -71,7 +71,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "mighty"
+      "image": "mightysword"
     }
   },
   {
@@ -86,7 +86,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "thunder"
+      "image": "thundersword"
     }
   },
   {
@@ -101,7 +101,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "flaming"
+      "image": "flamingsword"
     }
   },
   {
@@ -116,7 +116,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "frozen"
+      "image": "frozensword"
     }
   },
   {
@@ -131,7 +131,7 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "relic-blade",
-      "image": "acqua"
+      "image": "acquasword"
     }
   },
   {
@@ -146,13 +146,13 @@
       "intelligence": 0,
       "defense": 0,
       "icon": "relic-blade",
-      "image": "dark"
+      "image": "darksword"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Lightning Staff",
+      "name": "Thunder Staff",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 20,
@@ -161,13 +161,13 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "crystal-wand",
-      "image": "lightning"
+      "image": "thunderstaff"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Fire Staff",
+      "name": "Flaming Staff",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 20,
@@ -176,13 +176,13 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "crystal-wand",
-      "image": "fire"
+      "image": "flamingstaff"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Shadow Staff",
+      "name": "Dark Staff",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 20,
@@ -191,13 +191,13 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "crystal-wand",
-      "image": "shadow"
+      "image": "darkstaff"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Ice Staff",
+      "name": "Frozen Staff",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 20,
@@ -206,13 +206,13 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "crystal-wand",
-      "image": "ice"
+      "image": "frozenstaff"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Water Staff",
+      "name": "Acqua Staff",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 20,
@@ -221,7 +221,82 @@
       "intelligence": 7,
       "defense": 23,
       "icon": "crystal-wand",
-      "image": "water"
+      "image": "acquastaff"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Novice Bow",
+      "type": "weapon",
+      "rarity": "default",
+      "vitality": 1,
+      "strength": 1,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
+      "icon": "arrow-cluster",
+      "image": "novicebow"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Hunter Bow",
+      "type": "weapon",
+      "rarity": "success",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "arrow-cluster",
+      "image": "hunterbow"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Golden Bow",
+      "type": "weapon",
+      "rarity": "warning",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "arrow-cluster",
+      "image": "goldenbow"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Sniper Bow",
+      "type": "weapon",
+      "rarity": "info",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "arrow-cluster",
+      "image": "sniperbow"
+    }
+  },
+  {
+    "model": "Item",
+    "data": {
+      "name": "Phoenix Bow",
+      "type": "weapon",
+      "rarity": "danger",
+      "vitality": 20,
+      "strength": 30,
+      "agility": 60,
+      "intelligence": 7,
+      "defense": 23,
+      "icon": "arrow-cluster",
+      "image": "phoenixbow"
     }
   }
 ]

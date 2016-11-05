@@ -11,13 +11,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // m21 association
-        models.Player.belongsTo(models.Item, {as: 'Distance'});
+        models.Player.belongsTo(models.Item, {as: 'Ring'});
         models.Player.belongsTo(models.Item, {as: 'Helm'});
         models.Player.belongsTo(models.Item, {as: 'Necklace'});
         models.Player.belongsTo(models.Item, {as: 'Weapon'});
         models.Player.belongsTo(models.Item, {as: 'Armor'});
         models.Player.belongsTo(models.Item, {as: 'Shield'});
-        models.Player.belongsTo(models.Item, {as: 'Ring'});
+        models.Player.belongsTo(models.Item, {as: 'Gloves'});
         models.Player.belongsTo(models.Item, {as: 'Boots'});
         models.Player.belongsTo(models.Item, {as: 'Potion'});
         // custom m2m association with "equiped" to distinguish between regular item and equiped one

@@ -2,10 +2,18 @@
   {
     "model": "Location",
     "data": {
+      "name": "City of Foo",
+      "lat": -5.566517194043172,
+      "lng": 42.62463290287917,
+      "image": "city"
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
       "name": "Inn of Foo",
-      "lat": -5.545,
-      "lng": 42.608,
-      "type": "success",
+      "lat": -5.547798941500531,
+      "lng": 42.61680853401759,
       "image": "inn"
     }
   },
@@ -13,9 +21,8 @@
     "model": "Location",
     "data": {
       "name": "Tower of Bla",
-      "lat": -5.585,
-      "lng": 42.625,
-      "type": "info",
+      "lat": -5.554528027609081,
+      "lng": 42.62032574136461,
       "image": "tower",
       "Monster": { "name": "Zombie" },
       "Spell": { "name": "Fire+++" }
@@ -25,9 +32,8 @@
     "model": "Location",
     "data": {
       "name": "Dungeon of Bleh",
-      "lat": -5.535,
-      "lng": 42.615,
-      "type": "danger",
+      "lat": -5.543897707012178,
+      "lng": 42.621640428312645,
       "image": "dungeon",
       "Monster": { "name": "Dragon" },
       "Item": { "name": "Dragon Armor" }
@@ -37,9 +43,8 @@
     "model": "Location",
     "data": {
       "name": "Mine of Faa",
-      "lat": -5.575,
-      "lng": 42.615,
-      "type": "primary",
+      "lat": -5.535397241539499,
+      "lng": 42.62443522502602,
       "image": "mine",
       "Monster": { "name": "Medusa" },
       "Resource": { "name": "Coal" }
@@ -49,9 +54,8 @@
     "model": "Location",
     "data": {
       "name": "Forge of Fuu",
-      "lat": -5.595,
-      "lng": 42.635,
-      "type": "default",
+      "lat": -5.56146100601967,
+      "lng": 42.640888278347774,
       "image": "forge"
     }
   },
@@ -59,12 +63,21 @@
     "model": "Location",
     "data": {
       "name": "Castle of Feee",
-      "lat": -5.525,
-      "lng": 42.695,
-      "type": "warning",
+      "lat": -5.556933795708318,
+      "lng": 42.61419907228796,
       "image": "castle",
       "Monster": { "name": "Yeti" },
       "Recipe": 1
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "name": "Ruins of Meh",
+      "lat": -5.5448237191811245,
+      "lng": 42.61384880947696,
+      "image": "ruins",
+      "Monster": { "name": "Ghost" }
     }
   }
 ]

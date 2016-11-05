@@ -27,13 +27,13 @@ router.get('/:playerId', function(req, res) {
       where: { 
         id: { 
           $in: [
-            player.DistanceId,
+            player.RingId,
             player.HelmId,
             player.NecklaceId,
             player.WeaponId,
             player.ArmorId,
             player.ShieldId,
-            player.RingId,
+            player.GlovesId,
             player.BootsId,
             player.PotionId
           ]

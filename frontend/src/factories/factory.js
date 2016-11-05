@@ -80,6 +80,12 @@ const factory = {
       callback(response.data);
     });
   },
+  addLocation: function(callback) {
+    $.post(`${api}/locations/add`)
+    .then(function(response) {
+      callback(response.data);
+    });
+  },
   getPlayers: function(callback) {
     $.get(`${api}/players`)
     .then(function(response) {

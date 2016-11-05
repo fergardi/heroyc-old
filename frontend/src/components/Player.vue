@@ -35,7 +35,7 @@
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-sitemap
                 span Inventory 
-                label.badge {{items.length}}
+                label.badge 9
             .panel-body
               .row
                 .col-xs-4(v-for='equipment in equipments')

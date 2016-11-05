@@ -14,7 +14,7 @@
         map: {},
         current: {},
         options: {
-          zoom: 13,
+          zoom: 15,
           center: [-5.56, 42.60],
           pitch: 60,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
@@ -29,8 +29,18 @@
       self.geoLocate();
       factory.getLocations((data) => {
         self.locations = data;
-        self.refresh();
+        for (var i = 0; i < self.locations.length; i++) {
+          self.addLocation(self.locations[i]);
+        }
       });
+      /*
+      setInterval(function() {
+        factory.addLocation((location) => {
+          self.locations.push(location);
+          self.addLocation(location);
+        });
+      }, 10000);
+      */
     },
     methods: {
       createMap: function() {
@@ -42,6 +52,9 @@
           zoom: self.options.zoom,
           center: self.options.center,
           attributionControl: { position: 'bottom-left' }
+        });
+        self.map.on('click', function(e) {
+          console.log(e.lngLat);
         });
       },
       geoLocate: function() {
@@ -86,45 +99,37 @@
           self.avatar.setLngLat(location);
         }
       },
-      refresh: function() {
-        for (var i = 0; i < self.locations.length; i++) {
-          self.addLocation(self.locations[i]);
-        }
-      },
       addLocation: function(location) {
-        // create a marker in html
         var marker = document.createElement('div');
         marker.id = location.id;
-        marker.style.zIndex = 1;
-        marker.style.left = -30 + 'px';
-        marker.style.top = -77 + 'px';
-        // add an icon
+        marker.style.zIndex = location.id;
         var icon = document.createElement('img');
         icon.src = 'dist/img/locations/' + location.image + '.png';
         icon.className = 'map-location';
+        marker.style.left = icon.src.width + 'px';
+        marker.style.top = icon.src.height + 'px';
         marker.appendChild(icon);
-        // add a shadow
-        //var shadow = document.createElement('div');
-        //shadow.className = 'map-location-shadow';
-        //marker.appendChild(shadow);
         marker.addEventListener('click', function(event) {
           switch(location.image){
-            case 'inn':
-              self.$router.push({ name: 'inn' });
+            case 'city':
+              self.$router.push({ name: 'city' });
               break;
             case 'forge':
               self.$router.push({ name: 'forge' });
               break;
+            case 'inn':
+              self.$router.push({ name: 'inn' });
+              break;
             case 'dungeon':
             case 'tower':
             case 'mine':
+            case 'ruins':
             case 'castle':
               self.$router.push({ name: 'location', params: { locationId: location.id }});
               break;
           }
         });
-        // add marker to map
-        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(self.map);
+        new mapboxgl.Marker(marker, { offset: [-(icon.naturalWidth/2),-icon.naturalHeight] }).setLngLat([location.lat, location.lng]).addTo(self.map);
       }
     }
   }
@@ -140,7 +145,6 @@
     height: 100% !important;
   }
   .map-location {
-    width: 60px;
   }
   .map-avatar {
     width: 60px;
