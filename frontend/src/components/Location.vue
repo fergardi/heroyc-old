@@ -8,7 +8,7 @@
               small Battle monsters for loot
       .row#battle
         .col-xs-6
-          .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.magic }, { zoomOut: states.player.dead }, {rubberBand: states.player.buff}]')
+          .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.buff }, { zoomOut: states.player.dead }, {rubberBand: states.player.magic}]')
             .panel-heading
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
@@ -35,11 +35,11 @@
               br
               a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
-                span Simple Attack
+                span Simple Attack 
                 span.label.label-danger {{strength}}
               a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, {disabled: states.buttons}]', @click='buff(skill.name, skill.vitality, skill.strength, skill.agility, skill.intelligence, skill.defense)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
-                span {{skill.name}}
+                span {{skill.name}} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
                 span.label.label-primary(v-if='skill.intelligence > 0') {{skill.intelligence}}
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
@@ -47,7 +47,7 @@
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
               a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{spell.name}}
+                span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
                 span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
                 span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
@@ -131,7 +131,7 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Skill.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
-          .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
+          .panel.text-center.animated(v-bind:class='[{ rubberBand: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
