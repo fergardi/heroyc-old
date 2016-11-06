@@ -2,27 +2,27 @@
   .container
     #Spells
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 Spells 
               small Magic resources
         .col-xs-12
-          form.form-horizontal.form-group
+          form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find spells')
+              input#search(v-model='filter', type='text', class='form-control', placeholder='Find spells')
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
-        .col-md-3.col-xs-6(v-for='spell in filtered')
+        .col-md-3.col-xs-3(v-for='spell in filtered')
           .panel.text-center(v-bind:class='"panel-" + spell.family')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + spell.icon')  
                 span {{spell.name}}
             .panel-body
-              img.thumbnail.spell(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+              img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
               .progress
                 .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
               .progress

@@ -21,7 +21,7 @@
                 | Items
             li
               router-link(to='/resources', data-toggle="collapse" data-target=".navbar-collapse.in")
-                i.ra.ra-lg.ra-fw.ra-diamond
+                i.ra.ra-lg.ra-fw.ra-gold-bar
                 | Resources
             li
               router-link(to='/spells', data-toggle="collapse" data-target=".navbar-collapse.in")

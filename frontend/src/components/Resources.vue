@@ -2,20 +2,20 @@
   .container
     #Resources
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 Resources 
               small Random shit
         .col-xs-12
-          form.form-horizontal.form-group
+          form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
-                i.fa.fa-lg.fa-lg.fa-search
+                i.fa.fa-search
               input(v-model='filter', type='text', class='form-control', placeholder='Find resources')
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-lg.fa-lg.fa-trash
-        .col-md-3.col-xs-6(v-for='resource in filtered')
+                  i.fa.fa-trash
+        .col-md-3.col-xs-3(v-for='resource in filtered')
           .panel.text-center(v-bind:class='"panel-" + resource.rarity')
             .panel-heading
               .panel-title
@@ -23,7 +23,7 @@
                 span {{resource.name}}
             .panel-body
               img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
-              p {{resource.description}}
+              p Used for crafting
 </template>
 
 <script>

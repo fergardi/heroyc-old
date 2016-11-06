@@ -16,7 +16,7 @@
         options: {
           zoom: 15,
           center: [-5.56, 42.60],
-          pitch: 60,
+          pitch: 0,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5'
         },
@@ -33,14 +33,6 @@
           self.addLocation(self.locations[i]);
         }
       });
-      /*
-      setInterval(function() {
-        factory.addLocation((location) => {
-          self.locations.push(location);
-          self.addLocation(location);
-        });
-      }, 10000);
-      */
     },
     methods: {
       createMap: function() {
@@ -52,9 +44,6 @@
           zoom: self.options.zoom,
           center: self.options.center,
           attributionControl: { position: 'bottom-left' }
-        });
-        self.map.on('click', function(e) {
-          console.log(e.lngLat);
         });
       },
       geoLocate: function() {
@@ -77,7 +66,7 @@
       updatePosition: function(location) {
         if (self.avatar === null) {
           var marker = document.createElement('div');
-          marker.style.zIndex = 5;
+          marker.style.zIndex = 10;
           marker.style.left = -30 + 'px';
           marker.style.top = -77 + 'px';
           // add an icon
@@ -100,14 +89,16 @@
         }
       },
       addLocation: function(location) {
-        var marker = document.createElement('div');
-        marker.id = location.id;
-        marker.style.zIndex = location.id;
         var icon = document.createElement('img');
         icon.src = 'dist/img/locations/' + location.image + '.png';
         icon.className = 'map-location';
-        marker.style.left = icon.src.width + 'px';
-        marker.style.top = icon.src.height + 'px';
+        var marker = document.createElement('div');
+        marker.id = location.id;
+        marker.style.zIndex = 5;
+        marker.style.width = icon.naturalWidth + 'px';
+        marker.style.height = icon.naturalHeight + 'px';
+        marker.style.left = -icon.naturalWidth/2 + 'px';
+        marker.style.top = -icon.naturalHeight + 'px';
         marker.appendChild(icon);
         marker.addEventListener('click', function(event) {
           switch(location.image){
@@ -129,7 +120,8 @@
               break;
           }
         });
-        new mapboxgl.Marker(marker, { offset: [-(icon.naturalWidth/2),-icon.naturalHeight] }).setLngLat([location.lat, location.lng]).addTo(self.map);
+        //new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lat, location.lng]).addTo(self.map);
+        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(self.map);
       }
     }
   }

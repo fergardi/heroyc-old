@@ -59,6 +59,7 @@ i.ra-lg {
 }
 .alert,
 .panel-heading,
+.panel-body,
 .btn,
 .list-group,
 .list-group-item {
@@ -67,7 +68,7 @@ i.ra-lg {
 }
 .thumbnail {
   display: inline-block;
-  width: 90px;
+  width: 100px;
 }
 .page-header h1 small {
   color: inherit;
@@ -117,4 +118,10 @@ span.label {
 }
 .equip {
   cursor: pointer;
+}
+.stats {
+  display: flex;
+}
+.mapboxgl-ctrl-attrib {
+  display: none;
 }

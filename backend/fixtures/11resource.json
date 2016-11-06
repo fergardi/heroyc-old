@@ -114,9 +114,19 @@
     "data": {
       "name": "Flask",
       "rarity": "danger",
-      "icon": "flask",
+      "icon": "rune-stone",
       "description": "Description",
       "image": "flask"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "Skull",
+      "rarity": "danger",
+      "icon": "rune-stone",
+      "description": "Description",
+      "image": "skull"
     }
   },
   {

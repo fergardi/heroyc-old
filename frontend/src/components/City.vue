@@ -41,11 +41,10 @@
                     span.badge.silver {{sale.silver}}
                   .col-xs-4
                     span.badge.copper {{sale.copper}}
-                .panel-body
-                  .row
-                    button.btn.btn-success.btn-block
-                      i.fa.fa-lg.fa-check
-                      | Buy
+              .panel-body
+                button.btn.btn-success.btn-block
+                  i.fa.fa-lg.fa-check
+                  | Buy
           template(v-if='sale.Resource')
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-heading
@@ -61,11 +60,10 @@
                     span.badge.silver {{sale.silver}}
                   .col-xs-4
                     span.badge.copper {{sale.copper}}
-                .panel-body
-                  .row
-                    button.btn.btn-success.btn-block
-                      i.fa.fa-lg.fa-check
-                      | Buy
+              .panel-body
+                button.btn.btn-success.btn-block
+                  i.fa.fa-lg.fa-check
+                  | Buy
           template(v-if='sale.Recipe')
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
               .panel-heading
@@ -98,11 +96,10 @@
                     span.badge.silver {{sale.silver}}
                   .col-xs-4
                     span.badge.copper {{sale.copper}}
-                .panel-body
-                  .row
-                    button.btn.btn-success.btn-block
-                      i.fa.fa-lg.fa-check 
-                      | Buy
+              .panel-body
+                button.btn.btn-success.btn-block
+                  i.fa.fa-lg.fa-check 
+                  | Buy
 </template>
 
 <script>

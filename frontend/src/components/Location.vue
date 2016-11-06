@@ -2,25 +2,37 @@
   .container
     #Location
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 {{location.name}} 
               small Battle monsters for loot
-      .row
+      .row#battle
         .col-xs-6
           .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.magic }, { zoomOut: states.player.dead }]')
             .panel-heading
               .panel-title
-                i.fa.fa-fw.fa-lg.fa-user
-                span {{player.name}}
+                i.ra.ra-lg.ra-fw.ra-player-king
+                span {{player.name}} 
+                label.badge {{player.level}}
             .panel-body
-              img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
-              hr
-              .progress
-                .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
-              .progress
-                .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
-              hr
+              .row
+                .col-xs-4
+                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
+                .col-xs-8
+                  br
+                  .progress
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
+                  .progress
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
+                  .progress
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
+                  .progress
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
+                  .progress
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+                  .progress
+                    .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
+              br
               a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span Melee
@@ -38,7 +50,7 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Item.icon')  
                 span {{location.Item.name}}
             .panel-body
-              img.thumbnail.item(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity', data-toggle='tooltip', v-bind:title='location.Item.name')
+              img.thumbnail(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity', data-toggle='tooltip', v-bind:title='location.Item.name')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Item.strength * 10 + "%"')
               .progress
@@ -79,7 +91,7 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Resource.icon')  
                 span {{location.Resource.name}}
             .panel-body
-              img.thumbnail.resource(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity', data-toggle='tooltip', v-bind:title='location.Resource.name')
+              img.thumbnail(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity', data-toggle='tooltip', v-bind:title='location.Resource.name')
               p {{location.Resource.description}}
           .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Spell')
             .panel-heading
@@ -87,7 +99,7 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
                 span {{location.Spell.name}}
             .panel-body
-              img.thumbnail.spell(v-bind:src='"dist/img/spells/" + location.Spell.type + "/" + location.Spell.image + ".png"', v-bind:class='"panel-" + location.Spell.family', data-toggle='tooltip', v-bind:title='location.Spell.name')
+              img.thumbnail(v-bind:src='"dist/img/spells/" + location.Spell.type + "/" + location.Spell.image + ".png"', v-bind:class='"panel-" + location.Spell.family', data-toggle='tooltip', v-bind:title='location.Spell.name')
               .progress
                 .progress-bar.progress-bar-danger(v-bind:style='"width: " + location.Spell.damage * 10 + "%"')
               .progress
@@ -98,13 +110,27 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
-                span {{location.Monster.name}}
+                span {{location.Monster.name}} 
+                label.badge ?
             .panel-body
-              img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='location.Monster.name')
-              hr
-              .progress
-                .progress-bar.progress-bar-danger(v-bind:style='"width: " + location.Monster.vitality + "%"')
-              hr
+              .row
+                .col-xs-4
+                  img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='location.Monster.name')
+                .col-xs-8
+                  br
+                  .progress
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Monster.strength + "%"')
+                  .progress
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Monster.intelligence + "%"')
+                  .progress
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + location.Monster.vitality + "%"')
+                  .progress
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Monster.agility + "%"')
+                  .progress
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Monster.defense + "%"')
+                  .progress
+                    .progress-bar.progress-bar-default(v-bind:style='"width: 0%"')
+              br
               a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}}

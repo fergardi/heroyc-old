@@ -98,6 +98,12 @@ const factory = {
       callback(response.data);
     });
   },
+  getQuests: function(callback) {
+    $.get(`${api}/quests`)
+    .then(function(response) {
+      callback(response.data);
+    });
+  },
   updateEquipment: function(player, item, callback) {
     $.put(`${api}/players/${player}/equipments/${item}`)
     .then(function(ok) {

@@ -2,11 +2,12 @@
   .container
     #Player
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 Player 
               small Character
-        .col-md-4.col-xs-12
+      .row#character
+        .col-md-6.col-xs-6
           .panel.panel-default.text-center
             .panel-heading
               .panel-title
@@ -14,44 +15,46 @@
                 span {{name}} 
                 label.badge {{level}}
             .panel-body
-              img.thumbnail.slot(v-bind:src='"dist/img/player/" + image + ".png"', data-toggle='tooltip', v-bind:title='name')
-              hr
-              .progress
-                .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
-              hr
-              .progress
-                .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
-              .progress
-                .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
-              .progress
-                .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
-              .progress
-                .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
-              .progress
-                .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
-        .col-md-4.col-xs-12
-          .panel.panel-warning.text-center
-            .panel-heading
-              .panel-title
-                i.fa.fa-fw.fa-lg.fa-sitemap
-                span Inventory 
-                label.badge 9
-            .panel-body
               .row
-                .col-xs-4(v-for='equipment in equipments')
-                  img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity', data-toggle='tooltip', v-bind:title='equipment.name')
+                .col-xs-4
+                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + image + ".png"', data-toggle='tooltip', v-bind:title='name')
+                .col-xs-8
+                  br
                   .progress
-                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
                   .progress
-                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
                   .progress
-                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
                   .progress
-                    .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
                   .progress
-                    .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
-        .col-md-4.col-xs-12
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+                  .progress
+                    .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
+        .col-md-6.col-xs-6
           .panel-group(id='parent')
+            .panel.panel-warning.text-center
+              .panel-heading
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#inventory')
+                  i.fa.fa-fw.fa-lg.fa-sitemap
+                  span Inventory 
+                  label.badge 9
+              .panel-collapse.collapse(id='inventory')
+                .panel-body
+                  .row
+                    .col-xs-4(v-for='equipment in equipments')
+                      img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity', data-toggle='tooltip', v-bind:title='equipment.name')
+                      .progress
+                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
             .panel.panel-success.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#items')
@@ -103,6 +106,14 @@
                         .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
                       .progress
                         .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
+            .panel.panel-danger.text-center
+              .panel-heading
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#quests')
+                  i.ra.ra-fw.ra-lg.ra-crystal-wand
+                  span Quests 
+                  label.badge ?
+              .panel-collapse.collapse(id='quests')
+                .panel-body
 </template>
 
 <script>
