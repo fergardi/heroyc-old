@@ -2,12 +2,12 @@
   .container
     #Inn
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 Inn 
               small Start quests
         .col-xs-12
-          form.form-horizontal.form-group
+          form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-lg.fa-search
