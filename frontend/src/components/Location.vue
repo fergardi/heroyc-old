@@ -8,7 +8,7 @@
               small Battle monsters for loot
       .row#battle
         .col-xs-6
-          .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.magic }, { zoomOut: states.player.dead }]')
+          .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.magic }, { zoomOut: states.player.dead }, {rubberBand: states.player.buff}]')
             .panel-heading
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
@@ -35,14 +35,22 @@
               br
               a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
-                span Melee
+                span Simple Attack
                 span.label.label-danger {{strength}}
+              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, {disabled: states.buttons}]', @click='buff(skill.name, skill.vitality, skill.strength, skill.agility, skill.intelligence, skill.defense)')
+                img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
+                span {{skill.name}}
+                span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
+                span.label.label-primary(v-if='skill.intelligence > 0') {{skill.intelligence}}
+                span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
+                span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
+                span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
               a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}}
-                span.label.label-danger {{spell.damage}}
-                span.label.label-primary {{spell.mana}}
-                span.label.label-success {{spell.heal}}
+                span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
+                span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
+                span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
         .col-xs-6
           .panel.text-center.animated(v-bind:class='["panel-" + location.Item.rarity, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Item')
             .panel-heading
@@ -106,6 +114,23 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Spell.heal * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Spell.mana * 10 + "%"')
+          .panel.text-center.animated(v-bind:class='["panel-" + location.Skill.family, { tada: states.monster.loot }, { hidden: !states.monster.loot }]', v-if='location.Skill')
+            .panel-heading
+              .panel-title
+                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Skill.icon')  
+                span {{location.Skill.name}}
+            .panel-body
+              img.thumbnail(v-bind:src='"dist/img/skills/" + location.Skill.image + ".png"', v-bind:class='"panel-" + location.Skill.family', data-toggle='tooltip', v-bind:title='location.Skill.name')
+              .progress
+                .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Skill.strength * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Skill.intelligence * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-danger(v-bind:style='"width: " + location.Skill.vitality * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Skill.agility * 10 + "%"')
+              .progress
+                .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
           .panel.text-center.animated(v-bind:class='[{ flash: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
@@ -134,14 +159,14 @@
               a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}}
-                span.label.label-danger {{spell.damage}}
-                span.label.label-primary {{spell.mana}}
-                span.label.label-success {{spell.heal}}
+                span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
+                span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
+                span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
 </template>
 
 <script>
   import factory from '../factories/factory'
-  import {melee, distance, magic, strength, vitality, agility, intelligence, defense} from '../services/battle'
+  import {melee, magic, buff} from '../services/battle'
   export default {
     name: 'Location',
     data: function() { 
@@ -160,14 +185,13 @@
           buttons: false,
           monster: {
             melee: false,
-            distance: false,
             magic: false,
+            buff: false,
             dead: false,
             loot: false
           },
           player: {
             melee: false,
-            distance: false,
             magic: false,
             dead: false
           }
@@ -181,6 +205,7 @@
         self.player.level = data.level;
         self.player.equipments = data.Equipments;
         self.player.spells = data.Spells;
+        self.player.skills = data.Skills;
         self.player.image = data.image;
         self.player.name = data.name;
         self.player.weapon = data.Equipments[3].image;
@@ -219,6 +244,10 @@
                 factory.addItem(self.player.id, self.location.Item.id);
                 notification.success('You looted <strong>' + self.location.Item.name + '</strong>');
                 break;
+              case 'ruins':
+                factory.addSkill(self.player.id, self.location.Skill.id);
+                notification.success('You adquired <strong>' + self.location.Skill.name + '</strong>');
+                break;
             }
           }, constants.notification.duration * 2);
         }
@@ -236,11 +265,11 @@
       melee: function(dmg) {
         melee(self.states, self.location, dmg);
       },
-      distance: function(dmg) {
-        distance(self.states, self.location, dmg);
-      },
       magic: function(name, dmg, heal, mana){
         magic(self.states, self.location, self.player, name, dmg, heal, mana);
+      },
+      buff: function(name, vitality, strength, agility, intelligence, defense){
+        buff(self.states, self.location, self.player, name, vitality, strength, agility, intelligence, defense);
       }
     },
     computed: {

@@ -119,8 +119,9 @@ span.label {
 .equip {
   cursor: pointer;
 }
-.stats {
+.vertical-align {
   display: flex;
+  align-items: center;
 }
 .mapboxgl-ctrl-attrib {
   display: none;

@@ -1,0 +1,72 @@
+[
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Vitality Buff",
+      "vitality": 5,
+      "strength": 0,
+      "agility": 0,
+      "intelligence": 0,
+      "defense": 0,
+      "family": "danger",
+      "icon": "aura",
+      "image": "vitality"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Agility Buff",
+      "vitality": 0,
+      "strength": 0,
+      "agility": 5,
+      "intelligence": 0,
+      "defense": 0,
+      "family": "success",
+      "icon": "aura",
+      "image": "agility"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Strength Buff",
+      "vitality": 0,
+      "strength": 5,
+      "agility": 0,
+      "intelligence": 0,
+      "defense": 0,
+      "family": "warning",
+      "icon": "aura",
+      "image": "strength"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Intelligence Buff",
+      "vitality": 0,
+      "strength": 0,
+      "agility": 0,
+      "intelligence": 5,
+      "defense": 0,
+      "family": "primary",
+      "icon": "aura",
+      "image": "intelligence"
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "name": "Defense Buff",
+      "vitality": 0,
+      "strength": 0,
+      "agility": 0,
+      "intelligence": 0,
+      "defense": 5,
+      "family": "info",
+      "icon": "aura",
+      "image": "defense"
+    }
+  }
+]

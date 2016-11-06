@@ -4,6 +4,7 @@ var items = [];
 var resources = [];
 var recipes = [];
 var spells = [];
+var skills = [];
 var monsters = [];
 
 const factory = {
@@ -49,6 +50,17 @@ const factory = {
       });
     } else {
       callback(spells);
+    }
+  },
+  getSkills: function(callback) {
+    if (skills.length === 0) {
+      $.get(`${api}/skills`)
+      .then(function(response) {
+        skills = response.data;
+        callback(skills);
+      });
+    } else {
+      callback(skills);
     }
   },
   getMonsters: function(callback) {
@@ -121,6 +133,12 @@ const factory = {
   },
   addSpell: function(player, spell) {
     $.post(`${api}/players/${player}/spells/add/${spell}`);
+  },
+  addQuest: function(player, quest) {
+    $.post(`${api}/players/${player}/quests/add/${quest}`);
+  },
+  addSkill: function(player, skill) {
+    $.post(`${api}/players/${player}/skills/add/${skill}`);
   },
   addRecipe: function(player, recipe) {
     $.post(`${api}/players/${player}/recipes/add/${recipe}`);

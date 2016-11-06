@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 router.get('/:playerId', function(req, res) {
   models.Player.find({
     where: { id: req.params.playerId }, 
-    include: [models.Item, models.Spell, models.Resource, { model: models.Recipe, include: [{ model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}]}], 
+    include: [models.Item, models.Spell, models.Resource, models.Skill, { model: models.Recipe, include: [{ model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}]}], 
     order: [
       [models.Item, 'id', 'ASC'], 
       [models.Spell, 'id', 'ASC'], 
@@ -99,6 +99,20 @@ router.post('/:playerId/spells/add/:spellId', function(req, res) {
       player.addSpell(spell)
       .then(function(){
         res.json({status: 'OK', data: spell});          
+      });
+    });
+  });
+});
+
+// add skill to player
+router.post('/:playerId/skills/add/:skillId', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    models.Skill.findById(req.params.skillId)
+    .then(function(skill){
+      player.addSkill(skill)
+      .then(function(){
+        res.json({status: 'OK', data: skill});          
       });
     });
   });

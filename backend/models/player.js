@@ -31,6 +31,9 @@ module.exports = function(sequelize, DataTypes) {
         // m2m association
         models.Spell.belongsToMany(models.Player, {through: 'PlayerSpell'});
         models.Player.belongsToMany(models.Spell, {through: 'PlayerSpell'});
+        // m2m association
+        models.Skill.belongsToMany(models.Player, {through: 'PlayerSkill'});
+        models.Player.belongsToMany(models.Skill, {through: 'PlayerSkill'});
         // custom m2m association with "quantity" to count ammount of resources of the same type
         var PlayerResource = sequelize.define('PlayerResource', {
           quantity: DataTypes.INTEGER

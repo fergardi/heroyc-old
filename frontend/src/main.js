@@ -5,6 +5,7 @@ import App from './App.vue'
 import Items from './components/Items.vue'
 import Resources from './components/Resources.vue'
 import Spells from './components/Spells.vue'
+import Skills from './components/Skills.vue'
 import Recipes from './components/Recipes.vue'
 import Player from './components/Player.vue'
 import Monsters from './components/Monsters.vue'
@@ -23,6 +24,7 @@ var router = new VueRouter({
     { path: '/items', component: Items, name: 'items' },
     { path: '/resources', component: Resources, name: 'resources' },
     { path: '/spells', component: Spells, name: 'spells' },
+    { path: '/skills', component: Skills, name: 'skills' },
     { path: '/recipes', component: Recipes, name: 'recipes' },
     { path: '/player', component: Player, name: 'player' },
     { path: '/monsters', component: Monsters, name: 'monsters' },

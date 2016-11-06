@@ -28,6 +28,10 @@
                 i.ra.ra-lg.ra-fw.ra-crystal-wand
                 | Spells
             li
+              router-link(to='/skills', data-toggle="collapse" data-target=".navbar-collapse.in")
+                i.ra.ra-lg.ra-fw.ra-aura
+                | Skills
+            li
               router-link(to='/recipes', data-toggle="collapse" data-target=".navbar-collapse.in")
                 i.ra.ra-lg.ra-fw.ra-scroll-unfurled
                 | Recipes

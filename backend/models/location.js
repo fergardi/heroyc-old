@@ -22,6 +22,9 @@ module.exports = function(sequelize, DataTypes) {
         models.Spell.hasMany(models.Location);
         models.Location.belongsTo(models.Spell);
         // m2m association
+        models.Skill.hasMany(models.Location);
+        models.Location.belongsTo(models.Skill);
+        // m2m association
         models.Recipe.hasMany(models.Location);
         models.Location.belongsTo(models.Recipe);
       }

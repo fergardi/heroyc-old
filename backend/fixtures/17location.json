@@ -77,7 +77,8 @@
       "lat": -5.5448237191811245,
       "lng": 42.61384880947696,
       "image": "ruins",
-      "Monster": { "name": "Ghost" }
+      "Monster": { "name": "Ghost" },
+      "Skill": { "name": "Agility Buff" }
     }
   }
 ]

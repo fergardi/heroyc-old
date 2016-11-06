@@ -22,6 +22,9 @@
         { "name": "Heal" },
         { "name": "Fire" }
       ],
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Resources": [
         { "name": "Gold", "_through": { "quantity": 0 } },
         { "name": "Silver", "_through": { "quantity": 0 } },

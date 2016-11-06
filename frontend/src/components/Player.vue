@@ -19,7 +19,6 @@
                 .col-xs-4
                   img.thumbnail.slot(v-bind:src='"dist/img/player/" + image + ".png"', data-toggle='tooltip', v-bind:title='name')
                 .col-xs-8
-                  br
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
                   .progress
@@ -93,8 +92,8 @@
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#spells')
                   i.ra.ra-fw.ra-lg.ra-crystal-wand
-                  span Spells 
-                  label.badge {{spells.length}}
+                  span Spells & Skills 
+                  label.badge {{spells.length + skills.length}}
               .panel-collapse.collapse(id='spells')
                 .panel-body
                   .row
@@ -106,6 +105,20 @@
                         .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
                       .progress
                         .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
+                  hr
+                  .row
+                    .col-xs-4(v-for='skill in skills')
+                      img.thumbnail.slot(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family', data-toggle='tooltip', v-bind:title='skill.name')
+                      .progress
+                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + skill.intelligence * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + skill.vitality * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-success(v-bind:style='"width: " + skill.agility * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-info(v-bind:style='"width: " + skill.defense * 10 + "%"')
             .panel.panel-danger.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#parent', href='#quests')
@@ -127,6 +140,7 @@
           items: [],
           equipments: [],
           spells: [],
+          skills: [],
           resources: [],
           image: 'avatar',
           level: 0,
@@ -141,6 +155,7 @@
           self.equipments = data.Equipments;
           self.items = data.Items;
           self.spells = data.Spells;
+          self.skills = data.Skills;
           self.resources = data.Resources;
           self.name = data.name;
           self.level = data.level;

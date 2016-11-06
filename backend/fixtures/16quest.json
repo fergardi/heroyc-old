@@ -1,0 +1,82 @@
+[
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Mistery Key",
+      "rarity": "success",
+      "icon": "torch",
+      "image": "key",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Treasure Chest",
+      "rarity": "default",
+      "icon": "torch",
+      "image": "chest",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Magic Mirror",
+      "rarity": "info",
+      "icon": "torch",
+      "image": "mirror",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Royal Scroll",
+      "rarity": "warning",
+      "icon": "torch",
+      "image": "scroll",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Pirate Telescope",
+      "rarity": "primary",
+      "icon": "torch",
+      "image": "telescope",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Cursed Bone",
+      "rarity": "info",
+      "icon": "torch",
+      "image": "bone",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Fired Torch",
+      "rarity": "danger",
+      "icon": "torch",
+      "image": "torch",
+      "description": "Description"
+    }
+  },
+  {
+    "model": "Quest",
+    "data": {
+      "name": "Treasure Map",
+      "rarity": "default",
+      "icon": "torch",
+      "image": "map",
+      "description": "Description"
+    }
+  }
+]
