@@ -14,8 +14,12 @@ body {
 .navbar {
   margin-bottom: 0;
 }
-*:not(.navbar) i {
+*:not(.navbar) i.fa,
+*:not(.navbar) i.ra {
   margin-right: 5px;
+}
+i.ra-lg {
+  line-height: inherit;
 }
 .page-header {
   margin: 23px 0;
@@ -114,7 +118,8 @@ span.label {
   margin-left: 3px;
   border: 1px solid #000;
 }
-.equip, a.list-group-item {
+.equip,
+.list-group-item {
   cursor: pointer;
 }
 .vertical-align {
@@ -124,4 +129,7 @@ span.label {
 }
 .mapboxgl-ctrl-attrib {
   display: none;
+}
+.disabled {
+  pointer-events: none;
 }

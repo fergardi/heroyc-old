@@ -32,11 +32,11 @@
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
-              a.list-group-item(@click='melee(player, location.Monster)', v-bind:class='{disabled: player.states.buttons}')
+              a.list-group-item(v-bind:class='{disabled: player.states.buttons}', @click='melee(player, location.Monster, true)')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span Attack 
                 span.label.label-danger {{player.strength}}
-              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill)')
+              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{skill.name}} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
@@ -44,7 +44,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
-              a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons }]', @click='magic(player, location.Monster, spell)')
+              a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
@@ -68,7 +68,6 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Item.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Item.defense * 10 + "%"')
-
           .panel.text-center.animated(v-bind:class='["panel-" + location.Recipe.Result.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Recipe')
             .panel-heading
               .panel-title
@@ -93,7 +92,6 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Recipe.Result.agility * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Recipe.Result.defense * 10 + "%"')
-
           .panel.text-center.animated(v-bind:class='["panel-" + location.Resource.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Resource')
             .panel-heading
               .panel-title
@@ -133,7 +131,6 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Skill.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
-
           .panel.text-center.animated#monster(v-bind:class='[{ shake: location.Monster.states.melee }, { flash: location.Monster.states.magic }, { bounce: location.Monster.states.buff }, { jello: location.Monster.states.dodge }, { zoomOut: location.Monster.states.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
@@ -158,11 +155,11 @@
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: 0%"')
               br
-              a.list-group-item(@click='melee(location.Monster, player)', v-bind:class='{disabled: location.Monster.states.buttons}')
+              a.list-group-item(v-bind:class='{disabled: location.Monster.states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
                 span Attack 
                 span.label.label-danger {{location.Monster.strength}}
-              a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: location.Monster.states.buttons }]', @click='buff(location.Monster, player, skill)')
+              a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: location.Monster.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{skill.name}} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
@@ -170,7 +167,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
-              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]', @click='magic(location.Monster, player, spell)')
+              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
@@ -308,15 +305,15 @@
       }
     },
     methods: {
-      counter: function() {
+      counterattack: function() {
         var random = [
-          function() { self.melee(self.location.Monster, self.player) },
-          function() { self.magic(self.location.Monster, self.player, self.location.Monster.Spells[Math.floor(Math.random() * self.location.Monster.Spells.length)]) },
-          function() { self.buff(self.location.Monster, self.player, self.location.Monster.Skills[Math.floor(Math.random() * self.location.Monster.Skills.length)]) }
+          function() { self.melee(self.location.Monster, self.player, false) },
+          function() { self.magic(self.location.Monster, self.player, self.location.Monster.Spells[Math.floor(Math.random() * self.location.Monster.Spells.length)], false) },
+          function() { self.buff(self.location.Monster, self.player, self.location.Monster.Skills[Math.floor(Math.random() * self.location.Monster.Skills.length)], false) }
         ];
         random[Math.floor(Math.random() * random.length)]();
       },
-      melee: function(attacker, defender) {
+      melee: function(attacker, defender, counter) {
         if (!attacker.states.buttons) {
           attacker.states.buttons = true;
           defender.states.buttons = true;
@@ -324,36 +321,32 @@
             defender.states.dodge = true;
             notification.warning('<strong>' + defender.name + '</strong> dodged the attack');
             setTimeout(function() {
-              attacker.states.buttons = false;
-              defender.states.buttons = false;
               defender.states.dodge = false;
             }, constants.notification.duration);
           } else {
             defender.states.melee = true;
             notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '/' + defender.defense + '</strong> damage to <strong>' + defender.name + '</strong>');
             setTimeout(function() {
-              attacker.states.buttons = false;
-              defender.states.buttons = false;
               defender.states.melee = false;
               defender.vitality -= Math.max(0, attacker.strength - defender.defense);
             }, constants.notification.duration);
           }
           setTimeout(function() {
-            self.counter();
-          }, constants.notification.duration * 2);
+            attacker.states.buttons = false;
+            defender.states.buttons = false;
+            if (counter) self.counterattack();
+          }, constants.notification.duration * 1.5);
         }
       },
-      magic: function(attacker, defender, spell) {
+      magic: function(attacker, defender, spell, counter) {
         if (!attacker.states.buttons) {
           attacker.states.buttons = true;
           defender.states.buttons = true;
-          attacker.intelligence -= spell.mana;
+          attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
           if (spell.damage > 0) {
             defender.states.magic = true;
             notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + '</strong> to ' + defender.name);
             setTimeout(function() {
-              attacker.states.buttons = false;
-              defender.states.buttons = false;
               defender.states.magic = false;
               defender.vitality -= spell.damage;
             }, constants.notification.duration);
@@ -361,26 +354,24 @@
             attacker.states.magic = true;
             notification.success(attacker.name + ' healed <strong>+' + spell.heal + '</strong>');
             setTimeout(function() {
-              attacker.states.buttons = false;
-              defender.states.buttons = false;
               attacker.states.magic = false;
               attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
             }, constants.notification.duration);
           }
           setTimeout(function() {
-            self.counter();
-          }, constants.notification.duration * 2);
+            attacker.states.buttons = false;
+            defender.states.buttons = false;
+            if (counter) self.counterattack();
+          }, constants.notification.duration * 1.5);
         }
       },
-      buff: function(attacker, defender, skill) {
+      buff: function(attacker, defender, skill, counter) {
         if (!attacker.states.buttons) {
           attacker.states.buttons = true;
           defender.states.buttons = true;
           attacker.states.buff = true;
           notification.success(attacker.name + ' buffed with <strong>' + skill.name + '</strong>');
           setTimeout(function() {
-            attacker.states.buttons = false;
-            defender.states.buttons = false;
             attacker.states.buff = false;
             attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
             attacker.strength = Math.min(100, attacker.strength + skill.strength);
@@ -389,8 +380,10 @@
             attacker.defense = Math.min(100, attacker.defense + skill.defense);
           }, constants.notification.duration);
           setTimeout(function() {
-            self.counter();
-          }, constants.notification.duration * 2);
+            attacker.states.buttons = false;
+            defender.states.buttons = false;
+            if (counter) self.counterattack();
+          }, constants.notification.duration * 1.5);
         }
       },
       strength: function() {
