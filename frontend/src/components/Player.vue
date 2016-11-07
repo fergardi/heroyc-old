@@ -214,9 +214,11 @@
 
 <style lang="stylus" scoped>
   .panel-heading .accordion-toggle:after
-    font-family: 'Glyphicons Halflings';
-    content: "\e114";
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f078";
     float: right;
+    font-size: 1em;
+    line-height: 1em;
   .panel-heading .accordion-toggle.collapsed:after
-    content: "\e080";
+    content: "\f054";
 </style>

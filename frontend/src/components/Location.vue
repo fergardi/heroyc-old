@@ -164,7 +164,6 @@
 
 <script>
   import factory from '../factories/factory'
-  import battle from '../services/battle'
   export default {
     name: 'Location',
     data: function() { 
