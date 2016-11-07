@@ -127,29 +127,23 @@
   }
 </script>
 
-<style>
-  #map {
+<style lang="stylus" scoped>
+  #map
     width: 100%;
     height: 100%;
     min-height: 100%;
-  }
-  .mapboxgl-canvas {
+  .mapboxgl-canvas
     height: 100% !important;
-  }
-  .map-location {
-  }
-  .map-avatar {
+  .map-avatar
     width: 60px;
     height: 60px;
     border-radius: 50%;
-  }
   .map-location-shadow,
-  .map-avatar-shadow {
+  .map-avatar-shadow
     width: 20px;
     height: 7px;
     border-radius: 50%;
     background-color: black;
     opacity: .3;
     margin: 10px auto 0 auto;
-  }
 </style>

@@ -59,7 +59,6 @@
     created: function() {
       self = this;
       factory.getPlayer(this.$route.params.playerId || 1, (data) => {
-        console.log(data);
         self.recipes = data.Recipes;
       });
     },
@@ -78,6 +77,5 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
 </style>

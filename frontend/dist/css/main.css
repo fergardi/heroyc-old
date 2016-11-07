@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
-  background: url('https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg') no-repeat center center fixed;
+  background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,7 +14,8 @@ body {
 .navbar {
   margin-bottom: 0;
 }
-*:not(.navbar) i.fa, *:not(.navbar) i.ra {
+*:not(.navbar) i.fa,
+*:not(.navbar) i.ra {
   margin-right: 5px;
 }
 i.ra-lg {
@@ -63,7 +65,7 @@ i.ra-lg {
 .btn,
 .list-group,
 .list-group-item {
-  background-image: url('https://www.transparenttextures.com/patterns/dust.png');
+  background-image: url("https://www.transparenttextures.com/patterns/dust.png");
   background-repeat: repeat;
 }
 .thumbnail {
@@ -74,28 +76,28 @@ i.ra-lg {
   color: inherit;
 }
 .gold {
-  color: black;
+  color: #000;
   background-color: #e6e600;
 }
 .silver {
-  color: black;
+  color: #000;
   background-color: #ccccb3;
 }
 .copper {
-  color: black;
+  color: #000;
   background-color: #bf8040;
 }
 .mana {
-  color: black;
-  background-color: blue;
+  color: #000;
+  background-color: #00f;
 }
 .heal {
-  color: black;
-  background-color: green;
+  color: #000;
+  background-color: #008000;
 }
 .damage {
-  color: black;
-  background-color: red;
+  color: #000;
+  background-color: #f00;
 }
 .map-container {
   height: calc(100vh - 50px);
@@ -105,16 +107,16 @@ i.ra-lg {
   padding-right: 10px;
 }
 a.list-group-item-primary {
-  color: #2E64FE;
-  background-color: #A9BCF5;
+  color: #2e64fe;
+  background-color: #a9bcf5;
 }
 a.list-group-item-primary:hover {
-  color: #0000FF;
-  background-color: #2E64FE;
+  color: #00f;
+  background-color: #2e64fe;
 }
 span.label {
   margin-left: 3px;
-  border: 1px solid black;
+  border: 1px solid #000;
 }
 .equip {
   cursor: pointer;
@@ -122,6 +124,7 @@ span.label {
 .vertical-align {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .mapboxgl-ctrl-attrib {
   display: none;

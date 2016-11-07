@@ -15,29 +15,28 @@
                 span {{player.name}} 
                 label.badge {{player.level}}
             .panel-body
-              .row
+              .row.vertical-align
                 .col-xs-4
                   img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
                 .col-xs-8
-                  br
                   .progress
-                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + player.strength + "%"')
                   .progress
-                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + intelligence + "%"')
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + player.intelligence + "%"')
                   .progress
-                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + vitality + "%"')
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + player.vitality + "%"')
                   .progress
-                    .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + player.agility + "%"')
                   .progress
-                    .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + player.defense + "%"')
                   .progress
-                    .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
+                    .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
-              a.list-group-item(@click='melee(strength)', v-bind:class='{disabled: states.buttons}')
+              a.list-group-item(@click='melee(player.strength)', v-bind:class='{disabled: states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span Simple Attack 
-                span.label.label-danger {{strength}}
-              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, {disabled: states.buttons}]', @click='buff(skill.name, skill.vitality, skill.strength, skill.agility, skill.intelligence, skill.defense)')
+                span.label.label-danger {{player.strength}}
+              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, {disabled: states.buttons}]', @click='buff(skill)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{skill.name}} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
@@ -45,7 +44,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
-              a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell.name, spell.damage, spell.heal, spell.mana)')
+              a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, {disabled: states.buttons}]', @click='magic(spell)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
@@ -138,11 +137,10 @@
                 span {{location.Monster.name}} 
                 label.badge ?
             .panel-body
-              .row
+              .row.vertical-align
                 .col-xs-4
                   img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='location.Monster.name')
                 .col-xs-8
-                  br
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Monster.strength + "%"')
                   .progress
@@ -166,7 +164,7 @@
 
 <script>
   import factory from '../factories/factory'
-  import {melee, magic, buff} from '../services/battle'
+  import battle from '../services/battle'
   export default {
     name: 'Location',
     data: function() { 
@@ -174,11 +172,17 @@
         player: {
           id: 0,
           level: 0,
+          experience: 0,
           name: '',
           image: 'avatar',
           weapon: 'novicesword',
           equipments: [],
-          spells: []
+          spells: [],
+          vitality: 0,
+          strength: 0,
+          agility: 0,
+          intelligence: 0,
+          defense: 0
         },
         location: {},
         states: {
@@ -209,8 +213,13 @@
         self.player.image = data.image;
         self.player.name = data.name;
         self.player.weapon = data.Equipments[3].image;
+        self.player.vitality = self.vitality();
+        self.player.strength = self.strength();
+        self.player.agility = self.agility();
+        self.player.intelligence = self.intelligence();
+        self.player.defense = self.defense();
       });
-      factory.getLocation(this.$route.params.locationId || 1, (data) => {
+      factory.getLocation(this.$route.params.locationId || 3, (data) => {
         self.location = data;
         setTimeout(function() {
           notification.danger('A wild <strong>' + self.location.Monster.name + '</strong> appeared');
@@ -262,17 +271,57 @@
       }
     },
     methods: {
-      melee: function(dmg) {
-        melee(self.states, self.location, dmg);
+      melee: function(damage) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          self.states.monster.melee = true;
+          notification.danger('You inflicted <strong>-' + damage + ' Vit</strong> to the <strong>' + self.location.Monster.name + '</strong>');
+          setTimeout(function(){
+            self.states.buttons = false;
+            self.states.monster.melee = false;
+            self.location.Monster.vitality -= damage;
+          }, constants.notification.duration);
+        }
       },
-      magic: function(name, dmg, heal, mana){
-        magic(self.states, self.location, self.player, name, dmg, heal, mana);
+      magic: function(spell) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          self.player.intelligence -= spell.mana;
+          if (spell.damage === 0) {
+            self.states.player.magic = true;
+            notification.success('You healed <strong>+' + spell.heal + ' Vit</strong>');
+            setTimeout(function(){
+              self.states.buttons = false;
+              self.states.player.magic = false;
+              self.player.vitality += spell.heal;
+            }, constants.notification.duration);
+          } else {
+            self.states.monster.magic = true;
+            notification.info('You caused <strong>-' + spell.damage + ' Vit</strong> to the ' + self.location.Monster.name);
+            setTimeout(function(){
+              self.states.buttons = false;
+              self.states.monster.magic = false;
+              self.location.Monster.vitality -= spell.damage;
+            }, constants.notification.duration);
+          }
+        }
       },
-      buff: function(name, vitality, strength, agility, intelligence, defense){
-        buff(self.states, self.location, self.player, name, vitality, strength, agility, intelligence, defense);
-      }
-    },
-    computed: {
+      buff: function(skill) {
+        if (!self.states.buttons) {
+          self.states.buttons = true;
+          self.states.player.buff = true;
+          notification.success('You buffed yourself with <strong>' + skill.name + '</strong>');
+          setTimeout(function(){
+            self.states.buttons = false;
+            self.states.player.buff = false;
+            self.player.vitality += skill.vitality;
+            self.player.strength += skill.strength;
+            self.player.agility += skill.agility;
+            self.player.intelligence += skill.intelligence;
+            self.player.defense += skill.defense;
+          }, constants.notification.duration);  
+        }
+      },
       strength: function() {
         var str = self.player.level;
         for(var i = 0; i < self.player.equipments.length; i++) {
@@ -312,5 +361,5 @@
   }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 </style>

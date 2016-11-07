@@ -212,13 +212,11 @@
     }
 </script>
 
-<style scoped>
-  .panel-heading .accordion-toggle:after {
+<style lang="stylus" scoped>
+  .panel-heading .accordion-toggle:after
     font-family: 'Glyphicons Halflings';
     content: "\e114";
     float: right;
-  }
-  .panel-heading .accordion-toggle.collapsed:after {
+  .panel-heading .accordion-toggle.collapsed:after
     content: "\e080";
-  }
 </style>

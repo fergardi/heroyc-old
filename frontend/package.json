@@ -1,17 +1,19 @@
 {
   "name": "heroyc",
   "description": "A Vue.js project",
-  "author": "TECNOSYLVA\fgarcia <fernando.garcia@xeridia.com>",
+  "author": "fergardi <fergardi@gmail.com>",
   "private": true,
   "scripts": {
     "watchify": "watchify -vd -p [ browserify-hmr -p 8888 -u localhost:8888 ] -e src/main.js -o dist/build.js",
     "serve": "http-server -p 4000 -o -s -c 1",
-    "dev": "npm-run-all --parallel watchify serve",
+    "styles": "stylus --include-css -w src/stylus/ -o dist/css/",
+    "dev": "npm-run-all --parallel watchify serve styles",
     "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
   },
   "dependencies": {
     "axios": "^0.15.2",
     "pug": "^2.0.0-beta6",
+    "stylus": "^0.54.5",
     "vue": "^2.0.1",
     "vue-router": "^2.0.1"
   },
