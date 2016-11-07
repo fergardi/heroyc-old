@@ -8,7 +8,7 @@
               small Battle monsters for loot
       .row#battle
         .col-xs-6
-          .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { flash: player.states.magic }]')
+          .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
             .panel-heading
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
@@ -134,7 +134,7 @@
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
 
-          .panel.text-center.animated(v-bind:class='[{ shake: location.Monster.states.melee }, { flash: location.Monster.states.magic }, { bounce: location.Monster.states.buff }, { zoomOut: location.Monster.states.dead }, "panel-" + location.Monster.type]')
+          .panel.text-center.animated#monster(v-bind:class='[{ shake: location.Monster.states.melee }, { flash: location.Monster.states.magic }, { bounce: location.Monster.states.buff }, { jello: location.Monster.states.dodge }, { zoomOut: location.Monster.states.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
@@ -159,7 +159,7 @@
                     .progress-bar.progress-bar-default(v-bind:style='"width: 0%"')
               br
               a.list-group-item(@click='melee(location.Monster, player)', v-bind:class='{disabled: location.Monster.states.buttons}')
-                img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
+                img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
                 span Attack 
                 span.label.label-danger {{location.Monster.strength}}
               a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: location.Monster.states.buttons }]', @click='buff(location.Monster, player, skill)')
@@ -172,7 +172,7 @@
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
               a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]', @click='magic(location.Monster, player, spell)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{spell.name}}
+                span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
                 span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
                 span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
@@ -189,8 +189,8 @@
           level: 0,
           experience: 0,
           name: '',
-          image: '',
-          weapon: '',
+          image: 'avatar',
+          weapon: 'novicesword',
           equipments: [],
           spells: [],
           vitality: 0,
@@ -201,6 +201,7 @@
           states: {
             buttons: false,
             melee: false,
+            dodge: false,
             magic: false,
             buff: false,
             loot: false,
@@ -209,9 +210,11 @@
         },
         location: {
           Monster: {
+            image: 'zombie',
             states: {
               buttons: false,
               melee: false,
+              dodge: false,
               magic: false,
               buff: false,
               loot: false,
@@ -245,6 +248,7 @@
           states: {
             buttons: false,
             melee: false,
+            dodge: false,
             magic: false,
             buff: false,
             loot: false,
@@ -304,43 +308,55 @@
       }
     },
     methods: {
+      counter: function() {
+        $("#monster a.list-group-item:eq(" + Math.floor(Math.random() * $("#monster a.list-group-item").length) + ")").trigger('click');
+      },
       melee: function(attacker, defender) {
         if (!attacker.states.buttons) {
           attacker.states.buttons = true;
           defender.states.buttons = true;
-          defender.states.melee = true;
-          notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '</strong> damage to <strong>' + defender.name + '</strong>');
-          setTimeout(function() {
-            attacker.states.buttons = false;
-            defender.states.buttons = false;
-            defender.states.melee = false;
-            defender.vitality -= attacker.strength;
-          }, constants.notification.duration);
+          if (Math.random() * 100 < defender.agility) {
+            defender.states.dodge = true;
+            notification.warning('<strong>' + defender.name + '</strong> dodged the attack');
+            setTimeout(function() {
+              attacker.states.buttons = false;
+              defender.states.buttons = false;
+              defender.states.dodge = false;
+            }, constants.notification.duration);
+          } else {
+            defender.states.melee = true;
+            notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '/' + defender.defense + '</strong> damage to <strong>' + defender.name + '</strong>');
+            setTimeout(function() {
+              attacker.states.buttons = false;
+              defender.states.buttons = false;
+              defender.states.melee = false;
+              defender.vitality -= Math.max(0, attacker.strength - defender.defense);
+            }, constants.notification.duration);
+          }
         }
       },
       magic: function(attacker, defender, spell) {
-        console.log(attacker, defender);
         if (!attacker.states.buttons) {
           attacker.states.buttons = true;
           defender.states.buttons = true;
           attacker.intelligence -= spell.mana;
           if (spell.damage > 0) {
             defender.states.magic = true;
-            notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + ' Vit</strong> to ' + defender.name);
+            notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + '/' + defender.defense + '</strong> to ' + defender.name);
             setTimeout(function() {
               attacker.states.buttons = false;
               defender.states.buttons = false;
               defender.states.magic = false;
-              defender.vitality -= spell.damage;
+              defender.vitality -= Math.max(0, spell.damage - defender.defense);
             }, constants.notification.duration);
           } else {
             attacker.states.magic = true;
-            notification.success(attacker.name + ' healed <strong>+' + spell.heal + ' Vit</strong>');
+            notification.success(attacker.name + ' healed <strong>+' + spell.heal + '</strong>');
             setTimeout(function() {
               attacker.states.buttons = false;
               defender.states.buttons = false;
               attacker.states.magic = false;
-              attacker.vitality += spell.heal;
+              attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
             }, constants.notification.duration);
           }
         }
@@ -355,11 +371,11 @@
             attacker.states.buttons = false;
             defender.states.buttons = false;
             attacker.states.buff = false;
-            attacker.vitality += skill.vitality;
-            attacker.strength += skill.strength;
-            attacker.agility += skill.agility;
-            attacker.intelligence += skill.intelligence;
-            attacker.defense += skill.defense;
+            attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
+            attacker.strength = Math.min(100, attacker.strength + skill.strength);
+            attacker.agility = Math.min(100, attacker.agility + skill.agility);
+            attacker.intelligence = Math.min(100, attacker.intelligence + skill.intelligence);
+            attacker.defense = Math.min(100, attacker.defense + skill.defense);
           }, constants.notification.duration);  
         }
       },
