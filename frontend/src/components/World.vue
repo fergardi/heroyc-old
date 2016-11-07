@@ -126,18 +126,19 @@
   }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
   #map
     width: 100%;
     height: 100%;
     min-height: 100%;
   .mapboxgl-canvas
     height: 100% !important;
+  .map-location
+    width: 50%;
   .map-avatar
     width: 60px;
     height: 60px;
     border-radius: 50%;
-  .map-location-shadow,
   .map-avatar-shadow
     width: 20px;
     height: 7px;

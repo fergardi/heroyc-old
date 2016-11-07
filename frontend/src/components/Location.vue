@@ -8,7 +8,7 @@
               small Battle monsters for loot
       .row#battle
         .col-xs-6
-          .panel.panel-default.text-center.animated(v-bind:class='[{ flash: states.player.buff }, { zoomOut: states.player.dead }, {rubberBand: states.player.magic}]')
+          .panel.panel-default.text-center.animated(v-bind:class='[{ bounce: states.player.buff }, { zoomOut: states.player.dead }, {flash: states.player.magic}]')
             .panel-heading
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
@@ -130,7 +130,7 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Skill.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
-          .panel.text-center.animated(v-bind:class='[{ rubberBand: states.monster.melee }, { bounce: states.monster.distance }, { shake: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
+          .panel.text-center.animated(v-bind:class='[{ shake: states.monster.melee }, { flash: states.monster.magic }, { zoomOut: states.monster.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')

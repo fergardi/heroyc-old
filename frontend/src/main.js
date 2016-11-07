@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueI18n from 'vue-i18n'
+import locales from './services/locales'
 
 import App from './App.vue'
 import Items from './components/Items.vue'
@@ -16,6 +18,13 @@ import Forge from './components/Forge.vue'
 import World from './components/World.vue'
 
 Vue.use(VueRouter);
+Vue.use(VueI18n);
+
+Vue.config.lang = 'en';
+
+Object.keys(locales).forEach(function (lang) {
+  Vue.locale(lang, locales[lang]);
+});
 
 var router = new VueRouter({
   routes: [

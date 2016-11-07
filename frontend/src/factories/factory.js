@@ -19,6 +19,9 @@ const factory = {
       callback(items);
     }
   },
+  addItem: function(player, item) {
+    $.post(`${api}/players/${player}/items/add/${item}`);
+  },
   getResources: function(callback) {
     if (resources.length === 0) {
       $.get(`${api}/resources`)
@@ -29,6 +32,9 @@ const factory = {
     } else {
       callback(resources);
     }
+  },
+  addResource: function(player, resource, quantity) {
+    $.post(`${api}/players/${player}/resources/add/${resource}/${quantity}`);
   },
   getRecipes: function(callback) {
     if (recipes.length === 0) {
@@ -41,6 +47,9 @@ const factory = {
       callback(recipes);
     }
   },
+  addRecipe: function(player, recipe) {
+    $.post(`${api}/players/${player}/recipes/add/${recipe}`);
+  },
   getSpells: function(callback) {
     if (spells.length === 0) {
       $.get(`${api}/spells`)
@@ -52,6 +61,9 @@ const factory = {
       callback(spells);
     }
   },
+  addSpell: function(player, spell) {
+    $.post(`${api}/players/${player}/spells/add/${spell}`);
+  },
   getSkills: function(callback) {
     if (skills.length === 0) {
       $.get(`${api}/skills`)
@@ -62,6 +74,9 @@ const factory = {
     } else {
       callback(skills);
     }
+  },
+  addSkill: function(player, skill) {
+    $.post(`${api}/players/${player}/skills/add/${skill}`);
   },
   getMonsters: function(callback) {
     if (monsters.length === 0) {
@@ -116,6 +131,9 @@ const factory = {
       callback(response.data);
     });
   },
+  addQuest: function(player, quest) {
+    $.post(`${api}/players/${player}/quests/add/${quest}`);
+  },
   updateEquipment: function(player, item, callback) {
     $.put(`${api}/players/${player}/equipments/${item}`)
     .then(function(ok) {
@@ -125,24 +143,6 @@ const factory = {
       })
     });
   },
-  addItem: function(player, item) {
-    $.post(`${api}/players/${player}/items/add/${item}`);
-  },
-  addResource: function(player, resource, quantity) {
-    $.post(`${api}/players/${player}/resources/add/${resource}/${quantity}`);
-  },
-  addSpell: function(player, spell) {
-    $.post(`${api}/players/${player}/spells/add/${spell}`);
-  },
-  addQuest: function(player, quest) {
-    $.post(`${api}/players/${player}/quests/add/${quest}`);
-  },
-  addSkill: function(player, skill) {
-    $.post(`${api}/players/${player}/skills/add/${skill}`);
-  },
-  addRecipe: function(player, recipe) {
-    $.post(`${api}/players/${player}/recipes/add/${recipe}`);
-  }
 }
 
 export default factory;

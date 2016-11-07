@@ -96,9 +96,9 @@
       "type": "armor",
       "rarity": "default",
       "vitality": 1,
-      "strength": 1,
+      "strength": 0,
       "agility": 1,
-      "intelligence": 1,
+      "intelligence": 0,
       "defense": 1,
       "icon": "vest",
       "image": "novice"
