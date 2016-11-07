@@ -309,7 +309,12 @@
     },
     methods: {
       counter: function() {
-        $("#monster a.list-group-item:eq(" + Math.floor(Math.random() * $("#monster a.list-group-item").length) + ")").trigger('click');
+        var random = [
+          function() { self.melee(self.location.Monster, self.player) },
+          function() { self.magic(self.location.Monster, self.player, self.location.Monster.Spells[Math.floor(Math.random() * self.location.Monster.Spells.length)]) },
+          function() { self.buff(self.location.Monster, self.player, self.location.Monster.Skills[Math.floor(Math.random() * self.location.Monster.Skills.length)]) }
+        ];
+        random[Math.floor(Math.random() * random.length)]();
       },
       melee: function(attacker, defender) {
         if (!attacker.states.buttons) {
@@ -333,6 +338,9 @@
               defender.vitality -= Math.max(0, attacker.strength - defender.defense);
             }, constants.notification.duration);
           }
+          setTimeout(function() {
+            self.counter();
+          }, constants.notification.duration * 2);
         }
       },
       magic: function(attacker, defender, spell) {
@@ -342,12 +350,12 @@
           attacker.intelligence -= spell.mana;
           if (spell.damage > 0) {
             defender.states.magic = true;
-            notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + '/' + defender.defense + '</strong> to ' + defender.name);
+            notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + '</strong> to ' + defender.name);
             setTimeout(function() {
               attacker.states.buttons = false;
               defender.states.buttons = false;
               defender.states.magic = false;
-              defender.vitality -= Math.max(0, spell.damage - defender.defense);
+              defender.vitality -= spell.damage;
             }, constants.notification.duration);
           } else {
             attacker.states.magic = true;
@@ -359,6 +367,9 @@
               attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
             }, constants.notification.duration);
           }
+          setTimeout(function() {
+            self.counter();
+          }, constants.notification.duration * 2);
         }
       },
       buff: function(attacker, defender, skill) {
@@ -376,7 +387,10 @@
             attacker.agility = Math.min(100, attacker.agility + skill.agility);
             attacker.intelligence = Math.min(100, attacker.intelligence + skill.intelligence);
             attacker.defense = Math.min(100, attacker.defense + skill.defense);
-          }, constants.notification.duration);  
+          }, constants.notification.duration);
+          setTimeout(function() {
+            self.counter();
+          }, constants.notification.duration * 2);
         }
       },
       strength: function() {

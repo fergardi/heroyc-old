@@ -12,8 +12,11 @@
   .panel-title {
     font-size: 1em;
   }
+  .list-group-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
   .thumbnail {
-    display: inline-block;
     width: 75px;
     margin-bottom: 10px;
   }

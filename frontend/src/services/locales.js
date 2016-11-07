@@ -13,6 +13,7 @@ const locales = {
       skills: 'Skills',
       recipes: 'Recipes',
       monsters: 'Monsters',
+      wiki: 'Wiki',
       language: 'Language'
     }
   },
@@ -30,6 +31,7 @@ const locales = {
       skills: 'Habilidades',
       recipes: 'Recetas',
       monsters: 'Monstruos',
+      wiki: 'Wiki',
       language: 'Idioma'
     }
   }
