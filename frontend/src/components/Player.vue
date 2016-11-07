@@ -15,7 +15,7 @@
                 span {{name}} 
                 label.badge {{level}}
             .panel-body
-              .row
+              .row.vertical-align
                 .col-xs-4
                   img.thumbnail.slot(v-bind:src='"dist/img/player/" + image + ".png"', data-toggle='tooltip', v-bind:title='name')
                 .col-xs-8

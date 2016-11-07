@@ -134,7 +134,7 @@
   .mapboxgl-canvas
     height: 100% !important;
   .map-location
-    width: 50%;
+    width: 100%;
   .map-avatar
     width: 60px;
     height: 60px;

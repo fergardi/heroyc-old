@@ -4,14 +4,17 @@
     "data": {
       "name": "Abomination",
       "image": "abomination",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow+++" },
         { "name": "Heal+++" }
@@ -23,14 +26,17 @@
     "data": {
       "name": "Cyclops",
       "image": "cyclops",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Heal+++" }
       ]
@@ -41,14 +47,17 @@
     "data": {
       "name": "Demon",
       "image": "demon",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Fire+" }
       ]
@@ -59,14 +68,17 @@
     "data": {
       "name": "Dragon",
       "image": "dragon",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Fire+++" },
         { "name": "Heal+++" }
@@ -78,14 +90,17 @@
     "data": {
       "name": "Gargoyle",
       "image": "gargoyle",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -96,14 +111,17 @@
     "data": {
       "name": "Ghost",
       "image": "ghost",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -114,14 +132,17 @@
     "data": {
       "name": "Golem",
       "image": "golem",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -132,14 +153,17 @@
     "data": {
       "name": "Knight",
       "image": "knight",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -150,14 +174,17 @@
     "data": {
       "name": "Liche",
       "image": "liche",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -168,14 +195,17 @@
     "data": {
       "name": "Medusa",
       "image": "medusa",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -186,14 +216,17 @@
     "data": {
       "name": "Mummy",
       "image": "mummy",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -204,14 +237,17 @@
     "data": {
       "name": "Phoenix",
       "image": "phoenix",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -222,14 +258,17 @@
     "data": {
       "name": "Rat",
       "image": "rat",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "success",
       "icon": "raven",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -240,14 +279,17 @@
     "data": {
       "name": "Skeleton",
       "image": "skeleton",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -258,14 +300,17 @@
     "data": {
       "name": "Snake",
       "image": "snake",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "success",
       "icon": "raven",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -276,14 +321,17 @@
     "data": {
       "name": "Spider",
       "image": "spider",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "success",
       "icon": "raven",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -294,14 +342,17 @@
     "data": {
       "name": "Wolf",
       "image": "wolf",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "success",
       "icon": "raven",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -312,14 +363,17 @@
     "data": {
       "name": "Worm",
       "image": "worm",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "success",
       "icon": "raven",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -330,14 +384,17 @@
     "data": {
       "name": "Yeti",
       "image": "yeti",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]
@@ -348,14 +405,17 @@
     "data": {
       "name": "Zombie",
       "image": "zombie",
-      "strength": 1,
-      "vitality": 1,
-      "agility": 1,
-      "defense": 1,
-      "intelligence": 1,
+      "strength": 85,
+      "vitality": 85,
+      "agility": 85,
+      "defense": 85,
+      "intelligence": 85,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 1,
+      "experience": 85,
+      "Skills": [
+        { "name": "Vitality Buff" }
+      ],
       "Spells": [
         { "name": "Shadow" }
       ]

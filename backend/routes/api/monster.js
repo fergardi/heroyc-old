@@ -5,7 +5,7 @@ var router  = express.Router();
 // get all monsters
 router.get('/', function(req, res) {
   models.Monster.findAll({
-    include: [models.Spell]
+    include: [models.Spell, models.Skill]
   })
   .then(function(monsters) {
     res.json({status: 'ok', data: monsters});
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 router.get('/:monsterId', function(req, res) {
   models.Monster.find({
     where: { id: req.params.monsterId },
-    include: [models.Spell]
+    include: [models.Spell, models.Skill]
   })
   .then(function(monsters) {
     res.json({status: 'ok', data: monsters});
