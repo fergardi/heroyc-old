@@ -8,7 +8,6 @@ module.exports = function(sequelize, DataTypes) {
     damage: DataTypes.INTEGER,
     heal: DataTypes.INTEGER,
     mana: DataTypes.INTEGER,
-    multiple: DataTypes.BOOLEAN,
     icon: DataTypes.STRING,
     image: DataTypes.STRING
   }, {

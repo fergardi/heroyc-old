@@ -5,11 +5,11 @@
       "name": "Golden Shield",
       "type": "shield",
       "rarity": "warning",
-      "vitality": 20,
-      "strength": 30,
-      "agility": 60,
-      "intelligence": 7,
-      "defense": 23,
+      "vitality": 6,
+      "strength": 6,
+      "agility": 6,
+      "intelligence": 6,
+      "defense": 6,
       "icon": "heavy-shield",
       "image": "golden"
     }
@@ -35,11 +35,11 @@
       "name": "Metal Shield",
       "type": "shield",
       "rarity": "primary",
-      "vitality": 23,
-      "strength": 60,
-      "agility": 43,
-      "intelligence": 10,
-      "defense": 12,
+      "vitality": 2,
+      "strength": 3,
+      "agility": 2,
+      "intelligence": 0,
+      "defense": 4,
       "icon": "heavy-shield",
       "image": "metal"
     }
@@ -50,11 +50,11 @@
       "name": "Stone Shield",
       "type": "shield",
       "rarity": "info",
-      "vitality": 23,
-      "strength": 60,
-      "agility": 43,
-      "intelligence": 10,
-      "defense": 12,
+      "vitality": 4,
+      "strength": 4,
+      "agility": 4,
+      "intelligence": 4,
+      "defense": 4,
       "icon": "heavy-shield",
       "image": "stone"
     }
@@ -62,16 +62,16 @@
   {
     "model": "Item",
     "data": {
-      "name": "Bone Shield",
+      "name": "Dark Shield",
       "type": "shield",
       "rarity": "danger",
-      "vitality": 23,
-      "strength": 60,
-      "agility": 43,
-      "intelligence": 10,
-      "defense": 12,
+      "vitality": -5,
+      "strength": 0,
+      "agility": 0,
+      "intelligence": -5,
+      "defense": 10,
       "icon": "heavy-shield",
-      "image": "bone"
+      "image": "dark"
     }
   },
   {
@@ -80,11 +80,11 @@
       "name": "Mirror Shield",
       "type": "shield",
       "rarity": "danger",
-      "vitality": 23,
-      "strength": 60,
-      "agility": 43,
-      "intelligence": 10,
-      "defense": 12,
+      "vitality": 4,
+      "strength": 6,
+      "agility": 4,
+      "intelligence": 5,
+      "defense": 8,
       "icon": "heavy-shield",
       "image": "mirror"
     }

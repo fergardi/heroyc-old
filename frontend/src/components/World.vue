@@ -120,7 +120,6 @@
               break;
           }
         });
-        //new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lat, location.lng]).addTo(self.map);
         new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(self.map);
       }
     }
