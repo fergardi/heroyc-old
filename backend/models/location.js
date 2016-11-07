@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
   var Location = sequelize.define('Location', {
     lat: DataTypes.FLOAT,
     lng: DataTypes.FLOAT,
+    experience: DataTypes.INTEGER,
     name: DataTypes.STRING,
     image: DataTypes.STRING
   }, {

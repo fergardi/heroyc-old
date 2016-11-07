@@ -153,7 +153,7 @@
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Monster.defense + "%"')
                   .progress
-                    .progress-bar.progress-bar-default(v-bind:style='"width: 0%"')
+                    .progress-bar.progress-bar-default(v-bind:style='"width: " + location.experience + "%"')
               br
               a.list-group-item(v-bind:class='{disabled: location.Monster.states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
@@ -265,6 +265,9 @@
           setTimeout(function() {
             self.location.Monster.states.dead = true;
             notification.success('The <strong>' + self.location.Monster.name + '</strong> has been defeated');
+            notification.success('You earned <strong>' + self.location.experience + '</strong> experience');
+            self.player.experience += self.location.experience;
+            self.location.experience = 0;
           }, constants.notification.duration);
           setTimeout(function() {
             self.location.Monster.states.loot = true;
@@ -319,13 +322,13 @@
           defender.states.buttons = true;
           if (Math.random() * 100 < defender.agility) {
             defender.states.dodge = true;
-            notification.warning('<strong>' + defender.name + '</strong> dodged the attack');
+            notification.warning(attacker.name + ' attacked <strong>' + defender.name + '</strong> but missed the attack');
             setTimeout(function() {
               defender.states.dodge = false;
             }, constants.notification.duration);
           } else {
             defender.states.melee = true;
-            notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '/' + defender.defense + '</strong> damage to <strong>' + defender.name + '</strong>');
+            notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '(' + defender.defense + ')</strong> Damage to <strong>' + defender.name + '</strong>');
             setTimeout(function() {
               defender.states.melee = false;
               defender.vitality -= Math.max(0, attacker.strength - defender.defense);
@@ -345,14 +348,14 @@
           attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
           if (spell.damage > 0) {
             defender.states.magic = true;
-            notification.info(attacker.name + ' inflicted <strong>-' + spell.damage + '</strong> to ' + defender.name);
+            notification.info(attacker.name + ' casted <strong>' + spell.name + '</strong> and inflicted <strong>-' + spell.damage + '</strong> Damage to ' + defender.name);
             setTimeout(function() {
               defender.states.magic = false;
               defender.vitality -= spell.damage;
             }, constants.notification.duration);
           } else {
             attacker.states.magic = true;
-            notification.success(attacker.name + ' healed <strong>+' + spell.heal + '</strong>');
+            notification.success(attacker.name + ' casted <strong>' + spell.name + '</strong> healed <strong>+' + spell.heal + '</strong> Vitality');
             setTimeout(function() {
               attacker.states.magic = false;
               attacker.vitality = Math.min(100, attacker.vitality + spell.heal);

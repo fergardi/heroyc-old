@@ -5,11 +5,11 @@
       "name": "Novice Sword",
       "type": "weapon",
       "rarity": "default",
-      "vitality": 0,
+      "vitality": 1,
       "strength": 1,
-      "agility": 0,
-      "intelligence": 0,
-      "defense": 0,
+      "agility": 1,
+      "intelligence": 1,
+      "defense": 1,
       "icon": "relic-blade",
       "image": "novicesword"
     }

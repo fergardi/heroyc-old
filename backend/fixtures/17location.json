@@ -5,7 +5,8 @@
       "name": "City of Foo",
       "lat": -5.566517194043172,
       "lng": 42.62463290287917,
-      "image": "city"
+      "image": "city",
+      "experience": 10
     }
   },
   {
@@ -14,7 +15,8 @@
       "name": "Inn of Foo",
       "lat": -5.547798941500531,
       "lng": 42.61680853401759,
-      "image": "inn"
+      "image": "inn",
+      "experience": 10
     }
   },
   {
@@ -24,6 +26,7 @@
       "lat": -5.554528027609081,
       "lng": 42.62032574136461,
       "image": "tower",
+      "experience": 10,
       "Monster": { "name": "Zombie" },
       "Spell": { "name": "Fire+++" }
     }
@@ -35,6 +38,7 @@
       "lat": -5.543897707012178,
       "lng": 42.621640428312645,
       "image": "dungeon",
+      "experience": 10,
       "Monster": { "name": "Dragon" },
       "Item": { "name": "Dragon Armor" }
     }
@@ -46,6 +50,7 @@
       "lat": -5.535397241539499,
       "lng": 42.62443522502602,
       "image": "mine",
+      "experience": 10,
       "Monster": { "name": "Medusa" },
       "Resource": { "name": "Coal" }
     }
@@ -56,7 +61,8 @@
       "name": "Forge of Fuu",
       "lat": -5.56146100601967,
       "lng": 42.640888278347774,
-      "image": "forge"
+      "image": "forge",
+      "experience": 10
     }
   },
   {
@@ -66,6 +72,7 @@
       "lat": -5.556933795708318,
       "lng": 42.61419907228796,
       "image": "castle",
+      "experience": 10,
       "Monster": { "name": "Yeti" },
       "Recipe": 1
     }
@@ -77,6 +84,7 @@
       "lat": -5.5448237191811245,
       "lng": 42.61384880947696,
       "image": "ruins",
+      "experience": 10,
       "Monster": { "name": "Ghost" },
       "Skill": { "name": "Agility Buff" }
     }
