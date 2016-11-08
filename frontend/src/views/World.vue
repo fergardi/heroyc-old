@@ -26,16 +26,9 @@
     mounted: function() {
       self = this;
       self.createMap();
-      self.geoLocate();
-      factory.getLocations((data) => {
-        self.locations = data;
-        for (var i = 0; i < self.locations.length; i++) {
-          self.addLocation(self.locations[i]);
-        }
-      });
     },
     methods: {
-      createMap: function() {
+      createMap: function(callback) {
         mapboxgl.accessToken = self.options.token;
         self.map = new mapboxgl.Map({
           container: 'map',
@@ -44,6 +37,18 @@
           zoom: self.options.zoom,
           center: self.options.center,
           attributionControl: { position: 'bottom-left' }
+        });
+        self.map.on('load', function () {
+          self.drawLocations();
+          self.geoLocate();
+        });
+      },
+      drawLocations: function() {
+        factory.getLocations((data) => {
+          self.locations = data;
+          for (var i = 0; i < self.locations.length; i++) {
+            self.addLocation(self.locations[i]);
+          }
         });
       },
       geoLocate: function() {
@@ -72,7 +77,7 @@
           // add an icon
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
-          icon.className = 'map-avatar animated bounce infinite';
+          icon.className = 'map-avatar animated infinite bounce';
           marker.appendChild(icon);
           // add a shadow
           var shadow = document.createElement('div');
@@ -91,7 +96,7 @@
       addLocation: function(location) {
         var icon = document.createElement('img');
         icon.src = 'dist/img/locations/' + location.image + '.png';
-        icon.className = 'map-location';
+        icon.className = 'map-location animated zoomIn';
         var marker = document.createElement('div');
         marker.id = location.id;
         marker.style.zIndex = 5;

@@ -4,31 +4,38 @@ import VueI18n from 'vue-i18n'
 import locales from './services/locales'
 
 import App from './App.vue'
-import Items from './components/Items.vue'
-import Resources from './components/Resources.vue'
-import Spells from './components/Spells.vue'
-import Skills from './components/Skills.vue'
-import Recipes from './components/Recipes.vue'
-import Player from './components/Player.vue'
-import Monsters from './components/Monsters.vue'
-import Inn from './components/Inn.vue'
-import City from './components/City.vue'
-import Location from './components/Location.vue'
-import Forge from './components/Forge.vue'
-import World from './components/World.vue'
+import Home from './views/Home.vue'
+import Items from './views/Items.vue'
+import Resources from './views/Resources.vue'
+import Spells from './views/Spells.vue'
+import Skills from './views/Skills.vue'
+import Recipes from './views/Recipes.vue'
+import Player from './views/Player.vue'
+import Monsters from './views/Monsters.vue'
+import Inn from './views/Inn.vue'
+import City from './views/City.vue'
+import Location from './views/Location.vue'
+import Forge from './views/Forge.vue'
+import World from './views/World.vue'
+import Login from './views/Login.vue'
+import auth from './services/auth'
 
+// router
 Vue.use(VueRouter);
+
+// i18n
 Vue.use(VueI18n);
-
 Vue.config.lang = 'en';
-
 Object.keys(locales).forEach(function (lang) {
   Vue.locale(lang, locales[lang]);
 });
 
+// routes
 var router = new VueRouter({
   routes: [
-    { path: '/', component: World, name: 'world' },
+    { path: '/', component: Home, name: 'home' },
+    { path: '/home', component: Home, name: 'home' },
+    { path: '/login', component: Login, name: 'login' },
     { path: '/world', component: World, name: 'world' },
     { path: '/items', component: Items, name: 'items' },
     { path: '/resources', component: Resources, name: 'resources' },
@@ -41,11 +48,31 @@ var router = new VueRouter({
     { path: '/inn', component: Inn, name: 'inn' },
     { path: '/location', component: Location, name: 'location' },
     { path: '/forge', component: Forge, name: 'forge' },
-    { path: '*', redirect: '/' }
+    { path: '*', redirect: '/home' }
   ]
 });
 
+// secured routes
+var secured = [
+  'world',
+  'player',
+  'city',
+  'inn',
+  'location',
+  'forge'
+];
+
+// app
 new Vue({
   render: (h) => h(App),
   router
-}).$mount('#app')
+}).$mount('#app');
+
+// redirect to login if not auth
+router.beforeEach((to, from, next) => {
+  if ((secured.indexOf(to.name) !== -1) && !auth.logged) {
+    router.push({ name: 'login' });
+  } else {
+    return next();
+  }
+});

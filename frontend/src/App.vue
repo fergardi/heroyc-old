@@ -8,11 +8,11 @@
 </template>
 
 <script>
-  import navbar from './components/Navbar.vue'
+  import navbar from './views/Navbar.vue'
   export default {
     components: { navbar }
   }
 </script>
 
-<style>
+<style lang="stylus" scoped>
 </style>

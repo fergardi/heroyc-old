@@ -2,14 +2,15 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
-// GET
+// get all users
 router.get('/', function(req, res) {
 	models.User.findAll()
 	.then(function(users) {
 		res.json({status: 'ok', data: users});
 	});
 });
-// GET
+
+// get single user
 router.get('/:id', function(req, res) {
 	models.User.findById(req.params.id)
 	.then(function(user) {
@@ -20,46 +21,27 @@ router.get('/:id', function(req, res) {
 		}
 	});
 });
-// POST
+
+// create new user
 router.post('/', function(req, res) {
 	models.User.create(req.body)
 	.then(function(user) {
 		res.json({status: 'ok', data: user});
 	});
 });
-// PUT
-router.put('/:id', function(req, res) {
-	models.User.findById(req.params.id)
-	.then(function(user) {
-		user.updateAttributes(req.body)
-		.then(function(user) {
-			res.json({status: 'ok', data: user});
-		});
+
+// check user credentials
+router.post('/login', function(req, res) {
+	models.User.find({
+		where: { username: req.body.username, password: req.body.password }
 	})
-	.catch(function(){
-		res.json({status: 'ko'});
-	});
-});
-// DELETE
-router.delete('/:id', function(req, res) {
-	models.User.findById(req.params.id)
 	.then(function(user) {
 		if (user !== null) {
-			models.User.destroy({where: {id: req.params.id}})
-			.then(function() {
-				res.json({status: 'ok'});
-			});
+			res.json({status: 'ok', data: user});
 		} else {
 			res.json({status: 'ko'});
 		}
 	});
-});
-// DELETE
-router.delete('/', function(req, res) {
-	models.User.destroy({where: {}})
-	.then(function() {
-		res.json({status: 'ok'});
-	});	
 });
 
 module.exports = router;

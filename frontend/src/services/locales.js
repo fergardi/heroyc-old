@@ -5,6 +5,7 @@ const locales = {
       english: 'English'
     },
     title: {
+      login: 'Login',
       world: 'World',
       player: 'Player',
       items: 'Items',
@@ -23,6 +24,7 @@ const locales = {
       english: 'Inglés'
     },
     title: {
+      login: 'Acceder',
       world: 'Mundo',
       player: 'Personaje',
       items: 'Objetos',

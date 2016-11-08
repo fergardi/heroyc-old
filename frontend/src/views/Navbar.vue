@@ -11,7 +11,7 @@
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
             li
-              router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
+              router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in', v-if='logged')
                 i.ra.ra-lg.ra-fw.ra-player-king
                 | {{ $t('title.player') }}
             li.dropdown
@@ -58,16 +58,30 @@
                   a(@click="localize('es')")
                     i.fa.fa-lg.fa-fw.fa-flag
                     | {{ $t('language.spanish') }}
+            li
+              a(@click='logout')
+                i.fa.fa-lg.fa-fw.fa-sign-out
+                | Logout
 </template>
 
 <script>
   import Vue from 'vue'
   import locales from '../services/locales'
+  import auth from '../services/auth'
   export default {
     name: 'Navbar',
     methods: {
       localize (lang) {
         Vue.config.lang = lang;
+      },
+      logout () {
+        auth.logout();
+        this.$router.push({ path: '/' });
+      }
+    },
+    computed: {
+      logged () {
+        return auth.logged;
       }
     }
   }
