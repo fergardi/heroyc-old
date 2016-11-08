@@ -47,7 +47,7 @@
     },
     created: function() {
       self = this;
-      factory.getItems((data) => {
+      api.getItems((data) => {
         self.items = data;
       });
     },

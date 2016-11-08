@@ -38,7 +38,7 @@
     },
     created: function() {
       self = this;
-      factory.getResources((data) => {
+      api.getResources((data) => {
         self.resources = data;
       });
     },

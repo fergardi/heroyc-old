@@ -58,7 +58,7 @@
     },
     created: function() {
       self = this;
-      factory.getRecipes((data) => {
+      api.getRecipes((data) => {
         self.recipes = data;
       });
     },

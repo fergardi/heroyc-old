@@ -223,7 +223,7 @@
     },
     mounted: function() {
       self = this;
-      factory.getPlayer(this.$route.params.playerId || 1, (data) => {
+      api.getPlayer(this.$route.params.playerId || 1, (data) => {
         self.player.id = data.id;
         self.player.level = data.level;
         self.player.equipments = data.Equipments;
@@ -238,7 +238,7 @@
         self.player.intelligence = self.intelligence();
         self.player.defense = self.defense();
       });
-      factory.getLocation(this.$route.params.locationId || 3, (data) => {
+      api.getLocation(this.$route.params.locationId || 3, (data) => {
         self.location = data;
         // extend monster object with states after overriding
         $.extend(self.location.Monster, { 
@@ -273,23 +273,23 @@
             self.location.Monster.states.loot = true;
             switch(self.location.image){
               case 'tower':
-                factory.addSpell(self.player.id, self.location.Spell.id);
+                api.addSpell(self.player.id, self.location.Spell.id);
                 notification.success('You learned <strong>' + self.location.Spell.name + '</strong>');
                 break;
               case 'castle':
-                factory.addRecipe(self.player.id, self.location.Recipe.id);
+                api.addRecipe(self.player.id, self.location.Recipe.id);
                 notification.success('You obtained a recipe for crafting <strong>' + self.location.Recipe.Result.name + '</strong>');
                 break;
               case 'mine':
-                factory.addResource(self.player.id, self.location.Resource.id, 1);
+                api.addResource(self.player.id, self.location.Resource.id, 1);
                 notification.success('You farmed <strong>' + self.location.Resource.name + '</strong>');
                 break;
               case 'dungeon':
-                factory.addItem(self.player.id, self.location.Item.id);
+                api.addItem(self.player.id, self.location.Item.id);
                 notification.success('You looted <strong>' + self.location.Item.name + '</strong>');
                 break;
               case 'ruins':
-                factory.addSkill(self.player.id, self.location.Skill.id);
+                api.addSkill(self.player.id, self.location.Skill.id);
                 notification.success('You adquired <strong>' + self.location.Skill.name + '</strong>');
                 break;
             }

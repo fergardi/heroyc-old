@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import factory from '../factories/factory.js'
+  import api from '../services/api.js'
   export default {
     name: 'World',
     data: function() {
@@ -25,7 +25,7 @@
     },
     mounted: function() {
       self = this;
-      factory.getLocations((data) => {
+      api.getLocations((data) => {
         self.locations = data;
         self.createMap();
         self.geoLocate();

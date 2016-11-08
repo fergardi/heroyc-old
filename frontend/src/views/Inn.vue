@@ -42,7 +42,7 @@
     },
     created: function() {
       self = this;
-      factory.getQuests((data) => {
+      api.getQuests((data) => {
         self.quests = data;
       });
     },

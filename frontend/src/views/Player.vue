@@ -150,7 +150,7 @@
       },
       created: function() {
         self = this;
-        factory.getPlayer(1, (data) => {
+        api.getPlayer(1, (data) => {
           self.id = data.id;
           self.equipments = data.Equipments;
           self.items = data.Items;
@@ -166,7 +166,7 @@
       },
       methods: {
         equip: function(item) {
-          factory.updateEquipment(self.id, item.id, (data) => {
+          api.updateEquipment(self.id, item.id, (data) => {
             self.equipments = data.Equipments;
             notification.success('You equiped <strong>' + item.name + '</strong>');
           });

@@ -43,7 +43,7 @@
     },
     created: function() {
       self = this;
-      factory.getSpells((data) => {
+      api.getSpells((data) => {
         self.spells = data;
       });
     },

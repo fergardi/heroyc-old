@@ -114,7 +114,7 @@
     },
     created: function() {
       self = this;
-      factory.getSales((data) => {
+      api.getSales((data) => {
         self.sales = data;
       });
     },

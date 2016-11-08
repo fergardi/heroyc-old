@@ -47,7 +47,7 @@
     },
     created: function() {
       self = this;
-      factory.getSkills((data) => {
+      api.getSkills((data) => {
         self.skills = data;
       });
     },

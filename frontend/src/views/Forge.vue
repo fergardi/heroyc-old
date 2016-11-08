@@ -58,7 +58,7 @@
     },
     created: function() {
       self = this;
-      factory.getPlayer(this.$route.params.playerId || 1, (data) => {
+      api.getPlayer(this.$route.params.playerId || 1, (data) => {
         self.recipes = data.Recipes;
       });
     },

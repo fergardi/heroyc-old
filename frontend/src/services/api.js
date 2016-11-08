@@ -1,4 +1,4 @@
-let api = '//localhost:3000/api'
+let url = '//localhost:3000/api'
 
 var items = [];
 var resources = [];
@@ -10,7 +10,7 @@ var monsters = [];
 const api = {
   getItems: function(callback) {
     if (items.length === 0) {
-      $.get(`${api}/items`)
+      $.get(`${url}/items`)
       .then(function(response) {
         items = response.data;
         callback(items);
@@ -20,11 +20,11 @@ const api = {
     }
   },
   addItem: function(player, item) {
-    $.post(`${api}/players/${player}/items/add/${item}`);
+    $.post(`${url}/players/${player}/items/add/${item}`);
   },
   getResources: function(callback) {
     if (resources.length === 0) {
-      $.get(`${api}/resources`)
+      $.get(`${url}/resources`)
       .then(function(response) {
         resources = response.data;
         callback(resources);
@@ -34,11 +34,11 @@ const api = {
     }
   },
   addResource: function(player, resource, quantity) {
-    $.post(`${api}/players/${player}/resources/add/${resource}/${quantity}`);
+    $.post(`${url}/players/${player}/resources/add/${resource}/${quantity}`);
   },
   getRecipes: function(callback) {
     if (recipes.length === 0) {
-      $.get(`${api}/recipes`)
+      $.get(`${url}/recipes`)
       .then(function(response) {
         recipes = response.data;
         callback(recipes);
@@ -48,11 +48,11 @@ const api = {
     }
   },
   addRecipe: function(player, recipe) {
-    $.post(`${api}/players/${player}/recipes/add/${recipe}`);
+    $.post(`${url}/players/${player}/recipes/add/${recipe}`);
   },
   getSpells: function(callback) {
     if (spells.length === 0) {
-      $.get(`${api}/spells`)
+      $.get(`${url}/spells`)
       .then(function(response) {
         spells = response.data;
         callback(spells);
@@ -62,11 +62,11 @@ const api = {
     }
   },
   addSpell: function(player, spell) {
-    $.post(`${api}/players/${player}/spells/add/${spell}`);
+    $.post(`${url}/players/${player}/spells/add/${spell}`);
   },
   getSkills: function(callback) {
     if (skills.length === 0) {
-      $.get(`${api}/skills`)
+      $.get(`${url}/skills`)
       .then(function(response) {
         skills = response.data;
         callback(skills);
@@ -76,11 +76,11 @@ const api = {
     }
   },
   addSkill: function(player, skill) {
-    $.post(`${api}/players/${player}/skills/add/${skill}`);
+    $.post(`${url}/players/${player}/skills/add/${skill}`);
   },
   getMonsters: function(callback) {
     if (monsters.length === 0) {
-      $.get(`${api}/monsters`)
+      $.get(`${url}/monsters`)
       .then(function(response) {
         monsters = response.data;
         callback(monsters);
@@ -90,54 +90,54 @@ const api = {
     }
   },
   getSales: function(callback) {
-    $.get(`${api}/sales`)
+    $.get(`${url}/sales`)
     .then(function(response) {
       callback(response.data);
     });
   },
   getLocations: function(callback) {
-    $.get(`${api}/locations`)
+    $.get(`${url}/locations`)
     .then(function(response) {
       callback(response.data);
     });
   },
   getLocation: function(id, callback) {
-    $.get(`${api}/locations/${id}`)
+    $.get(`${url}/locations/${id}`)
     .then(function(response) {
       callback(response.data);
     });
   },
   addLocation: function(callback) {
-    $.post(`${api}/locations/add`)
+    $.post(`${url}/locations/add`)
     .then(function(response) {
       callback(response.data);
     });
   },
   getPlayers: function(callback) {
-    $.get(`${api}/players`)
+    $.get(`${url}/players`)
     .then(function(response) {
       callback(response.data);
     });
   },
   getPlayer: function(player, callback) {
-    $.get(`${api}/players/${player}`)
+    $.get(`${url}/players/${player}`)
     .then(function(response) {
       callback(response.data);
     });
   },
   getQuests: function(callback) {
-    $.get(`${api}/quests`)
+    $.get(`${url}/quests`)
     .then(function(response) {
       callback(response.data);
     });
   },
   addQuest: function(player, quest) {
-    $.post(`${api}/players/${player}/quests/add/${quest}`);
+    $.post(`${url}/players/${player}/quests/add/${quest}`);
   },
   updateEquipment: function(player, item, callback) {
-    $.put(`${api}/players/${player}/equipments/${item}`)
+    $.put(`${url}/players/${player}/equipments/${item}`)
     .then(function(ok) {
-      $.get(`${api}/players/${player}`)
+      $.get(`${url}/players/${player}`)
       .then(function(response){
         callback(response.data);
       })

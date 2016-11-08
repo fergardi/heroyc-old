@@ -47,7 +47,7 @@
     },
     created: function() {
       self = this;
-      factory.getMonsters((data) => {
+      api.getMonsters((data) => {
         self.monsters = data;
       });
     },
