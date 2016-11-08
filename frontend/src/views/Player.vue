@@ -64,7 +64,7 @@
                 .panel-body
                   .row
                     .col-xs-4(v-for='item in items')
-                      img.thumbnail.slot.equip(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
+                      img.thumbnail.slot.pointer(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name', @click='equip(item)')
                       .progress
                         .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                       .progress

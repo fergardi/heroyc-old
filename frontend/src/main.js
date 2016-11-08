@@ -17,7 +17,6 @@ import City from './views/City.vue'
 import Location from './views/Location.vue'
 import Forge from './views/Forge.vue'
 import World from './views/World.vue'
-import Login from './views/Login.vue'
 import auth from './services/auth'
 
 // router
@@ -35,7 +34,6 @@ var router = new VueRouter({
   routes: [
     { path: '/', component: Home, name: 'home' },
     { path: '/home', component: Home, name: 'home' },
-    { path: '/login', component: Login, name: 'login' },
     { path: '/world', component: World, name: 'world' },
     { path: '/items', component: Items, name: 'items' },
     { path: '/resources', component: Resources, name: 'resources' },
@@ -68,10 +66,10 @@ new Vue({
   router
 }).$mount('#app');
 
-// redirect to login if not auth
+// redirect to home if not auth
 router.beforeEach((to, from, next) => {
   if ((secured.indexOf(to.name) !== -1) && !auth.logged) {
-    router.push({ name: 'login' });
+    router.push({ path: '/' });
   } else {
     return next();
   }

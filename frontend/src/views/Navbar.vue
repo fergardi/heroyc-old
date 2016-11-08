@@ -51,15 +51,15 @@
                 i.fa.fa-lg.fa-fw.fa-caret-down
               ul.dropdown-menu
                 li
-                  a(@click="localize('en')")
+                  a.pointer(@click="localize('en')")
                     i.fa.fa-lg.fa-fw.fa-flag-checkered
                     | {{ $t('language.english') }}
                 li
-                  a(@click="localize('es')")
+                  a.pointer(@click="localize('es')")
                     i.fa.fa-lg.fa-fw.fa-flag
                     | {{ $t('language.spanish') }}
             li
-              a(@click='logout')
+              a.pointer(@click='logout')
                 i.fa.fa-lg.fa-fw.fa-sign-out
                 | Logout
 </template>
@@ -88,6 +88,4 @@
 </script>
 
 <style lang='stylus' scoped>
-  .navbar-nav > li > .dropdown-menu
-    cursor: pointer;
 </style>

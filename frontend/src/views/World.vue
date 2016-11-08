@@ -14,7 +14,7 @@
         map: {},
         current: {},
         options: {
-          zoom: 15,
+          zoom: 13,
           center: [-5.56, 42.60],
           pitch: 0,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
@@ -25,7 +25,12 @@
     },
     mounted: function() {
       self = this;
-      self.createMap();
+      factory.getLocations((data) => {
+        self.locations = data;
+        self.createMap();
+        self.geoLocate();
+        self.drawLocations();
+      });
     },
     methods: {
       createMap: function(callback) {
@@ -38,18 +43,11 @@
           center: self.options.center,
           attributionControl: { position: 'bottom-left' }
         });
-        self.map.on('load', function () {
-          self.drawLocations();
-          self.geoLocate();
-        });
       },
       drawLocations: function() {
-        factory.getLocations((data) => {
-          self.locations = data;
-          for (var i = 0; i < self.locations.length; i++) {
-            self.addLocation(self.locations[i]);
-          }
-        });
+        for (var i = 0; i < self.locations.length; i++) {
+          self.addLocation(self.locations[i]);
+        }
       },
       geoLocate: function() {
         navigator.geolocation.getCurrentPosition(

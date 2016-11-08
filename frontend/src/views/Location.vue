@@ -32,11 +32,11 @@
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
-              a.list-group-item(v-bind:class='{disabled: player.states.buttons}', @click='melee(player, location.Monster, true)')
+              a.list-group-item.pointer(v-bind:class='{disabled: player.states.buttons}', @click='melee(player, location.Monster, true)')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span Attack 
                 span.label.label-danger {{player.strength}}
-              a.list-group-item(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill, true)')
+              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{skill.name}} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
@@ -44,7 +44,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
-              a.list-group-item(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
+              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{spell.name}} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
