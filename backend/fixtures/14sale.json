@@ -6,7 +6,7 @@
       "silver": 0,
       "copper": 0,
       "quantity": 1,
-      "Item": { "name": "Novice Sword" }
+      "Item": 7
     }
   },
   {
@@ -16,7 +16,7 @@
       "silver": 4,
       "copper": 0,
       "quantity": 3,
-      "Resource": { "name": "Coal" }
+      "Resource": 9
     }
   },
   {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueI18n from 'vue-i18n'
-import locales from './services/locales'
+import VueInternalization from 'vue-i18n'
+import translation from './services/translation'
 
 import App from './App.vue'
 import Home from './views/Home.vue'
@@ -23,10 +23,10 @@ import auth from './services/auth'
 Vue.use(VueRouter);
 
 // i18n
-Vue.use(VueI18n);
+Vue.use(VueInternalization);
 Vue.config.lang = 'en';
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang]);
+Object.keys(translation).forEach(function (lang) {
+  Vue.locale(lang, translation[lang]);
 });
 
 // routes

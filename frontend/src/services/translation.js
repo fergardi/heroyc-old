@@ -1,4 +1,4 @@
-const locales = {
+const translation = {
   en: {
     language: {
       spanish: 'Spanish',
@@ -16,6 +16,11 @@ const locales = {
       monsters: 'Monsters',
       wiki: 'Wiki',
       language: 'Language'
+    },
+    item: {
+      ring: {
+        vitality: 'Vitality Ring'
+      }
     }
   },
   es: {
@@ -35,8 +40,13 @@ const locales = {
       monsters: 'Monstruos',
       wiki: 'Wiki',
       language: 'Idioma'
+    },
+    item: {
+      ring: {
+        vitality: 'Anillo Vivaz'
+      }
     }
   }
 };
 
-export default locales;
+export default translation;

@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Vitality Ring",
+      "name": "item.ring.vitality",
       "type": "ring",
       "rarity": "danger",
       "vitality": 5,
