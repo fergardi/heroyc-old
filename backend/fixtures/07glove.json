@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Gloves",
+      "name": "item.gloves.novice",
       "type": "glove",
       "rarity": "default",
       "vitality": 1,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Leather Gloves",
+      "name": "item.gloves.leather",
       "type": "glove",
       "rarity": "success",
       "vitality": 2,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Elven Gloves",
+      "name": "item.gloves.elven",
       "type": "glove",
       "rarity": "warning",
       "vitality": 3,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Magic Gloves",
+      "name": "item.gloves.magic",
       "type": "glove",
       "rarity": "info",
       "vitality": 3,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Metal Gloves",
+      "name": "item.gloves.metal",
       "type": "glove",
       "rarity": "danger",
       "vitality": 4,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Ninja Gloves",
+      "name": "item.gloves.ninja",
       "type": "glove",
       "rarity": "danger",
       "vitality": 2,
@@ -92,7 +92,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Scale Gloves",
+      "name": "item.gloves.scale",
       "type": "glove",
       "rarity": "danger",
       "vitality": 6,

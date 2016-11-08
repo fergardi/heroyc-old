@@ -2,7 +2,7 @@
   {
     "model": "Skill",
     "data": {
-      "name": "Vitality Buff",
+      "name": "skill.vitality",
       "vitality": 5,
       "strength": 0,
       "agility": 0,
@@ -16,7 +16,7 @@
   {
     "model": "Skill",
     "data": {
-      "name": "Agility Buff",
+      "name": "skill.agility",
       "vitality": 0,
       "strength": 0,
       "agility": 5,
@@ -30,7 +30,7 @@
   {
     "model": "Skill",
     "data": {
-      "name": "Strength Buff",
+      "name": "skill.strength",
       "vitality": 0,
       "strength": 5,
       "agility": 0,
@@ -44,7 +44,7 @@
   {
     "model": "Skill",
     "data": {
-      "name": "Intelligence Buff",
+      "name": "skill.intelligence",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
@@ -58,7 +58,7 @@
   {
     "model": "Skill",
     "data": {
-      "name": "Defense Buff",
+      "name": "skill.defense",
       "vitality": 0,
       "strength": 0,
       "agility": 0,

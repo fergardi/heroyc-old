@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     lat: DataTypes.FLOAT,
     lng: DataTypes.FLOAT,
     experience: DataTypes.INTEGER,
-    name: DataTypes.STRING,
+    type: DataTypes.STRING,
     image: DataTypes.STRING
   }, {
     classMethods: {

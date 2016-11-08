@@ -3,15 +3,15 @@
     #Monsters
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Monsters 
-              small Enemies
+          .page-header
+            h1 {{ $t('title.monsters') }} | 
+              small {{ $t('subtitle.monsters') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find monsters')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.monsters')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + monster.icon')
-                span {{monster.name}}
+                span {{ $t(monster.name) }}
             .panel-body
               img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type', data-toggle='tooltip', v-bind:title='monster.name')
               .progress
@@ -37,6 +37,7 @@
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Monsters',
     data: function() { 
@@ -59,7 +60,7 @@
     computed: {
       filtered: function() {
         return this.monsters.filter(function(monster) {
-          return monster.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(monster.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }
     }

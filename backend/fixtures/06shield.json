@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Golden Shield",
+      "name": "item.shield.golden",
       "type": "shield",
       "rarity": "warning",
       "vitality": 6,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Shield",
+      "name": "item.shield.novice",
       "type": "shield",
       "rarity": "default",
       "vitality": 1,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Metal Shield",
+      "name": "item.shield.metal",
       "type": "shield",
       "rarity": "primary",
       "vitality": 2,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Stone Shield",
+      "name": "item.shield.stone",
       "type": "shield",
       "rarity": "info",
       "vitality": 4,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Dark Shield",
+      "name": "item.shield.dark",
       "type": "shield",
       "rarity": "danger",
       "vitality": -5,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Mirror Shield",
+      "name": "item.shield.mirror",
       "type": "shield",
       "rarity": "danger",
       "vitality": 4,

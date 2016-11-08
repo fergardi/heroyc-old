@@ -3,15 +3,15 @@
     #Inn
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Inn 
-              small Start quests
+          .page-header
+            h1 {{ $t('title.location.inn') }} | 
+              small {{ $t('subtitle.location.inn') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-lg.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find quests')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.location.inn')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-lg.fa-trash
@@ -27,7 +27,7 @@
             .panel-body
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
-                | Accept
+                | {{ $t('button.accept') }}
 </template>
 
 <script>

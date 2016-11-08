@@ -3,15 +3,15 @@
     #Items
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Items 
-              small Game loot
+          .page-header
+            h1 {{ $t('title.items') }} | 
+              small {{ $t('subtitle.items') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find items')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.items')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + item.icon')  
-                span {{$t(item.name)}}
+                span {{ $t(item.name) }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
               .progress
@@ -37,6 +37,7 @@
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Items',
     data: function() { 
@@ -59,7 +60,7 @@
     computed: {
       filtered: function() {
         return this.items.filter(function(item) {
-          return item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(item.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }
     }

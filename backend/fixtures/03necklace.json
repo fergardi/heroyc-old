@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Stone Necklace",
+      "name": "item.necklace.stone",
       "type": "necklace",
       "rarity": "success",
       "vitality": 5,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Frozen Necklace",
+      "name": "item.necklace.frozen",
       "type": "necklace",
       "rarity": "info",
       "vitality": 0,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Necklace",
+      "name": "item.necklace.novice",
       "type": "necklace",
       "rarity": "default",
       "vitality": 1,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Holy Necklace",
+      "name": "item.necklace.holy",
       "type": "necklace",
       "rarity": "warning",
       "vitality": 5,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Gold Necklace",
+      "name": "item.necklace.gold",
       "type": "necklace",
       "rarity": "danger",
       "vitality": 3,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Mana Necklace",
+      "name": "item.necklace.mana",
       "type": "necklace",
       "rarity": "danger",
       "vitality": 0,
@@ -92,7 +92,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Life Necklace",
+      "name": "item.necklace.life",
       "type": "necklace",
       "rarity": "danger",
       "vitality": 10,

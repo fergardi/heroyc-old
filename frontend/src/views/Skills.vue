@@ -3,15 +3,15 @@
     #Skills
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Skills 
-              small Combat habilities
+          .page-header
+            h1 {{ $t('title.skills') }} | 
+              small {{ $t('subtitle.skills') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input#search(v-model='filter', type='text', class='form-control', placeholder='Find skills')
+              input#search(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.skills')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,9 +20,9 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + skill.icon')
-                span {{skill.name}}
+                span {{ $t(skill.name) }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family', data-toggle='tooltip', v-bind:title='skill.name')
+              img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
               .progress
@@ -37,6 +37,7 @@
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Skills',
     data: function() { 
@@ -59,7 +60,7 @@
     computed: {
       filtered: function() {
         return this.skills.filter(function(skill) {
-          return skill.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(skill.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }
     }

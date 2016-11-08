@@ -3,15 +3,15 @@
     #Resources
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Resources 
-              small Random shit
+          .page-header
+            h1 {{ $t('title.resources') }} | 
+              small {{ $t('subtitle.resources') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find resources')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.resources')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,14 +20,15 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
-                span {{resource.name}}
+                span {{$t(resource.name)}}
             .panel-body
-              img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity', data-toggle='tooltip', v-bind:title='resource.name')
+              img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
               p Used for crafting
 </template>
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Resources',
     data: function() {
@@ -50,7 +51,7 @@
     computed: {
       filtered: function() {
         return self.resources.filter(function(resource) {
-          return resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }
     }

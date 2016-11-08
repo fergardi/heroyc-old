@@ -8,38 +8,38 @@
       "gold": 0,
       "image": "avatar",
       "Items": [
-        { "name": "Novice Ring", "_through": { "quantity": 1 } },
-        { "name": "Novice Helm", "_through": { "quantity": 1 } },
-        { "name": "Novice Necklace", "_through": { "quantity": 1 } },
-        { "name": "Novice Sword", "_through": { "quantity": 1 } },
-        { "name": "Novice Armor", "_through": { "quantity": 1 } },
-        { "name": "Novice Shield", "_through": { "quantity": 1 } },
-        { "name": "Novice Gloves", "_through": { "quantity": 1 } },
-        { "name": "Novice Boots", "_through": { "quantity": 1 } },
-        { "name": "Novice Potion", "_through": { "quantity": 1 } }
+        { "name": "item.ring.novice", "_through": { "quantity": 1 } },
+        { "name": "item.helm.novice", "_through": { "quantity": 1 } },
+        { "name": "item.necklace.novice", "_through": { "quantity": 1 } },
+        { "name": "item.sword.novice", "_through": { "quantity": 1 } },
+        { "name": "item.armor.novice", "_through": { "quantity": 1 } },
+        { "name": "item.shield.novice", "_through": { "quantity": 1 } },
+        { "name": "item.gloves.novice", "_through": { "quantity": 1 } },
+        { "name": "item.boots.novice", "_through": { "quantity": 1 } },
+        { "name": "item.potion.novice", "_through": { "quantity": 1 } }
       ],
       "Spells": [
-        { "name": "Heal" },
-        { "name": "Fire" }
+        { "name": "spell.heal1" },
+        { "name": "spell.fire1" }
       ],
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Resources": [
-        { "name": "Gold", "_through": { "quantity": 0 } },
-        { "name": "Silver", "_through": { "quantity": 0 } },
-        { "name": "Copper", "_through": { "quantity": 0 } }
+        { "name": "resource.gold", "_through": { "quantity": 0 } },
+        { "name": "resource.silver", "_through": { "quantity": 0 } },
+        { "name": "resource.copper", "_through": { "quantity": 0 } }
       ],
       "Recipes": [1],
-      "Ring": { "name": "Novice Ring" },
-      "Helm": { "name": "Novice Helm" },
-      "Necklace": { "name": "Novice Necklace" },
-      "Weapon": { "name": "Novice Sword" },
-      "Armor": { "name": "Novice Armor" },
-      "Shield": { "name": "Novice Shield" },
-      "Gloves": { "name": "Novice Gloves" },
-      "Boots": { "name": "Novice Boots" },
-      "Potion": { "name": "Novice Potion" }
+      "Ring": { "name": "item.ring.novice" },
+      "Helm": { "name": "item.helm.novice" },
+      "Necklace": { "name": "item.necklace.novice" },
+      "Weapon": { "name": "item.sword.novice" },
+      "Armor": { "name": "item.armor.novice" },
+      "Shield": { "name": "item.shield.novice" },
+      "Gloves": { "name": "item.gloves.novice" },
+      "Boots": { "name": "item.boots.novice" },
+      "Potion": { "name": "item.potion.novice" }
     }
   }
 ]

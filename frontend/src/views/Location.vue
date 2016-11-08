@@ -3,9 +3,9 @@
     #Location
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 {{location.name}} 
-              small Battle monsters for loot
+          .page-header
+            h1 {{ $t(location.type) }} | 
+              small {{ $t('subtitle.location') }}
       .row#battle
         .col-xs-6
           .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
@@ -17,7 +17,7 @@
             .panel-body
               .row.vertical-align
                 .col-xs-4
-                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"', data-toggle='tooltip', v-bind:title='player.name')
+                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + player.strength + "%"')
@@ -34,11 +34,11 @@
               br
               a.list-group-item.pointer(v-bind:class='{disabled: player.states.buttons}', @click='melee(player, location.Monster, true)')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
-                span Attack 
+                span {{ $t('button.attack') }} 
                 span.label.label-danger {{player.strength}}
               a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
-                span {{skill.name}} 
+                span {{ $t(skill.name) }} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
                 span.label.label-primary(v-if='skill.intelligence > 0') {{skill.intelligence}}
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
@@ -46,7 +46,7 @@
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
               a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{spell.name}} 
+                span {{ $t(spell.name) }} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
                 span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
                 span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
@@ -55,7 +55,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Item.icon')  
-                span {{location.Item.name}}
+                span {{ $t(location.Item.name) }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity', data-toggle='tooltip', v-bind:title='location.Item.name')
               .progress
@@ -72,16 +72,16 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Recipe.Result.icon')  
-                span {{location.Recipe.Result.name}}
+                span {{ $t(location.Recipe.Result.name) }}
             .panel-body
               .row
                 .col-xs-6
-                  img.thumbnail(v-bind:src='"dist/img/items/" + location.Recipe.Original.type + "/" + location.Recipe.Original.image + ".png"', v-bind:class='"panel-" + location.Recipe.Original.rarity', data-toggle='tooltip', v-bind:title='location.Recipe.Original.name')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + location.Recipe.Original.type + "/" + location.Recipe.Original.image + ".png"', v-bind:class='"panel-" + location.Recipe.Original.rarity')
                 .col-xs-6
-                  img.thumbnail(v-bind:src='"dist/img/resources/" + location.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + location.Recipe.Resource.family', data-toggle='tooltip', v-bind:title='location.Recipe.Resource.name')
+                  img.thumbnail(v-bind:src='"dist/img/resources/" + location.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + location.Recipe.Resource.family')
               .row
                 .col-xs-6-col-xs-offset-6
-                  img.thumbnail(v-bind:src='"dist/img/items/" + location.Recipe.Result.type + "/" + location.Recipe.Result.image + ".png"', v-bind:class='"panel-" + location.Recipe.Result.rarity', data-toggle='tooltip', v-bind:title='location.Recipe.Result.name')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + location.Recipe.Result.type + "/" + location.Recipe.Result.image + ".png"', v-bind:class='"panel-" + location.Recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Recipe.Result.strength * 10 + "%"')
                   .progress
@@ -96,17 +96,17 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Resource.icon')  
-                span {{location.Resource.name}}
+                span {{ $t(location.Resource.name) }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity', data-toggle='tooltip', v-bind:title='location.Resource.name')
+              img.thumbnail(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity')
               p {{location.Resource.description}}
           .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Spell')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
-                span {{location.Spell.name}}
+                span {{ $t(location.Spell.name) }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/spells/" + location.Spell.type + "/" + location.Spell.image + ".png"', v-bind:class='"panel-" + location.Spell.family', data-toggle='tooltip', v-bind:title='location.Spell.name')
+              img.thumbnail(v-bind:src='"dist/img/spells/" + location.Spell.type + "/" + location.Spell.image + ".png"', v-bind:class='"panel-" + location.Spell.family')
               .progress
                 .progress-bar.progress-bar-danger(v-bind:style='"width: " + location.Spell.damage * 10 + "%"')
               .progress
@@ -118,9 +118,9 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Skill.icon')  
-                span {{location.Skill.name}}
+                span {{ $t(location.Skill.name) }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/skills/" + location.Skill.image + ".png"', v-bind:class='"panel-" + location.Skill.family', data-toggle='tooltip', v-bind:title='location.Skill.name')
+              img.thumbnail(v-bind:src='"dist/img/skills/" + location.Skill.image + ".png"', v-bind:class='"panel-" + location.Skill.family')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Skill.strength * 10 + "%"')
               .progress
@@ -135,12 +135,12 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
-                span {{location.Monster.name}} 
+                span {{ $t(location.Monster.name) }} 
                 label.badge ?
             .panel-body
               .row.vertical-align
                 .col-xs-4
-                  img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"', data-toggle='tooltip', v-bind:title='location.Monster.name')
+                  img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Monster.strength + "%"')
@@ -157,11 +157,11 @@
               br
               a.list-group-item(v-bind:class='{disabled: location.Monster.states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
-                span Attack 
+                span {{ $t('button.attack') }} 
                 span.label.label-danger {{location.Monster.strength}}
               a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: location.Monster.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
-                span {{skill.name}} 
+                span {{ $t(skill.name) }} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
                 span.label.label-primary(v-if='skill.intelligence > 0') {{skill.intelligence}}
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
@@ -169,7 +169,7 @@
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
               a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{spell.name}} 
+                span {{ $t(spell.name) }} 
                 span.label.label-danger(v-if='spell.damage > 0') {{spell.damage}}
                 span.label.label-primary(v-if='spell.mana > 0') {{spell.mana}}
                 span.label.label-success(v-if='spell.heal > 0') {{spell.heal}}
@@ -177,6 +177,7 @@
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Location',
     data: function() { 

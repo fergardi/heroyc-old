@@ -3,15 +3,15 @@
     #Spells
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Spells 
-              small Magic resources
+          .page-header
+            h1 {{ $t('title.spells') }} | 
+              small {{ $t('subtitle.spells') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input#search(v-model='filter', type='text', class='form-control', placeholder='Find spells')
+              input#search(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.spells')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,9 +20,9 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + spell.icon')  
-                span {{spell.name}}
+                span {{ $t(spell.name) }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family', data-toggle='tooltip', v-bind:title='spell.name')
+              img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
               .progress
                 .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
               .progress
@@ -33,6 +33,7 @@
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Spells',
     data: function() { 
@@ -55,7 +56,7 @@
     computed: {
       filtered: function() {
         return this.spells.filter(function(spell) {
-          return spell.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(spell.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }
     }

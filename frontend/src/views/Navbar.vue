@@ -17,7 +17,7 @@
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 i.fa.fa-lg.fa-fw.fa-book
-                | {{ $t('title.wiki') }}
+                | {{ $t('title.help') }}
                 i.fa.fa-lg.fa-fw.fa-caret-down
               ul.dropdown-menu
                 li
@@ -44,30 +44,26 @@
                   router-link(to='/monsters', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-hydra
                     | {{ $t('title.monsters') }}
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                i.fa.fa-lg.fa-fw.fa-language
-                | {{ $t('title.language') }}
-                i.fa.fa-lg.fa-fw.fa-caret-down
-              ul.dropdown-menu
+                li.divider
                 li
                   a.pointer(@click="localize('en')")
-                    i.fa.fa-lg.fa-fw.fa-flag-checkered
+                    i.ra.ra-lg.ra-fw.ra-wooden-sign
                     | {{ $t('language.english') }}
                 li
                   a.pointer(@click="localize('es')")
-                    i.fa.fa-lg.fa-fw.fa-flag
+                    i.ra.ra-lg.ra-fw.ra-wooden-sign
                     | {{ $t('language.spanish') }}
-            li
-              a.pointer(@click='logout')
-                i.fa.fa-lg.fa-fw.fa-sign-out
-                | Logout
+                li.divider
+                li
+                  a.pointer(@click='logout')
+                    i.ra.ra-lg.ra-fw.ra-key
+                    | {{ $t('button.logout') }}
 </template>
 
 <script>
-  import Vue from 'vue'
-  import locales from '../services/locales'
   import auth from '../services/auth'
+  import translation from '../services/translation'
+  import Vue from 'vue'
   export default {
     name: 'Navbar',
     methods: {

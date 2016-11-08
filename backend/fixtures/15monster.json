@@ -2,7 +2,7 @@
   {
     "model": "Monster",
     "data": {
-      "name": "Abomination",
+      "name": "monster.abomination",
       "image": "abomination",
       "strength": 10,
       "vitality": 10,
@@ -13,18 +13,18 @@
       "icon": "broken-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow+++" },
-        { "name": "Heal+++" }
+        { "name": "spell.shadow4" },
+        { "name": "spell.heal4" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Cyclops",
+      "name": "monster.cyclops",
       "image": "cyclops",
       "strength": 10,
       "vitality": 10,
@@ -35,17 +35,17 @@
       "icon": "muscle-fat",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Heal+++" }
+        { "name": "spell.heal4" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Demon",
+      "name": "monster.demon",
       "image": "demon",
       "strength": 10,
       "vitality": 10,
@@ -56,17 +56,17 @@
       "icon": "monster-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Fire+" }
+        { "name": "spell.fire+" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Dragon",
+      "name": "monster.dragon",
       "image": "dragon",
       "strength": 10,
       "vitality": 10,
@@ -77,18 +77,18 @@
       "icon": "monster-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Fire+++" },
-        { "name": "Heal+++" }
+        { "name": "spell.fire4" },
+        { "name": "spell.heal4" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Gargoyle",
+      "name": "monster.gargoyle",
       "image": "gargoyle",
       "strength": 10,
       "vitality": 10,
@@ -99,17 +99,17 @@
       "icon": "muscle-fat",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Ghost",
+      "name": "monster.ghost",
       "image": "ghost",
       "strength": 10,
       "vitality": 10,
@@ -120,17 +120,17 @@
       "icon": "broken-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Golem",
+      "name": "monster.golem",
       "image": "golem",
       "strength": 10,
       "vitality": 10,
@@ -141,17 +141,17 @@
       "icon": "muscle-fat",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Knight",
+      "name": "monster.knight",
       "image": "knight",
       "strength": 10,
       "vitality": 10,
@@ -162,17 +162,17 @@
       "icon": "crystal-ball",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Liche",
+      "name": "monster.liche",
       "image": "liche",
       "strength": 10,
       "vitality": 10,
@@ -183,17 +183,17 @@
       "icon": "broken-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Medusa",
+      "name": "monster.medusa",
       "image": "medusa",
       "strength": 10,
       "vitality": 10,
@@ -204,17 +204,17 @@
       "icon": "crystal-ball",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Mummy",
+      "name": "monster.mummy",
       "image": "mummy",
       "strength": 10,
       "vitality": 10,
@@ -225,17 +225,17 @@
       "icon": "crystal-ball",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Phoenix",
+      "name": "monster.phoenix",
       "image": "phoenix",
       "strength": 10,
       "vitality": 10,
@@ -246,17 +246,17 @@
       "icon": "monster-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Rat",
+      "name": "monster.rat",
       "image": "rat",
       "strength": 10,
       "vitality": 10,
@@ -267,17 +267,17 @@
       "icon": "raven",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Skeleton",
+      "name": "monster.skeleton",
       "image": "skeleton",
       "strength": 10,
       "vitality": 10,
@@ -288,17 +288,17 @@
       "icon": "broken-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Snake",
+      "name": "monster.snake",
       "image": "snake",
       "strength": 10,
       "vitality": 10,
@@ -309,17 +309,17 @@
       "icon": "raven",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Spider",
+      "name": "monster.spider",
       "image": "spider",
       "strength": 10,
       "vitality": 10,
@@ -330,17 +330,17 @@
       "icon": "raven",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Wolf",
+      "name": "monster.wolf",
       "image": "wolf",
       "strength": 10,
       "vitality": 10,
@@ -351,17 +351,17 @@
       "icon": "raven",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Worm",
+      "name": "monster.worm",
       "image": "worm",
       "strength": 10,
       "vitality": 10,
@@ -372,17 +372,17 @@
       "icon": "raven",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Yeti",
+      "name": "monster.yeti",
       "image": "yeti",
       "strength": 10,
       "vitality": 10,
@@ -393,17 +393,17 @@
       "icon": "muscle-fat",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   },
   {
     "model": "Monster",
     "data": {
-      "name": "Zombie",
+      "name": "monster.zombie",
       "image": "zombie",
       "strength": 10,
       "vitality": 10,
@@ -414,10 +414,10 @@
       "icon": "broken-skull",
       "experience": 10,
       "Skills": [
-        { "name": "Vitality Buff" }
+        { "name": "skill.vitality" }
       ],
       "Spells": [
-        { "name": "Shadow" }
+        { "name": "spell.shadow1" }
       ]
     }
   }

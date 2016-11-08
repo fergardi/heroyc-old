@@ -3,41 +3,42 @@
     #Home
       .row
         .col-xs-12
-          .page-header.text-center
-            h1 Heroyc 
-              small Explore the world
+          .page-header
+            h1 {{ $t('title.home') }} | 
+              small {{ $t('subtitle.home') }}
         .col-md-4.col-md-offset-2.col-xs-12
           .panel.text-center.panel-primary
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user
-                span Login
+                span {{ $t('panel.login') }}
             .panel-body
               form
-                input.form-control(type='email', id='username', placeholder='Username', v-model='credentials.username', required)
-                input.form-control(type='password', id='password', placeholder='Password', v-model='credentials.password', required)
+                input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='credentials.username', required)
+                input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='credentials.password', required)
                 br
                 a.btn.btn-success.btn-block(@click='login()')
                   i.fa.fa-fw.fa-lg.fa-sign-in
-                  | Enter
+                  | {{ $t('button.login') }}
         .col-md-4.col-xs-12
           .panel.text-center.panel-warning
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user-plus
-                span Register
+                span {{ $t('panel.register') }}
             .panel-body
               form
-                input.form-control(type='email', id='username', placeholder='Username', v-model='information.username', required)
-                input.form-control(type='password', id='password', placeholder='Password', v-model='information.password', required)
+                input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='information.username', required)
+                input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='information.password', required)
                 br
                 a.btn.btn-success.btn-block(@click='register()')
                   i.fa.fa-lg.fa-fw.fa-check
-                  | Play
+                  | {{ $t('button.register') }}
 </template>
 
 <script>
   import auth from '../services/auth'
+  import Vue from 'vue'
   export default {
     name: 'Home',
     data () { 

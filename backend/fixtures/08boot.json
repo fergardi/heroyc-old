@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Winged Boots",
+      "name": "item.boots.winged",
       "type": "boot",
       "rarity": "warning",
       "vitality": 5,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Boots",
+      "name": "item.boots.novice",
       "type": "boot",
       "rarity": "default",
       "vitality": 1,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Strong Boots",
+      "name": "item.boots.strong",
       "type": "boot",
       "rarity": "info",
       "vitality": 4,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Elven Boots",
+      "name": "item.boots.elven",
       "type": "boot",
       "rarity": "success",
       "vitality": 3,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Dragon Boots",
+      "name": "item.boots.dragon",
       "type": "boot",
       "rarity": "danger",
       "vitality": 8,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Stone Boots",
+      "name": "item.boots.stone",
       "type": "boot",
       "rarity": "primary",
       "vitality": 4,
@@ -92,7 +92,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Hunter Boots",
+      "name": "item.boots.hunter",
       "type": "boot",
       "rarity": "info",
       "vitality": 2,

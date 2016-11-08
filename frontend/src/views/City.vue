@@ -3,15 +3,15 @@
     #City
       .row
         .col-xs-12
-          .page-header.text-center
-            h1 City 
-              small Purchase stuff
+          .page-header
+            h1 {{ $t('title.location.city') }} | 
+              small {{ $t('subtitle.location.city') }}
         .col-xs-12
           form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-lg.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find sales')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.location.city')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-lg.fa-trash
@@ -21,7 +21,7 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
-                  span {{sale.Item.name}}
+                  span {{ $t(sale.Item.name) }}
               .panel-body
                 img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity', data-toggle='tooltip', v-bind:title='sale.Item.name')
                 .progress
@@ -44,13 +44,13 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | Buy
+                  | {{ $t('button.buy') }}
           template(v-if='sale.Resource')
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
-                  span {{sale.Resource.name}} ({{sale.quantity}})
+                  span {{ $t(sale.Resource.name) }} ({{sale.quantity}})
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity', data-toggle='tooltip', v-bind:title='sale.Resource.name')
                 .row
@@ -63,13 +63,13 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | Buy
+                  | {{ $t('button.buy') }}
           template(v-if='sale.Recipe')
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
-                  span {{sale.Recipe.Result.name}}
+                  span {{$t(sale.Recipe.Result.name)}}
               .panel-body
                 .row
                   .col-xs-6
@@ -99,11 +99,12 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 
-                  | Buy
+                  | {{ $t('button.buy') }}
 </template>
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'City',
     data: function() { 
@@ -128,13 +129,13 @@
         return this.sales.filter(function(sale) {
           return (
             sale.Item ? 
-              sale.Item.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+              Vue.t(sale.Item.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
                 sale.Resource ? 
-                  sale.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                  Vue.t(sale.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
                     sale.Recipe ? 
-                      sale.Recipe.Original.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
-                      sale.Recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
-                      sale.Recipe.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                      Vue.t(sale.Recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
+                      Vue.t(sale.Recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
+                      Vue.t(sale.Recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
                     true
           );
         });

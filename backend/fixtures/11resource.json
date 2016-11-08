@@ -2,7 +2,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Gold",
+      "name": "resource.gold",
       "rarity": "default",
       "icon": "crystals",
       "description": "Description",
@@ -12,7 +12,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Silver",
+      "name": "resource.silver",
       "rarity": "default",
       "icon": "crystals",
       "description": "Description",
@@ -22,7 +22,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Copper",
+      "name": "resource.copper",
       "rarity": "default",
       "icon": "crystals",
       "description": "Description",
@@ -32,7 +32,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Grape",
+      "name": "resource.grape",
       "rarity": "success",
       "icon": "apple",
       "description": "Description",
@@ -42,7 +42,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Lemmon",
+      "name": "resource.lemmon",
       "rarity": "success",
       "icon": "apple",
       "description": "Description",
@@ -52,7 +52,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Raspberry",
+      "name": "resource.raspberry",
       "rarity": "success",
       "icon": "apple",
       "description": "Description",
@@ -62,7 +62,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Strawberry",
+      "name": "resource.strawberry",
       "rarity": "success",
       "icon": "apple",
       "description": "Description",
@@ -72,7 +72,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Pear",
+      "name": "resource.pear",
       "rarity": "success",
       "icon": "apple",
       "description": "Description",
@@ -82,7 +82,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Wood",
+      "name": "resource.wood",
       "rarity": "danger",
       "icon": "rune-stone",
       "description": "Description",
@@ -92,7 +92,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Stone",
+      "name": "resource.stone",
       "rarity": "danger",
       "icon": "rune-stone",
       "description": "Description",
@@ -102,7 +102,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Coal",
+      "name": "resource.coal",
       "rarity": "danger",
       "icon": "rune-stone",
       "description": "Description",
@@ -112,7 +112,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Flask",
+      "name": "resource.flask",
       "rarity": "danger",
       "icon": "rune-stone",
       "description": "Description",
@@ -122,7 +122,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Skull",
+      "name": "resource.skull",
       "rarity": "danger",
       "icon": "rune-stone",
       "description": "Description",
@@ -132,7 +132,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Gold Ingot",
+      "name": "resource.ingot.gold",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -142,7 +142,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Silver Ingot",
+      "name": "resource.ingot.silver",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -152,7 +152,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Copper Ingot",
+      "name": "resource.ingot.copper",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -162,7 +162,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Metal Ingot",
+      "name": "resource.ingot.metal",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -172,17 +172,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Metal Ingot",
-      "rarity": "primary",
-      "icon": "gold-bar",
-      "description": "Description",
-      "image": "metalingot"
-    }
-  },
-  {
-    "model": "Resource",
-    "data": {
-      "name": "Steel Ingot",
+      "name": "resource.ingot.steel",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -192,7 +182,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Ebony Ingot",
+      "name": "resource.ingot.ebony",
       "rarity": "primary",
       "icon": "gold-bar",
       "description": "Description",
@@ -202,7 +192,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Amethist",
+      "name": "resource.amethist",
       "rarity": "info",
       "icon": "diamond",
       "description": "Description",
@@ -212,7 +202,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Topaz",
+      "name": "resource.topaz",
       "rarity": "info",
       "icon": "diamond",
       "description": "Description",
@@ -222,7 +212,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Saphire",
+      "name": "resource.saphire",
       "rarity": "info",
       "icon": "diamond",
       "description": "Description",
@@ -232,7 +222,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Emmerald",
+      "name": "resource.emmerald",
       "rarity": "info",
       "icon": "diamond",
       "description": "Description",
@@ -242,7 +232,7 @@
   {
     "model": "Resource",
     "data": {
-      "name": "Ruby",
+      "name": "resource.ruby",
       "rarity": "info",
       "icon": "diamond",
       "description": "Description",

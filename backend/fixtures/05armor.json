@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Golden Armor",
+      "name": "item.armor.golden",
       "type": "armor",
       "rarity": "warning",
       "vitality": 2,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Leather Armor",
+      "name": "item.armor.leather",
       "type": "armor",
       "rarity": "default",
       "vitality": 2,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Chain Armor",
+      "name": "item.armor.chain",
       "type": "armor",
       "rarity": "primary",
       "vitality": 2,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Plate Armor",
+      "name": "item.armor.plate",
       "type": "armor",
       "rarity": "info",
       "vitality": 5,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Dragon Armor",
+      "name": "item.armor.dragon",
       "type": "armor",
       "rarity": "danger",
       "vitality": 8,
@@ -77,22 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Woolen Armor",
-      "type": "armor",
-      "rarity": "success",
-      "vitality": 2,
-      "strength": 1,
-      "agility": 0,
-      "intelligence": 3,
-      "defense": 1,
-      "icon": "vest",
-      "image": "woolen"
-    }
-  },
-  {
-    "model": "Item",
-    "data": {
-      "name": "Novice Armor",
+      "name": "item.armor.novice",
       "type": "armor",
       "rarity": "default",
       "vitality": 1,

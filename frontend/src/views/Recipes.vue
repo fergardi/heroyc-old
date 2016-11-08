@@ -3,15 +3,15 @@
     #Recipes
       .row
         .col-xs-12.hidden-xs
-          .page-header.text-center
-            h1 Recipes 
-              small Coctails
+          .page-header
+            h1 {{ $t('title.recipes') }} | 
+              small {{ $t('subtitle.recipes') }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find recipes')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,16 +20,16 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
-                span {{recipe.Result.name}}
+                span {{$t(recipe.Result.name)}}
             .panel-body
               .row
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity', data-toggle='tooltip', v-bind:title='recipe.Original.name')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family', data-toggle='tooltip', v-bind:title='recipe.Resource.name')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
               .row
-                .col-xs-6.col-xs-offset-3
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity', data-toggle='tooltip', v-bind:title='recipe.Result.name')
+                .col-xs-12
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
                   .progress
@@ -40,14 +40,11 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
-            .panel-body
-              button.btn.btn-success.btn-block
-                i.fa.fa-lg.fa-check
-                | Craft
 </template>
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Recipes',
     data: function() { 
@@ -70,7 +67,7 @@
     computed: {
       filtered: function() {
         return this.recipes.filter(function(recipe) {
-          return (recipe.Original.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
+          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
         });
       }
     }

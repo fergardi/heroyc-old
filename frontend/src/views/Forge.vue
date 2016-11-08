@@ -3,15 +3,15 @@
     #Forge
       .row
         .col-xs-12
-          .page-header.text-center
-            h1 Forge 
-              small Crafting
+          .page-header
+            h1 {{ $t('title.location.forge') }} | 
+              small {{ $t('subtitle.location.forge') }}
         .col-xs-12
           form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', placeholder='Find recipes')
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.location.forge')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
-                span {{recipe.Result.name}}
+                span {{ $t(recipe.Result.name) }}
             .panel-body
               .row
                 .col-xs-6
@@ -43,7 +43,7 @@
             .panel-body
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
-                | Craft
+                | {{ $t('button.craft') }}
 </template>
 
 <script>

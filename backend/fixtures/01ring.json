@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Strength Ring",
+      "name": "item.ring.strength",
       "type": "ring",
       "rarity": "warning",
       "vitality": 0,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Agility Ring",
+      "name": "item.ring.agility",
       "type": "ring",
       "rarity": "success",
       "vitality": 0,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Intelligence Ring",
+      "name": "item.ring.intelligence",
       "type": "ring",
       "rarity": "primary",
       "vitality": 0,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Defense Ring",
+      "name": "item.ring.defense",
       "type": "ring",
       "rarity": "info",
       "vitality": 0,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Ring",
+      "name": "item.ring.novice",
       "type": "ring",
       "rarity": "default",
       "vitality": 1,

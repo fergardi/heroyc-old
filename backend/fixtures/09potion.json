@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Agility Potion",
+      "name": "item.potion.agility",
       "type": "potion",
       "rarity": "success",
       "vitality": 0,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Intelligence Potion",
+      "name": "item.potion.intelligence",
       "type": "potion",
       "rarity": "primary",
       "vitality": 0,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Strength Potion",
+      "name": "item.potion.strength",
       "type": "potion",
       "rarity": "warning",
       "vitality": 0,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Defense Potion",
+      "name": "item.potion.defense",
       "type": "potion",
       "rarity": "info",
       "vitality": 0,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Vitality Potion",
+      "name": "item.potion.vitality",
       "type": "potion",
       "rarity": "danger",
       "vitality": 5,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Potion",
+      "name": "item.potion.novice",
       "type": "potion",
       "rarity": "default",
       "vitality": 1,

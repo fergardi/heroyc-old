@@ -2,7 +2,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Sword",
+      "name": "item.sword.novice",
       "type": "weapon",
       "rarity": "default",
       "vitality": 1,
@@ -17,7 +17,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Elven Sword",
+      "name": "item.sword.elven",
       "type": "weapon",
       "rarity": "success",
       "vitality": 1,
@@ -32,7 +32,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Curve Sword",
+      "name": "item.sword.curve",
       "type": "weapon",
       "rarity": "info",
       "vitality": 1,
@@ -47,7 +47,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Gladius Sword",
+      "name": "item.sword.gladius",
       "type": "weapon",
       "rarity": "primary",
       "vitality": 2,
@@ -62,7 +62,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Mighty Sword",
+      "name": "item.sword.mighty",
       "type": "weapon",
       "rarity": "info",
       "vitality": 4,
@@ -77,7 +77,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Thunder Sword",
+      "name": "item.sword.thunder",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 3,
@@ -92,7 +92,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Flaming Sword",
+      "name": "item.sword.flaming",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 4,
@@ -107,7 +107,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Frozen Sword",
+      "name": "item.sword.frozen",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 2,
@@ -122,7 +122,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Acqua Sword",
+      "name": "item.sword.acqua",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 3,
@@ -137,7 +137,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Dark Sword",
+      "name": "item.sword.dark",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 0,
@@ -152,7 +152,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Thunder Staff",
+      "name": "item.staff.thunder",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 1,
@@ -167,7 +167,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Flaming Staff",
+      "name": "item.staff.flaming",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 2,
@@ -182,7 +182,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Dark Staff",
+      "name": "item.staff.dark",
       "type": "weapon",
       "rarity": "warning",
       "vitality": -6,
@@ -197,7 +197,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Frozen Staff",
+      "name": "item.staff.frozen",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 0,
@@ -212,7 +212,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Acqua Staff",
+      "name": "item.staff.acqua",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 2,
@@ -227,22 +227,22 @@
   {
     "model": "Item",
     "data": {
-      "name": "Novice Bow",
+      "name": "item.bow.curve",
       "type": "weapon",
-      "rarity": "default",
+      "rarity": "success",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "arrow-cluster",
-      "image": "novicebow"
+      "image": "curvebow"
     }
   },
   {
     "model": "Item",
     "data": {
-      "name": "Hunter Bow",
+      "name": "item.bow.hunter",
       "type": "weapon",
       "rarity": "success",
       "vitality": 2,
@@ -257,7 +257,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Golden Bow",
+      "name": "item.bow.golden",
       "type": "weapon",
       "rarity": "warning",
       "vitality": 3,
@@ -272,7 +272,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Sniper Bow",
+      "name": "item.bow.sniper",
       "type": "weapon",
       "rarity": "info",
       "vitality": 2,
@@ -287,7 +287,7 @@
   {
     "model": "Item",
     "data": {
-      "name": "Phoenix Bow",
+      "name": "item.bow.phoenix",
       "type": "weapon",
       "rarity": "danger",
       "vitality": 10,

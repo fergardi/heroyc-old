@@ -2,313 +2,261 @@
   {
     "model": "Spell",
     "data": {
-      "name": "Fire",
+      "name": "spell.fire1",
       "type": "fire",
       "damage": 1,
       "mana": 2,
       "heal": 0,
       "family": "danger",
       "icon": "fire",
-      "image": "fire"
+      "image": "fire1"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Fire+",
+      "name": "spell.fire2",
       "type": "fire",
       "damage": 3,
       "mana": 5,
       "heal": 0,
       "family": "danger",
       "icon": "fire",
-      "image": "fire+"
+      "image": "fire2"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Fire++",
+      "name": "spell.fire3",
       "type": "fire",
       "damage": 7,
       "mana": 8,
       "heal": 0,
       "family": "danger",
       "icon": "fire",
-      "image": "fire++"
+      "image": "fire3"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Fire+++",
+      "name": "spell.fire4",
       "type": "fire",
       "damage": 5,
       "mana": 10,
       "heal": 0,
       "family": "danger",
       "icon": "fire",
-      "image": "fire+++"
+      "image": "fire4"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Ice",
+      "name": "spell.ice1",
       "type": "ice",
       "damage": 1,
       "mana": 2,
       "heal": 0,
-      "family": "default",
+      "family": "primary",
       "icon": "ice-cube",
-      "image": "ice"
+      "image": "ice1"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Ice+",
+      "name": "spell.ice2",
       "type": "ice",
       "damage": 2,
       "mana": 4,
       "heal": 0,
-      "family": "default",
+      "family": "primary",
       "icon": "ice-cube",
-      "image": "ice+"
+      "image": "ice2"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Ice++",
+      "name": "spell.ice3",
       "type": "ice",
       "damage": 3,
       "mana": 2,
       "heal": 0,
-      "family": "default",
+      "family": "primary",
       "icon": "ice-cube",
-      "image": "ice++"
+      "image": "ice3"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Ice+++",
+      "name": "spell.ice4",
       "type": "ice",
       "damage": 6,
       "mana": 4,
       "heal": 0,
-      "family": "default",
+      "family": "primary",
       "icon": "ice-cube",
-      "image": "ice+++"
+      "image": "ice4"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Water",
-      "type": "water",
-      "damage": 0,
-      "mana": 0,
-      "heal": 0,
-      "family": "primary",
-      "icon": "droplet-splash",
-      "image": "water"
-    }
-  },
-  {
-    "model": "Spell",
-    "data": {
-      "name": "Water+",
-      "type": "water",
-      "damage": 2,
-      "mana": 1,
-      "heal": 0,
-      "family": "primary",
-      "icon": "droplet-splash",
-      "image": "water+"
-    }
-  },
-  {
-    "model": "Spell",
-    "data": {
-      "name": "Water++",
-      "type": "water",
-      "damage": 5,
-      "mana": 2,
-      "heal": 0,
-      "family": "primary",
-      "icon": "droplet-splash",
-      "image": "water++"
-    }
-  },
-  {
-    "model": "Spell",
-    "data": {
-      "name": "Water+++",
-      "type": "water",
-      "damage": 7,
-      "mana": 5,
-      "heal": 0,
-      "family": "primary",
-      "icon": "droplet-splash",
-      "image": "water+++"
-    }
-  },
-  {
-    "model": "Spell",
-    "data": {
-      "name": "Lightning",
+      "name": "spell.lightning1",
       "type": "lightning",
       "damage": 1,
       "mana": 1,
       "heal": 0,
       "family": "warning",
       "icon": "lightning-trio",
-      "image": "lightning"
+      "image": "lightning1"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Lightning+",
+      "name": "spell.lightning2",
       "type": "lightning",
       "damage": 3,
       "mana": 3,
       "heal": 0,
       "family": "warning",
       "icon": "lightning-trio",
-      "image": "lightning+"
+      "image": "lightning2"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Lightning++",
+      "name": "spell.lightning3",
       "type": "lightning",
       "damage": 6,
       "mana": 6,
       "heal": 0,
       "family": "warning",
       "icon": "lightning-trio",
-      "image": "lightning++"
+      "image": "lightning3"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Lightning+++",
+      "name": "spell.lightning4",
       "type": "lightning",
       "damage": 9,
       "mana": 9,
       "heal": 0,
       "family": "warning",
       "icon": "lightning-trio",
-      "image": "lightning+++"
+      "image": "lightning4"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Shadow",
+      "name": "spell.shadow1",
       "type": "shadow",
       "damage": 1,
       "mana": 5,
       "heal": 0,
       "family": "info",
       "icon": "bone-bite",
-      "image": "shadow"
+      "image": "shadow1"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Shadow+",
+      "name": "spell.shadow2",
       "type": "shadow",
       "damage": 2,
       "mana": 4,
       "heal": 0,
       "family": "info",
       "icon": "bone-bite",
-      "image": "shadow+"
+      "image": "shadow2"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Shadow++",
+      "name": "spell.shadow3",
       "type": "shadow",
       "damage": 3,
       "mana": 3,
       "heal": 0,
       "family": "info",
       "icon": "bone-bite",
-      "image": "shadow++"
+      "image": "shadow3"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Shadow+++",
+      "name": "spell.shadow4",
       "type": "shadow",
       "damage": 4,
       "mana": 2,
       "heal": 0,
       "family": "info",
       "icon": "bone-bite",
-      "image": "shadow+++"
+      "image": "shadow4"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Heal",
+      "name": "spell.heal1",
       "type": "heal",
       "damage": 0,
       "mana": 0,
       "heal": 1,
       "family": "success",
       "icon": "zigzag-leaf",
-      "image": "heal"
+      "image": "heal1"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Heal+",
+      "name": "spell.heal2",
       "type": "heal",
       "damage": 0,
       "mana": 1,
       "heal": 3,
       "family": "success",
       "icon": "zigzag-leaf",
-      "image": "heal+"
+      "image": "heal2"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Heal++",
+      "name": "spell.heal3",
       "type": "heal",
       "damage": 0,
       "mana": 3,
       "heal": 5,
       "family": "success",
       "icon": "zigzag-leaf",
-      "image": "heal++"
+      "image": "heal3"
     }
   },
   {
     "model": "Spell",
     "data": {
-      "name": "Heal+++",
+      "name": "spell.heal4",
       "type": "heal",
       "damage": 0,
       "mana": 5,
       "heal": 5,
       "family": "success",
       "icon": "zigzag-leaf",
-      "image": "heal+++"
+      "image": "heal4"
     }
   }
 ]
