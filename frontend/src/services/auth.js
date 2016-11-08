@@ -13,6 +13,14 @@ export default {
   logout: function() {
     this.logged = false;
   },
+  register: function(information, callback) {
+    var that = this;
+    $.post(`${api}/users/register`, information)
+    .then(function(response){
+      that.logged = (response.status == 'ok');
+      callback(that.logged);
+    });
+  },
   isLogged: function() {
     return this.logged;
   }

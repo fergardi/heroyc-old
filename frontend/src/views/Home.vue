@@ -17,9 +17,9 @@
                 input.form-control(type='email', id='username', placeholder='Username', v-model='credentials.username', required)
                 input.form-control(type='password', id='password', placeholder='Password', v-model='credentials.password', required)
                 br
-                a.btn.btn-success.btn-block(@click='submit()')
+                a.btn.btn-success.btn-block(@click='login()')
                   i.fa.fa-fw.fa-lg.fa-sign-in
-                  | Login
+                  | Enter
         .col-md-4.col-xs-12
           .panel.text-center.panel-warning
             .panel-heading
@@ -28,12 +28,12 @@
                 span Register
             .panel-body
               form
-                input.form-control(type='email', id='username', placeholder='Username', v-model='credentials.username', required)
-                input.form-control(type='password', id='password', placeholder='Password', v-model='credentials.password', required)
+                input.form-control(type='email', id='username', placeholder='Username', v-model='information.username', required)
+                input.form-control(type='password', id='password', placeholder='Password', v-model='information.password', required)
                 br
-                a.btn.btn-success.btn-block
+                a.btn.btn-success.btn-block(@click='register()')
                   i.fa.fa-lg.fa-fw.fa-check
-                  | Register
+                  | Play
 </template>
 
 <script>
@@ -45,20 +45,34 @@
         credentials: {
           username: 'test@test.com',
           password: 'test'
-        }
+        },
+        information: {
+          username: 'test@test.com',
+          password: 'test'
+        },
       }
     },
     created () {
       self = this;
     },
     methods: {
-      submit () {
+      login () {
         auth.login(self.credentials, function(success) {
           if (success) {
             notification.success('Welcome back, Hero');
             self.$router.push({ name: 'world' });
           } else {
             notification.danger('Invalid credentials');
+          }
+        });
+      },
+      register () {
+        auth.register(self.information, function(success) {
+          if (success) {
+            notification.success('Welcome to this world, Hero');
+            self.$router.push({ name: 'world' });
+          } else {
+            notification.danger('There is already a player with this credentials');
           }
         });
       }

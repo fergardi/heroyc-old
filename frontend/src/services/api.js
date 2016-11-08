@@ -7,7 +7,7 @@ var spells = [];
 var skills = [];
 var monsters = [];
 
-const factory = {
+const api = {
   getItems: function(callback) {
     if (items.length === 0) {
       $.get(`${api}/items`)
@@ -145,4 +145,4 @@ const factory = {
   }
 }
 
-export default factory;
+export default api;

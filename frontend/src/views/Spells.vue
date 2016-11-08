@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import factory from '../factories/factory'
+  import api from '../services/api'
   export default {
     name: 'Spells',
     data: function() { 

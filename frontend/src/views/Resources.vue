@@ -27,34 +27,34 @@
 </template>
 
 <script>
-  import factory from '../factories/factory'
+  import api from '../services/api'
   export default {
     name: 'Resources',
-      data: function() {
-        return {
-          filter: '',
-          resources: []
-        }
-      },
-      created: function() {
-        self = this;
-        factory.getResources((data) => {
-          self.resources = data;
+    data: function() {
+      return {
+        filter: '',
+        resources: []
+      }
+    },
+    created: function() {
+      self = this;
+      factory.getResources((data) => {
+        self.resources = data;
+      });
+    },
+    methods: {
+      reset: function() {
+        self.filter = '';
+      }
+    },
+    computed: {
+      filtered: function() {
+        return self.resources.filter(function(resource) {
+          return resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
-      },
-      methods: {
-        reset: function() {
-          self.filter = '';
-        }
-      },
-      computed: {
-        filtered: function() {
-          return self.resources.filter(function(resource) {
-            return resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
-          });
-        }
       }
     }
+  }
 </script>
 
 <style lang="stylus" scoped>

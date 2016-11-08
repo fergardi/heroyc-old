@@ -23,11 +23,20 @@ router.get('/:id', function(req, res) {
 });
 
 // create new user
-router.post('/', function(req, res) {
-	models.User.create(req.body)
+router.post('/register', function(req, res) {
+	models.User.find({
+		where: { username: req.body.username }
+	})
 	.then(function(user) {
-		res.json({status: 'ok', data: user});
-	});
+		if (user === null)  {
+			models.User.create(req.body)
+			.then(function(user) {
+				res.json({status: 'ok', data: user});
+			});	
+		} else {
+			res.json({status: 'ko'});
+		}
+	})
 });
 
 // check user credentials
