@@ -3,7 +3,7 @@
     #Items
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 Items 
               small Game loot
         .col-xs-12

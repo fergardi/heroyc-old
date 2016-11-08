@@ -3,7 +3,7 @@
     #Resources
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 Resources 
               small Random shit
         .col-xs-12

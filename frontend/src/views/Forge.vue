@@ -3,7 +3,7 @@
     #Forge
       .row
         .col-xs-12
-          .page-header
+          .page-header.text-center
             h1 Forge 
               small Crafting
         .col-xs-12

@@ -3,7 +3,7 @@
     #Monsters
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 Monsters 
               small Enemies
         .col-xs-12

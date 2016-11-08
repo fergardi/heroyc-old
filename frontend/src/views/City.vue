@@ -3,7 +3,7 @@
     #City
       .row
         .col-xs-12
-          .page-header
+          .page-header.text-center
             h1 City 
               small Purchase stuff
         .col-xs-12

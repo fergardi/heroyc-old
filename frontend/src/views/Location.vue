@@ -3,7 +3,7 @@
     #Location
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 {{location.name}} 
               small Battle monsters for loot
       .row#battle

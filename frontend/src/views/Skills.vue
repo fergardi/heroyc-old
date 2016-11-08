@@ -3,7 +3,7 @@
     #Skills
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 Skills 
               small Combat habilities
         .col-xs-12

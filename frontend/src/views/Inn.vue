@@ -3,7 +3,7 @@
     #Inn
       .row
         .col-xs-12.hidden-xs
-          .page-header
+          .page-header.text-center
             h1 Inn 
               small Start quests
         .col-xs-12
