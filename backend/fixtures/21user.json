@@ -3,7 +3,8 @@
     "model": "User",
     "data": {
       "username": "test@test.com",
-      "password": "test"
+      "password": "test",
+      "Player": 1
     }
   }
 ]

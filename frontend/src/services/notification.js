@@ -1,4 +1,4 @@
-var notification = {
+const notification = {
   alert: function(text, type, icon) {
     var msg = '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text + '!';
     $('.alerts').notify({
@@ -20,3 +20,5 @@ var notification = {
     this.alert(text, 'danger', 'exclamation-triangle');
   }
 };
+
+export default notification;

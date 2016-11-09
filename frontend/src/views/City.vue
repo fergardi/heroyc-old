@@ -21,7 +21,7 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
-                  span {{ $t(sale.Item.name) }}
+                  span {{ $t(sale.Item.name) }} ({{sale.gold}})
               .panel-body
                 img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity', data-toggle='tooltip', v-bind:title='sale.Item.name')
                 .progress
@@ -34,13 +34,6 @@
                   .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Item.agility * 10 + "%"')
                 .progress
                   .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Item.defense * 10 + "%"')
-                .row
-                  .col-xs-4
-                    span.badge.gold {{sale.gold}}
-                  .col-xs-4
-                    span.badge.silver {{sale.silver}}
-                  .col-xs-4
-                    span.badge.copper {{sale.copper}}
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
@@ -50,16 +43,9 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
-                  span {{ $t(sale.Resource.name) }} ({{sale.quantity}})
+                  span {{ $t(sale.Resource.name) }} ({{sale.gold}})
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity', data-toggle='tooltip', v-bind:title='sale.Resource.name')
-                .row
-                  .col-xs-4
-                    span.badge.gold {{sale.gold}}
-                  .col-xs-4
-                    span.badge.silver {{sale.silver}}
-                  .col-xs-4
-                    span.badge.copper {{sale.copper}}
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
@@ -69,7 +55,7 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
-                  span {{$t(sale.Recipe.Result.name)}}
+                  span {{$t(sale.Recipe.Result.name)}} ({{sale.gold}})
               .panel-body
                 .row
                   .col-xs-6
@@ -89,13 +75,6 @@
                       .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Recipe.Result.agility * 10 + "%"')
                     .progress
                       .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Recipe.Result.defense * 10 + "%"')
-                .row
-                  .col-xs-4
-                    span.badge.gold {{sale.gold}}
-                  .col-xs-4
-                    span.badge.silver {{sale.silver}}
-                  .col-xs-4
-                    span.badge.copper {{sale.copper}}
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 

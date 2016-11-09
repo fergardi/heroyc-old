@@ -178,6 +178,7 @@
 <script>
   import api from '../services/api'
   import Vue from 'vue'
+  import notification from '../services/notification'
   export default {
     name: 'Location',
     data: function() { 
@@ -254,7 +255,7 @@
           }
         });
         setTimeout(function() {
-          notification.danger('A wild <strong>' + self.location.Monster.name + '</strong> appeared');
+          notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(self.location.Monster.name) }));
         }, constants.notification.duration / 2);
       });
     },
@@ -265,33 +266,33 @@
           self.location.monsters.states.buttons = true;
           setTimeout(function() {
             self.location.Monster.states.dead = true;
-            notification.success('The <strong>' + self.location.Monster.name + '</strong> has been defeated');
-            notification.success('You earned <strong>' + self.location.experience + '</strong> experience');
+            notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
             self.player.experience += self.location.experience;
             self.location.experience = 0;
+            notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
           }, constants.notification.duration);
           setTimeout(function() {
             self.location.Monster.states.loot = true;
             switch(self.location.image){
               case 'tower':
                 api.addSpell(self.player.id, self.location.Spell.id);
-                notification.success('You learned <strong>' + self.location.Spell.name + '</strong>');
+                notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
                 break;
               case 'castle':
                 api.addRecipe(self.player.id, self.location.Recipe.id);
-                notification.success('You obtained a recipe for crafting <strong>' + self.location.Recipe.Result.name + '</strong>');
+                notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
                 break;
               case 'mine':
                 api.addResource(self.player.id, self.location.Resource.id, 1);
-                notification.success('You farmed <strong>' + self.location.Resource.name + '</strong>');
+                notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
                 break;
               case 'dungeon':
                 api.addItem(self.player.id, self.location.Item.id);
-                notification.success('You looted <strong>' + self.location.Item.name + '</strong>');
+                notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
                 break;
               case 'ruins':
                 api.addSkill(self.player.id, self.location.Skill.id);
-                notification.success('You adquired <strong>' + self.location.Skill.name + '</strong>');
+                notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
                 break;
             }
           }, constants.notification.duration * 2);
@@ -303,7 +304,7 @@
           self.location.Monster.states.buttons = true;
           setTimeout(function() {
             self.player.states.dead = true;
-            notification.danger('You have been defeated');
+            notification.danger(Vue.t('alert.battle.lose'));
           }, constants.notification.duration);
         }
       }
@@ -323,13 +324,13 @@
           defender.states.buttons = true;
           if (Math.random() * 100 < defender.agility) {
             defender.states.dodge = true;
-            notification.warning(attacker.name + ' attacked <strong>' + defender.name + '</strong> but missed the attack');
+            notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
             setTimeout(function() {
               defender.states.dodge = false;
             }, constants.notification.duration);
           } else {
             defender.states.melee = true;
-            notification.danger(attacker.name + ' inflicted <strong>-' + attacker.strength + '(' + defender.defense + ')</strong> Damage to <strong>' + defender.name + '</strong>');
+            notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), strength: attacker.strength, defense: defender.defense, defender: Vue.t(defender.name) }));
             setTimeout(function() {
               defender.states.melee = false;
               defender.vitality -= Math.max(0, attacker.strength - defender.defense);
@@ -349,14 +350,14 @@
           attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
           if (spell.damage > 0) {
             defender.states.magic = true;
-            notification.info(attacker.name + ' casted <strong>' + spell.name + '</strong> and inflicted <strong>-' + spell.damage + '</strong> Damage to ' + defender.name);
+            notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
             setTimeout(function() {
               defender.states.magic = false;
               defender.vitality -= spell.damage;
             }, constants.notification.duration);
           } else {
             attacker.states.magic = true;
-            notification.success(attacker.name + ' casted <strong>' + spell.name + '</strong> healed <strong>+' + spell.heal + '</strong> Vitality');
+            notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), heal: spell.heal }));
             setTimeout(function() {
               attacker.states.magic = false;
               attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
@@ -374,7 +375,7 @@
           attacker.states.buttons = true;
           defender.states.buttons = true;
           attacker.states.buff = true;
-          notification.success(attacker.name + ' buffed with <strong>' + skill.name + '</strong>');
+          notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), skill: Vue.t(skill.name) }));
           setTimeout(function() {
             attacker.states.buff = false;
             attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);

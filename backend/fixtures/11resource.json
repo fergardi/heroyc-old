@@ -2,36 +2,6 @@
   {
     "model": "Resource",
     "data": {
-      "name": "resource.gold",
-      "rarity": "default",
-      "icon": "crystals",
-      "description": "Description",
-      "image": "gold"
-    }
-  },
-  {
-    "model": "Resource",
-    "data": {
-      "name": "resource.silver",
-      "rarity": "default",
-      "icon": "crystals",
-      "description": "Description",
-      "image": "silver"
-    }
-  },
-  {
-    "model": "Resource",
-    "data": {
-      "name": "resource.copper",
-      "rarity": "default",
-      "icon": "crystals",
-      "description": "Description",
-      "image": "copper"
-    }
-  },
-  {
-    "model": "Resource",
-    "data": {
       "name": "resource.grape",
       "rarity": "success",
       "icon": "apple",
@@ -127,6 +97,36 @@
       "icon": "rune-stone",
       "description": "Description",
       "image": "skull"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "resource.fur",
+      "rarity": "danger",
+      "icon": "rune-stone",
+      "description": "Description",
+      "image": "fur"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "resource.fang",
+      "rarity": "danger",
+      "icon": "rune-stone",
+      "description": "Description",
+      "image": "fang"
+    }
+  },
+  {
+    "model": "Resource",
+    "data": {
+      "name": "resource.scale",
+      "rarity": "danger",
+      "icon": "rune-stone",
+      "description": "Description",
+      "image": "scale"
     }
   },
   {

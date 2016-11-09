@@ -24,7 +24,7 @@ Vue.use(VueRouter);
 
 // i18n
 Vue.use(VueInternalization);
-Vue.config.lang = 'en';
+Vue.config.lang = 'es';
 Object.keys(translation).forEach(function (lang) {
   Vue.locale(lang, translation[lang]);
 });

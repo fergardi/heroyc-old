@@ -5,7 +5,7 @@
       "name": "Fergardi",
       "level": 1,
       "experience": 0,
-      "gold": 0,
+      "gold": 1,
       "image": "avatar",
       "Items": [
         { "name": "item.ring.novice", "_through": { "quantity": 1 } },
@@ -25,11 +25,7 @@
       "Skills": [
         { "name": "skill.vitality" }
       ],
-      "Resources": [
-        { "name": "resource.gold", "_through": { "quantity": 0 } },
-        { "name": "resource.silver", "_through": { "quantity": 0 } },
-        { "name": "resource.copper", "_through": { "quantity": 0 } }
-      ],
+      "Resources": [],
       "Recipes": [1],
       "Ring": { "name": "item.ring.novice" },
       "Helm": { "name": "item.helm.novice" },

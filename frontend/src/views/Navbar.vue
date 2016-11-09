@@ -10,10 +10,6 @@
             | {{ $t('title.world') }}
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
-            li
-              router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in', v-if='logged')
-                i.ra.ra-lg.ra-fw.ra-player-king
-                | {{ $t('title.player') }}
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 i.fa.fa-lg.fa-fw.fa-book

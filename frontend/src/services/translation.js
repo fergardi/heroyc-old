@@ -1,8 +1,36 @@
 const translation = {
   en: {
     language: {
-      spanish: 'Spanish',
       english: 'English',
+      spanish: 'Spanish',
+    },
+    alert: {
+      login: {
+        ok: 'Welcome back, Hero',
+        error: 'Invalid credentials',
+      },
+      register: {
+        ok: 'Welcome to Heroyc',
+        error: 'Credentials in use',
+      },
+      battle: {
+        start: 'A wild <strong>{monster}</strong> appears',
+        win: 'The <strong>{monster}</strong> has been defeated',
+        lose: 'You have been defeated',
+        loot: {
+          spell: 'You learned <strong>{spell}</strong>',
+          recipe: 'You obtained a recipe for <strong>{recipe}</strong>',
+          resource: 'You farmed <strong>{resource}</strong>',
+          item: 'You looted <strong>{item}</strong>',
+          skill: 'You adquired <strong>{skill}</strong>',
+          experience: 'You earned <strong>{experience}</strong>',
+        },
+        melee: '<strong>{attacker}</strong> attacked <strong>{defender}</strong> and inflicted {strength}({defense})',
+        dodge: '<strong>{attacker}</strong> attacked <strong>{defender}</strong>, but missed the attack',
+        magic: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and inflicted {damage} to <strong>{defender}</strong>',
+        heal: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and healed {heal}',
+        buff: '<strong>{attacker}</strong> buffed with <strong>{skill}</strong>',
+      }
     },
     button: {
       attack: 'Attack',
@@ -180,10 +208,10 @@ const translation = {
     resource: {
       amethist: 'Amethist',
       coal: 'Coal',
-      copper: 'Copper',
+      scale: 'Scale',
       emmerald: 'Emmerald',
       flask: 'Flask',
-      gold: 'Gold',
+      fur: 'Fur',
       grape: 'Grape',
       ingot: {
         copper: 'Copper Ingot',
@@ -198,7 +226,7 @@ const translation = {
       raspberry: 'Raspberry',
       ruby: 'Ruby',
       saphire: 'Saphire',
-      silver: 'Silver',
+      fang: 'Fang',
       skull: 'Skull',
       stone: 'Stone',
       strawberry: 'Strawberry',
@@ -259,8 +287,36 @@ const translation = {
   },
   es: {
     language: {
+      english: 'Ingles',
       spanish: 'Español',
-      english: 'Ingles'
+    },
+    alert: {
+      login: {
+        ok: 'Bienvenido de nuevo, Heroe',
+        error: 'Credenciales incorrectas',
+      },
+      register: {
+        ok: 'Bienvenido a Heroyc',
+        error: 'Credenciales en uso',
+      },
+      battle: {
+        start: 'Un@ peligros@ <strong>{monster}</strong> aparece',
+        win: 'Ell@ <strong>{monster}</strong> ha sido derrotado',
+        lose: 'Has sido derrotado',
+        loot: {
+          spell: 'Has aprendido <strong>{spell}</strong>',
+          recipe: 'Has obtenido la receta para <strong>{recipe}</strong>',
+          resource: 'Has encontrado <strong>{resource}</strong>',
+          item: 'Has obtenido <strong>{item}</strong>',
+          skill: 'Has adquirido <strong>{skill}</strong>',
+          experience: 'Has ganado <strong>{experience}</strong>',
+        },
+        melee: '<strong>{attacker}</strong> ataca a <strong>{defender}</strong> y causa {strength}({defense})',
+        dodge: '<strong>{attacker}</strong> ataca a <strong>{defender}</strong>, pero falla el ataque',
+        magic: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> a <strong>{defender}</strong> y causa {damage}',
+        heal: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> y se cura {heal}',
+        buff: '<strong>{attacker}</strong> se lanza <strong>{skill}</strong>',
+      }
     },
     button: {
       attack: 'Atacar',
@@ -438,10 +494,10 @@ const translation = {
     resource: {
       amethist: 'Amatista',
       coal: 'Carbon',
-      copper: 'Cobre',
+      fang: 'Colmillo',
       emmerald: 'Esmeralda',
       flask: 'Frasco',
-      gold: 'Oro',
+      fur: 'Pelo',
       grape: 'Uva',
       ingot: {
         copper: 'Lingote de Cobre',
@@ -456,7 +512,7 @@ const translation = {
       raspberry: 'Mora',
       ruby: 'Rubi',
       saphire: 'Zafiro',
-      silver: 'Plata',
+      scale: 'Escama',
       skull: 'Calavera',
       stone: 'Piedra',
       strawberry: 'Fresa',

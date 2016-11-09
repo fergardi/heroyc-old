@@ -30,13 +30,9 @@ router.get('/:locationId', function(req, res) {
 
 // location factory
 var encounter = {
-  types: ['Mine', 'Dungeon', 'Castle', 'Inn', 'Forge', 'Tower', 'City', 'Ruins'],
+  types: ['mine', 'dungeon', 'castle', 'inn', 'forge', 'tower', 'city', 'ruins'],
   type: function() {
     return encounter.types[Math.floor(Math.random() * encounter.types.length)];
-  },
-  titles: ['Despair', 'Sorrow'],
-  title: function() {
-    return encounter.titles[Math.floor(Math.random() * encounter.titles.length)];
   },
   latitude: function() {
     return -(Math.random() * (5.56 - 5.54) + 5.54).toFixed(4);
@@ -45,13 +41,12 @@ var encounter = {
     return (Math.random() * (42.65 - 42.45) + 42.45).toFixed(4);
   },
   generate: function() {
-    var type = encounter.type();
-    var title = encounter.title();
-    return { 
-      name: type + ' of ' + title,
+    var name = type();
+    return {
+      type: 'title.' + name,
       lat: encounter.latitude(),
       lng: encounter.longitude(),
-      image: type.toLowerCase()
+      image: name
     };
   }
 };

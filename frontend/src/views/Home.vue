@@ -38,6 +38,7 @@
 
 <script>
   import auth from '../services/auth'
+  import notification from '../services/notification'
   import Vue from 'vue'
   export default {
     name: 'Home',
@@ -60,20 +61,20 @@
       login () {
         auth.login(self.credentials, function(success) {
           if (success) {
-            notification.success('Welcome back, Hero');
+            notification.success(Vue.t('alert.login.ok'));
             self.$router.push({ name: 'world' });
           } else {
-            notification.danger('Invalid credentials');
+            notification.danger(Vue.t('alert.login.error'));
           }
         });
       },
       register () {
         auth.register(self.information, function(success) {
           if (success) {
-            notification.success('Welcome to this world, Hero');
+            notification.success(Vue.t('alert.register.ok'));
             self.$router.push({ name: 'world' });
           } else {
-            notification.danger('There is already a player with this credentials');
+            notification.danger(Vue.t('alert.register.error'));
           }
         });
       }

@@ -46,7 +46,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Recipe.belongsToMany(models.Player, {through: 'PlayerRecipe'});
         models.Player.belongsToMany(models.Recipe, {through: 'PlayerRecipe'});
       }
-    }
+    },
+    timestamps: false
   });
 
   return Player;

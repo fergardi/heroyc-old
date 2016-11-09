@@ -3,29 +3,20 @@
     "model": "Sale",
     "data": {
       "gold": 1,
-      "silver": 0,
-      "copper": 0,
-      "quantity": 1,
       "Item": 7
     }
   },
   {
     "model": "Sale",
     "data": {
-      "gold": 0,
-      "silver": 4,
-      "copper": 0,
-      "quantity": 3,
+      "gold": 2,
       "Resource": 9
     }
   },
   {
     "model": "Sale",
     "data": {
-      "gold": 0,
-      "silver": 4,
-      "copper": 0,
-      "quantity": 3,
+      "gold": 3,
       "Recipe": 1
     }
   }

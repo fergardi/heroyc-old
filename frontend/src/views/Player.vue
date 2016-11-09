@@ -130,6 +130,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import Vue from 'vue'
   export default {
     name: 'Player',

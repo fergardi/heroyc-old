@@ -18,7 +18,8 @@
           center: [-5.56, 42.60],
           pitch: 0,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
-          style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5'
+          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+          style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
         },
         avatar: null
       }

@@ -1,5 +1,5 @@
 var constants = {
-  "notification": {
-    "duration": 2000
+  notification: {
+    duration: 2000,
   }
 };
