@@ -8,6 +8,7 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
+      "stamina": 3,
       "family": "danger",
       "icon": "aura",
       "image": "vitality"
@@ -22,6 +23,7 @@
       "agility": 5,
       "intelligence": 0,
       "defense": 0,
+      "stamina": 3,
       "family": "success",
       "icon": "aura",
       "image": "agility"
@@ -36,6 +38,7 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
+      "stamina": 3,
       "family": "warning",
       "icon": "aura",
       "image": "strength"
@@ -50,6 +53,7 @@
       "agility": 0,
       "intelligence": 5,
       "defense": 0,
+      "stamina": 3,
       "family": "primary",
       "icon": "aura",
       "image": "intelligence"
@@ -64,6 +68,7 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 5,
+      "stamina": 3,
       "family": "info",
       "icon": "aura",
       "image": "defense"

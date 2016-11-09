@@ -36,7 +36,7 @@
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span {{ $t('button.attack') }} 
                 span.label.label-danger {{player.strength}}
-              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons }]', @click='buff(player, location.Monster, skill, true)')
+              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{ $t(skill.name) }} 
                 span.label.label-warning(v-if='skill.strength > 0') {{skill.strength}}
@@ -44,6 +44,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
+                span.label.label-warning(v-if='skill.stamina > 0') {{skill.stamina}}
               a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{ $t(spell.name) }} 
@@ -167,6 +168,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{skill.vitality}}
                 span.label.label-success(v-if='skill.agility > 0') {{skill.agility}}
                 span.label.label-info(v-if='skill.defense > 0') {{skill.defense}}
+                span.label.label-warning(v-if='skill.stamina > 0') {{skill.stamina}}
               a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{ $t(spell.name) }} 
@@ -376,6 +378,7 @@
           defender.states.buttons = true;
           attacker.states.buff = true;
           notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), skill: Vue.t(skill.name) }));
+          attacker.strength = Math.max(0, attacker.strength - skill.stamina);
           setTimeout(function() {
             attacker.states.buff = false;
             attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
