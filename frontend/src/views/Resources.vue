@@ -4,8 +4,8 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.resources') }} | 
-              small {{ $t('subtitle.resources') }}
+            h1 {{ 'title.resources' | i18n }} | 
+              small {{ 'subtitle.resources' | i18n }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
-                span {{$t(resource.name)}}
+                span {{ resource.name | i18n }}
             .panel-body
               img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
               p Used for crafting

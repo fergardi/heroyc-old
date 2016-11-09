@@ -4,8 +4,8 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.items') }} | 
-              small {{ $t('subtitle.items') }}
+            h1 {{ 'title.items' | i18n }} | 
+              small {{ 'subtitle.items' | i18n }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + item.icon')  
-                span {{ $t(item.name) }}
+                span {{ item.name | i18n }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
               .progress

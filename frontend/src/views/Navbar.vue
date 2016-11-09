@@ -7,53 +7,53 @@
             i.fa.fa-fw.fa-lg.fa-bars
           router-link.navbar-brand(to='/world')
             i.fa.fa-fw.fa-lg.fa-globe
-            | {{ $t('title.world') }}
+            | {{ 'title.world' | i18n }}
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 i.fa.fa-lg.fa-fw.fa-book
-                | {{ $t('title.help') }}
+                | {{ 'title.help' | i18n }}
                 i.fa.fa-lg.fa-fw.fa-caret-down
               ul.dropdown-menu
                 li
                   router-link(to='/items', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-crossed-axes
-                    | {{ $t('title.items') }}
+                    | {{ 'title.items' | i18n }}
                 li
                   router-link(to='/resources', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-gold-bar
-                    | {{ $t('title.resources') }}
+                    | {{ 'title.resources' | i18n }}
                 li
                   router-link(to='/spells', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-crystal-wand
-                    | {{ $t('title.spells') }}
+                    | {{ 'title.spells' | i18n }}
                 li
                   router-link(to='/skills', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-aura
-                    | {{ $t('title.skills') }}
+                    | {{ 'title.skills' | i18n }}
                 li
                   router-link(to='/recipes', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-scroll-unfurled
-                    | {{ $t('title.recipes') }}
+                    | {{ 'title.recipes' | i18n }}
                 li
                   router-link(to='/monsters', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-hydra
-                    | {{ $t('title.monsters') }}
+                    | {{ 'title.monsters' | i18n }}
                 li.divider
                 li
                   a.pointer(@click="localize('en')")
                     i.ra.ra-lg.ra-fw.ra-wooden-sign
-                    | {{ $t('language.english') }}
+                    | {{ 'language.english' | i18n }}
                 li
                   a.pointer(@click="localize('es')")
                     i.ra.ra-lg.ra-fw.ra-wooden-sign
-                    | {{ $t('language.spanish') }}
+                    | {{ 'language.spanish' | i18n }}
                 li.divider
                 li
                   a.pointer(@click='logout')
                     i.ra.ra-lg.ra-fw.ra-key
-                    | {{ $t('button.logout') }}
+                    | {{ 'button.logout' | i18n }}
 </template>
 
 <script>

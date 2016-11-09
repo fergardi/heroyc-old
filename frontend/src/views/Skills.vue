@@ -4,8 +4,8 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.skills') }} | 
-              small {{ $t('subtitle.skills') }}
+            h1 {{ 'title.skills' | i18n }} | 
+              small {{ 'subtitle.skills' | i18n }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + skill.icon')
-                span {{ $t(skill.name) }}
+                span {{ skill.name | i18n }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
               .progress

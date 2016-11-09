@@ -4,14 +4,14 @@
       .row
         .col-xs-12
           .page-header
-            h1 {{ $t('title.location.city') }} | 
-              small {{ $t('subtitle.location.city') }}
+            h1 {{ 'title.city' | i18n }} | 
+              small {{ 'subtitle.city' | i18n }}
         .col-xs-12
           form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-lg.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.location.city')")
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.city')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-lg.fa-trash
@@ -21,7 +21,7 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
-                  span {{ $t(sale.Item.name) }} ({{sale.gold}})
+                  span {{ sale.Item.name | i18n }} ({{ sale.gold }})
               .panel-body
                 img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity', data-toggle='tooltip', v-bind:title='sale.Item.name')
                 .progress
@@ -37,25 +37,25 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | {{ $t('button.buy') }}
+                  | {{ 'button.buy' | i18n }}
           template(v-if='sale.Resource')
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
-                  span {{ $t(sale.Resource.name) }} ({{sale.gold}})
+                  span {{ sale.Resource.name | i18n }} ({{ sale.gold }})
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity', data-toggle='tooltip', v-bind:title='sale.Resource.name')
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | {{ $t('button.buy') }}
+                  | {{ 'button.buy' | i18n }}
           template(v-if='sale.Recipe')
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
-                  span {{$t(sale.Recipe.Result.name)}} ({{sale.gold}})
+                  span {{ sale.Recipe.Result.name | i18n }} ({{ sale.gold }})
               .panel-body
                 .row
                   .col-xs-6
@@ -78,7 +78,7 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 
-                  | {{ $t('button.buy') }}
+                  | {{ 'button.buy' | i18n }}
 </template>
 
 <script>

@@ -4,8 +4,8 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.recipes') }} | 
-              small {{ $t('subtitle.recipes') }}
+            h1 {{ 'title.recipes' | i18n }} | 
+              small {{ 'subtitle.recipes' | i18n }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
-                span {{$t(recipe.Result.name)}}
+                span {{ recipe.Result.name | i18n }}
             .panel-body
               .row
                 .col-xs-6

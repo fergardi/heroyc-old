@@ -4,8 +4,8 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.spells') }} | 
-              small {{ $t('subtitle.spells') }}
+            h1 {{ 'title.spells' | i18n }} | 
+              small {{ 'subtitle.spells' | i18n }}
         .col-xs-12
           form#search.form-horizontal.form-group
             .input-group
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + spell.icon')  
-                span {{ $t(spell.name) }}
+                span {{ spell.name | i18n }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
               .progress

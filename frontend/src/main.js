@@ -29,6 +29,11 @@ Object.keys(translation).forEach(function (lang) {
   Vue.locale(lang, translation[lang]);
 });
 
+// custom i18n filter
+Vue.filter('i18n', function(string) {
+  return Vue.t(string);
+});
+
 // routes
 var router = new VueRouter({
   routes: [

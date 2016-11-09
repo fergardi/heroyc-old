@@ -4,16 +4,16 @@
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ $t('title.player') }} | 
-              small {{ $t('subtitle.player') }}
+            h1 {{ 'title.player' | i18n }} | 
+              small {{ 'subtitle.player' | i18n }}
       .row#character
         .col-md-6.col-xs-6
           .panel.panel-default.text-center
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user
-                span {{name}} 
-                label.badge {{level}}
+                span {{ name }} 
+                label.badge {{ level }}
             .panel-body
               .row.vertical-align
                 .col-xs-4
@@ -37,7 +37,7 @@
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#inventory')
                   i.fa.fa-fw.fa-lg.fa-sitemap
-                  span {{ $t('panel.inventory') }} 
+                  span {{ 'panel.inventory' | i18n }} 
                   label.badge 9
               .panel-collapse.collapse(id='inventory')
                 .panel-body
@@ -58,8 +58,8 @@
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#items')
                   i.ra.ra-fw.ra-lg.ra-crossed-axes
-                  span {{ $t('panel.items') }} 
-                  label.badge {{items.length}}
+                  span {{ 'panel.items' | i18n }} 
+                  label.badge {{ items.length }}
               .panel-collapse.collapse(id='items')
                 .panel-body
                   .row
@@ -79,21 +79,21 @@
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#resources')
                   i.ra.ra-fw.ra-lg.ra-gold-bar
-                  span {{ $t('panel.resources') }} 
-                  label.badge {{resources.length}}
+                  span {{ 'panel.resources' | i18n }} 
+                  label.badge {{ resources.length }}
               .panel-collapse.collapse(id='resources')
                 .panel-body
                   .row
                     .col-xs-4(v-for='resource in resources')
                       img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
                       br
-                      label.badge {{resource.PlayerResource.quantity}}
+                      label.badge {{ resource.PlayerResource.quantity }}
             .panel.panel-info.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#spells')
                   i.ra.ra-fw.ra-lg.ra-crystal-wand
-                  span {{ $t('panel.spells') }} 
-                  label.badge {{spells.length}}
+                  span {{ 'panel.spells' | i18n }} 
+                  label.badge {{ spells.length }}
               .panel-collapse.collapse(id='spells')
                 .panel-body
                   .row
@@ -109,8 +109,8 @@
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills')
                   i.ra.ra-fw.ra-lg.ra-crystal-wand
-                  span {{ $t('panel.skills') }} 
-                  label.badge {{skills.length}}
+                  span {{ 'panel.skills' | i18n }} 
+                  label.badge {{ skills.length }}
               .panel-collapse.collapse(id='skills')
                 .panel-body
                   .row

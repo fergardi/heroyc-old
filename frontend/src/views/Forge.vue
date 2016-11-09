@@ -4,14 +4,14 @@
       .row
         .col-xs-12
           .page-header
-            h1 {{ $t('title.location.forge') }} | 
-              small {{ $t('subtitle.location.forge') }}
+            h1 {{ 'title.forge' | i18n }} | 
+              small {{ 'subtitle.forge' | i18n }}
         .col-xs-12
           form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.location.forge')")
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.forge')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
                   i.fa.fa-trash
@@ -20,7 +20,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
-                span {{ $t(recipe.Result.name) }}
+                span {{ recipe.Result.name | i18n }}
             .panel-body
               .row
                 .col-xs-6
@@ -43,11 +43,12 @@
             .panel-body
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
-                | {{ $t('button.craft') }}
+                | {{ 'button.craft' | i18n }}
 </template>
 
 <script>
   import api from '../services/api'
+  import Vue from 'vue'
   export default {
     name: 'Forge',
     data: function() { 
@@ -70,7 +71,7 @@
     computed: {
       filtered: function() {
         return this.recipes.filter(function(recipe) {
-          return (recipe.Original.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Result.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || recipe.Resource.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
+          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
         });
       }
     }

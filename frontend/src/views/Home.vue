@@ -4,14 +4,14 @@
       .row
         .col-xs-12
           .page-header
-            h1 {{ $t('title.home') }} | 
-              small {{ $t('subtitle.home') }}
+            h1 {{ 'title.home' | i18n }} | 
+              small {{ 'subtitle.home' | i18n }}
         .col-md-4.col-md-offset-2.col-xs-12
           .panel.text-center.panel-primary
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user
-                span {{ $t('panel.login') }}
+                span {{ 'panel.login' | i18n }}
             .panel-body
               form
                 input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='credentials.username', required)
@@ -19,13 +19,13 @@
                 br
                 a.btn.btn-success.btn-block(@click='login()')
                   i.fa.fa-fw.fa-lg.fa-sign-in
-                  | {{ $t('button.login') }}
+                  | {{ 'button.login' | i18n }}
         .col-md-4.col-xs-12
           .panel.text-center.panel-warning
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user-plus
-                span {{ $t('panel.register') }}
+                span {{ 'panel.register' | i18n }}
             .panel-body
               form
                 input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='information.username', required)
@@ -33,7 +33,7 @@
                 br
                 a.btn.btn-success.btn-block(@click='register()')
                   i.fa.fa-lg.fa-fw.fa-check
-                  | {{ $t('button.register') }}
+                  | {{ 'button.register' | i18n }}
 </template>
 
 <script>
