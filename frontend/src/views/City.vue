@@ -2,7 +2,7 @@
   .container
     #City
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 {{ 'title.city' | i18n }} | 
               small {{ 'subtitle.city' | i18n }}

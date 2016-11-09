@@ -101,6 +101,9 @@ i.ra-lg {
 .map-container {
   height: calc(100vh - 50px);
 }
+.navbar-fixed-top .navbar-collapse {
+  max-height: calc(100vh - 50px);
+}
 .icon {
   width: 40px;
   padding-right: 10px;
