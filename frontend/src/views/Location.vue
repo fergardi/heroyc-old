@@ -29,6 +29,7 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + player.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + player.defense + "%"')
+                  br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
@@ -81,7 +82,7 @@
                 .col-xs-6
                   img.thumbnail(v-bind:src='"dist/img/resources/" + location.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + location.Recipe.Resource.family')
               .row
-                .col-xs-6-col-xs-offset-6
+                .col-xs-6.col-xs-offset-3
                   img.thumbnail(v-bind:src='"dist/img/items/" + location.Recipe.Result.type + "/" + location.Recipe.Result.image + ".png"', v-bind:class='"panel-" + location.Recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Recipe.Result.strength * 10 + "%"')
@@ -153,6 +154,7 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Monster.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Monster.defense + "%"')
+                  br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + location.experience + "%"')
               br
@@ -265,11 +267,11 @@
           self.player.states.buttons = false;
           self.location.Monster.states.buttons = false;
           self.location.Monster.states.dead = true;
+          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
           self.player.experience += self.location.experience;
           self.location.experience = 0;
-          self.location.Monster.states.loot = true;
-          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
           notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
+          self.location.Monster.states.loot = true;
           switch(self.location.image){
             case 'tower':
               api.addSpell(self.player.id, self.location.Spell.id);
@@ -329,8 +331,8 @@
             defender.vitality = Math.max(0, defender.vitality - damage);
             attacker.states.buttons = true;
             defender.states.buttons = true;
-            if (counter && !defender.states.dead) self.counterattack();
           }
+          if (counter && !defender.states.dead) self.counterattack();
         }
       },
       magic: function(attacker, defender, spell, counter) {
@@ -345,7 +347,6 @@
             defender.vitality = Math.max(0, defender.vitality - spell.damage);
             attacker.states.buttons = true;
             defender.states.buttons = true;
-            if (counter && !defender.states.dead) self.counterattack();
           } else {
             attacker.states.magic = true;
             notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), heal: spell.heal }));
@@ -353,8 +354,8 @@
             attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
             attacker.states.buttons = true;
             defender.states.buttons = true;
-            if (counter && !defender.states.dead) self.counterattack();
           }
+          if (counter && !defender.states.dead) self.counterattack();
         }
       },
       buff: function(attacker, defender, skill, counter) {
