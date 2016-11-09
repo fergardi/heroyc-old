@@ -3,7 +3,7 @@
     "model": "Player",
     "data": {
       "name": "Fergardi",
-      "level": 1,
+      "level": 100,
       "experience": 0,
       "gold": 1,
       "image": "avatar",

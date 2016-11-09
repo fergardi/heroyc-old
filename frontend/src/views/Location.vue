@@ -32,11 +32,11 @@
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
-              a.list-group-item.pointer(v-bind:class='{disabled: player.states.buttons}', @click='melee(player, location.Monster, true)')
+              a.list-group-item.pointer(v-bind:class='{disabled: !player.states.buttons}', @click='melee(player, location.Monster, true)')
                 img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
                 span {{ 'button.attack' | i18n }} 
                 span.label.label-danger {{player.strength}}
-              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
+              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{ skill.name | i18n }} 
                 span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
@@ -45,7 +45,7 @@
                 span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
                 span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
                 span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
-              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
+              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{ spell.name | i18n }} 
                 span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
@@ -156,11 +156,11 @@
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + location.experience + "%"')
               br
-              a.list-group-item(v-bind:class='{disabled: location.Monster.states.buttons}')
+              a.list-group-item(v-bind:class='{disabled: !player.states.buttons}')
                 img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
                 span {{ 'button.attack' | i18n }} 
                 span.label.label-danger {{location.Monster.strength}}
-              a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: location.Monster.states.buttons }]')
+              a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{ skill.name | i18n }} 
                 span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
@@ -169,7 +169,7 @@
                 span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
                 span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
                 span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
-              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: location.Monster.states.buttons }]')
+              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                 span {{ spell.name | i18n }} 
                 span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
@@ -200,7 +200,7 @@
           intelligence: 0,
           defense: 0,
           states: {
-            buttons: false,
+            buttons: true,
             melee: false,
             dodge: false,
             magic: false,
@@ -213,7 +213,7 @@
           Monster: {
             image: 'zombie',
             states: {
-              buttons: false,
+              buttons: true,
               melee: false,
               dodge: false,
               magic: false,
@@ -247,7 +247,7 @@
         // extend monster object with states after overriding
         $.extend(self.location.Monster, { 
           states: {
-            buttons: false,
+            buttons: true,
             melee: false,
             dodge: false,
             magic: false,
@@ -256,58 +256,57 @@
             dead: false
           }
         });
-        setTimeout(function() {
-          notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(self.location.Monster.name) }));
-        }, constants.notification.duration / 2);
+        notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(self.location.Monster.name) }));
       });
     },
     watch: {
       'location.Monster.vitality': function(value) {
         if(value <= 0) {
-          self.player.states.buttons = true;
-          self.location.monsters.states.buttons = true;
+          self.player.states.buttons = false;
+          self.location.Monster.states.buttons = false;
           setTimeout(function() {
             self.location.Monster.states.dead = true;
             notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
             self.player.experience += self.location.experience;
             self.location.experience = 0;
             notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
-          }, constants.notification.duration);
-          setTimeout(function() {
-            self.location.Monster.states.loot = true;
-            switch(self.location.image){
-              case 'tower':
-                api.addSpell(self.player.id, self.location.Spell.id);
-                notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
-                break;
-              case 'castle':
-                api.addRecipe(self.player.id, self.location.Recipe.id);
-                notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
-                break;
-              case 'mine':
-                api.addResource(self.player.id, self.location.Resource.id, 1);
-                notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
-                break;
-              case 'dungeon':
-                api.addItem(self.player.id, self.location.Item.id);
-                notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
-                break;
-              case 'ruins':
-                api.addSkill(self.player.id, self.location.Skill.id);
-                notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
-                break;
-            }
-          }, constants.notification.duration * 2);
+            setTimeout(function(){
+              switch(self.location.image){
+                case 'tower':
+                  api.addSpell(self.player.id, self.location.Spell.id);
+                  notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
+                  break;
+                case 'castle':
+                  api.addRecipe(self.player.id, self.location.Recipe.id);
+                  notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
+                  break;
+                case 'mine':
+                  api.addResource(self.player.id, self.location.Resource.id, 1);
+                  notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
+                  break;
+                case 'dungeon':
+                  api.addItem(self.player.id, self.location.Item.id);
+                  notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
+                  break;
+                case 'ruins':
+                  api.addSkill(self.player.id, self.location.Skill.id);
+                  notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
+                  break;
+              }
+              self.location.Monster.states.loot = true;
+            }, constants.notification.duration / 2);
+          }, constants.notification.duration / 2);
         }
       },
       'player.vitality': function(value) {
         if(value <= 0) {
-          self.player.states.buttons = true;
-          self.location.Monster.states.buttons = true;
+          self.player.states.buttons = false;
+          self.location.Monster.states.buttons = false;
           setTimeout(function() {
             self.player.states.dead = true;
+            self.location.Monster.states.loot = false;
             notification.danger(Vue.t('alert.battle.lose'));
-          }, constants.notification.duration);
+          }, constants.notification.duration / 2);
         }
       }
     },
@@ -321,9 +320,9 @@
         random[Math.floor(Math.random() * random.length)]();
       },
       melee: function(attacker, defender, counter) {
-        if (!attacker.states.buttons) {
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
+        if (attacker.states.buttons) {
+          attacker.states.buttons = false;
+          defender.states.buttons = false;
           if (Math.random() * 100 < defender.agility) {
             defender.states.dodge = true;
             notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
@@ -332,30 +331,40 @@
             }, constants.notification.duration);
           } else {
             defender.states.melee = true;
-            notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), strength: attacker.strength, defense: defender.defense, defender: Vue.t(defender.name) }));
+            var damage = attacker.strength - Math.ceil(attacker.strength * defender.defense / 100);
+            notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), damage: damage, defender: Vue.t(defender.name) }));
             setTimeout(function() {
               defender.states.melee = false;
-              defender.vitality -= Math.max(0, attacker.strength - defender.defense);
+              defender.vitality = Math.max(0, defender.vitality - damage);
+              setTimeout(function() {
+                attacker.states.buttons = true;
+                defender.states.buttons = true;
+                setTimeout(function() {
+                  if (counter && !defender.states.dead) self.counterattack();
+                }, constants.notification.duration * 2);
+              }, constants.notification.duration);
             }, constants.notification.duration);
           }
-          setTimeout(function() {
-            attacker.states.buttons = false;
-            defender.states.buttons = false;
-            if (counter) self.counterattack();
-          }, constants.notification.duration * 1.5);
         }
       },
       magic: function(attacker, defender, spell, counter) {
-        if (!attacker.states.buttons) {
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
+        if (attacker.states.buttons) {
+          attacker.states.buttons = false;
+          defender.states.buttons = false;
           attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
           if (spell.damage > 0) {
             defender.states.magic = true;
             notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
             setTimeout(function() {
               defender.states.magic = false;
-              defender.vitality -= spell.damage;
+              defender.vitality = Math.max(0, defender.vitality - spell.damage);
+              setTimeout(function() {
+                attacker.states.buttons = true;
+                defender.states.buttons = true;
+                setTimeout(function() {
+                  if (counter && !defender.states.dead) self.counterattack();
+                }, constants.notification.duration * 2);
+              }, constants.notification.duration);
             }, constants.notification.duration);
           } else {
             attacker.states.magic = true;
@@ -363,19 +372,21 @@
             setTimeout(function() {
               attacker.states.magic = false;
               attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
+              setTimeout(function() {
+                attacker.states.buttons = true;
+                defender.states.buttons = true;
+                setTimeout(function() {
+                  if (counter && !defender.states.dead) self.counterattack();
+                }, constants.notification.duration * 2);
+              }, constants.notification.duration);
             }, constants.notification.duration);
           }
-          setTimeout(function() {
-            attacker.states.buttons = false;
-            defender.states.buttons = false;
-            if (counter) self.counterattack();
-          }, constants.notification.duration * 1.5);
         }
       },
       buff: function(attacker, defender, skill, counter) {
-        if (!attacker.states.buttons) {
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
+        if (attacker.states.buttons) {
+          attacker.states.buttons = false;
+          defender.states.buttons = false;
           attacker.states.buff = true;
           notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), skill: Vue.t(skill.name) }));
           attacker.strength = Math.max(0, attacker.strength - skill.stamina);
@@ -386,12 +397,14 @@
             attacker.agility = Math.min(100, attacker.agility + skill.agility);
             attacker.intelligence = Math.min(100, attacker.intelligence + skill.intelligence);
             attacker.defense = Math.min(100, attacker.defense + skill.defense);
+            setTimeout(function() {
+              attacker.states.buttons = true;
+              defender.states.buttons = true;
+              setTimeout(function() {
+                if (counter && !defender.states.dead) self.counterattack();
+              }, constants.notification.duration * 2);
+            }, constants.notification.duration);
           }, constants.notification.duration);
-          setTimeout(function() {
-            attacker.states.buttons = false;
-            defender.states.buttons = false;
-            if (counter) self.counterattack();
-          }, constants.notification.duration * 1.5);
         }
       },
       strength: function() {
