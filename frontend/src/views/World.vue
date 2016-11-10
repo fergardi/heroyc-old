@@ -8,7 +8,7 @@
   import api from '../services/api.js'
   export default {
     name: 'World',
-    data: function() {
+    data () {
       return {
         locations: [],
         map: {},
@@ -24,51 +24,49 @@
         avatar: null
       }
     },
-    mounted: function() {
-      self = this;
+    mounted () {
       api.getLocations((data) => {
-        self.locations = data;
-        self.createMap();
-        self.geoLocate();
-        self.drawLocations();
+        this.locations = data;
+        this.createMap();
+        this.geoLocate();
+        this.drawLocations();
       });
     },
     methods: {
-      createMap: function(callback) {
-        mapboxgl.accessToken = self.options.token;
-        self.map = new mapboxgl.Map({
+      createMap () {
+        mapboxgl.accessToken = this.options.token;
+        this.map = new mapboxgl.Map({
           container: 'map',
-          style: self.options.style,
-          pitch: self.options.pitch,
-          zoom: self.options.zoom,
-          center: self.options.center,
+          style: this.options.style,
+          pitch: this.options.pitch,
+          zoom: this.options.zoom,
+          center: this.options.center,
           attributionControl: { position: 'bottom-left' }
         });
       },
-      drawLocations: function() {
-        for (var i = 0; i < self.locations.length; i++) {
-          self.addLocation(self.locations[i]);
+      drawLocations () {
+        for (var i = 0; i < this.locations.length; i++) {
+          this.addLocation(this.locations[i]);
         }
       },
-      geoLocate: function() {
-        navigator.geolocation.getCurrentPosition(
-          function(position) {
-            if (self.avatar === null) self.move(position.coords.longitude, position.coords.latitude);
-            self.current = position;
-            self.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
+      geoLocate () {
+        navigator.geolocation.getCurrentPosition((position) => {
+            if (this.avatar === null) this.move(position.coords.longitude, position.coords.latitude);
+            this.current = position;
+            this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
           }
         );
       },
-      move: function(lng, lat) {
-        self.map.flyTo({
+      move (lng, lat) {
+        this.map.flyTo({
           center: [lng, lat],
           speed: 1,
           curve: 1,
-          zoom: self.options.zoom
+          zoom: this.options.zoom
         });
       },
-      updatePosition: function(location) {
-        if (self.avatar === null) {
+      updatePosition (location) {
+        if (this.avatar === null) {
           var marker = document.createElement('div');
           marker.style.zIndex = 10;
           marker.style.left = -30 + 'px';
@@ -82,17 +80,17 @@
           var shadow = document.createElement('div');
           shadow.className = 'map-avatar-shadow';
           marker.appendChild(shadow);
-          marker.addEventListener('click', function(event) {
-            self.$router.push({ name: 'player' });
+          marker.addEventListener('click', (event) => {
+            this.$router.push({ name: 'player' });
           });
           // add marker to map
-          self.avatar = new mapboxgl.Marker(marker).setLngLat(location).addTo(self.map);
+          this.avatar = new mapboxgl.Marker(marker).setLngLat(location).addTo(this.map);
         } else {
           // move marker in map
-          self.avatar.setLngLat(location);
+          this.avatar.setLngLat(location);
         }
       },
-      addLocation: function(location) {
+      addLocation (location) {
         var icon = document.createElement('img');
         icon.src = 'dist/img/locations/' + location.image + '.png';
         icon.className = 'map-location animated zoomIn';
@@ -104,27 +102,27 @@
         marker.style.left = -icon.naturalWidth/2 + 'px';
         marker.style.top = -icon.naturalHeight + 'px';
         marker.appendChild(icon);
-        marker.addEventListener('click', function(event) {
+        marker.addEventListener('click', (event) => {
           switch(location.image){
             case 'city':
-              self.$router.push({ name: 'city' });
+              this.$router.push({ name: 'city' });
               break;
             case 'forge':
-              self.$router.push({ name: 'forge' });
+              this.$router.push({ name: 'forge' });
               break;
             case 'inn':
-              self.$router.push({ name: 'inn' });
+              this.$router.push({ name: 'inn' });
               break;
             case 'dungeon':
             case 'tower':
             case 'mine':
             case 'ruins':
             case 'castle':
-              self.$router.push({ name: 'location', params: { locationId: location.id }});
+              this.$router.push({ name: 'location', params: { locationId: location.id }});
               break;
           }
         });
-        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(self.map);
+        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(this.map);
       }
     }
   }

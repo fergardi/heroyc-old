@@ -40,27 +40,26 @@
   import Vue from 'vue'
   export default {
     name: 'Monsters',
-    data: function() { 
+    data () { 
       return {
         filter: '',
         monsters: []
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getMonsters((data) => {
-        self.monsters = data;
+        this.monsters = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.monsters.filter(function(monster) {
-          return Vue.t(monster.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+      filtered () {
+        return this.monsters.filter((monster) => {
+          return Vue.t(monster.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }

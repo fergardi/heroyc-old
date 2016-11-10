@@ -35,7 +35,7 @@
                   .progress
                     .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
                   .progress
-                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
+                    .progress-bar.progress-bar-danger(v-bininvoca a sad:style='"width: " + recipe.Result.vitality * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
                   .progress
@@ -51,27 +51,26 @@
   import Vue from 'vue'
   export default {
     name: 'Forge',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        recipes: []
+        recipes: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getPlayer(this.$route.params.playerId || 1, (data) => {
-        self.recipes = data.Recipes;
+        this.recipes = data.Recipes;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.recipes.filter(function(recipe) {
-          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
+      filtered () {
+        return this.recipes.filter((recipe) => {
+          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1);
         });
       }
     }

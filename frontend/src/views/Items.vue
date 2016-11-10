@@ -40,27 +40,26 @@
   import Vue from 'vue'
   export default {
     name: 'Items',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        items: []
+        items: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getItems((data) => {
-        self.items = data;
+        this.items = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.items.filter(function(item) {
-          return Vue.t(item.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+      filtered () {
+        return this.items.filter((item) => {
+          return Vue.t(item.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }

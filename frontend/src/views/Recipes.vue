@@ -47,27 +47,26 @@
   import Vue from 'vue'
   export default {
     name: 'Recipes',
-    data: function() { 
+    data () { 
       return {
         filter: '',
         recipes: []
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getRecipes((data) => {
-        self.recipes = data;
+        this.recipes = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.recipes.filter(function(recipe) {
-          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1);
+      filtered () {
+        return this.recipes.filter((recipe) => {
+          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1);
         });
       }
     }

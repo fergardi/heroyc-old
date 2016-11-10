@@ -86,35 +86,34 @@
   import Vue from 'vue'
   export default {
     name: 'City',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        sales: []
+        sales: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getSales((data) => {
-        self.sales = data;
+        this.sales = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.sales.filter(function(sale) {
+      filtered () {
+        return this.sales.filter((sale) => {
           return (
             sale.Item ? 
-              Vue.t(sale.Item.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+              Vue.t(sale.Item.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
                 sale.Resource ? 
-                  Vue.t(sale.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                  Vue.t(sale.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
                     sale.Recipe ? 
-                      Vue.t(sale.Recipe.Original.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
-                      Vue.t(sale.Recipe.Result.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 || 
-                      Vue.t(sale.Recipe.Resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1 : 
+                      Vue.t(sale.Recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+                      Vue.t(sale.Recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+                      Vue.t(sale.Recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
                     true
           );
         });

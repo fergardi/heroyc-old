@@ -36,26 +36,25 @@
   import Vue from 'vue'
   export default {
     name: 'Spells',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        spells: []
+        spells: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getSpells((data) => {
         self.spells = data;
       });
     },
     methods: {
-      reset: function() {
+      reset () {
         self.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.spells.filter(function(spell) {
+      filtered () {
+        return this.spells.filter((spell) => {
           return Vue.t(spell.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
         });
       }

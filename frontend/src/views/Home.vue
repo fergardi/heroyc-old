@@ -54,25 +54,22 @@
         },
       }
     },
-    created () {
-      self = this;
-    },
     methods: {
       login () {
-        auth.login(self.credentials, function(success) {
+        auth.login(this.credentials, (success) => {
           if (success) {
             notification.success(Vue.t('alert.login.ok'));
-            self.$router.push({ name: 'world' });
+            this.$router.push({ name: 'world' });
           } else {
             notification.danger(Vue.t('alert.login.error'));
           }
         });
       },
       register () {
-        auth.register(self.information, function(success) {
+        auth.register(this.information, (success) => {
           if (success) {
             notification.success(Vue.t('alert.register.ok'));
-            self.$router.push({ name: 'world' });
+            this.$router.push({ name: 'world' });
           } else {
             notification.danger(Vue.t('alert.register.error'));
           }

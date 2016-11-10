@@ -31,27 +31,26 @@
   import Vue from 'vue'
   export default {
     name: 'Resources',
-    data: function() {
+    data () {
       return {
         filter: '',
-        resources: []
+        resources: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getResources((data) => {
-        self.resources = data;
+        this.resources = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return self.resources.filter(function(resource) {
-          return Vue.t(resource.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+      filtered () {
+        return this.resources.filter((resource) => {
+          return Vue.t(resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }

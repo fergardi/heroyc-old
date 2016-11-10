@@ -40,27 +40,26 @@
   import Vue from 'vue'
   export default {
     name: 'Skills',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        skills: []
+        skills: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getSkills((data) => {
-        self.skills = data;
+        this.skills = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.skills.filter(function(skill) {
-          return Vue.t(skill.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+      filtered () {
+        return this.skills.filter((skill) => {
+          return Vue.t(skill.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }

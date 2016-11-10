@@ -8,7 +8,7 @@
               small {{ 'subtitle.location' | i18n }}
       .row#battle
         .col-xs-6
-          .panel.panel-default.text-center.animated.bounceInLeft(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
+          .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
             .panel-heading
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
@@ -133,7 +133,7 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Skill.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Skill.defense * 10 + "%"')
-          .panel.text-center.animated.bounceInRight#monster(v-bind:class='[{ shake: location.Monster.states.melee }, { flash: location.Monster.states.magic }, { bounce: location.Monster.states.buff }, { jello: location.Monster.states.dodge }, { zoomOut: location.Monster.states.dead }, "panel-" + location.Monster.type]')
+          .panel.text-center.animated#monster(v-bind:class='[{ shake: location.Monster.states.melee }, { flash: location.Monster.states.magic }, { bounce: location.Monster.states.buff }, { jello: location.Monster.states.dodge }, { zoomOut: location.Monster.states.dead }, "panel-" + location.Monster.type]')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')

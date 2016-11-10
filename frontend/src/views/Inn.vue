@@ -34,27 +34,26 @@
   import api from '../services/api'
   export default {
     name: 'Inn',
-    data: function() { 
+    data () { 
       return {
         filter: '',
-        quests: []
+        quests: [],
       }
     },
-    created: function() {
-      self = this;
+    created () {
       api.getQuests((data) => {
-        self.quests = data;
+        this.quests = data;
       });
     },
     methods: {
-      reset: function() {
-        self.filter = '';
+      reset () {
+        this.filter = '';
       }
     },
     computed: {
-      filtered: function() {
-        return this.quests.filter(function(quest) {
-          return quest.name.toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+      filtered () {
+        return this.quests.filter((quest) => {
+          return quest.name.toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }
