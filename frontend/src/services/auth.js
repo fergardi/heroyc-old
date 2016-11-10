@@ -2,26 +2,24 @@ let api = '//localhost:3000/api';
 
 export default {
   logged: false,
-  login: function(credentials, callback) {
-    var that = this;
+  login (credentials, callback) {
     $.post(`${api}/users/login`, credentials)
-    .then(function(response){
-      that.logged = (response.status == 'ok');
-      callback(that.logged);
+    .then((response) => {
+      this.logged = (response.status == 'ok');
+      callback(this.logged);
     });
   },
-  logout: function() {
+  logout () {
     this.logged = false;
   },
-  register: function(information, callback) {
-    var that = this;
+  register (information, callback) {
     $.post(`${api}/users/register`, information)
-    .then(function(response){
-      that.logged = (response.status == 'ok');
-      callback(that.logged);
+    .then((response) => {
+      this.logged = (response.status == 'ok');
+      callback(this.logged);
     });
   },
-  isLogged: function() {
+  isLogged () {
     return this.logged;
   }
 }

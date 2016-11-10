@@ -44,18 +44,18 @@
     },
     created () {
       api.getSpells((data) => {
-        self.spells = data;
+        this.spells = data;
       });
     },
     methods: {
       reset () {
-        self.filter = '';
+        this.filter = '';
       }
     },
     computed: {
       filtered () {
         return this.spells.filter((spell) => {
-          return Vue.t(spell.name).toLowerCase().indexOf(self.filter.toLowerCase()) !== -1;
+          return Vue.t(spell.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
         });
       }
     }

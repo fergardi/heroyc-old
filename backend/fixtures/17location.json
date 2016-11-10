@@ -3,8 +3,8 @@
     "model": "Location",
     "data": {
       "type": "title.city",
-      "lat": -5.566517194043172,
-      "lng": 42.62463290287917,
+      "lat": 42.75943331668125,
+      "lng": -5.993016394769086,
       "image": "city",
       "experience": 10
     }
@@ -13,8 +13,8 @@
     "model": "Location",
     "data": {
       "type": "title.inn",
-      "lat": -5.547798941500531,
-      "lng": 42.61680853401759,
+      "lat": 42.710398745659205,
+      "lng": -5.682364449920101,
       "image": "inn",
       "experience": 10
     }
@@ -23,8 +23,8 @@
     "model": "Location",
     "data": {
       "type": "title.tower",
-      "lat": -5.554528027609081,
-      "lng": 42.62032574136461,
+      "lat": 42.78295613866578,
+      "lng": -5.4242295960343085,
       "image": "tower",
       "experience": 10,
       "Monster": { "name": "monster.zombie" },
@@ -35,8 +35,8 @@
     "model": "Location",
     "data": {
       "type": "title.dungeon",
-      "lat": -5.543897707012178,
-      "lng": 42.621640428312645,
+      "lat": 42.63513710830887,
+      "lng": -5.051269238178435,
       "image": "dungeon",
       "experience": 10,
       "Monster": { "name": "monster.dragon" },
@@ -47,8 +47,8 @@
     "model": "Location",
     "data": {
       "type": "title.mine",
-      "lat": -5.535397241539499,
-      "lng": 42.62443522502602,
+      "lat": 42.41011993062074,
+      "lng": -5.207930390881643,
       "image": "mine",
       "experience": 10,
       "Monster": { "name": "monster.medusa" },
@@ -59,8 +59,8 @@
     "model": "Location",
     "data": {
       "type": "title.forge",
-      "lat": -5.56146100601967,
-      "lng": 42.640888278347774,
+      "lat": 42.56634037313441,
+      "lng": -5.374382865628689,
       "image": "forge",
       "experience": 10
     }
@@ -69,8 +69,8 @@
     "model": "Location",
     "data": {
       "type": "title.castle",
-      "lat": -5.556933795708318,
-      "lng": 42.61419907228796,
+      "lat": 42.45282390210397,
+      "lng": -5.751793824413539,
       "image": "castle",
       "experience": 10,
       "Monster": { "name": "monster.yeti" },
@@ -81,8 +81,8 @@
     "model": "Location",
     "data": {
       "type": "title.ruins",
-      "lat": -5.5448237191811245,
-      "lng": 42.61384880947696,
+      "lat": 42.546014432725656,
+      "lng": -6.050874206846885,
       "image": "ruins",
       "experience": 10,
       "Monster": { "name": "monster.ghost" },

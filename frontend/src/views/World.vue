@@ -11,15 +11,16 @@
     data () {
       return {
         locations: [],
-        map: {},
+        map: null,
         current: {},
         options: {
-          zoom: 13,
-          center: [-5.56, 42.60],
+          zoom: 9,
+          center: [-5.5, 42.5],
           pitch: 0,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
-          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
+          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+          position: 'bottom-left'
         },
         avatar: null
       }
@@ -28,8 +29,8 @@
       api.getLocations((data) => {
         this.locations = data;
         this.createMap();
-        this.geoLocate();
         this.drawLocations();
+        this.geoLocate();
       });
     },
     methods: {
@@ -41,7 +42,10 @@
           pitch: this.options.pitch,
           zoom: this.options.zoom,
           center: this.options.center,
-          attributionControl: { position: 'bottom-left' }
+          attributionControl: { position: this.position }
+        });
+        this.map.on('click', function(e){
+          console.log(e.lngLat);
         });
       },
       drawLocations () {
@@ -57,9 +61,9 @@
           }
         );
       },
-      move (lng, lat) {
+      move (lat, lng) {
         this.map.flyTo({
-          center: [lng, lat],
+          center: [lat, lng],
           speed: 1,
           curve: 1,
           zoom: this.options.zoom
@@ -69,8 +73,6 @@
         if (this.avatar === null) {
           var marker = document.createElement('div');
           marker.style.zIndex = 10;
-          marker.style.left = -30 + 'px';
-          marker.style.top = -77 + 'px';
           // add an icon
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
@@ -84,7 +86,7 @@
             this.$router.push({ name: 'player' });
           });
           // add marker to map
-          this.avatar = new mapboxgl.Marker(marker).setLngLat(location).addTo(this.map);
+          this.avatar = new mapboxgl.Marker(marker, { offset: [-30, -77] }).setLngLat(location).addTo(this.map);
         } else {
           // move marker in map
           this.avatar.setLngLat(location);
@@ -95,13 +97,9 @@
         icon.src = 'dist/img/locations/' + location.image + '.png';
         icon.className = 'map-location animated zoomIn';
         var marker = document.createElement('div');
+        marker.appendChild(icon);
         marker.id = location.id;
         marker.style.zIndex = 5;
-        marker.style.width = icon.naturalWidth + 'px';
-        marker.style.height = icon.naturalHeight + 'px';
-        marker.style.left = -icon.naturalWidth/2 + 'px';
-        marker.style.top = -icon.naturalHeight + 'px';
-        marker.appendChild(icon);
         marker.addEventListener('click', (event) => {
           switch(location.image){
             case 'city':
@@ -122,7 +120,7 @@
               break;
           }
         });
-        new mapboxgl.Marker(marker).setLngLat([location.lat, location.lng]).addTo(this.map);
+        new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
       }
     }
   }

@@ -227,27 +227,26 @@
         }
       }
     },
-    mounted: function() {
-      self = this;
+    created: function() {
       api.getPlayer(this.$route.params.playerId || 1, (data) => {
-        self.player.id = data.id;
-        self.player.level = data.level;
-        self.player.equipments = data.Equipments;
-        self.player.spells = data.Spells;
-        self.player.skills = data.Skills;
-        self.player.image = data.image;
-        self.player.name = data.name;
-        self.player.weapon = data.Equipments[3].image;
-        self.player.vitality = self.vitality();
-        self.player.strength = self.strength();
-        self.player.agility = self.agility();
-        self.player.intelligence = self.intelligence();
-        self.player.defense = self.defense();
+        this.player.id = data.id;
+        this.player.level = data.level;
+        this.player.equipments = data.Equipments;
+        this.player.spells = data.Spells;
+        this.player.skills = data.Skills;
+        this.player.image = data.image;
+        this.player.name = data.name;
+        this.player.weapon = data.Equipments[3].image;
+        this.player.vitality = this.vitality();
+        this.player.strength = this.strength();
+        this.player.agility = this.agility();
+        this.player.intelligence = this.intelligence();
+        this.player.defense = this.defense();
       });
       api.getLocation(this.$route.params.locationId || 3, (data) => {
-        self.location = data;
+        this.location = data;
         // extend monster object with states after overriding
-        $.extend(self.location.Monster, { 
+        $.extend(this.location.Monster, { 
           states: {
             buttons: true,
             melee: false,
@@ -258,64 +257,64 @@
             dead: false
           }
         });
-        notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(self.location.Monster.name) }));
+        notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(this.location.Monster.name) }));
       });
     },
     watch: {
-      'location.Monster.vitality': function(value) {
+      'location.Monster.vitality': (value) => {
         if(value <= 0) {
-          self.player.states.buttons = false;
-          self.location.Monster.states.buttons = false;
-          self.location.Monster.states.dead = true;
-          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
-          self.player.experience += self.location.experience;
-          self.location.experience = 0;
-          notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
-          self.location.Monster.states.loot = true;
-          switch(self.location.image){
+          this.player.states.buttons = false;
+          this.location.Monster.states.buttons = false;
+          this.location.Monster.states.dead = true;
+          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(this.location.Monster.name) }));
+          this.player.experience += this.location.experience;
+          this.location.experience = 0;
+          notification.success(Vue.t('alert.battle.loot.experience', { experience: this.location.experience }));
+          this.location.Monster.states.loot = true;
+          switch(this.location.image){
             case 'tower':
-              api.addSpell(self.player.id, self.location.Spell.id);
-              notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
+              api.addSpell(this.player.id, this.location.Spell.id);
+              notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(this.location.Spell.name) }));
               break;
             case 'castle':
-              api.addRecipe(self.player.id, self.location.Recipe.id);
-              notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
+              api.addRecipe(this.player.id, this.location.Recipe.id);
+              notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(this.location.Recipe.Result.name) }));
               break;
             case 'mine':
-              api.addResource(self.player.id, self.location.Resource.id, 1);
-              notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
+              api.addResource(this.player.id, this.location.Resource.id, 1);
+              notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(this.location.Resource.name) }));
               break;
             case 'dungeon':
-              api.addItem(self.player.id, self.location.Item.id);
-              notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
+              api.addItem(this.player.id, this.location.Item.id);
+              notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(this.location.Item.name) }));
               break;
             case 'ruins':
-              api.addSkill(self.player.id, self.location.Skill.id);
-              notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
+              api.addSkill(this.player.id, this.location.Skill.id);
+              notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(this.location.Skill.name) }));
               break;
           }
         }
       },
-      'player.vitality': function(value) {
+      'player.vitality': (value) => {
         if(value <= 0) {
-          self.player.states.buttons = false;
-          self.location.Monster.states.buttons = false;
-          self.player.states.dead = true;
-          self.location.Monster.states.loot = false;
+          this.player.states.buttons = false;
+          this.location.Monster.states.buttons = false;
+          this.player.states.dead = true;
+          this.location.Monster.states.loot = false;
           notification.danger(Vue.t('alert.battle.lose'));
         }
       }
     },
     methods: {
-      counterattack: function() {
+      counterattack () {
         var random = [
-          function() { self.melee(self.location.Monster, self.player, false) },
-          function() { self.magic(self.location.Monster, self.player, self.location.Monster.Spells[Math.floor(Math.random() * self.location.Monster.Spells.length)], false) },
-          function() { self.buff(self.location.Monster, self.player, self.location.Monster.Skills[Math.floor(Math.random() * self.location.Monster.Skills.length)], false) }
+          function() { this.melee(this.location.Monster, this.player, false) },
+          function() { this.magic(this.location.Monster, this.player, this.location.Monster.Spells[Math.floor(Math.random() * this.location.Monster.Spells.length)], false) },
+          function() { this.buff(this.location.Monster, this.player, this.location.Monster.Skills[Math.floor(Math.random() * this.location.Monster.Skills.length)], false) }
         ];
         random[Math.floor(Math.random() * random.length)]();
       },
-      melee: function(attacker, defender, counter) {
+      melee (attacker, defender, counter) {
         if (attacker.states.buttons) {
           attacker.states.buttons = false;
           defender.states.buttons = false;
@@ -332,10 +331,10 @@
             attacker.states.buttons = true;
             defender.states.buttons = true;
           }
-          if (counter && !defender.states.dead) self.counterattack();
+          if (counter && !defender.states.dead) this.counterattack();
         }
       },
-      magic: function(attacker, defender, spell, counter) {
+      magic (attacker, defender, spell, counter) {
         if (attacker.states.buttons) {
           attacker.states.buttons = false;
           defender.states.buttons = false;
@@ -355,10 +354,10 @@
             attacker.states.buttons = true;
             defender.states.buttons = true;
           }
-          if (counter && !defender.states.dead) self.counterattack();
+          if (counter && !defender.states.dead) this.counterattack();
         }
       },
-      buff: function(attacker, defender, skill, counter) {
+      buff (attacker, defender, skill, counter) {
         if (attacker.states.buttons) {
           attacker.states.buttons = false;
           defender.states.buttons = false;
@@ -373,41 +372,41 @@
           attacker.defense = Math.min(100, attacker.defense + skill.defense);    
           attacker.states.buttons = true;
           defender.states.buttons = true;    
-          if (counter && !defender.states.dead) self.counterattack();
+          if (counter && !defender.states.dead) this.counterattack();
         }
       },
-      strength: function() {
-        var str = self.player.level;
-        for(var i = 0; i < self.player.equipments.length; i++) {
-          str += self.player.equipments[i].strength;
+      strength () {
+        var str = this.player.level;
+        for(var i = 0; i < this.player.equipments.length; i++) {
+          str += this.player.equipments[i].strength;
         }
         return str;
       },
-      vitality: function() {
-        var vit = self.player.level;
-        for(var i = 0; i < self.player.equipments.length; i++) {
-          vit += self.player.equipments[i].vitality;
+      vitality () {
+        var vit = this.player.level;
+        for(var i = 0; i < this.player.equipments.length; i++) {
+          vit += this.player.equipments[i].vitality;
         }
         return vit;
       },
-      intelligence: function() {
-        var int = self.player.level;
-        for(var i = 0; i < self.player.equipments.length; i++) {
-          int += self.player.equipments[i].intelligence;
+      intelligence () {
+        var int = this.player.level;
+        for(var i = 0; i < this.player.equipments.length; i++) {
+          int += this.player.equipments[i].intelligence;
         }
         return int;
       },
-      agility: function() {
-        var agi = self.player.level;
-        for(var i = 0; i < self.player.equipments.length; i++) {
-          agi += self.player.equipments[i].agility;
+      agility () {
+        var agi = this.player.level;
+        for(var i = 0; i < this.player.equipments.length; i++) {
+          agi += this.player.equipments[i].agility;
         }
         return agi;
       },
-      defense: function() {
-        var def = self.player.level;
-        for(var i = 0; i < self.player.equipments.length; i++) {
-          def += self.player.equipments[i].defense;
+      defense () {
+        var def = this.player.level;
+        for(var i = 0; i < this.player.equipments.length; i++) {
+          def += this.player.equipments[i].defense;
         }
         return def;
       }
