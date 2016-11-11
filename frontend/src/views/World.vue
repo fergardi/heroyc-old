@@ -44,9 +44,11 @@
           center: this.options.center,
           attributionControl: { position: this.position }
         });
+        
         this.map.on('click', function(e){
           console.log(e.lngLat);
         });
+        
       },
       drawLocations () {
         for (var i = 0; i < this.locations.length; i++) {
@@ -110,6 +112,9 @@
               break;
             case 'inn':
               this.$router.push({ name: 'inn' });
+              break;
+            case 'market':
+              this.$router.push({ name: 'market' });
               break;
             case 'dungeon':
             case 'tower':

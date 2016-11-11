@@ -8,10 +8,10 @@ var skills = [];
 var monsters = [];
 
 const api = {
-  getItems: function(callback) {
+  getItems (callback) {
     if (items.length === 0) {
       $.get(`${url}/items`)
-      .then(function(response) {
+      .then((response) => {
         items = response.data;
         callback(items);
       });
@@ -19,13 +19,13 @@ const api = {
       callback(items);
     }
   },
-  addItem: function(player, item) {
+  addItem (player, item) {
     $.post(`${url}/players/${player}/items/add/${item}`);
   },
-  getResources: function(callback) {
+  getResources (callback) {
     if (resources.length === 0) {
       $.get(`${url}/resources`)
-      .then(function(response) {
+      .then((response) => {
         resources = response.data;
         callback(resources);
       });
@@ -33,13 +33,13 @@ const api = {
       callback(resources);
     }
   },
-  addResource: function(player, resource, quantity) {
+  addResource (player, resource, quantity) {
     $.post(`${url}/players/${player}/resources/add/${resource}/${quantity}`);
   },
-  getRecipes: function(callback) {
+  getRecipes (callback) {
     if (recipes.length === 0) {
       $.get(`${url}/recipes`)
-      .then(function(response) {
+      .then((response) => {
         recipes = response.data;
         callback(recipes);
       });
@@ -47,13 +47,13 @@ const api = {
       callback(recipes);
     }
   },
-  addRecipe: function(player, recipe) {
+  addRecipe (player, recipe) {
     $.post(`${url}/players/${player}/recipes/add/${recipe}`);
   },
-  getSpells: function(callback) {
+  getSpells (callback) {
     if (spells.length === 0) {
       $.get(`${url}/spells`)
-      .then(function(response) {
+      .then((response) => {
         spells = response.data;
         callback(spells);
       });
@@ -61,13 +61,13 @@ const api = {
       callback(spells);
     }
   },
-  addSpell: function(player, spell) {
+  addSpell (player, spell) {
     $.post(`${url}/players/${player}/spells/add/${spell}`);
   },
-  getSkills: function(callback) {
+  getSkills (callback) {
     if (skills.length === 0) {
       $.get(`${url}/skills`)
-      .then(function(response) {
+      .then((response) => {
         skills = response.data;
         callback(skills);
       });
@@ -75,13 +75,13 @@ const api = {
       callback(skills);
     }
   },
-  addSkill: function(player, skill) {
+  addSkill (player, skill) {
     $.post(`${url}/players/${player}/skills/add/${skill}`);
   },
-  getMonsters: function(callback) {
+  getMonsters (callback) {
     if (monsters.length === 0) {
       $.get(`${url}/monsters`)
-      .then(function(response) {
+      .then((response) => {
         monsters = response.data;
         callback(monsters);
       });
@@ -89,56 +89,62 @@ const api = {
       callback(monsters);
     }
   },
-  getSales: function(callback) {
+  getSales (callback) {
     $.get(`${url}/sales`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  getLocations: function(callback) {
+  getMarket (callback) {
+    $.get(`${url}/sales/market`)
+    .then((response) => {
+      callback(response.data);
+    });
+  },
+  getLocations (callback) {
     $.get(`${url}/locations`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  getLocation: function(id, callback) {
+  getLocation (id, callback) {
     $.get(`${url}/locations/${id}`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  addLocation: function(callback) {
+  addLocation (callback) {
     $.post(`${url}/locations/add`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  getPlayers: function(callback) {
+  getPlayers (callback) {
     $.get(`${url}/players`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  getPlayer: function(player, callback) {
+  getPlayer (player, callback) {
     $.get(`${url}/players/${player}`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  getQuests: function(callback) {
+  getQuests (callback) {
     $.get(`${url}/quests`)
-    .then(function(response) {
+    .then((response) => {
       callback(response.data);
     });
   },
-  addQuest: function(player, quest) {
+  addQuest (player, quest) {
     $.post(`${url}/players/${player}/quests/add/${quest}`);
   },
-  updateEquipment: function(player, item, callback) {
+  updateEquipment (player, item, callback) {
     $.put(`${url}/players/${player}/equipments/${item}`)
-    .then(function(ok) {
+    .then((ok) => {
       $.get(`${url}/players/${player}`)
-      .then(function(response){
+      .then((response) => {
         callback(response.data);
       })
     });

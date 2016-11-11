@@ -8,6 +8,7 @@ const translation = {
       login: {
         ok: 'Welcome back, Hero',
         error: 'Invalid credentials',
+        secure: 'Login to continue',
       },
       register: {
         ok: 'Welcome to Heroyc',
@@ -92,6 +93,7 @@ const translation = {
       castle: 'Castle',
       ruins: 'Ruins',
       location: 'Battle monsters for loot',
+      market: 'Market',
     },
     placeholder: {
       items: 'Search items',
@@ -110,6 +112,7 @@ const translation = {
       forge: 'Search recipes',
       castle: 'Castle',
       ruins: 'Ruins',
+      market: 'Market',
     },
     item: {
       ring: {
@@ -294,6 +297,7 @@ const translation = {
       login: {
         ok: 'Bienvenido de nuevo, Heroe',
         error: 'Credenciales incorrectas',
+        secure: 'Inicia sesion para continuar',
       },
       register: {
         ok: 'Bienvenido a Heroyc',
@@ -356,6 +360,7 @@ const translation = {
       forge: 'Forja',
       castle: 'Castillo',
       ruins: 'Ruinas',
+      market: 'Market',
     },
     subtitle: {
       login: 'Acceder',
@@ -378,6 +383,7 @@ const translation = {
       castle: 'Castillo',
       ruins: 'Ruinas',
       location: 'Lucha con monstruos por recompensas',
+      market: 'Market',
     },
     placeholder: {
       items: 'Buscar objetos',
@@ -396,6 +402,7 @@ const translation = {
       forge: 'Buscar recetas',
       castle: 'Castillo',
       ruins: 'Ruinas',
+      market: 'Market',
     },
     item: {
       ring: {

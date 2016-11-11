@@ -2,7 +2,8 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Sale = sequelize.define('Sale', {
-    gold: DataTypes.INTEGER
+    gold: DataTypes.INTEGER,
+    store: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

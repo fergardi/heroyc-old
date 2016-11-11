@@ -16,8 +16,10 @@ import Inn from './views/Inn.vue'
 import City from './views/City.vue'
 import Location from './views/Location.vue'
 import Forge from './views/Forge.vue'
+import Market from './views/Market.vue'
 import World from './views/World.vue'
 import auth from './services/auth'
+import notification from './services/notification'
 
 // router
 Vue.use(VueRouter);
@@ -41,6 +43,7 @@ var router = new VueRouter({
     { path: '/home', component: Home, name: 'home' },
     { path: '/world', component: World, name: 'world' },
     { path: '/items', component: Items, name: 'items' },
+    { path: '/market', component: Market, name: 'market' },
     { path: '/resources', component: Resources, name: 'resources' },
     { path: '/spells', component: Spells, name: 'spells' },
     { path: '/skills', component: Skills, name: 'skills' },
@@ -61,6 +64,7 @@ var secured = [
   'player',
   'city',
   'inn',
+  'market',
   'location',
   'forge'
 ];
@@ -75,6 +79,7 @@ new Vue({
 router.beforeEach((to, from, next) => {
   if ((secured.indexOf(to.name) !== -1) && !auth.logged) {
     router.push({ path: '/' });
+    notification.danger(Vue.t('alert.login.secure'));
   } else {
     return next();
   }

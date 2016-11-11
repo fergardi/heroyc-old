@@ -1,5 +1,5 @@
 const notification = {
-  alert: function(text, type, icon) {
+  alert (text, type, icon) {
     var msg = '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text + '!';
     $('.alerts').notify({
       type: type,
@@ -7,16 +7,16 @@ const notification = {
       fadeOut: { enabled: true, delay: constants.notification.duration }
     }).show();
   },
-  success: function(text) {
+  success (text) {
     this.alert(text, 'success', 'check-circle');
   },
-  info: function(text) {
+  info (text) {
     this.alert(text, 'info', 'info-circle');
   },
-  warning: function(text) {
+  warning (text) {
     this.alert(text, 'warning', 'question-circle');
   },
-  danger: function(text) {
+  danger (text) {
     this.alert(text, 'danger', 'exclamation-triangle');
   }
 };

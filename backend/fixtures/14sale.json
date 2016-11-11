@@ -3,6 +3,7 @@
     "model": "Sale",
     "data": {
       "gold": 1,
+      "store": false,
       "Item": 7
     }
   },
@@ -10,6 +11,7 @@
     "model": "Sale",
     "data": {
       "gold": 2,
+      "store": false,
       "Resource": 9
     }
   },
@@ -17,7 +19,16 @@
     "model": "Sale",
     "data": {
       "gold": 3,
+      "store": false,
       "Recipe": 1
+    }
+  },
+  {
+    "model": "Sale",
+    "data": {
+      "gold": 99,
+      "store": true,
+      "Item": 55
     }
   }
 ]

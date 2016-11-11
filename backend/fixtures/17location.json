@@ -5,8 +5,7 @@
       "type": "title.city",
       "lat": 42.75943331668125,
       "lng": -5.993016394769086,
-      "image": "city",
-      "experience": 10
+      "image": "city"
     }
   },
   {
@@ -15,8 +14,7 @@
       "type": "title.inn",
       "lat": 42.710398745659205,
       "lng": -5.682364449920101,
-      "image": "inn",
-      "experience": 10
+      "image": "inn"
     }
   },
   {
@@ -61,8 +59,7 @@
       "type": "title.forge",
       "lat": 42.56634037313441,
       "lng": -5.374382865628689,
-      "image": "forge",
-      "experience": 10
+      "image": "forge"
     }
   },
   {
@@ -87,6 +84,15 @@
       "experience": 10,
       "Monster": { "name": "monster.ghost" },
       "Skill": { "name": "skill.agility" }
+    }
+  },
+  {
+    "model": "Location",
+    "data": {
+      "type": "title.market",
+      "lat": 42.4059349774671,
+      "lng": -6.10823343085886,
+      "image": "market"
     }
   }
 ]

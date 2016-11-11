@@ -1,20 +1,20 @@
 <template lang="pug">
   .container
-    #City
+    #Market
       .row
         .col-xs-12.hidden-xs
           .page-header
-            h1 {{ 'title.city' | i18n }} | 
-              small {{ 'subtitle.city' | i18n }}
+            h1 {{ 'title.market' | i18n }} | 
+              small {{ 'subtitle.market' | i18n }}
         .col-xs-12
           form.form-horizontal.form-group
             .input-group
               .input-group-addon
-                i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.city')")
+                i.fa.fa-lg.fa-search
+              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.market')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
+                  i.fa.fa-lg.fa-trash
         .col-md-3.col-xs-6(v-for='sale in filtered')
           template(v-if='sale.Item')
             .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
@@ -85,7 +85,7 @@
   import api from '../services/api'
   import Vue from 'vue'
   export default {
-    name: 'City',
+    name: 'Market',
     data () { 
       return {
         filter: '',
@@ -93,7 +93,7 @@
       }
     },
     created () {
-      api.getSales((data) => {
+      api.getMarket((data) => {
         this.sales = data;
       });
     },
