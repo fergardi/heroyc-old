@@ -3,7 +3,8 @@
     "model": "Sale",
     "data": {
       "gold": 1,
-      "store": false,
+      "platinum": 0,
+      "market": false,
       "Item": 7
     }
   },
@@ -11,7 +12,8 @@
     "model": "Sale",
     "data": {
       "gold": 2,
-      "store": false,
+      "platinum": 0,
+      "market": false,
       "Resource": 9
     }
   },
@@ -19,15 +21,17 @@
     "model": "Sale",
     "data": {
       "gold": 3,
-      "store": false,
+      "platinum": 0,
+      "market": false,
       "Recipe": 1
     }
   },
   {
     "model": "Sale",
     "data": {
-      "gold": 99,
-      "store": true,
+      "gold": 0,
+      "platinum": 99,
+      "market": true,
       "Item": 55
     }
   }

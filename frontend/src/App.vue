@@ -14,5 +14,142 @@
   }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+  /* MAIN */
+  html,
+  body
+    height: 100%;
+  body
+    //background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-sizing: border-box;
+    padding-top: 50px;
+  .navbar
+    margin-bottom: 0;
+  *:not(.navbar) i.fa,
+  *:not(.navbar) i.ra
+    margin-right: 5px;
+  i.ra-lg
+    line-height: inherit;
+  .page-header
+    margin: 23px 0;
+  .bootstrap-select
+    border-radius: 6px;
+  .fixed
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    opacity: 0.95;
+  .alert
+    margin-bottom: 5px;
+    margin-top: 10px;
+    pointer-events: all;
+  .help-block,
+  .help-block > ul
+    margin: 0;
+  .progress
+    margin-bottom: 5px;
+    height: 5px;
+  .progress-bar-default
+    background-color: #212121;
+  .progress-bar-default.progress-bar:last-child::before
+    background-color: #f5f5f5;
+  .slot
+    margin-bottom: 5px;
+  .label
+    font-size: 95%;
+  .alert,
+  .panel-heading,
+  .panel-body,
+  .btn,
+  .list-group,
+  .list-group-item
+    background-image: url("https://www.transparenttextures.com/patterns/dust.png");
+    background-repeat: repeat;
+  .thumbnail
+    display: inline-block;
+    width: 100px;
+  .page-header h1 small
+    color: inherit;
+  .gold
+    color: #000;
+    background-color: #e6e600;
+  .silver
+    color: #000;
+    background-color: #ccccb3;
+  .copper
+    color: #000;
+    background-color: #bf8040;
+  .mana
+    color: #000;
+    background-color: #00f;
+  .heal
+    color: #000;
+    background-color: #008000;
+  .damage
+    color: #000;
+    background-color: #f00; 
+  .map-container
+    height: calc(100vh - 50px);
+  .navbar-fixed-top .navbar-collapse
+    max-height: calc(100vh - 50px);
+  .icon
+    width: 40px;
+    padding-right: 10px;
+  a.list-group-item-primary
+    color: #2e64fe;
+    background-color: #a9bcf5;
+  a.list-group-item-primary:hover
+    color: #00f;
+    background-color: #2e64fe;
+  span.label
+    margin-left: 3px;
+    border: 1px solid #000;
+  .pointer
+    cursor: pointer;
+  .vertical-align
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  .mapboxgl-ctrl-attrib
+    display: none;
+  .disabled
+    pointer-events: none;
+  .page-header
+    border-bottom: 1px solid;
+  .round
+    border-radius: 50%;
+  /* RESPONSIVE */
+  @media all and (max-width: 768px)
+    *[class*='col-']
+      padding-right: 5px;
+      padding-left: 5px;
+    .panel
+      margin-bottom: 10px;
+    .form-group
+      margin-bottom: 10px;
+    .panel-title
+      font-size: 1em;
+    .list-group-item
+      padding-top: 5px;
+      padding-bottom: 5px;
+    .thumbnail
+      width: 75px;
+      margin-bottom: 10px;
+    form#search, div#battle, div#character
+      margin-top: 10px;
+    body
+      font-size: 12px;
+    i.fa, i.ra
+      margin-right: 0;
+    .icon
+      width: 25px;
+      padding-right: 5px;
+    button.navbar-toggle i
+      color: #fff;
+      margin-right: 0;
 </style>

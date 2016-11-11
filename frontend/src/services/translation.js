@@ -96,6 +96,8 @@ const translation = {
       market: 'Market',
     },
     placeholder: {
+      min: 'Min',
+      max: 'Max',
       items: 'Search items',
       resources: 'Search resources',
       spells: 'Search spells',
@@ -112,7 +114,7 @@ const translation = {
       forge: 'Search recipes',
       castle: 'Castle',
       ruins: 'Ruins',
-      market: 'Market',
+      market: 'Search sales',
     },
     item: {
       ring: {
@@ -386,6 +388,8 @@ const translation = {
       market: 'Market',
     },
     placeholder: {
+      min: 'Min',
+      max: 'Max',
       items: 'Buscar objetos',
       resources: 'Buscar recursos',
       spells: 'Buscar hechizos',
@@ -402,7 +406,7 @@ const translation = {
       forge: 'Buscar recetas',
       castle: 'Castillo',
       ruins: 'Ruinas',
-      market: 'Market',
+      market: 'Buscar ofertas',
     },
     item: {
       ring: {

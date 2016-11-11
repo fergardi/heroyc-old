@@ -10,11 +10,11 @@
           form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
-                i.fa.fa-lg.fa-search
+                i.fa.fa-search
               input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.inn')")
               .input-group-btn
                 a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-lg.fa-trash
+                  i.fa.fa-trash
         .col-md-3.col-xs-4(v-for='quest in filtered')
           .panel.text-center(v-bind:class='"panel-" + quest.rarity')
             .panel-heading

@@ -2,12 +2,12 @@
   .container
     #Forge
       .row
-        .col-xs-12
+        .col-xs-12.hidden-xs
           .page-header
             h1 {{ 'title.forge' | i18n }} | 
               small {{ 'subtitle.forge' | i18n }}
         .col-xs-12
-          form.form-horizontal.form-group
+          form#search.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
@@ -70,7 +70,11 @@
     computed: {
       filtered () {
         return this.recipes.filter((recipe) => {
-          return (Vue.t(recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || Vue.t(recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1);
+          return (
+            Vue.t(recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+            Vue.t(recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+            Vue.t(recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1
+          );
         });
       }
     }

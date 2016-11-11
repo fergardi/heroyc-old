@@ -3,9 +3,10 @@
     "model": "Player",
     "data": {
       "name": "Fergardi",
-      "level": 100,
+      "level": 1,
       "experience": 0,
       "gold": 1,
+      "platinum": 0,
       "image": "avatar",
       "Items": [
         { "name": "item.ring.novice", "_through": { "quantity": 1 } },

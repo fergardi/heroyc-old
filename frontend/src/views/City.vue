@@ -7,23 +7,32 @@
             h1 {{ 'title.city' | i18n }} | 
               small {{ 'subtitle.city' | i18n }}
         .col-xs-12
-          form.form-horizontal.form-group
-            .input-group
-              .input-group-addon
-                i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.city')")
-              .input-group-btn
-                a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
+          form#search.form-horizontal.form-group
+            .row
+              .col-xs-6
+                .input-group
+                  input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.city')")
+                  .input-group-addon
+                    i.fa.fa-search
+              .col-xs-3
+                .input-group
+                  .input-group-addon
+                    i.fa.fa-chevron-right
+                  input(v-model='min', type='number', min='0', class='form-control', v-bind:placeholder="$t('placeholder.min')")
+              .col-xs-3
+                .input-group
+                  .input-group-addon
+                    i.fa.fa-chevron-left
+                  input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
         .col-md-3.col-xs-6(v-for='sale in filtered')
           template(v-if='sale.Item')
             .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
               .panel-heading
                 .panel-title
-                  i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
-                  span {{ sale.Item.name | i18n }} ({{ sale.gold }})
+                  i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon') 
+                  span {{ sale.Item.name | i18n }} 
               .panel-body
-                img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity', data-toggle='tooltip', v-bind:title='sale.Item.name')
+                img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Item.strength * 10 + "%"')
                 .progress
@@ -37,34 +46,36 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | {{ 'button.buy' | i18n }}
+                  | {{ 'button.buy' | i18n }} 
+                  span.label.label-warning.round {{ sale.gold }}
           template(v-if='sale.Resource')
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
-                  span {{ sale.Resource.name | i18n }} ({{ sale.gold }})
+                  span {{ sale.Resource.name | i18n }} 
               .panel-body
-                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity', data-toggle='tooltip', v-bind:title='sale.Resource.name')
+                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
-                  | {{ 'button.buy' | i18n }}
+                  | {{ 'button.buy' | i18n }} 
+                  span.label.label-warning.round {{ sale.gold }}
           template(v-if='sale.Recipe')
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
-                  span {{ sale.Recipe.Result.name | i18n }} ({{ sale.gold }})
+                  span {{ sale.Recipe.Result.name | i18n }} 
               .panel-body
                 .row
                   .col-xs-6
-                    img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity', data-toggle='tooltip', v-bind:title='sale.Recipe.Original.name')
+                    img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
                   .col-xs-6
-                    img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family', data-toggle='tooltip', v-bind:title='sale.Recipe.Resource.name')
+                    img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
                 .row
                   .col-xs-12
-                    img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity', data-toggle='tooltip', v-bind:title='sale.Recipe.Result.name')
+                    img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
                     .progress
                       .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
                     .progress
@@ -78,7 +89,8 @@
               .panel-body
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 
-                  | {{ 'button.buy' | i18n }}
+                  | {{ 'button.buy' | i18n }} 
+                  span.label.label-warning.round {{ sale.gold }}
 </template>
 
 <script>
@@ -89,6 +101,8 @@
     data () { 
       return {
         filter: '',
+        min: 0,
+        max: 9999,
         sales: [],
       }
     },
@@ -106,15 +120,16 @@
       filtered () {
         return this.sales.filter((sale) => {
           return (
-            sale.Item ? 
+            (sale.gold >= this.min && sale.gold <= this.max) && 
+            (sale.Item ? 
               Vue.t(sale.Item.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
-                sale.Resource ? 
-                  Vue.t(sale.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
-                    sale.Recipe ? 
-                      Vue.t(sale.Recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
-                      Vue.t(sale.Recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
-                      Vue.t(sale.Recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
-                    true
+              sale.Resource ? 
+                Vue.t(sale.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
+                sale.Recipe ? 
+                  Vue.t(sale.Recipe.Original.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+                  Vue.t(sale.Recipe.Result.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 || 
+                  Vue.t(sale.Recipe.Resource.name).toLowerCase().indexOf(this.filter.toLowerCase()) !== -1 : 
+                  true)
           );
         });
       }

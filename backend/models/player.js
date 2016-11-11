@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     level: DataTypes.INTEGER,
     experience: DataTypes.INTEGER,
     gold: DataTypes.INTEGER,
+    platinum: DataTypes.INTEGER,
     image: DataTypes.STRING
   }, {
     classMethods: {
