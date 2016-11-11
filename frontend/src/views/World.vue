@@ -18,8 +18,8 @@
           center: [-5.5, 42.5],
           pitch: 0,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
-          style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
-          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+          //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
+          style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left'
         },
         avatar: null
@@ -44,10 +44,11 @@
           center: this.options.center,
           attributionControl: { position: this.position }
         });
-        
+        /*
         this.map.on('click', function(e){
           console.log(e.lngLat);
         });
+        */
         
       },
       drawLocations () {

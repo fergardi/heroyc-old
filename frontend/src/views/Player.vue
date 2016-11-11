@@ -13,7 +13,9 @@
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-user
                 span {{ name }} 
-                label.badge {{ level }}
+                span.label.label-default {{ level }} 
+                span.label.label-warning {{ gold }} 
+                span.label.label-info {{ platinum }} 
             .panel-body
               .row.vertical-align
                 .col-xs-4
@@ -29,8 +31,9 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
+                  br
                   .progress
-                    .progress-bar.progress-bar-default(v-bind:style='"width: " + experience * 100 / (level * 1000) + "%"')
+                    .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
         .col-md-6.col-xs-6
           .panel-group(id='parent')
             .panel.panel-warning.text-center
@@ -146,7 +149,8 @@
           image: 'avatar',
           level: 0,
           experience: 0,
-          gold: 0
+          gold: 0,
+          platinum: 0,
         }
       },
       created: function() {
@@ -161,8 +165,9 @@
           self.name = data.name;
           self.level = data.level;
           self.experience = data.experience;
-          self.gold = data.gold;
           self.image = data.image;
+          self.gold = data.gold;
+          self.platinum = data.platinum;
         });
       },
       methods: {

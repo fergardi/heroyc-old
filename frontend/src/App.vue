@@ -123,6 +123,17 @@
     border-bottom: 1px solid;
   .round
     border-radius: 50%;
+  .label
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
   /* RESPONSIVE */
   @media all and (max-width: 768px)
     *[class*='col-']

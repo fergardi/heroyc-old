@@ -47,7 +47,7 @@
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
-                  span.label.label-default.round {{ sale.platinum }}
+                  span.label.label-info {{ sale.platinum }}
           template(v-if='sale.Resource')
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity')
               .panel-heading
@@ -60,7 +60,7 @@
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
-                  span.label.label-default.round {{ sale.platinum }}
+                  span.label.label-info {{ sale.platinum }}
           template(v-if='sale.Recipe')
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity')
               .panel-heading
@@ -90,7 +90,7 @@
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 
                   | {{ 'button.buy' | i18n }} 
-                  span.label.label-default.round {{ sale.platinum }}
+                  span.label.label-info {{ sale.platinum }}
 </template>
 
 <script>

@@ -71,6 +71,8 @@ const translation = {
       forge: 'Forge',
       castle: 'Castle',
       ruins: 'Ruins',
+      gold: 'Gold',
+      platinum: 'Platinum',
     },
     subtitle: {
       login: 'Login',
@@ -340,7 +342,7 @@ const translation = {
       resources: 'Recursos',
       spells: 'Hechizos',
       skills: 'Habilidades',
-      inventory: 'Inventory',
+      inventory: 'Inventario',
     },
     title: {
       login: 'Acceder',
@@ -363,6 +365,8 @@ const translation = {
       castle: 'Castillo',
       ruins: 'Ruinas',
       market: 'Market',
+      gold: 'Oro',
+      platinum: 'Platino',
     },
     subtitle: {
       login: 'Acceder',
