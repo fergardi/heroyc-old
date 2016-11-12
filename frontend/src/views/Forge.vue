@@ -7,15 +7,12 @@
             h1 {{ 'title.forge' | i18n }} | 
               small {{ 'subtitle.forge' | i18n }}
         .col-xs-12
-          form#search.form-horizontal.form-group
+          form#title.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.forge')")
-              .input-group-btn
-                a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
-        .col-md-3.col-xs-6(v-for='recipe in filtered')
+              input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.forge')")
+        .col-md-3.col-xs-4(v-for='recipe in filtered')
           .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
             .panel-heading
               .panel-title
@@ -61,11 +58,6 @@
       api.getPlayer(this.$route.params.playerId || 1, (data) => {
         this.recipes = data.Recipes;
       });
-    },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
     },
     computed: {
       filtered () {

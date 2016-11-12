@@ -6,25 +6,23 @@
           .page-header
             h1 {{ 'title.city' | i18n }} | 
               small {{ 'subtitle.city' | i18n }}
-        .col-xs-12
-          form#search.form-horizontal.form-group
-            .row
-              .col-xs-6
-                .input-group
-                  input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.city')")
-                  .input-group-addon
-                    i.fa.fa-search
-              .col-xs-3
-                .input-group
-                  .input-group-addon
-                    i.fa.fa-chevron-right
-                  input(v-model='min', type='number', min='0', class='form-control', v-bind:placeholder="$t('placeholder.min')")
-              .col-xs-3
-                .input-group
-                  .input-group-addon
-                    i.fa.fa-chevron-left
-                  input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
-        .col-md-3.col-xs-6(v-for='sale in filtered')
+        form#title.form-horizontal.form-group
+          .col-xs-6
+            .input-group
+              .input-group-addon
+                i.fa.fa-search
+              input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.city')")
+          .col-xs-3
+            .input-group
+              .input-group-addon
+                i.fa.fa-chevron-right
+              input(v-model='min', type='number', min='0', class='form-control', v-bind:placeholder="$t('placeholder.min')")
+          .col-xs-3
+            .input-group
+              .input-group-addon
+                i.fa.fa-chevron-left
+              input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
+        .col-md-3.col-xs-4(v-for='sale in filtered')
           template(v-if='sale.Item')
             .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity')
               .panel-heading
@@ -110,11 +108,6 @@
       api.getSales((data) => {
         this.sales = data;
       });
-    },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
     },
     computed: {
       filtered () {

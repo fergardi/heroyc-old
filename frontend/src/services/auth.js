@@ -1,4 +1,4 @@
-let api = '//localhost:3000/api';
+let api = constants.api;
 
 export default {
   logged: false,

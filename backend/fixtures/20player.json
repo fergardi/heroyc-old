@@ -8,6 +8,16 @@
       "gold": 1,
       "platinum": 0,
       "image": "avatar",
+      "Spells": [
+        { "name": "spell.heal1" },
+        { "name": "spell.fire1" }
+      ],
+      "Skills": [
+        { "name": "skill.vitality" }
+      ],
+      "Resources": [1],
+      "Recipes": [1],
+      "Quests": [1],
       "Items": [
         { "name": "item.ring.novice", "_through": { "quantity": 1 } },
         { "name": "item.helm.novice", "_through": { "quantity": 1 } },
@@ -19,15 +29,6 @@
         { "name": "item.boots.novice", "_through": { "quantity": 1 } },
         { "name": "item.potion.novice", "_through": { "quantity": 1 } }
       ],
-      "Spells": [
-        { "name": "spell.heal1" },
-        { "name": "spell.fire1" }
-      ],
-      "Skills": [
-        { "name": "skill.vitality" }
-      ],
-      "Resources": [],
-      "Recipes": [1],
       "Ring": { "name": "item.ring.novice" },
       "Helm": { "name": "item.helm.novice" },
       "Necklace": { "name": "item.necklace.novice" },

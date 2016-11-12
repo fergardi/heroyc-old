@@ -1,4 +1,4 @@
-let url = '//localhost:3000/api'
+let url = constants.api;
 
 var items = [];
 var resources = [];

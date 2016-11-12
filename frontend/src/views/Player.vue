@@ -6,7 +6,7 @@
           .page-header
             h1 {{ 'title.player' | i18n }} | 
               small {{ 'subtitle.player' | i18n }}
-      .row#character
+      .row#title
         .col-md-6.col-xs-6
           .panel.panel-default.text-center
             .panel-heading
@@ -34,6 +34,17 @@
                   br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
+          .panel.panel-default.text-center
+            .panel-heading
+              .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests')
+                i.ra.ra-fw.ra-lg.ra-wooden-sign
+                span {{ 'panel.quests' | i18n }} 
+                label.badge {{ quests.length }}
+            .panel-collapse.collapse(id='quests')
+              .panel-body
+                .row
+                  .col-xs-4(v-for='quest in quests')
+                    img.thumbnail.slot(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
         .col-md-6.col-xs-6
           .panel-group(id='parent')
             .panel.panel-warning.text-center
@@ -111,7 +122,7 @@
             .panel.panel-danger.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills')
-                  i.ra.ra-fw.ra-lg.ra-crystal-wand
+                  i.ra.ra-fw.ra-lg.ra-aura
                   span {{ 'panel.skills' | i18n }} 
                   label.badge {{ skills.length }}
               .panel-collapse.collapse(id='skills')
@@ -145,6 +156,7 @@
           equipments: [],
           spells: [],
           skills: [],
+          quests: [],
           resources: [],
           image: 'avatar',
           level: 0,
@@ -161,6 +173,7 @@
           self.items = data.Items;
           self.spells = data.Spells;
           self.skills = data.Skills;
+          self.quests = data.Quests;
           self.resources = data.Resources;
           self.name = data.name;
           self.level = data.level;

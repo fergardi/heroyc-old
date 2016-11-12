@@ -46,6 +46,9 @@ module.exports = function(sequelize, DataTypes) {
         // m2m association
         models.Recipe.belongsToMany(models.Player, {through: 'PlayerRecipe'});
         models.Player.belongsToMany(models.Recipe, {through: 'PlayerRecipe'});
+        // m2m association
+        models.Quest.belongsToMany(models.Player, {through: 'PlayerQuest'});
+        models.Player.belongsToMany(models.Quest, {through: 'PlayerQuest'});
       }
     },
     timestamps: false

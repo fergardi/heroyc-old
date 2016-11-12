@@ -7,14 +7,11 @@
             h1 {{ 'title.monsters' | i18n }} | 
               small {{ 'subtitle.monsters' | i18n }}
         .col-xs-12
-          form#search.form-horizontal.form-group
+          form#title.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.monsters')")
-              .input-group-btn
-                a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
+              input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.monsters')")
         .col-md-3.col-xs-3(v-for='monster in filtered')
           .panel.text-center(v-bind:class='"panel-" + monster.type')
             .panel-heading
@@ -50,11 +47,6 @@
       api.getMonsters((data) => {
         this.monsters = data;
       });
-    },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
     },
     computed: {
       filtered () {

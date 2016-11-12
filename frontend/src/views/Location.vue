@@ -6,7 +6,7 @@
           .page-header
             h1 {{ location.type | i18n }} | 
               small {{ 'subtitle.location' | i18n }}
-      .row#battle
+      #title
         .col-xs-6
           .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
             .panel-heading

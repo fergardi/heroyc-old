@@ -50,6 +50,7 @@ const translation = {
       spells: 'Spells',
       skills: 'Skills',
       inventory: 'Inventory',
+      quests: 'Quests',
     },
     title: {
       login: 'Login',
@@ -343,6 +344,7 @@ const translation = {
       spells: 'Hechizos',
       skills: 'Habilidades',
       inventory: 'Inventario',
+      quests: 'Misiones',
     },
     title: {
       login: 'Acceder',
@@ -364,7 +366,7 @@ const translation = {
       forge: 'Forja',
       castle: 'Castillo',
       ruins: 'Ruinas',
-      market: 'Market',
+      market: 'Mercado',
       gold: 'Oro',
       platinum: 'Platino',
     },
@@ -389,7 +391,7 @@ const translation = {
       castle: 'Castillo',
       ruins: 'Ruinas',
       location: 'Lucha con monstruos por recompensas',
-      market: 'Market',
+      market: 'Mercado',
     },
     placeholder: {
       min: 'Min',

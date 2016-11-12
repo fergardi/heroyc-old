@@ -7,14 +7,11 @@
             h1 {{ 'title.spells' | i18n }} | 
               small {{ 'subtitle.spells' | i18n }}
         .col-xs-12
-          form#search.form-horizontal.form-group
+          form#title.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input#search(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.spells')")
-              .input-group-btn
-                a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
+              input#search(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.spells')")
         .col-md-3.col-xs-3(v-for='spell in filtered')
           .panel.text-center(v-bind:class='"panel-" + spell.family')
             .panel-heading

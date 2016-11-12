@@ -29,8 +29,7 @@
     padding-top: 50px;
   .navbar
     margin-bottom: 0;
-  *:not(.navbar) i.fa,
-  *:not(.navbar) i.ra
+  *:not(.input-group-addon) > i
     margin-right: 5px;
   i.ra-lg
     line-height: inherit;
@@ -151,12 +150,14 @@
     .thumbnail
       width: 75px;
       margin-bottom: 10px;
-    form#search, div#battle, div#character
+    #title
       margin-top: 10px;
+      margin-bottom: 0px;
+    form#title
+      display: inline-block;
+      width: 100%;
     body
       font-size: 12px;
-    i.fa, i.ra
-      margin-right: 0;
     .icon
       width: 25px;
       padding-right: 5px;

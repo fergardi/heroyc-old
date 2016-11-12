@@ -7,14 +7,11 @@
             h1 {{ 'title.recipes' | i18n }} | 
               small {{ 'subtitle.recipes' | i18n }}
         .col-xs-12
-          form#search.form-horizontal.form-group
+          form#title.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='text', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
-              .input-group-btn
-                a.btn.btn-danger(v-on:click='reset()')
-                  i.fa.fa-trash
+              input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
         .col-md-3.col-xs-4(v-for='recipe in filtered')
           .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
             .panel-heading

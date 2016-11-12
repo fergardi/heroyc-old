@@ -13,7 +13,7 @@
     "model": "Quest",
     "data": {
       "name": "Treasure Chest",
-      "rarity": "default",
+      "rarity": "success",
       "icon": "torch",
       "image": "chest",
       "description": "Description"
@@ -73,7 +73,7 @@
     "model": "Quest",
     "data": {
       "name": "Treasure Map",
-      "rarity": "default",
+      "rarity": "danger",
       "icon": "torch",
       "image": "map",
       "description": "Description"
