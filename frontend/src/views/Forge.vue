@@ -32,7 +32,7 @@
                   .progress
                     .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
                   .progress
-                    .progress-bar.progress-bar-danger(v-bininvoca a sad:style='"width: " + recipe.Result.vitality * 10 + "%"')
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
                   .progress

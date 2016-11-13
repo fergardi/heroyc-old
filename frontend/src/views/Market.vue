@@ -22,7 +22,7 @@
               .input-group-addon
                 i.fa.fa-chevron-left
               input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
-        .col-md-3.col-xs-6(v-for='sale in filtered')
+        .col-md-3.col-xs-4(v-for='sale in filtered')
           .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
             .panel-heading
               .panel-title

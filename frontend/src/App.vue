@@ -31,6 +31,8 @@
     margin-bottom: 0;
   *:not(.input-group-addon) > i
     margin-right: 5px;
+  .label > i
+    margin-right: 0;
   i.ra-lg
     line-height: inherit;
   .page-header

@@ -6,7 +6,7 @@
           .page-header
             h1 {{ location.type | i18n }} | 
               small {{ 'subtitle.location' | i18n }}
-      #title
+      .row#title
         .col-xs-6
           .panel.panel-default.text-center.animated(v-bind:class='[{ shake: player.states.melee }, { bounce: player.states.buff }, { zoomOut: player.states.dead }, { jello: player.states.dodge }, { flash: player.states.magic }]')
             .panel-heading
@@ -29,7 +29,6 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + player.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + player.defense + "%"')
-                  br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
@@ -154,7 +153,6 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Monster.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Monster.defense + "%"')
-                  br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + location.experience + "%"')
               br
@@ -185,7 +183,7 @@
   import notification from '../services/notification'
   export default {
     name: 'Location',
-    data: function() {
+    data () {
       return {
         player: {
           id: 0,
@@ -227,7 +225,7 @@
         }
       }
     },
-    created: function() {
+    created () {
       api.getPlayer(this.$route.params.playerId || 1, (data) => {
         this.player.id = data.id;
         this.player.level = data.level;

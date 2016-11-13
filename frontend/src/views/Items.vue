@@ -19,7 +19,7 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + item.icon')  
                 span {{ item.name | i18n }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', data-toggle='tooltip', v-bind:title='item.name')
+              img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
               .progress
@@ -30,6 +30,17 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
+              br
+              label.label.label-danger
+                i.ra.ra-lg.ra-small-fire
+              label.label.label-success
+                i.ra.ra-lg.ra-droplet
+              label.label.label-warning
+                i.ra.ra-lg.ra-lightning-bolt
+              label.label.label-primary
+                i.ra.ra-lg.ra-snowflake
+              label.label.label-info
+                i.ra.ra-lg.ra-sun
 </template>
 
 <script>
