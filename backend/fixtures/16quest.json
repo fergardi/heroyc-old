@@ -2,113 +2,105 @@
   {
     "model": "Quest",
     "data": {
-      "name": "Mistery Key",
+      "name": "quest.key",
       "rarity": "success",
       "icon": "torch",
       "image": "key",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Treasure Chest",
+      "name": "quest.chest",
       "rarity": "success",
       "icon": "torch",
       "image": "chest",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Magic Mirror",
+      "name": "quest.mirror",
       "rarity": "info",
       "icon": "torch",
       "image": "mirror",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Royal Scroll",
+      "name": "quest.scroll",
       "rarity": "warning",
       "icon": "torch",
       "image": "scroll",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Pirate Telescope",
+      "name": "quest.pirate",
       "rarity": "primary",
       "icon": "torch",
       "image": "telescope",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Cursed Bone",
+      "name": "quest.bone",
       "rarity": "info",
       "icon": "torch",
       "image": "bone",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Fired Torch",
+      "name": "quest.torch",
       "rarity": "danger",
       "icon": "torch",
       "image": "torch",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   },
   {
     "model": "Quest",
     "data": {
-      "name": "Treasure Map",
+      "name": "quest.map",
       "rarity": "danger",
       "icon": "torch",
       "image": "map",
       "gold": 1,
       "platinum": 1,
       "experience": 10,
-      "Resources": [1,2,3],
-      "description": "I need this shit"
+      "Resources": [1,2,3]
     }
   }
 ]

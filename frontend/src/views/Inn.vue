@@ -19,13 +19,12 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + quest.icon')  
-                span {{ quest.name }}
+                span {{ quest.name | i18n }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
               .row
                 .col-xs-4(v-for="resource in quest.Resources")
                   img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
-              p {{ quest.description }}
               span.label.label-default(v-if='quest.experience > 0') {{ quest.experience }}
               span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
               span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}

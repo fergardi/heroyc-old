@@ -5,7 +5,6 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     rarity: DataTypes.STRING,
     image: DataTypes.STRING,
-    description: DataTypes.STRING,
     experience: DataTypes.INTEGER,
     gold: DataTypes.INTEGER,
     platinum: DataTypes.INTEGER,

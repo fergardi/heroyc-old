@@ -301,6 +301,16 @@ const translation = {
       worm: 'Worm',
       yeti: 'Yeti',
       zombie: 'Zombie',
+    },
+    quest: {
+      key: 'Mistery Key',
+      chest: 'Treasure Chest',
+      map: 'Treasure Map',
+      mirror: 'Magic Mirror',
+      scroll: 'Royal Scroll',
+      pirate: 'Pirate Telescope',
+      bone: 'Cursed Bone',
+      torch: 'Fired Torch',
     }
   },
   es: {
@@ -606,6 +616,16 @@ const translation = {
       worm: 'Gusano',
       yeti: 'Yeti',
       zombie: 'Zombi',
+    },
+    quest: {
+      key: 'Llave Misteriosa',
+      chest: 'Cofre del Tesoro',
+      map: 'Mapa del Tesoro',
+      mirror: 'Espejo Magico',
+      scroll: 'Pergamino Real',
+      pirate: 'Telescopio Pirata',
+      bone: 'Hueso Maldito',
+      torch: 'Antorcha Encendida',
     }
   }
 };
