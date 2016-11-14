@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     vitality: DataTypes.INTEGER,
     intelligence: DataTypes.INTEGER,
     agility: DataTypes.INTEGER,
-    mana: DataTypes.INTEGER,
+    freeze: DataTypes.BOOLEAN,
     burn: DataTypes.BOOLEAN,
     cure: DataTypes.BOOLEAN,
     shock: DataTypes.BOOLEAN,

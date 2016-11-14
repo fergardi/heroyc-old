@@ -49,7 +49,6 @@
           console.log(e.lngLat);
         });
         */
-        
       },
       drawLocations () {
         for (var i = 0; i < this.locations.length; i++) {
