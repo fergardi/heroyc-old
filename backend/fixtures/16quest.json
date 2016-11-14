@@ -6,6 +6,7 @@
       "rarity": "success",
       "icon": "torch",
       "image": "key",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -16,6 +17,7 @@
       "rarity": "success",
       "icon": "torch",
       "image": "chest",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -26,6 +28,7 @@
       "rarity": "info",
       "icon": "torch",
       "image": "mirror",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -36,6 +39,7 @@
       "rarity": "warning",
       "icon": "torch",
       "image": "scroll",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -46,6 +50,7 @@
       "rarity": "primary",
       "icon": "torch",
       "image": "telescope",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -56,6 +61,7 @@
       "rarity": "info",
       "icon": "torch",
       "image": "bone",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -66,6 +72,7 @@
       "rarity": "danger",
       "icon": "torch",
       "image": "torch",
+      "Resources": [1,2],
       "description": "Description"
     }
   },
@@ -76,6 +83,7 @@
       "rarity": "danger",
       "icon": "torch",
       "image": "map",
+      "Resources": [1,2],
       "description": "Description"
     }
   }

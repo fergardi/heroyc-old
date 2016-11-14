@@ -8,6 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.STRING,
     icon: DataTypes.STRING
   }, {
+    classMethods: {
+      associate: function(models) {
+        // m2m association
+        models.Quest.belongsToMany(models.Resource, {through: 'QuestResource'});
+        models.Resource.belongsToMany(models.Quest, {through: 'QuestResource'});
+      }
+    },
     timestamps: false
   });
 

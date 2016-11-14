@@ -4,7 +4,9 @@ var router  = express.Router();
 
 // get all quests
 router.get('/', function(req, res) {
-  models.Quest.findAll()
+  models.Quest.find({
+    include: [models.Resource]
+  })
   .then(function(quests) {
     res.json({status: 'ok', data: quests});
   });
@@ -12,7 +14,10 @@ router.get('/', function(req, res) {
 
 // get single quest
 router.get('/:id', function(req, res) {
-  models.Quest.findById(req.params.id)
+  models.Quest.find({
+    where: { id: req.params.id },
+    include: [models.Resource]
+  })
   .then(function(quest) {
     if (quest !== null) {
       res.json({status: 'ok', data: quest});

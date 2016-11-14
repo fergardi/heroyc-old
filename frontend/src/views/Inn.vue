@@ -14,15 +14,17 @@
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.inn')")
       .row.equals
-        .col-md-3.col-xs-4(v-for='quest in filtered')
+        .col-md-3.col-xs-4(v-for='quest in quests')
           .panel.text-center(v-bind:class='"panel-" + quest.rarity')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + quest.icon')  
                 span {{ quest.name }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity', data-toggle='tooltip', v-bind:title='quest.name')
+              img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
               p {{ quest.description }}
+              .col-xs-6(v-for='resource in quest.Resources')
+                img.thumbnail(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
                 | {{ 'button.accept' | i18n }}
