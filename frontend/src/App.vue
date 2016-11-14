@@ -62,8 +62,6 @@
     background-color: #f5f5f5;
   .slot
     margin-bottom: 5px;
-  .label
-    font-size: 95%;
   .alert,
   .panel-heading,
   .panel-body,
@@ -79,24 +77,6 @@
     width: 100px;
   .page-header h1 small
     color: inherit;
-  .gold
-    color: #000;
-    background-color: #e6e600;
-  .silver
-    color: #000;
-    background-color: #ccccb3;
-  .copper
-    color: #000;
-    background-color: #bf8040;
-  .mana
-    color: #000;
-    background-color: #00f;
-  .heal
-    color: #000;
-    background-color: #008000;
-  .damage
-    color: #000;
-    background-color: #f00; 
   .map-container
     height: calc(100vh - 50px);
   .navbar-fixed-top .navbar-collapse
@@ -134,6 +114,7 @@
     min-width: 10px;
     padding: 3px 7px;
     font-weight: bold;
+    font-size: inherit;
     line-height: 1;
     vertical-align: baseline;
     white-space: nowrap;
