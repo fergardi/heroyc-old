@@ -1,23 +1,26 @@
 <template lang="pug">
   .container
     #Skills
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.skills' | i18n }} | 
               small {{ 'subtitle.skills' | i18n }}
+      .row#title
         .col-xs-12
-          form#title.form-horizontal.form-group
+          form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
               input#search(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.skills')")
+      .row
         .col-md-3.col-xs-3(v-for='skill in filtered')
           .panel.text-center(v-bind:class='"panel-" + skill.family')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + skill.icon')
-                span {{ skill.name | i18n }}
+                span {{ skill.name | i18n }} 
+                span.label.label-warning {{ -skill.stamina }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
               .progress
@@ -47,11 +50,6 @@
       api.getSkills((data) => {
         this.skills = data;
       });
-    },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
     },
     computed: {
       filtered () {

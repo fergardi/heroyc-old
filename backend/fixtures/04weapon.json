@@ -10,6 +10,11 @@
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "novicesword"
     }
@@ -25,6 +30,11 @@
       "agility": 4,
       "intelligence": 0,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "elvensword"
     }
@@ -40,6 +50,11 @@
       "agility": 2,
       "intelligence": 0,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "curvesword"
     }
@@ -55,6 +70,11 @@
       "agility": 2,
       "intelligence": 0,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "gladiussword"
     }
@@ -70,6 +90,11 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "mightysword"
     }
@@ -85,6 +110,11 @@
       "agility": 0,
       "intelligence": 1,
       "defense": 2,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "thundersword"
     }
@@ -100,6 +130,11 @@
       "agility": 3,
       "intelligence": 2,
       "defense": 1,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "flamingsword"
     }
@@ -115,6 +150,11 @@
       "agility": 0,
       "intelligence": 2,
       "defense": 4,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "frozensword"
     }
@@ -130,6 +170,11 @@
       "agility": 0,
       "intelligence": 6,
       "defense": 1,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "acquasword"
     }
@@ -145,6 +190,11 @@
       "agility": 0,
       "intelligence": 2,
       "defense": 2,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "relic-blade",
       "image": "darksword"
     }
@@ -160,6 +210,11 @@
       "agility": 2,
       "intelligence": 7,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "crystal-wand",
       "image": "thunderstaff"
     }
@@ -175,6 +230,11 @@
       "agility": 1,
       "intelligence": 4,
       "defense": 3,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "crystal-wand",
       "image": "flamingstaff"
     }
@@ -190,6 +250,11 @@
       "agility": 3,
       "intelligence": 1,
       "defense": 0,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "crystal-wand",
       "image": "darkstaff"
     }
@@ -205,6 +270,11 @@
       "agility": 0,
       "intelligence": 3,
       "defense": 6,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "crystal-wand",
       "image": "frozenstaff"
     }
@@ -220,6 +290,11 @@
       "agility": 3,
       "intelligence": 2,
       "defense": 1,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "crystal-wand",
       "image": "acquastaff"
     }
@@ -235,6 +310,11 @@
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "arrow-cluster",
       "image": "curvebow"
     }
@@ -250,6 +330,11 @@
       "agility": 2,
       "intelligence": 0,
       "defense": 2,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "arrow-cluster",
       "image": "hunterbow"
     }
@@ -265,6 +350,11 @@
       "agility": 3,
       "intelligence": 0,
       "defense": 3,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "arrow-cluster",
       "image": "goldenbow"
     }
@@ -280,6 +370,11 @@
       "agility": 6,
       "intelligence": 0,
       "defense": 6,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "arrow-cluster",
       "image": "sniperbow"
     }
@@ -295,6 +390,11 @@
       "agility": 6,
       "intelligence": 7,
       "defense": 7,
+      "stun": false,
+      "freeze": false,
+      "cure": false,
+      "shock": false,
+      "burn": false,
       "icon": "arrow-cluster",
       "image": "phoenixbow"
     }

@@ -1,17 +1,19 @@
 <template lang="pug">
   .container
     #Resources
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.resources' | i18n }} | 
               small {{ 'subtitle.resources' | i18n }}
+      .row#title
         .col-xs-12
-          form#title.form-horizontal.form-group
+          form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.resources')")
+      .row
         .col-md-3.col-xs-3(v-for='resource in filtered')
           .panel.text-center(v-bind:class='"panel-" + resource.rarity')
             .panel-heading

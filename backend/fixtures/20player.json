@@ -13,7 +13,7 @@
         { "name": "spell.fire1" }
       ],
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality1" }
       ],
       "Resources": [1],
       "Recipes": [1],

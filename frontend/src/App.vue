@@ -128,7 +128,6 @@
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
-    font-size: 13px;
     font-weight: bold;
     line-height: 1;
     vertical-align: baseline;
@@ -143,7 +142,7 @@
     .panel
       margin-bottom: 10px;
     .form-group
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     .panel-title
       font-size: 1em;
     .list-group-item
@@ -155,7 +154,7 @@
     #title
       margin-top: 10px;
       margin-bottom: 0px;
-    form#title
+    #title form
       display: inline-block;
       width: 100%;
     body

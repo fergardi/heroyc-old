@@ -1,17 +1,19 @@
 <template lang="pug">
   .container
     #Recipes
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.recipes' | i18n }} | 
               small {{ 'subtitle.recipes' | i18n }}
+      .row#title
         .col-xs-12
-          form#title.form-horizontal.form-group
+          form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
+      .row
         .col-md-3.col-xs-4(v-for='recipe in filtered')
           .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
             .panel-heading
@@ -19,24 +21,22 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
                 span {{ recipe.Result.name | i18n }}
             .panel-body
-              .row
-                .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
-                .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
-              .row
-                .col-xs-12
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
-                  .progress
-                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
+              .col-xs-6
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+              .col-xs-6
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+              .col-xs-12
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
 </template>
 
 <script>

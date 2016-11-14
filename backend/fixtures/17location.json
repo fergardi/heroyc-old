@@ -83,7 +83,7 @@
       "image": "ruins",
       "experience": 10,
       "Monster": { "name": "monster.ghost" },
-      "Skill": { "name": "skill.agility" }
+      "Skill": { "name": "skill.agility2" }
     }
   },
   {

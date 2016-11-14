@@ -1,17 +1,19 @@
 <template lang="pug">
   .container
     #Inn
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.inn' | i18n }} | 
               small {{ 'subtitle.inn' | i18n }}
+      .row#title
         .col-xs-12
-          form#title.form-horizontal.form-group
+          form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.inn')")
+      .row
         .col-md-3.col-xs-4(v-for='quest in filtered')
           .panel.text-center(v-bind:class='"panel-" + quest.rarity')
             .panel-heading
@@ -21,7 +23,6 @@
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity', data-toggle='tooltip', v-bind:title='quest.name')
               p {{ quest.description }}
-            .panel-body
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
                 | {{ 'button.accept' | i18n }}

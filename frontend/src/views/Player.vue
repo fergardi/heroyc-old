@@ -1,8 +1,8 @@
 <template lang="pug">
   .container
     #Player
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.player' | i18n }} | 
               small {{ 'subtitle.player' | i18n }}

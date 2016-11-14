@@ -1,17 +1,19 @@
 <template lang="pug">
   .container
     #Items
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ 'title.items' | i18n }} | 
               small {{ 'subtitle.items' | i18n }}
+      .row#title
         .col-xs-12
-          form#title.form-horizontal.form-group
+          form.form-horizontal.form-group
             .input-group
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.items')")
+      .row
         .col-md-3.col-xs-3(v-for='item in filtered')
           .panel.text-center(v-bind:class='"panel-" + item.rarity')
             .panel-heading
@@ -30,17 +32,16 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
-              br
-              label.label.label-danger
-                i.ra.ra-lg.ra-small-fire
-              label.label.label-success
-                i.ra.ra-lg.ra-droplet
-              label.label.label-warning
-                i.ra.ra-lg.ra-lightning-bolt
-              label.label.label-primary
-                i.ra.ra-lg.ra-snowflake
-              label.label.label-info
-                i.ra.ra-lg.ra-sun
+              span.label.label-danger(v-if="item.burn")
+                i.ra.ra-small-fire
+              span.label.label-success(v-if="item.cure")
+                i.ra.ra-leaf
+              span.label.label-warning(v-if="item.shock")
+                i.ra.ra-lightning-bolt
+              span.label.label-primary(v-if="item.freeze")
+                i.ra.ra-snowflake
+              span.label.label-info(v-if="item.stun")
+                i.ra.ra-broken-skull
 </template>
 
 <script>

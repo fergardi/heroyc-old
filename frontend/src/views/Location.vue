@@ -1,8 +1,8 @@
 <template lang="pug">
   .container
     #Location
-      .row
-        .col-xs-12.hidden-xs
+      .row.hidden-xs
+        .col-xs-12
           .page-header
             h1 {{ location.type | i18n }} | 
               small {{ 'subtitle.location' | i18n }}
@@ -33,9 +33,35 @@
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
               br
               a.list-group-item.pointer(v-bind:class='{disabled: !player.states.buttons}', @click='melee(player, location.Monster, true)')
-                img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon + ".png"')
+                img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon.image + ".png"')
                 span {{ 'button.attack' | i18n }} 
                 span.label.label-danger {{player.strength}}
+                span.label.label-danger(v-if="player.weapon.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="player.weapon.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="player.weapon.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="player.weapon.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="player.weapon.stun")
+                  i.ra.ra-broken-skull
+              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
+                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                span {{ spell.name | i18n }} 
+                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
+                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
+                span.label.label-danger(v-if="spell.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="spell.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="spell.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="spell.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="spell.stun")
+                  i.ra.ra-broken-skull
               a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{ skill.name | i18n }} 
@@ -44,13 +70,7 @@
                 span.label.label-danger(v-if='skill.vitality > 0') {{ skill.vitality }}
                 span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
                 span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
-                span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
-              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
-                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{ spell.name | i18n }} 
-                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
-                span.label.label-primary(v-if='spell.mana > 0') {{ spell.mana }}
-                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                span.label.label-warning(v-if='skill.stamina > 0') {{ -skill.stamina }}
         .col-xs-6
           .panel.text-center.animated(v-bind:class='["panel-" + location.Item.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Item')
             .panel-heading
@@ -191,7 +211,7 @@
           experience: 0,
           name: '',
           image: 'avatar',
-          weapon: 'novicesword',
+          weapon: {},
           equipments: [],
           spells: [],
           vitality: 0,
@@ -234,7 +254,7 @@
         this.player.skills = data.Skills;
         this.player.image = data.image;
         this.player.name = data.name;
-        this.player.weapon = data.Equipments[3].image;
+        this.player.weapon = data.Equipments[3];
         this.player.vitality = this.vitality();
         this.player.strength = this.strength();
         this.player.agility = this.agility();
