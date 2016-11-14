@@ -55,11 +55,6 @@
         this.recipes = data;
       });
     },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
-    },
     computed: {
       filtered () {
         return this.recipes.filter((recipe) => {

@@ -14,7 +14,7 @@
                 i.fa.fa-search
               input#search(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.spells')")
       .row
-        .col-md-3.col-xs-3(v-for='spell in filtered')
+        .col-xs-3(v-for='spell in filtered')
           .panel.text-center(v-bind:class='"panel-" + spell.family')
             .panel-heading
               .panel-title

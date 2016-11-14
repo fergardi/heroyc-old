@@ -41,11 +41,6 @@
         this.resources = data;
       });
     },
-    methods: {
-      reset () {
-        this.filter = '';
-      }
-    },
     computed: {
       filtered () {
         return this.resources.filter((resource) => {
