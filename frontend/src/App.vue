@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div.fullheight
     navbar
     .container.fixed
       .row
@@ -17,10 +17,11 @@
 <style lang="stylus">
   /* MAIN */
   html,
-  body
+  body,
+  .fullheight
     height: 100%;
   body
-    //background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -68,7 +69,9 @@
   .panel-body,
   .btn,
   .list-group,
-  .list-group-item
+  .list-group-item,
+  .nav-pills li a,
+  .nav-tabs li a
     background-image: url("https://www.transparenttextures.com/patterns/dust.png");
     background-repeat: repeat;
   .thumbnail
@@ -144,6 +147,10 @@
     flex-direction: column;
   .row.equals > [class*='col-'] .panel
     height: 100%;
+  .nav-pills li a
+    background-color: #fff;
+    color: #333333;
+    
   /* RESPONSIVE */
   @media all and (max-width: 768px)
     *[class*='col-']

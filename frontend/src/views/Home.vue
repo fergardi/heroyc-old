@@ -8,34 +8,43 @@
               small {{ 'subtitle.home' | i18n }}
       .row#title
         .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3
-          .panel.text-center.panel-primary
-            .panel-heading
-              .panel-title
-                i.fa.fa-fw.fa-lg.fa-user
-                span {{ 'panel.login' | i18n }}
-            .panel-body
-              form
-                input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='credentials.username', required)
-                input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='credentials.password', required)
-                br
-                a.btn.btn-success.btn-block(@click='login()')
-                  i.fa.fa-fw.fa-lg.fa-sign-in
-                  | {{ 'button.login' | i18n }}
-      .row
-        .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3
-          .panel.text-center.panel-warning
-            .panel-heading
-              .panel-title
-                i.fa.fa-fw.fa-lg.fa-user-plus
-                span {{ 'panel.register' | i18n }}
-            .panel-body
-              form
-                input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='information.username', required)
-                input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='information.password', required)
-                br
-                a.btn.btn-success.btn-block(@click='register()')
-                  i.fa.fa-lg.fa-fw.fa-check
-                  | {{ 'button.register' | i18n }}
+          ul.nav.nav-pills
+            li.active
+              a(href="#login", data-toggle="tab")
+                | {{ 'panel.login' | i18n }}
+            li
+              a(href="#register", data-toggle="tab")
+                | {{ 'panel.register' | i18n }}
+          .tab-content
+            .tab-pane.fade.in#login.active
+              .panel.text-center.panel-primary
+                .panel-heading
+                  .panel-title
+                    i.fa.fa-fw.fa-lg.fa-user
+                    span {{ 'panel.login' | i18n }}
+                .panel-body
+                  form
+                    input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='credentials.username', required)
+                    input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='credentials.password', required)
+                    br
+                    a.btn.btn-success.btn-block(@click='login()')
+                      i.fa.fa-fw.fa-lg.fa-sign-in
+                      | {{ 'button.login' | i18n }}
+            .tab-pane.fade.in#register
+              .panel.text-center.panel-primary
+                .panel-heading
+                  .panel-title
+                    i.fa.fa-fw.fa-lg.fa-user-plus
+                    span {{ 'panel.register' | i18n }}
+                .panel-body
+                  form
+                    input.form-control(type='text', id='nick', v-bind:placeholder="$t('placeholder.nick')", v-model='information.nick', required)
+                    input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='information.username', required)
+                    input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='information.password', required)
+                    br
+                    a.btn.btn-success.btn-block(@click='register()')
+                      i.fa.fa-lg.fa-fw.fa-check
+                      | {{ 'button.register' | i18n }}
 </template>
 
 <script>
@@ -51,8 +60,9 @@
           password: 'test'
         },
         information: {
-          username: 'test@test.com',
-          password: 'test'
+          nick: 'username',
+          username: 'e@mail.com',
+          password: 'password'
         },
       }
     },
@@ -71,7 +81,7 @@
         auth.register(this.information, (success) => {
           if (success) {
             notification.success(Vue.t('alert.register.ok'));
-            this.$router.push({ name: 'world' });
+            this.$router.push({ name: 'player' });
           } else {
             notification.danger(Vue.t('alert.register.error'));
           }
