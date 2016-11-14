@@ -3,12 +3,14 @@ const translation = {
     language: {
       english: 'English',
       spanish: 'Spanish',
+      change: 'You changed the language to English',
     },
     alert: {
       login: {
         ok: 'Welcome back, Hero',
         error: 'Invalid credentials',
         secure: 'Login to continue',
+        logout: 'See you soon',
       },
       register: {
         ok: 'Welcome to Heroyc',
@@ -302,12 +304,14 @@ const translation = {
     language: {
       english: 'Ingles',
       spanish: 'Español',
+      change: 'Has cambiado el idioma a Español',
     },
     alert: {
       login: {
         ok: 'Bienvenido de nuevo, Heroe',
         error: 'Credenciales incorrectas',
         secure: 'Inicia sesion para continuar',
+        logout: 'Hasta la proxima',
       },
       register: {
         ok: 'Bienvenido a Heroyc',

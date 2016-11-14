@@ -90,16 +90,16 @@
                     | {{ 'title.monsters' | i18n }}
                 li.divider
                 li
-                  a.pointer(@click="localize('en')")
+                  a.pointer(@click="localize('en')", data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-wooden-sign
                     | {{ 'language.english' | i18n }}
                 li
-                  a.pointer(@click="localize('es')")
+                  a.pointer(@click="localize('es')", data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-wooden-sign
                     | {{ 'language.spanish' | i18n }}
                 li.divider
                 li
-                  a.pointer(@click='logout')
+                  a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-lg.ra-fw.ra-key
                     | {{ 'button.logout' | i18n }}
 </template>
@@ -107,15 +107,18 @@
 <script>
   import auth from '../services/auth'
   import translation from '../services/translation'
+  import notification from '../services/notification'
   import Vue from 'vue'
   export default {
     name: 'Navbar',
     methods: {
       localize (lang) {
         Vue.config.lang = lang;
+        notification.success(Vue.t('language.change'));
       },
       logout () {
         auth.logout();
+        notification.success(Vue.t('alert.login.logout'));
         this.$router.push({ path: '/' });
       }
     },
