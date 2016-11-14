@@ -13,7 +13,7 @@
               .input-group-addon
                 i.fa.fa-search
               input#search(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.skills')")
-      .row
+      .row.equals
         .col-md-3.col-xs-3(v-for='skill in filtered')
           .panel.text-center(v-bind:class='"panel-" + skill.family')
             .panel-heading

@@ -13,7 +13,7 @@
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.inn')")
-      .row
+      .row.equals
         .col-md-3.col-xs-4(v-for='quest in filtered')
           .panel.text-center(v-bind:class='"panel-" + quest.rarity')
             .panel-heading

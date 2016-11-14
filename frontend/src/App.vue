@@ -134,6 +134,14 @@
     white-space: nowrap;
     text-align: center;
     border-radius: 10px;
+  .row.equals
+    display: flex;
+    flex-wrap: wrap;
+  .row.equals > [class*='col-']
+    display: flex;
+    flex-direction: column;
+  .row.equals > [class*='col-'] .panel
+    height: 100%;
   /* RESPONSIVE */
   @media all and (max-width: 768px)
     *[class*='col-']
