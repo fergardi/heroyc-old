@@ -33,7 +33,7 @@
     margin-right: 5px;
   .label > i
     margin-right: 0;
-  i.ra-lg
+  i.ra, i.ra-lg
     line-height: inherit;
   .page-header
     margin: 23px 0;

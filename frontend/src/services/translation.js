@@ -76,6 +76,8 @@ const translation = {
       ruins: 'Ruins',
       gold: 'Gold',
       platinum: 'Platinum',
+      market: 'Market',
+      account: 'Account',
     },
     subtitle: {
       login: 'Login',
@@ -378,6 +380,8 @@ const translation = {
       market: 'Mercado',
       gold: 'Oro',
       platinum: 'Platino',
+      market: 'Mercado',
+      account: 'Cuenta',
     },
     subtitle: {
       login: 'Acceder',
