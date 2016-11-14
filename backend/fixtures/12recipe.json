@@ -2,7 +2,6 @@
   {
     "model": "Recipe",
     "data": {
-      "gold": 1,
       "OriginalId": 45,
       "ResourceId": 6,
       "ResultId": 35
@@ -11,7 +10,6 @@
   {
     "model": "Recipe",
     "data": {
-      "gold": 1,
       "OriginalId": 9,
       "ResourceId": 4,
       "ResultId": 22
@@ -20,7 +18,6 @@
   {
     "model": "Recipe",
     "data": {
-      "gold": 1,
       "OriginalId": 11,
       "ResourceId": 12,
       "ResultId": 12
@@ -29,7 +26,6 @@
   {
     "model": "Recipe",
     "data": {
-      "gold": 1,
       "OriginalId": 30,
       "ResourceId": 8,
       "ResultId": 50

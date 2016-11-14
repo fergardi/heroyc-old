@@ -4,7 +4,7 @@ var router  = express.Router();
 
 // get all quests
 router.get('/', function(req, res) {
-  models.Quest.find({
+  models.Quest.findAll({
     include: [models.Resource]
   })
   .then(function(quests) {

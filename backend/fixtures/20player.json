@@ -15,7 +15,9 @@
       "Skills": [
         { "name": "skill.vitality1" }
       ],
-      "Resources": [1],
+      "Resources": [
+        { "id": 1, "_through": { "quantity": 1 } }
+      ],
       "Recipes": [1],
       "Quests": [1],
       "Items": [

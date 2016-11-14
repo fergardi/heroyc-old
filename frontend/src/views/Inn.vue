@@ -22,9 +22,14 @@
                 span {{ quest.name }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+              .row
+                .col-xs-4(v-for="resource in quest.Resources")
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
               p {{ quest.description }}
-              .col-xs-6(v-for='resource in quest.Resources')
-                img.thumbnail(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+              span.label.label-default(v-if='quest.experience > 0') {{ quest.experience }}
+              span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
+              span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
+            .panel-body
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
                 | {{ 'button.accept' | i18n }}
@@ -43,6 +48,7 @@
     created () {
       api.getQuests((data) => {
         this.quests = data;
+        console.log(this.quests);
       });
     },
     computed: {

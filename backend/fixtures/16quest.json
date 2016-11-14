@@ -6,8 +6,11 @@
       "rarity": "success",
       "icon": "torch",
       "image": "key",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -17,8 +20,11 @@
       "rarity": "success",
       "icon": "torch",
       "image": "chest",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -28,8 +34,11 @@
       "rarity": "info",
       "icon": "torch",
       "image": "mirror",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -39,8 +48,11 @@
       "rarity": "warning",
       "icon": "torch",
       "image": "scroll",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -50,8 +62,11 @@
       "rarity": "primary",
       "icon": "torch",
       "image": "telescope",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -61,8 +76,11 @@
       "rarity": "info",
       "icon": "torch",
       "image": "bone",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -72,8 +90,11 @@
       "rarity": "danger",
       "icon": "torch",
       "image": "torch",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   },
   {
@@ -83,8 +104,11 @@
       "rarity": "danger",
       "icon": "torch",
       "image": "map",
-      "Resources": [1,2],
-      "description": "Description"
+      "gold": 1,
+      "platinum": 1,
+      "experience": 10,
+      "Resources": [1,2,3],
+      "description": "I need this shit"
     }
   }
 ]
