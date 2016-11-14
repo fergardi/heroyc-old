@@ -23,7 +23,7 @@
               .input-group-addon
                 i.fa.fa-chevron-left
               input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
-      .row.equals
+      .row
         .col-md-3.col-xs-4(v-for='sale in filtered')
           .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
             .panel-heading
@@ -42,6 +42,16 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Item.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Item.defense * 10 + "%"')
+              span.label.label-danger(v-if="sale.Item.burn")
+                i.ra.ra-small-fire
+              span.label.label-success(v-if="sale.Item.cure")
+                i.ra.ra-leaf
+              span.label.label-warning(v-if="sale.Item.shock")
+                i.ra.ra-lightning-bolt
+              span.label.label-primary(v-if="sale.Item.freeze")
+                i.ra.ra-snowflake
+              span.label.label-info(v-if="sale.Item.stun")
+                i.ra.ra-broken-skull
               button.btn.btn-success.btn-block
                 i.fa.fa-lg.fa-check
                 | {{ 'button.buy' | i18n }} 
@@ -79,6 +89,16 @@
                   .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Recipe.Result.agility * 10 + "%"')
                 .progress
                   .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Recipe.Result.defense * 10 + "%"')
+                span.label.label-danger(v-if="sale.Recipe.Result.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="sale.Recipe.Result.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="sale.Recipe.Result.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="sale.Recipe.Result.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="sale.Recipe.Result.stun")
+                  i.ra.ra-broken-skull
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check 
                   | {{ 'button.buy' | i18n }} 

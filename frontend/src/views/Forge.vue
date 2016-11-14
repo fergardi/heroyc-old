@@ -37,6 +37,16 @@
                   .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
                 .progress
                   .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
+                span.label.label-danger(v-if="recipe.Result.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="recipe.Result.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="recipe.Result.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="recipe.Result.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="recipe.Result.stun")
+                  i.ra.ra-broken-skull
                 button.btn.btn-success.btn-block
                   i.fa.fa-lg.fa-check
                   | {{ 'button.craft' | i18n }}

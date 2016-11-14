@@ -7,7 +7,7 @@
             h1 {{ 'title.home' | i18n }} | 
               small {{ 'subtitle.home' | i18n }}
       .row#title
-        .col-md-4.col-md-offset-2.col-xs-6.col-xs-offset-3
+        .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3
           .panel.text-center.panel-primary
             .panel-heading
               .panel-title
@@ -22,7 +22,7 @@
                   i.fa.fa-fw.fa-lg.fa-sign-in
                   | {{ 'button.login' | i18n }}
       .row
-        .col-md-4.col-md-offset-2.col-xs-6.col-xs-offset-3
+        .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3
           .panel.text-center.panel-warning
             .panel-heading
               .panel-title

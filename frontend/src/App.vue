@@ -110,6 +110,8 @@
   span.label
     margin-left: 3px;
     border: 1px solid #000;
+  #title form
+    display: inline-block;
   .pointer
     cursor: pointer;
   .vertical-align
@@ -163,7 +165,6 @@
       margin-top: 10px;
       margin-bottom: 0px;
     #title form
-      display: inline-block;
       width: 100%;
     body
       font-size: 12px;
