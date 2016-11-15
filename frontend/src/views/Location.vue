@@ -304,7 +304,7 @@
           setTimeout(() => {
             self.location.Monster.states.dead = true;
             notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
-          }, 3000);
+          }, constants.notification.duration * 2);
           setTimeout(() => {
             self.location.Monster.states.loot = true;
             self.player.experience += self.location.experience;
@@ -330,7 +330,7 @@
               api.addSkill(self.player.id, self.location.Skill.id);
               notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
             }
-          }, 4500);
+          }, constants.notification.duration * 3);
         }
       },
       'player.vitality': (value) => {
@@ -338,7 +338,7 @@
           setTimeout(() => {
             notification.danger(Vue.t('alert.battle.lose'));
             self.player.states.dead = true;
-          }, 3000);
+          }, constants.notification.duration * 2);
         }
       }
     },
@@ -363,7 +363,7 @@
           notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
           setTimeout(() => {
             defender.states.dodge = false;
-          }, 1500);
+          }, constants.notification.duration);
         } else {
           defender.states.melee = true;
           var damage = attacker.strength - Math.ceil(attacker.strength * defender.defense / 100);
@@ -371,14 +371,14 @@
           defender.vitality = Math.max(0, defender.vitality - damage);
           setTimeout(() => {
             defender.states.melee = false;
-          }, 1500);
+          }, constants.notification.duration);
         }
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, 3000);
+          }, constants.notification.duration * 2);
         }
       },
       magic (attacker, defender, spell, counter) {
@@ -397,13 +397,13 @@
         setTimeout(() => {
           defender.states.magic = false;
           attacker.states.magic = false;
-        }, 1500);
+        }, constants.notification.duration);
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, 3000);
+          }, constants.notification.duration * 2);
         }
       },
       buff (attacker, defender, skill, counter) {
@@ -419,13 +419,13 @@
         attacker.defense = Math.min(100, attacker.defense + skill.defense);    
         setTimeout(() => {
           attacker.states.buff = false;
-        }, 1500);
+        }, constants.notification.duration);
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, 3000);
+          }, constants.notification.duration * 2);
         }
       },
       strength () {

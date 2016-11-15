@@ -47,9 +47,15 @@
           center: this.options.center,
           attributionControl: { position: this.position }
         });
-        this.map.on('dblclick', (e) => {
-          this.move(e.lngLat);
+        this.map.on('click', (e) => {
+          this.updatePosition(e.lngLat);
         });
+        this.map.boxZoom.disable();
+        this.map.dragPan.disable();
+        this.map.doubleClickZoom.disable();
+        //this.map.scrollZoom.disable();
+        this.map.keyboard.disable();
+        this.map.touchZoomRotate.disable();
       },
       drawLocations () {
         for (var i = 0; i < this.locations.length; i++) {
@@ -58,20 +64,17 @@
       },
       geoLocate () {
         navigator.geolocation.getCurrentPosition((position) => {
-          if (this.avatar === null) this.move(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
-          this.current = position;
           this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
         });
       },
-      move (point) {
-        this.updatePosition(point);
+      move (position) {
         this.map.flyTo({
-          center: [point.lng, point.lat],
-          speed: 0.5,
+          center: position,
+          speed: 0.4,
           curve: 1
         });
       },
-      updatePosition (location) {
+      updatePosition (position) {
         if (this.avatar === null) {
           var marker = document.createElement('div');
           marker.style.zIndex = 10;
@@ -87,10 +90,11 @@
             this.$router.push({ name: 'player' });
           });
           */
-          this.avatar = new mapboxgl.Marker(marker, { offset: [-30, -77] }).setLngLat(location).addTo(this.map);
+          this.avatar = new mapboxgl.Marker(marker, { offset: [-30, -77] }).setLngLat(position).addTo(this.map);
         } else {
-          this.avatar.setLngLat(location);
+          this.avatar.setLngLat(position);
         }
+        this.move(position);
       },
       addLocation (location) {
         var icon = document.createElement('img');
@@ -101,6 +105,7 @@
         marker.id = location.id;
         marker.style.zIndex = 5;
         marker.addEventListener('click', (e) => {
+          e.preventDefault();
           if (this.near(location) <= this.options.range) {
             switch(location.image){
               case 'city':
@@ -129,9 +134,9 @@
         });
         new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
       },
-      near (point) {
-        //console.log('The distance between ',this.avatar.getLngLat(),' and ',point,' is ',this.distance(this.avatar.getLngLat(), point));
-        return this.distance(this.avatar.getLngLat(), point);
+      near (position) {
+        //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
+        return this.distance(this.avatar.getLngLat(), position);
       },
       distance (point1, point2) {
         var lat1 = point1.lat;
