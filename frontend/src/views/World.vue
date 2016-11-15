@@ -21,7 +21,7 @@
           //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
-          range: 500,
+          range: 5000,
         },
         avatar: null
       }
@@ -45,11 +45,10 @@
           center: this.options.center,
           attributionControl: { position: this.position }
         });
-        /*
-        this.map.on('click', function(e){
+        this.map.on('dblclick', (e) => {
           console.log(e.lngLat);
+          this.move(e.lngLat);
         });
-        */
       },
       drawLocations () {
         for (var i = 0; i < this.locations.length; i++) {
@@ -58,18 +57,18 @@
       },
       geoLocate () {
         navigator.geolocation.getCurrentPosition((position) => {
-            if (this.avatar === null) this.move(position.coords.longitude, position.coords.latitude);
+            if (this.avatar === null) this.move(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
             this.current = position;
             this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
           }
         );
       },
-      move (lat, lng) {
+      move (point) {
+        this.updatePosition(point);
         this.map.flyTo({
-          center: [lat, lng],
+          center: [point.lng, point.lat],
           speed: 1,
-          curve: 1,
-          zoom: this.options.zoom
+          curve: 1
         });
       },
       updatePosition (location) {
@@ -104,7 +103,7 @@
         marker.id = location.id;
         marker.style.zIndex = 5;
         marker.addEventListener('click', (e) => {
-          if (this.near(location) < this.options.range) {
+          if (this.near(location) <= this.options.range) {
             switch(location.image){
               case 'city':
                 this.$router.push({ name: 'city' });
@@ -131,6 +130,7 @@
         new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
       },
       near (point) {
+        console.log('The distance between ',this.avatar.getLngLat(),' and ',point,' is ',this.distance(this.avatar.getLngLat(), point));
         return this.distance(this.avatar.getLngLat(), point);
       },
       distance (point1, point2) {
