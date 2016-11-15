@@ -228,6 +228,11 @@
             magic: false,
             buff: false,
             loot: false,
+            stun: false,
+            freeze: false,
+            cure: false,
+            shock: false,
+            burn: false,
             dead: false,
           }
         },
@@ -241,6 +246,11 @@
               magic: false,
               buff: false,
               loot: false,
+              stun: false,
+              freeze: false,
+              cure: false,
+              shock: false,
+              burn: false,
               dead: false,
             }
           }
@@ -275,7 +285,12 @@
             magic: false,
             buff: false,
             loot: false,
-            dead: false
+            stun: false,
+            freeze: false,
+            cure: false,
+            shock: false,
+            burn: false,
+            dead: false,
           }
         });
         notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(this.location.Monster.name) }));
@@ -286,43 +301,44 @@
         if (value <= 0) {
           self.player.states.buttons = false;
           self.location.Monster.states.buttons = false;
-          self.location.Monster.states.dead = true;
-          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
-          self.player.experience += self.location.experience;
-          self.location.experience = 0;
-          notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
-          self.location.Monster.states.loot = true;
-          switch(self.location.image){
-            case 'tower':
+          setTimeout(() => {
+            self.location.Monster.states.dead = true;
+            notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
+          }, 3000);
+          setTimeout(() => {
+            self.location.Monster.states.loot = true;
+            self.player.experience += self.location.experience;
+            self.location.experience = 0;
+            notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
+            if (self.location.Spell) {
               api.addSpell(self.player.id, self.location.Spell.id);
               notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
-              break;
-            case 'castle':
+            }
+            if (self.location.Recipe) {
               api.addRecipe(self.player.id, self.location.Recipe.id);
               notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
-              break;
-            case 'mine':
+            }
+            if (self.location.Resource) {
               api.addResource(self.player.id, self.location.Resource.id, 1);
               notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
-              break;
-            case 'dungeon':
+            }
+            if (self.location.Item) {
               api.addItem(self.player.id, self.location.Item.id);
               notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
-              break;
-            case 'ruins':
+            }
+            if (self.location.Skill) {
               api.addSkill(self.player.id, self.location.Skill.id);
               notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
-              break;
-          }
+            }
+          }, 4500);
         }
       },
       'player.vitality': (value) => {
         if (value <= 0) {
-          self.player.states.buttons = false;
-          self.location.Monster.states.buttons = false;
-          self.player.states.dead = true;
-          self.location.Monster.states.loot = false;
-          notification.danger(Vue.t('alert.battle.lose'));
+          setTimeout(() => {
+            notification.danger(Vue.t('alert.battle.lose'));
+            self.player.states.dead = true;
+          }, 3000);
         }
       }
     },
@@ -340,62 +356,76 @@
         response();
       },
       melee (attacker, defender, counter) {
-        if (attacker.states.buttons) {
-          attacker.states.buttons = false;
-          defender.states.buttons = false;
-          if (Math.random() * 100 <= defender.agility) {
-            defender.states.dodge = true;
+        attacker.states.buttons = false;
+        defender.states.buttons = false;
+        if (Math.floor(Math.random() * 100) <= defender.agility) {
+          defender.states.dodge = true;
+          notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
+          setTimeout(() => {
             defender.states.dodge = false;
-            notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
-          } else {
-            defender.states.melee = true;
-            var damage = attacker.strength - Math.ceil(attacker.strength * defender.defense / 100);
-            notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), damage: damage, defender: Vue.t(defender.name) }));
+          }, 1500);
+        } else {
+          defender.states.melee = true;
+          var damage = attacker.strength - Math.ceil(attacker.strength * defender.defense / 100);
+          notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), damage: damage, defender: Vue.t(defender.name) }));
+          defender.vitality = Math.max(0, defender.vitality - damage);
+          setTimeout(() => {
             defender.states.melee = false;
-            defender.vitality = Math.max(0, defender.vitality - damage);
-          }
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
-          if (counter && defender.vitality > 0) this.counterattack();
+          }, 1500);
+        }
+        if (attacker.vitality > 0 && defender.vitality > 0) {
+          setTimeout(() => {
+            attacker.states.buttons = true;
+            defender.states.buttons = true;
+            if (counter) this.counterattack();
+          }, 3000);
         }
       },
       magic (attacker, defender, spell, counter) {
-        if (attacker.states.buttons) {
-          attacker.states.buttons = false;
-          defender.states.buttons = false;
-          attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
-          if (spell.damage > 0) {
-            defender.states.magic = true;
-            notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
-            defender.states.magic = false;
-            defender.vitality = Math.max(0, defender.vitality - spell.damage);
-          } else {
-            attacker.states.magic = true;
-            notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), heal: spell.heal }));
-            attacker.states.magic = false;
-            attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
-          }
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
-          if (counter && defender.vitality > 0) this.counterattack();
+        attacker.states.buttons = false;
+        defender.states.buttons = false;
+        attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
+        if (spell.damage > 0) {
+          defender.states.magic = true;
+          notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
+          defender.vitality = Math.max(0, defender.vitality - spell.damage);
+        } else {
+          attacker.states.magic = true;
+          notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), heal: spell.heal }));
+          attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
+        }
+        setTimeout(() => {
+          defender.states.magic = false;
+          attacker.states.magic = false;
+        }, 1500);
+        if (attacker.vitality > 0 && defender.vitality > 0) {
+          setTimeout(() => {
+            attacker.states.buttons = true;
+            defender.states.buttons = true;
+            if (counter) this.counterattack();
+          }, 3000);
         }
       },
       buff (attacker, defender, skill, counter) {
-        if (attacker.states.buttons) {
-          attacker.states.buttons = false;
-          defender.states.buttons = false;
-          attacker.states.buff = true;
-          notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), skill: Vue.t(skill.name) }));
-          attacker.strength = Math.max(0, attacker.strength - skill.stamina);
+        attacker.states.buttons = false;
+        defender.states.buttons = false;
+        attacker.states.buff = true;
+        notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), skill: Vue.t(skill.name) }));
+        attacker.strength = Math.max(0, attacker.strength - skill.stamina);
+        attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
+        attacker.strength = Math.min(100, attacker.strength + skill.strength);
+        attacker.agility = Math.min(100, attacker.agility + skill.agility);
+        attacker.intelligence = Math.min(100, attacker.intelligence + skill.intelligence);
+        attacker.defense = Math.min(100, attacker.defense + skill.defense);    
+        setTimeout(() => {
           attacker.states.buff = false;
-          attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
-          attacker.strength = Math.min(100, attacker.strength + skill.strength);
-          attacker.agility = Math.min(100, attacker.agility + skill.agility);
-          attacker.intelligence = Math.min(100, attacker.intelligence + skill.intelligence);
-          attacker.defense = Math.min(100, attacker.defense + skill.defense);    
-          attacker.states.buttons = true;
-          defender.states.buttons = true;
-          if (counter && defender.vitality > 0) this.counterattack();
+        }, 1500);
+        if (attacker.vitality > 0 && defender.vitality > 0) {
+          setTimeout(() => {
+            attacker.states.buttons = true;
+            defender.states.buttons = true;
+            if (counter) this.counterattack();
+          }, 3000);
         }
       },
       strength () {
