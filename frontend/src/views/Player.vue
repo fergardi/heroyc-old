@@ -31,7 +31,6 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
-                  br
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
           .panel.panel-default.text-center

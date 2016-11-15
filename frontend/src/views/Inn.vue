@@ -47,7 +47,6 @@
     created () {
       api.getQuests((data) => {
         this.quests = data;
-        console.log(this.quests);
       });
     },
     computed: {
