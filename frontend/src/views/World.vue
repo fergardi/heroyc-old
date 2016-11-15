@@ -20,7 +20,8 @@
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
           //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
-          position: 'bottom-left'
+          position: 'bottom-left',
+          range: 500,
         },
         avatar: null
       }
@@ -102,30 +103,56 @@
         marker.appendChild(icon);
         marker.id = location.id;
         marker.style.zIndex = 5;
-        marker.addEventListener('click', (event) => {
-          switch(location.image){
-            case 'city':
-              this.$router.push({ name: 'city' });
-              break;
-            case 'forge':
-              this.$router.push({ name: 'forge' });
-              break;
-            case 'inn':
-              this.$router.push({ name: 'inn' });
-              break;
-            case 'market':
-              this.$router.push({ name: 'market' });
-              break;
-            case 'dungeon':
-            case 'tower':
-            case 'mine':
-            case 'ruins':
-            case 'castle':
-              this.$router.push({ name: 'location', params: { locationId: location.id }});
-              break;
+        marker.addEventListener('click', (e) => {
+          if (this.near(location) < this.options.range) {
+            switch(location.image){
+              case 'city':
+                this.$router.push({ name: 'city' });
+                break;
+              case 'forge':
+                this.$router.push({ name: 'forge' });
+                break;
+              case 'inn':
+                this.$router.push({ name: 'inn' });
+                break;
+              case 'market':
+                this.$router.push({ name: 'market' });
+                break;
+              case 'dungeon':
+              case 'tower':
+              case 'mine':
+              case 'ruins':
+              case 'castle':
+                this.$router.push({ name: 'location', params: { locationId: location.id }});
+                break;
+            }  
           }
         });
         new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
+      },
+      near (point) {
+        return this.distance(this.avatar.getLngLat(), point);
+      },
+      distance (point1, point2) {
+        var lat1 = point1.lat;
+        var lng1 = point1.lng;
+        var lat2 = point2.lat;
+        var lng2 = point2.lng;
+        var R = 6371000;
+        var x1 = lat2 - lat1;
+        var dLat = this.toRad(x1);
+        var x2 = lng2 - lng1;
+        var dLon = this.toRad(x2);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var dist = R * c;
+        return dist;
+      },
+      toRad (deg) {
+        return deg * Math.PI / 180;
+      },    
+      toDeg (rad) {
+        return rad * 180 / Math.PI;
       }
     }
   }
