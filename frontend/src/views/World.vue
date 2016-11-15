@@ -97,11 +97,7 @@
         this.move(position);
       },
       addLocation (location) {
-        var icon = document.createElement('img');
-        icon.src = 'dist/img/locations/' + location.image + '.png';
-        icon.className = 'map-location animated zoomIn';
         var marker = document.createElement('div');
-        marker.appendChild(icon);
         marker.id = location.id;
         marker.style.zIndex = 5;
         marker.addEventListener('click', (e) => {
@@ -132,7 +128,13 @@
             notification.danger(Vue.t('alert.map.away'));
           }
         });
-        new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
+        var icon = new Image();
+        marker.appendChild(icon);
+        icon.className = 'map-location animated zoomIn';
+        icon.onload = () => {
+          new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
+        };
+        icon.src = 'dist/img/locations/' + location.image + '.png';        
       },
       near (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
