@@ -6,6 +6,9 @@ const translation = {
       change: 'You changed the language to English',
     },
     alert: {
+      map: {
+        away: 'You are too far away from this',
+      },
       login: {
         ok: 'Welcome back, Hero',
         error: 'Invalid credentials',
@@ -320,6 +323,9 @@ const translation = {
       change: 'Has cambiado el idioma a Español',
     },
     alert: {
+      map: {
+        away: 'Estas demasiado lejos de ese sitio',
+      },
       login: {
         ok: 'Bienvenido de nuevo, Heroe',
         error: 'Credenciales incorrectas',

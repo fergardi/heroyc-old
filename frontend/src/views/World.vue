@@ -6,6 +6,8 @@
 
 <script>
   import api from '../services/api.js'
+  import notification from '../services/notification'
+  import Vue from 'vue'
   export default {
     name: 'World',
     data () {
@@ -46,7 +48,6 @@
           attributionControl: { position: this.position }
         });
         this.map.on('dblclick', (e) => {
-          console.log(e.lngLat);
           this.move(e.lngLat);
         });
       },
@@ -57,17 +58,16 @@
       },
       geoLocate () {
         navigator.geolocation.getCurrentPosition((position) => {
-            if (this.avatar === null) this.move(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
-            this.current = position;
-            this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
-          }
-        );
+          if (this.avatar === null) this.move(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
+          this.current = position;
+          this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
+        });
       },
       move (point) {
         this.updatePosition(point);
         this.map.flyTo({
           center: [point.lng, point.lat],
-          speed: 1,
+          speed: 0.5,
           curve: 1
         });
       },
@@ -75,22 +75,20 @@
         if (this.avatar === null) {
           var marker = document.createElement('div');
           marker.style.zIndex = 10;
-          // add an icon
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
           icon.className = 'map-avatar animated infinite bounce';
           marker.appendChild(icon);
-          // add a shadow
           var shadow = document.createElement('div');
           shadow.className = 'map-avatar-shadow';
           marker.appendChild(shadow);
-          marker.addEventListener('click', (event) => {
+          /*
+          marker.addEventListener('dblclick', (event) => {
             this.$router.push({ name: 'player' });
           });
-          // add marker to map
+          */
           this.avatar = new mapboxgl.Marker(marker, { offset: [-30, -77] }).setLngLat(location).addTo(this.map);
         } else {
-          // move marker in map
           this.avatar.setLngLat(location);
         }
       },
@@ -125,12 +123,14 @@
                 this.$router.push({ name: 'location', params: { locationId: location.id }});
                 break;
             }  
+          } else {
+            notification.danger(Vue.t('alert.map.away'));
           }
         });
         new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
       },
       near (point) {
-        console.log('The distance between ',this.avatar.getLngLat(),' and ',point,' is ',this.distance(this.avatar.getLngLat(), point));
+        //console.log('The distance between ',this.avatar.getLngLat(),' and ',point,' is ',this.distance(this.avatar.getLngLat(), point));
         return this.distance(this.avatar.getLngLat(), point);
       },
       distance (point1, point2) {
@@ -160,6 +160,7 @@
 
 <style lang="stylus">
   #map
+    -webkit-user-select: none;
     width: 100%;
     height: 100%;
     min-height: 100%;
