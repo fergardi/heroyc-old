@@ -96,6 +96,7 @@
     border: 1px solid #000;
   #title form
     display: inline-block;
+    width: 100%;
   .pointer
     cursor: pointer;
   .vertical-align

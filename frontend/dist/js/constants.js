@@ -2,7 +2,7 @@ var constants = {
   notification: {
     duration: 2000,
   },
-  api: '//172.172.10.146:3000/api',
+  api: '//localhost:3000/api',
   easing: {
     // no easing, no acceleration
     linear: function (t) { return t },
