@@ -16,14 +16,14 @@
         map: null,
         current: {},
         options: {
-          zoom: 9,
+          zoom: 16,
           center: [-5.5, 42.5],
-          pitch: 0,
+          pitch: 60,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
           //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
-          range: 5000,
+          range: 100,
         },
         avatar: null
       }
@@ -45,13 +45,14 @@
           pitch: this.options.pitch,
           zoom: this.options.zoom,
           center: this.options.center,
+          interactive: false,
           attributionControl: { position: this.position }
         });
-        this.map.on('click', (e) => {
+        this.map.on('dblclick', (e) => {
           this.updatePosition(e.lngLat);
         });
-        this.map.boxZoom.disable();
-        this.map.dragPan.disable();
+        //this.map.boxZoom.disable();
+        //this.map.dragPan.disable();
         this.map.doubleClickZoom.disable();
         //this.map.scrollZoom.disable();
         this.map.keyboard.disable();
@@ -70,7 +71,7 @@
       move (position) {
         this.map.flyTo({
           center: position,
-          speed: 0.4,
+          speed: 0.5,
           curve: 1
         });
       },
@@ -80,7 +81,7 @@
           marker.style.zIndex = 10;
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
-          icon.className = 'map-avatar animated infinite bounce';
+          icon.className = 'map-avatar animated infinite';
           marker.appendChild(icon);
           var shadow = document.createElement('div');
           shadow.className = 'map-avatar-shadow';
@@ -137,7 +138,7 @@
         icon.src = 'dist/img/locations/' + location.image + '.png';        
       },
       near (position) {
-        //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
+        console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
         return this.distance(this.avatar.getLngLat(), position);
       },
       distance (point1, point2) {

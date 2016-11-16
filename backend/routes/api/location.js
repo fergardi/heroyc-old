@@ -3,15 +3,15 @@ var express = require('express');
 var router  = express.Router();
 
 // get all locations
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   models.Location.findAll()
-  .then(function(locations) {
+  .then((locations) => {
     res.json({status: 'ok', data: locations});
   });
 });
 
 // get single location
-router.get('/:locationId', function(req, res) {
+router.get('/:locationId', (req, res) => {
   models.Location.find({
     where: { id: req.params.locationId },
     include: [
@@ -23,39 +23,44 @@ router.get('/:locationId', function(req, res) {
       { model: models.Monster, include: [models.Spell, models.Skill] }
     ]
   })
-  .then(function(location) {
+  .then((location) => {
     res.json({status: 'ok', data: location});
   });
 });
 
 // location factory
-var encounter = {
-  types: ['mine', 'dungeon', 'castle', 'inn', 'forge', 'tower', 'city', 'ruins'],
-  type: function() {
-    return encounter.types[Math.floor(Math.random() * encounter.types.length)];
+var factory = {
+  types: ['mine', 'dungeon', 'castle', 'inn', 'forge', 'tower', 'city', 'ruins', 'market'],
+  type () {
+    return factory.types[Math.floor(Math.random() * factory.types.length)];
   },
-  latitude: function() {
-    return -(Math.random() * (5.56 - 5.54) + 5.54).toFixed(4);
+  longitude () {
+    return parseFloat(-(Math.random() * (5.603843017110297 - 5.546525069080559) + 5.546525069080559).toFixed(10));
   },
-  longitude: function() {
-    return (Math.random() * (42.65 - 42.45) + 42.45).toFixed(4);
+  latitude () {
+    return parseFloat((Math.random() * (42.55666577380774 - 42.61952832509911) + 42.61952832509911).toFixed(10));
   },
-  generate: function() {
-    var name = type();
-    return {
+  randomize () {
+    var name = factory.type();
+    var location = {
+      image: name,
       type: 'title.' + name,
-      lat: encounter.latitude(),
-      lng: encounter.longitude(),
-      image: name
+      lat: factory.latitude(),
+      lng: factory.longitude(),
     };
+    return location;
   }
 };
 
-// generate new location
-router.post('/add', function(req, res) {
-  models.Location.create(encounter.generate())
-  .then(function(location) {
-    res.json({status: 'ok', data: location});
+// generate new locations
+router.get('/add/:quantity', (req, res) => {
+  var bulk = [];
+  for (var i = 0; i < req.params.quantity; i++) {
+    bulk.push(factory.randomize());
+  }
+  models.Location.bulkCreate(bulk)
+  .then((locations) => {
+    res.json({status: 'ok', data: locations});
   });
 });
 
