@@ -23,7 +23,9 @@
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
           range: 500,
-          interactive: false
+          speed: 1,
+          curve: 1,
+          interactive: true
         },
         avatar: null
       }
@@ -65,8 +67,9 @@
       move (position) {
         this.map.flyTo({
           center: position,
-          speed: 1,
-          curve: 1,
+          speed: this.options.speed,
+          curve: this.options.curve,
+          zoom: this.options.zoom
           //easing: constants.easing.easeOutQuad
         });
       },

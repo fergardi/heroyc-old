@@ -1,6 +1,7 @@
 var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
+var factory = require('../../factories/location');
 
 // get all locations
 router.get('/', (req, res) => {
@@ -30,11 +31,7 @@ router.get('/:locationId', (req, res) => {
 
 // generate new locations
 router.get('/add/:quantity', (req, res) => {
-  var bulk = [];
-  for (var i = 0; i < req.params.quantity; i++) {
-    bulk.push(locationFactory.build());
-  }
-  models.Location.bulkCreate(bulk)
+  models.Location.bulkCreate(factory.bulk(req.params.quantity))
   .then((locations) => {
     res.json({status: 'ok', data: locations});
   });
