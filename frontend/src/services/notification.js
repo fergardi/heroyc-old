@@ -6,7 +6,7 @@ const notification = {
       message: { html: msg },
       fadeOut: { enabled: true, delay: constants.notification.duration }
     }).show();
-    console.info(text);
+    //console.info(text);
   },
   success (text) {
     this.alert(text, 'success', 'check-circle');

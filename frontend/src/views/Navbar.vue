@@ -10,54 +10,55 @@
             | {{ 'title.world' | i18n }}
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                i.fa.fa-lg.fa-fw.fa-book
-                | Test1
-                i.fa.fa-lg.fa-fw.fa-caret-down
-              ul.dropdown-menu
-                li
-                  router-link(to='/inn', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.inn' | i18n }}
-                li
-                  router-link(to='/forge', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.forge' | i18n }}
-                li
-                  router-link(to='/market', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.market' | i18n }}
-                li
-                  router-link(to='/city', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.city' | i18n }}
-                li
-                  router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.player' | i18n }}
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                i.fa.fa-lg.fa-fw.fa-book
-                | Test2
-                i.fa.fa-lg.fa-fw.fa-caret-down
-              ul.dropdown-menu
-                li
-                  router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.mine' | i18n }}
-                li
-                  router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.dungeon' | i18n }}
-                li
-                  router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.tower' | i18n }}
-                li
-                  router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
-                    i.ra.ra-fw.ra-crossed-axes
-                    | {{ 'title.ruins' | i18n }}
+            //
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  i.fa.fa-lg.fa-fw.fa-book
+                  | Test1
+                  i.fa.fa-lg.fa-fw.fa-caret-down
+                ul.dropdown-menu
+                  li
+                    router-link(to='/inn', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.inn' | i18n }}
+                  li
+                    router-link(to='/forge', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.forge' | i18n }}
+                  li
+                    router-link(to='/market', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.market' | i18n }}
+                  li
+                    router-link(to='/city', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.city' | i18n }}
+                  li
+                    router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.player' | i18n }}
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  i.fa.fa-lg.fa-fw.fa-book
+                  | Test2
+                  i.fa.fa-lg.fa-fw.fa-caret-down
+                ul.dropdown-menu
+                  li
+                    router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.mine' | i18n }}
+                  li
+                    router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.dungeon' | i18n }}
+                  li
+                    router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.tower' | i18n }}
+                  li
+                    router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
+                      i.ra.ra-fw.ra-crossed-axes
+                      | {{ 'title.ruins' | i18n }}
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 i.fa.fa-lg.fa-fw.fa-book

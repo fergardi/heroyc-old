@@ -12,27 +12,26 @@
     name: 'World',
     data () {
       return {
-        locations: [],
         map: null,
         current: {},
         options: {
           zoom: 16,
           center: [-5.5, 42.5],
-          pitch: 60,
+          pitch: 45,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
           //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
-          range: 100,
+          range: 500,
+          interactive: false
         },
         avatar: null
       }
     },
     mounted () {
+      this.createMap();
       api.getLocations((data) => {
-        this.locations = data;
-        this.createMap();
-        this.drawLocations();
+        this.drawLocations(data);
         this.geoLocate();
       });
     },
@@ -45,7 +44,7 @@
           pitch: this.options.pitch,
           zoom: this.options.zoom,
           center: this.options.center,
-          interactive: false,
+          interactive: this.options.interactive,
           attributionControl: { position: this.position }
         });
         this.map.on('dblclick', (e) => {
@@ -56,12 +55,7 @@
         this.map.doubleClickZoom.disable();
         //this.map.scrollZoom.disable();
         this.map.keyboard.disable();
-        this.map.touchZoomRotate.disable();
-      },
-      drawLocations () {
-        for (var i = 0; i < this.locations.length; i++) {
-          this.addLocation(this.locations[i]);
-        }
+        //this.map.touchZoomRotate.disable();
       },
       geoLocate () {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -71,8 +65,9 @@
       move (position) {
         this.map.flyTo({
           center: position,
-          speed: 0.5,
-          curve: 1
+          speed: 1,
+          curve: 1,
+          //easing: constants.easing.easeOutQuad
         });
       },
       updatePosition (position) {
@@ -81,7 +76,7 @@
           marker.style.zIndex = 10;
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
-          icon.className = 'map-avatar animated infinite';
+          icon.className = 'map-avatar animated infinite bounce';
           marker.appendChild(icon);
           var shadow = document.createElement('div');
           shadow.className = 'map-avatar-shadow';
@@ -96,6 +91,11 @@
           this.avatar.setLngLat(position);
         }
         this.move(position);
+      },
+      drawLocations (locations) {
+        for (var i = 0; i < locations.length; i++) {
+          this.addLocation(locations[i]);
+        }
       },
       addLocation (location) {
         var marker = document.createElement('div');
@@ -131,14 +131,14 @@
         });
         var icon = new Image();
         marker.appendChild(icon);
-        icon.className = 'map-location animated zoomIn';
+        icon.className = 'map-location animated';
         icon.onload = () => {
           new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
         };
         icon.src = 'dist/img/locations/' + location.image + '.png';        
       },
       near (position) {
-        console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
+        //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
         return this.distance(this.avatar.getLngLat(), position);
       },
       distance (point1, point2) {
@@ -176,6 +176,10 @@
     height: 100% !important;
   .map-location
     width: 100%;
+    cursor: pointer;
+  .map-location:hover
+    -webkit-animation: tada 1s;
+    animation: tada 1s;
   .map-avatar
     width: 60px;
     height: 60px;

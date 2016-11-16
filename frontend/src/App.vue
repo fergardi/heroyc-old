@@ -16,8 +16,8 @@
 
 <style lang="stylus">
   /* MAIN */
-  html,
-  body,
+  html
+  body
   .fullheight
     height: 100%;
   body
@@ -34,7 +34,8 @@
     margin-right: 5px;
   .label > i
     margin-right: 0;
-  i.ra, i.ra-lg
+  i.ra
+  i.ra-lg
     line-height: inherit;
   .page-header
     margin: 23px 0;
@@ -50,7 +51,7 @@
     margin-bottom: 5px;
     margin-top: 10px;
     pointer-events: all;
-  .help-block,
+  .help-block
   .help-block > ul
     margin: 0;
   .progress
@@ -62,13 +63,13 @@
     background-color: #f5f5f5;
   .slot
     margin-bottom: 5px;
-  .alert,
-  .panel-heading,
-  .panel-body,
-  .btn,
-  .list-group,
-  .list-group-item,
-  .nav-pills li a,
+  .alert
+  .panel-heading
+  .panel-body
+  .btn
+  .list-group
+  .list-group-item
+  .nav-pills li a
   .nav-tabs li a
     background-image: url("https://www.transparenttextures.com/patterns/dust.png");
     background-repeat: repeat;
