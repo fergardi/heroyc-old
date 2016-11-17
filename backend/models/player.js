@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // m21 association
+        // m2o association
         models.Player.belongsTo(models.Item, {as: 'Ring'});
         models.Player.belongsTo(models.Item, {as: 'Helm'});
         models.Player.belongsTo(models.Item, {as: 'Necklace'});

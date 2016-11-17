@@ -138,6 +138,20 @@ router.put('/:playerId/equipments/:itemId', function(req, res) {
   });
 });
 
+// add quest to player
+router.post('/:playerId/quests/add/:questId', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    models.Quest.findById(req.params.questId)
+    .then(function(quest){
+      player.addQuest(quest)
+      .then(function(){
+        res.json({status: 'OK', data: quest});          
+      });
+    });
+  });
+});
+
 // add item to player
 router.post('/:playerId/items/add/:itemId', function(req, res) {
   models.Player.findById(req.params.playerId)

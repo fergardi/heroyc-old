@@ -47,13 +47,15 @@
                   i.ra.ra-snowflake
                 span.label.label-info(v-if="recipe.Result.stun")
                   i.ra.ra-broken-skull
-                button.btn.btn-success.btn-block
+                button.btn.btn-success.btn-block(v-on:click='craft(recipe)')
                   i.fa.fa-lg.fa-check
                   | {{ 'button.craft' | i18n }}
 </template>
 
 <script>
   import api from '../services/api'
+  import auth from '../services/auth'
+  import notification from '../services/notification'
   import Vue from 'vue'
   export default {
     name: 'Forge',
@@ -64,9 +66,14 @@
       }
     },
     created () {
-      api.getPlayer(this.$route.params.playerId || 1, (data) => {
+      api.getPlayer(auth.id || 1, (data) => {
         this.recipes = data.Recipes;
       });
+    },
+    methods: {
+      craft (recipe) {
+        notification.success(Vue.t('alert.forge.craft', { name: 'bla' }));
+      }
     },
     computed: {
       filtered () {

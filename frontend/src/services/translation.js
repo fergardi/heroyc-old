@@ -40,6 +40,15 @@ const translation = {
       },
       inventory: {
         equip: 'You equiped <strong>{item}</strong>',
+      },
+      city: {
+        purchase: 'You spent <strong>{gold}</strong> gold purchasing <strong>{name}</strong>',
+      },
+      quest: {
+        accept: 'You accepted the mission <strong>{name}</strong>',
+      },
+      forge: {
+        craft: 'You crafted the item <strong>{name}</strong>',
       }
     },
     button: {
@@ -362,6 +371,15 @@ const translation = {
       },
       inventory: {
         equip: 'Te has equipado con <strong>{item}</strong>',
+      },
+      city: {
+        purchase: 'Has gastado <strong>{gold}</strong> oro en comprar <strong>{name}</strong>',
+      },
+      quest: {
+        accept: 'Has aceptado la mision <strong>{name}</strong>',
+      },
+      forge: {
+        craft: 'Has creado el objeto <strong>{name}</strong>',
       }
     },
     button: {

@@ -29,13 +29,16 @@
               span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
               span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
             .panel-body
-              button.btn.btn-success.btn-block
+              button.btn.btn-success.btn-block(v-on:click='accept(quest)')
                 i.fa.fa-lg.fa-check
                 | {{ 'button.accept' | i18n }}
 </template>
 
 <script>
   import api from '../services/api'
+  import auth from '../services/auth'
+  import notification from '../services/notification'
+  import Vue from 'vue'
   export default {
     name: 'Inn',
     data () { 
@@ -48,6 +51,12 @@
       api.getQuests((data) => {
         this.quests = data;
       });
+    },
+    methods: {
+      accept (quest) {
+        api.addQuest(auth.id || 1, quest.id);
+        notification.success(Vue.t('alert.quest.accept', { name: Vue.t(quest.name) }));
+      }
     },
     computed: {
       filtered () {

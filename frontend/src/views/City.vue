@@ -53,7 +53,7 @@
                   i.ra.ra-snowflake
                 span.label.label-info(v-if="sale.Item.stun")
                   i.ra.ra-broken-skull
-                button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
+                button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
                   span.label.label-warning {{ sale.gold }}
@@ -65,7 +65,7 @@
                   span {{ sale.Resource.name | i18n }} 
               .panel-body
                 img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
-                button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
+                button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
                   span.label.label-warning {{ sale.gold }}
@@ -102,7 +102,7 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="sale.Recipe.Result.stun")
                     i.ra.ra-broken-skull
-                  button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
+                  button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                     i.fa.fa-lg.fa-check 
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.gold }}
@@ -111,6 +111,7 @@
 <script>
   import api from '../services/api'
   import auth from '../services/auth'
+  import notification from '../services/notification'
   import Vue from 'vue'
   export default {
     name: 'City',
@@ -136,6 +137,16 @@
         api.buySale(auth.id || 1, sale.id, (sales) => {
           this.gold -= sale.gold;
           this.sales = sales;
+          if (sale.Item !== null) {
+            var purchase = sale.Item.name;
+          }
+          if (sale.Resource !== null) {
+            var purchase = sale.Resource.name;
+          }
+          if (sale.Recipe !== null) {
+            var purchase = sale.Recipe.Result.name;
+          }
+          notification.success(Vue.t('alert.city.purchase', { gold: sale.gold , name: Vue.t(purchase) }));
         });
       }
     },
