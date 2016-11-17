@@ -95,6 +95,12 @@ const api = {
       callback(response.data);
     });
   },
+  buySale(player, sale, callback) {
+    $.delete(`${url}/sales/${sale}/buy/${player}`)
+    .then((response) => {
+      callback(response.data);
+    });
+  },
   getMarket (callback) {
     $.get(`${url}/sales/market`)
     .then((response) => {

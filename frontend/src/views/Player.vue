@@ -126,6 +126,41 @@
                 .panel-body
                   .col-xs-4(v-for='quest in quests')
                     img.thumbnail.img-responsive(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+            .panel.panel-default.text-center
+              .panel-heading
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#recipes', data-parent='#parent')
+                  i.ra.ra-fw.ra-lg.ra-aura
+                  span {{ 'panel.recipes' | i18n }} 
+                  label.badge {{ recipes.length }}
+              .panel-collapse.collapse(id='recipes')
+                .panel-body
+                  .col-xs-6(v-for='recipe in recipes')
+                    .col-xs-6
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity', data-toggle='tooltip', v-bind:title='recipe.Original.name')
+                    .col-xs-6
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family', data-toggle='tooltip', v-bind:title='recipe.Resource.name')
+                    .col-xs-12
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity', data-toggle='tooltip', v-bind:title='recipe.Result.name')
+                      .progress
+                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
+                      .progress
+                        .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
+                      span.label.label-danger(v-if="recipe.Result.burn")
+                        i.ra.ra-small-fire
+                      span.label.label-success(v-if="recipe.Result.cure")
+                        i.ra.ra-leaf
+                      span.label.label-warning(v-if="recipe.Result.shock")
+                        i.ra.ra-lightning-bolt
+                      span.label.label-primary(v-if="recipe.Result.freeze")
+                        i.ra.ra-snowflake
+                      span.label.label-info(v-if="recipe.Result.stun")
+                        i.ra.ra-broken-skull
 </template>
 
 <script>
@@ -144,6 +179,7 @@
           skills: [],
           quests: [],
           resources: [],
+          recipes: [],
           image: 'avatar',
           level: 0,
           experience: 0,
@@ -152,64 +188,64 @@
         }
       },
       created: function() {
-        self = this;
         api.getPlayer(1, (data) => {
-          self.id = data.id;
-          self.equipments = data.Equipments;
-          self.items = data.Items;
-          self.spells = data.Spells;
-          self.skills = data.Skills;
-          self.quests = data.Quests;
-          self.resources = data.Resources;
-          self.name = data.name;
-          self.level = data.level;
-          self.experience = data.experience;
-          self.image = data.image;
-          self.gold = data.gold;
-          self.platinum = data.platinum;
+          this.id = data.id;
+          this.equipments = data.Equipments;
+          this.items = data.Items;
+          this.spells = data.Spells;
+          this.skills = data.Skills;
+          this.quests = data.Quests;
+          this.resources = data.Resources;
+          this.recipes = data.Recipes;
+          this.name = data.name;
+          this.level = data.level;
+          this.experience = data.experience;
+          this.image = data.image;
+          this.gold = data.gold;
+          this.platinum = data.platinum;
         });
       },
       methods: {
         equip: function(item) {
-          api.updateEquipment(self.id, item.id, (data) => {
-            self.equipments = data.Equipments;
+          api.updateEquipment(this.id, item.id, (data) => {
+            this.equipments = data.Equipments;
             notification.success(Vue.t('alert.inventory.equip', { item: Vue.t(item.name) }));
           });
         }
       },
       computed: {
         strength: function() {
-          var str = self.level;
-          for(var i = 0; i < self.equipments.length; i++) {
-            str += self.equipments[i].strength;
+          var str = this.level;
+          for(var i = 0; i < this.equipments.length; i++) {
+            str += this.equipments[i].strength;
           }
           return str;
         },
         vitality: function() {
-          var vit = self.level;
-          for(var i = 0; i < self.equipments.length; i++) {
-            vit += self.equipments[i].vitality;
+          var vit = this.level;
+          for(var i = 0; i < this.equipments.length; i++) {
+            vit += this.equipments[i].vitality;
           }
           return vit;
         },
         intelligence: function() {
-          var int = self.level;
-          for(var i = 0; i < self.equipments.length; i++) {
-            int += self.equipments[i].intelligence;
+          var int = this.level;
+          for(var i = 0; i < this.equipments.length; i++) {
+            int += this.equipments[i].intelligence;
           }
           return int;
         },
         agility: function() {
-          var agi = self.level;
-          for(var i = 0; i < self.equipments.length; i++) {
-            agi += self.equipments[i].agility;
+          var agi = this.level;
+          for(var i = 0; i < this.equipments.length; i++) {
+            agi += this.equipments[i].agility;
           }
           return agi;
         },
         defense: function() {
-          var def = self.level;
-          for(var i = 0; i < self.equipments.length; i++) {
-            def += self.equipments[i].defense;
+          var def = this.level;
+          for(var i = 0; i < this.equipments.length; i++) {
+            def += this.equipments[i].defense;
           }
           return def;
         }

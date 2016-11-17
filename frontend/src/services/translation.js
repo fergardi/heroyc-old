@@ -60,6 +60,7 @@ const translation = {
       skills: 'Skills',
       inventory: 'Inventory',
       quests: 'Quests',
+      recipes: 'Recipes',
     },
     title: {
       login: 'Login',
@@ -381,6 +382,7 @@ const translation = {
       skills: 'Habilidades',
       inventory: 'Inventario',
       quests: 'Misiones',
+      recipes: 'Recetas',
     },
     title: {
       login: 'Acceder',

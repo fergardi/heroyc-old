@@ -32,7 +32,7 @@
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon') 
                   span {{ sale.Item.name | i18n }} 
               .panel-body
-                img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Item.strength * 10 + "%"')
                 .progress
@@ -53,7 +53,7 @@
                   i.ra.ra-snowflake
                 span.label.label-info(v-if="sale.Item.stun")
                   i.ra.ra-broken-skull
-                button.btn.btn-success.btn-block
+                button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
                   span.label.label-warning {{ sale.gold }}
@@ -64,8 +64,8 @@
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
                   span {{ sale.Resource.name | i18n }} 
               .panel-body
-                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
-                button.btn.btn-success.btn-block
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
+                button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                   i.fa.fa-lg.fa-check
                   | {{ 'button.buy' | i18n }} 
                   span.label.label-warning {{ sale.gold }}
@@ -77,11 +77,11 @@
                   span {{ sale.Recipe.Result.name | i18n }} 
               .panel-body
                 .col-xs-6
-                  img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
                 .col-xs-6
-                  img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
                 .col-xs-12
-                  img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
                   .progress
@@ -102,7 +102,7 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="sale.Recipe.Result.stun")
                     i.ra.ra-broken-skull
-                  button.btn.btn-success.btn-block
+                  button.btn.btn-block(v-bind:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
                     i.fa.fa-lg.fa-check 
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.gold }}
@@ -110,6 +110,7 @@
 
 <script>
   import api from '../services/api'
+  import auth from '../services/auth'
   import Vue from 'vue'
   export default {
     name: 'City',
@@ -119,12 +120,24 @@
         min: 0,
         max: 9999,
         sales: [],
+        gold: 0
       }
     },
     created () {
-      api.getSales((data) => {
-        this.sales = data;
+      api.getPlayer(auth.id || 1, (player) => {
+        this.gold = player.gold;
+        api.getSales((sales) => {
+          this.sales = sales;
+        });
       });
+    },
+    methods: {
+      buy (sale) {
+        api.buySale(auth.id || 1, sale.id, (sales) => {
+          this.gold -= sale.gold;
+          this.sales = sales;
+        });
+      }
     },
     computed: {
       filtered () {
