@@ -221,4 +221,40 @@ router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res)
   });
 });
 
+// add gold to player
+router.put('/:playerId/gold/:gold', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    player.gold += parseInt(req.params.gold);
+    player.save()
+    .then(function(player) {
+      res.json({status: 'OK', data: player.gold});
+    });
+  });
+});
+
+// add platinum to player
+router.put('/:playerId/platinum/:platinum', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    player.platinum += parseInt(req.params.platinum);
+    player.save()
+    .then(function(player) {
+      res.json({status: 'OK', data: player.platinum});
+    });
+  });
+});
+
+// add experience to player
+router.put('/:playerId/experience/:experience', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    player.experience += parseInt(req.params.experience);
+    player.save()
+    .then(function(player) {
+      res.json({status: 'OK', data: player.experience});
+    });
+  });
+});
+
 module.exports = router;

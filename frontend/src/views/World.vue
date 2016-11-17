@@ -22,7 +22,7 @@
           //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
-          range: 500,
+          range: 1000,
           speed: 1,
           curve: 1,
           interactive: true
@@ -106,7 +106,7 @@
         marker.style.zIndex = 5;
         marker.addEventListener('click', (e) => {
           e.preventDefault();
-          if (this.near(location) <= this.options.range) {
+          if (this.close(location)) {
             switch(location.image){
               case 'city':
                 this.$router.push({ name: 'city' });
@@ -140,9 +140,9 @@
         };
         icon.src = 'dist/img/locations/' + location.image + '.png';        
       },
-      near (position) {
+      close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
-        return this.distance(this.avatar.getLngLat(), position);
+        return this.distance(this.avatar.getLngLat(), position) <= this.options.range;
       },
       distance (point1, point2) {
         var lat1 = point1.lat;

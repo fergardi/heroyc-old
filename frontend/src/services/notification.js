@@ -1,12 +1,10 @@
 const notification = {
   alert (text, type, icon) {
-    var msg = '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text + '!';
     $('.alerts').notify({
       type: type,
-      message: { html: msg },
+      message: { html: '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text + '!' },
       fadeOut: { enabled: true, delay: constants.notification.duration }
     }).show();
-    //console.info(text);
   },
   success (text) {
     this.alert(text, 'success', 'check-circle');

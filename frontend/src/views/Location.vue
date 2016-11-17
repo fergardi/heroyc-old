@@ -13,11 +13,21 @@
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
                 span {{ player.name }} 
-                label.badge {{ player.level }}
+                label.badge {{ player.level }} 
+                span.label.label-danger(v-if="player.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="player.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="player.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="player.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="player.stun")
+                  i.ra.ra-broken-skull
             .panel-body
-              .row.vertical-align
+              .vertical-align
                 .col-xs-4
-                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + player.image + ".png"')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/player/" + player.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + player.strength + "%"')
@@ -29,50 +39,48 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + player.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + player.defense + "%"')
-                  .progress
-                    .progress-bar.progress-bar-default(v-bind:style='"width: " + player.experience * 100 / (player.level * 1000) + "%"')
-              br
-              a.list-group-item.pointer(v-bind:class='{disabled: !player.states.buttons}', @click='melee(player, location.Monster, true)')
-                img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon.image + ".png"')
-                span {{ 'button.attack' | i18n }} 
-                span.label.label-danger {{ player.strength }}
-                span.label.label-danger(v-if="player.weapon.burn")
-                  i.ra.ra-small-fire
-                span.label.label-success(v-if="player.weapon.cure")
-                  i.ra.ra-leaf
-                span.label.label-warning(v-if="player.weapon.shock")
-                  i.ra.ra-lightning-bolt
-                span.label.label-primary(v-if="player.weapon.freeze")
-                  i.ra.ra-snowflake
-                span.label.label-info(v-if="player.weapon.stun")
-                  i.ra.ra-broken-skull
-              a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
-                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{ spell.name | i18n }} 
-                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
-                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
-                span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
-                span.label.label-danger(v-if="spell.burn")
-                  i.ra.ra-small-fire
-                span.label.label-success(v-if="spell.cure")
-                  i.ra.ra-leaf
-                span.label.label-warning(v-if="spell.shock")
-                  i.ra.ra-lightning-bolt
-                span.label.label-primary(v-if="spell.freeze")
-                  i.ra.ra-snowflake
-                span.label.label-info(v-if="spell.stun")
-                  i.ra.ra-broken-skull
-              a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
-                img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
-                span {{ skill.name | i18n }} 
-                span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
-                span.label.label-primary(v-if='skill.intelligence > 0') {{ skill.intelligence }}
-                span.label.label-danger(v-if='skill.vitality > 0') {{ skill.vitality }}
-                span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
-                span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
-                span.label.label-warning(v-if='skill.stamina > 0') {{ -skill.stamina }}
+              .col-xs-12
+                a.list-group-item.pointer(v-bind:class='{disabled: !player.states.buttons}', @click='melee(player, location.Monster, true)')
+                  img.icon(v-bind:src='"dist/img/items/weapon/" + player.weapon.image + ".png"')
+                  span {{ 'button.attack' | i18n }} 
+                  span.label.label-danger {{ player.strength }}
+                  span.label.label-danger(v-if="player.weapon.burn")
+                    i.ra.ra-small-fire
+                  span.label.label-success(v-if="player.weapon.cure")
+                    i.ra.ra-leaf
+                  span.label.label-warning(v-if="player.weapon.shock")
+                    i.ra.ra-lightning-bolt
+                  span.label.label-primary(v-if="player.weapon.freeze")
+                    i.ra.ra-snowflake
+                  span.label.label-info(v-if="player.weapon.stun")
+                    i.ra.ra-broken-skull
+                a.list-group-item.pointer(v-for='spell in player.spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons || spell.mana > player.intelligence }]', @click='magic(player, location.Monster, spell, true)')
+                  img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                  span {{ spell.name | i18n }} 
+                  span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
+                  span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                  span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
+                  span.label.label-danger(v-if="spell.burn")
+                    i.ra.ra-small-fire
+                  span.label.label-success(v-if="spell.cure")
+                    i.ra.ra-leaf
+                  span.label.label-warning(v-if="spell.shock")
+                    i.ra.ra-lightning-bolt
+                  span.label.label-primary(v-if="spell.freeze")
+                    i.ra.ra-snowflake
+                  span.label.label-info(v-if="spell.stun")
+                    i.ra.ra-broken-skull
+                a.list-group-item.pointer(v-for='skill in player.skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons || skill.stamina > player.strength }]', @click='buff(player, location.Monster, skill, true)')
+                  img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
+                  span {{ skill.name | i18n }} 
+                  span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
+                  span.label.label-primary(v-if='skill.intelligence > 0') {{ skill.intelligence }}
+                  span.label.label-danger(v-if='skill.vitality > 0') {{ skill.vitality }}
+                  span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
+                  span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
+                  span.label.label-warning(v-if='skill.stamina > 0') {{ -skill.stamina }}
         .col-xs-6
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Item.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Item')
+          .panel.text-center.animated.tada(v-bind:class='"panel-" + location.Item.rarity', v-if='location.Item', v-show='location.Monster.states.loot')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Item.icon')  
@@ -89,7 +97,17 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Item.agility * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Item.defense * 10 + "%"')
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Recipe.Result.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Recipe')
+              span.label.label-danger(v-if="location.Item.burn")
+                i.ra.ra-small-fire
+              span.label.label-success(v-if="location.Item.cure")
+                i.ra.ra-leaf
+              span.label.label-warning(v-if="location.Item.shock")
+                i.ra.ra-lightning-bolt
+              span.label.label-primary(v-if="location.Item.freeze")
+                i.ra.ra-snowflake
+              span.label.label-info(v-if="location.Item.stun")
+                i.ra.ra-broken-skull
+          .panel.text-center.animated.tada(v-bind:class='"panel-" + location.Recipe.Result.rarity', v-if='location.Recipe', v-show='location.Monster.states.loot')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Recipe.Result.icon')  
@@ -113,7 +131,7 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Recipe.Result.agility * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Recipe.Result.defense * 10 + "%"')
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Resource.rarity, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Resource')
+          .panel.text-center.animated.tada(v-bind:class='"panel-" + location.Resource.rarity', v-if='location.Resource', v-show='location.Monster.states.loot')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Resource.icon')  
@@ -121,7 +139,7 @@
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity')
               p {{ location.Resource.description }}
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Spell')
+          .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: location.Monster.states.dead }, { removed: !location.Monster.states.loot }]', v-if='location.Spell')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
@@ -134,8 +152,17 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Spell.heal * 10 + "%"')
               .progress
                 .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Spell.mana * 10 + "%"')
-
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Skill.family, { tada: location.Monster.states.loot }, { hidden: !location.Monster.states.loot }]', v-if='location.Skill')
+              span.label.label-danger(v-if="location.Spell.burn")
+                i.ra.ra-small-fire
+              span.label.label-success(v-if="location.Spell.cure")
+                i.ra.ra-leaf
+              span.label.label-warning(v-if="location.Spell.shock")
+                i.ra.ra-lightning-bolt
+              span.label.label-primary(v-if="location.Spell.freeze")
+                i.ra.ra-snowflake
+              span.label.label-info(v-if="location.Spell.stun")
+                i.ra.ra-broken-skull
+          .panel.text-center.animated.tada(v-bind:class='"panel-" + location.Skill.family', v-if='location.Skill', v-show='location.Monster.states.loot')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Skill.icon')  
@@ -157,11 +184,21 @@
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
                 span {{ location.Monster.name | i18n }} 
-                label.badge {{ player.level }}
+                label.badge {{ player.level }} 
+                span.label.label-danger(v-if="location.Monster.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="location.Monster.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="location.Monster.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="location.Monster.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="location.Monster.stun")
+                  i.ra.ra-broken-skull
             .panel-body
-              .row.vertical-align
+              .vertical-align
                 .col-xs-4
-                  img.thumbnail.slot(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Monster.strength + "%"')
@@ -173,38 +210,36 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + location.Monster.agility + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Monster.defense + "%"')
-                  .progress
-                    .progress-bar.progress-bar-default(v-bind:style='"width: " + location.experience + "%"')
-              br
-              a.list-group-item(v-bind:class='{disabled: !player.states.buttons}')
-                img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
-                span {{ 'button.attack' | i18n }} 
-                span.label.label-danger {{location.Monster.strength}}
-              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons }]')
-                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{ spell.name | i18n }} 
-                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
-                span.label.label-primary(v-if='spell.mana > 0') {{ spell.mana }}
-                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
-                span.label.label-danger(v-if="spell.burn")
-                  i.ra.ra-small-fire
-                span.label.label-success(v-if="spell.cure")
-                  i.ra.ra-leaf
-                span.label.label-warning(v-if="spell.shock")
-                  i.ra.ra-lightning-bolt
-                span.label.label-primary(v-if="spell.freeze")
-                  i.ra.ra-snowflake
-                span.label.label-info(v-if="spell.stun")
-                  i.ra.ra-broken-skull
-              a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons }]')
-                img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
-                span {{ skill.name | i18n }} 
-                span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
-                span.label.label-primary(v-if='skill.intelligence > 0') {{ skill.intelligence }}
-                span.label.label-danger(v-if='skill.vitality > 0') {{ skill.vitality }}
-                span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
-                span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
-                span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
+              .col-xs-12
+                a.list-group-item(v-bind:class='{disabled: !player.states.buttons}')
+                  img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
+                  span {{ 'button.attack' | i18n }} 
+                  span.label.label-danger {{location.Monster.strength}}
+                a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons }]')
+                  img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                  span {{ spell.name | i18n }} 
+                  span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
+                  span.label.label-primary(v-if='spell.mana > 0') {{ spell.mana }}
+                  span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                  span.label.label-danger(v-if="spell.burn")
+                    i.ra.ra-small-fire
+                  span.label.label-success(v-if="spell.cure")
+                    i.ra.ra-leaf
+                  span.label.label-warning(v-if="spell.shock")
+                    i.ra.ra-lightning-bolt
+                  span.label.label-primary(v-if="spell.freeze")
+                    i.ra.ra-snowflake
+                  span.label.label-info(v-if="spell.stun")
+                    i.ra.ra-broken-skull
+                a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons }]')
+                  img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
+                  span {{ skill.name | i18n }} 
+                  span.label.label-warning(v-if='skill.strength > 0') {{ skill.strength }}
+                  span.label.label-primary(v-if='skill.intelligence > 0') {{ skill.intelligence }}
+                  span.label.label-danger(v-if='skill.vitality > 0') {{ skill.vitality }}
+                  span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
+                  span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
+                  span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
 </template>
 
 <script>
@@ -237,13 +272,12 @@
             dodge: false,
             magic: false,
             buff: false,
-            loot: false,
             stun: false,
             freeze: false,
             cure: false,
             shock: false,
             burn: false,
-            dead: false,
+            dead: false
           }
         },
         location: {
@@ -255,13 +289,13 @@
               dodge: false,
               magic: false,
               buff: false,
-              loot: false,
               stun: false,
               freeze: false,
               cure: false,
               shock: false,
               burn: false,
               dead: false,
+              loot: false
             }
           }
         }
@@ -286,12 +320,6 @@
         this.player.defense = this.defense();
         api.getLocation(this.$route.params.locationId || 1, (data) => {
           this.location = data;
-          this.location.Monster.vitality *= this.player.level;
-          this.location.Monster.strength *= this.player.level;
-          this.location.Monster.agility *= this.player.level;
-          this.location.Monster.intelligence *= this.player.level;
-          this.location.Monster.defense *= this.player.level;
-          this.location.experience *= this.player.level;
           // extend monster object with states after overriding
           $.extend(this.location.Monster, { 
             states: {
@@ -300,13 +328,13 @@
               dodge: false,
               magic: false,
               buff: false,
-              loot: false,
               stun: false,
               freeze: false,
               cure: false,
               shock: false,
               burn: false,
               dead: false,
+              loot: false
             }
           });
           notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(this.location.Monster.name) }));
@@ -315,18 +343,15 @@
     },
     watch: {
       'location.Monster.vitality': (value) => {
-        if (value <= 0) {
-          self.player.states.buttons = false;
-          self.location.Monster.states.buttons = false;
+        if (value <= 0) {       
+          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
+          self.location.Monster.states.dead = true;
+          self.location.Monster.states.loot = true;
           setTimeout(() => {
-            self.location.Monster.states.dead = true;
-            notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
-          }, constants.notification.duration * 2);
-          setTimeout(() => {
-            self.location.Monster.states.loot = true;
-            self.player.experience += self.location.experience;
-            self.location.experience = 0;
+            api.addExperience(self.player.id, self.location.experience);
             notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
+            api.addGold(self.player.id, self.location.gold);
+            notification.success(Vue.t('alert.battle.loot.gold', { gold: self.location.gold }));
             if (self.location.Spell) {
               api.addSpell(self.player.id, self.location.Spell.id);
               notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
@@ -347,7 +372,7 @@
               api.addSkill(self.player.id, self.location.Skill.id);
               notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
             }
-          }, constants.notification.duration * 3);
+          }, constants.notification.duration);
         }
       },
       'player.vitality': (value) => {
@@ -355,7 +380,7 @@
           setTimeout(() => {
             notification.danger(Vue.t('alert.battle.lose'));
             self.player.states.dead = true;
-          }, constants.notification.duration * 2);
+          }, constants.notification.duration);
         }
       }
     },

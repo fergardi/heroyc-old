@@ -140,6 +140,15 @@ const api = {
   addQuest (player, quest) {
     $.post(`${url}/players/${player}/quests/add/${quest}`);
   },
+  addGold (player, gold) {
+    $.put(`${url}/players/${player}/gold/${gold}`);
+  },
+  addPlatinum (player, platinum) {
+    $.put(`${url}/players/${player}/platinum/${platinum}`);
+  },
+  addExperience (player, experience) {
+    $.put(`${url}/players/${player}/experience/${experience}`);
+  },
   getEquipments (player, callback) {
     $.get(`${url}/players/${player}/equipments`)
     .then((response) => {

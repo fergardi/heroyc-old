@@ -17,9 +17,9 @@
                 span.label.label-warning {{ gold }} 
                 span.label.label-info {{ platinum }} 
             .panel-body
-              .row.vertical-align
+              .vertical-align
                 .col-xs-4
-                  img.thumbnail.slot(v-bind:src='"dist/img/player/" + image + ".png"')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/player/" + image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + strength + "%"')
@@ -33,20 +33,19 @@
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
-              hr
-              .row
-                .col-xs-4(v-for='equipment in equipments')
-                  img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
-                  .progress
-                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
-                  .progress
-                    .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
+              br
+              .col-xs-4(v-for='equipment in equipments')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
         .col-md-6.col-xs-6
           .panel-group(id='parent')
             .panel.panel-success.text-center
@@ -57,19 +56,18 @@
                   label.badge {{ items.length }}
               .panel-collapse.collapse(id='items')
                 .panel-body
-                  .row
-                    .col-xs-4(v-for='item in items')
-                      img.thumbnail.slot.pointer(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', @click='equip(item)')
-                      .progress
-                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
+                  .col-xs-4(v-for='item in items')
+                    img.thumbnail.img-responsive.pointer(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', @click='equip(item)')
+                    .progress
+                      .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-primary(v-bind:style='"width: " + item.intelligence * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-danger(v-bind:style='"width: " + item.vitality * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-success(v-bind:style='"width: " + item.agility * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
             .panel.panel-primary.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#resources', data-parent='#parent')
@@ -78,11 +76,10 @@
                   label.badge {{ resources.length }}
               .panel-collapse.collapse(id='resources')
                 .panel-body
-                  .row
-                    .col-xs-4(v-for='resource in resources')
-                      img.thumbnail.slot(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
-                      br
-                      label.badge {{ resource.PlayerResource.quantity }}
+                  .col-xs-4(v-for='resource in resources')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                    br
+                    label.badge {{ resource.PlayerResource.quantity }}
             .panel.panel-info.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#spells', data-parent='#parent')
@@ -91,15 +88,14 @@
                   label.badge {{ spells.length }}
               .panel-collapse.collapse(id='spells')
                 .panel-body
-                  .row
-                    .col-xs-4(v-for='spell in spells')
-                      img.thumbnail.slot(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
-                      .progress
-                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
+                  .col-xs-4(v-for='spell in spells')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                    .progress
+                      .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
             .panel.panel-warning.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills', data-parent='#parent')
@@ -108,19 +104,18 @@
                   label.badge {{ skills.length }}
               .panel-collapse.collapse(id='skills')
                 .panel-body
-                  .row
-                    .col-xs-4(v-for='skill in skills')
-                      img.thumbnail.slot(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
-                      .progress
-                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + skill.intelligence * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + skill.vitality * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-success(v-bind:style='"width: " + skill.agility * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-info(v-bind:style='"width: " + skill.defense * 10 + "%"')
+                  .col-xs-4(v-for='skill in skills')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
+                    .progress
+                      .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-primary(v-bind:style='"width: " + skill.intelligence * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-danger(v-bind:style='"width: " + skill.vitality * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-success(v-bind:style='"width: " + skill.agility * 10 + "%"')
+                    .progress
+                      .progress-bar.progress-bar-info(v-bind:style='"width: " + skill.defense * 10 + "%"')
             .panel.panel-danger.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests', data-parent='#parent')
@@ -129,9 +124,8 @@
                   label.badge {{ quests.length }}
               .panel-collapse.collapse(id='quests')
                 .panel-body
-                  .row
-                    .col-xs-4(v-for='quest in quests')
-                      img.thumbnail.slot(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+                  .col-xs-4(v-for='quest in quests')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
 </template>
 
 <script>
@@ -224,12 +218,4 @@
 </script>
 
 <style lang="stylus" scoped>
-  .panel-heading .accordion-toggle:after
-    font: normal normal normal 14px/1 FontAwesome;
-    content: "\f078";
-    float: right;
-    font-size: 1em;
-    line-height: 1em;
-  .panel-heading .accordion-toggle.collapsed:after
-    content: "\f054";
 </style>

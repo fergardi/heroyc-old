@@ -74,8 +74,8 @@
     background-image: url("https://www.transparenttextures.com/patterns/dust.png");
     background-repeat: repeat;
   .thumbnail
+    margin-bottom: 5px;
     display: inline-block;
-    width: 100px;
   .page-header h1 small
     color: inherit;
   .map-container
@@ -148,9 +148,6 @@
     .list-group-item
       padding-top: 5px;
       padding-bottom: 5px;
-    .thumbnail
-      width: 60px;
-      margin-bottom: 10px;
     #title
       margin-top: 10px;
       margin-bottom: 0px;
