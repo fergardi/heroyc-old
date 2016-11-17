@@ -33,7 +33,7 @@
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
-            .panel-body
+              hr
               .row
                 .col-xs-4(v-for='equipment in equipments')
                   img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
@@ -51,7 +51,7 @@
           .panel-group(id='parent')
             .panel.panel-success.text-center
               .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#items')
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#items', data-parent='#parent')
                   i.ra.ra-fw.ra-lg.ra-crossed-axes
                   span {{ 'panel.items' | i18n }} 
                   label.badge {{ items.length }}
@@ -72,7 +72,7 @@
                         .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
             .panel.panel-primary.text-center
               .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#resources')
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#resources', data-parent='#parent')
                   i.ra.ra-fw.ra-lg.ra-gold-bar
                   span {{ 'panel.resources' | i18n }} 
                   label.badge {{ resources.length }}
@@ -85,7 +85,7 @@
                       label.badge {{ resource.PlayerResource.quantity }}
             .panel.panel-info.text-center
               .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#spells')
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#spells', data-parent='#parent')
                   i.ra.ra-fw.ra-lg.ra-crystal-wand
                   span {{ 'panel.spells' | i18n }} 
                   label.badge {{ spells.length }}
@@ -102,7 +102,7 @@
                         .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
             .panel.panel-warning.text-center
               .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills')
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills', data-parent='#parent')
                   i.ra.ra-fw.ra-lg.ra-aura
                   span {{ 'panel.skills' | i18n }} 
                   label.badge {{ skills.length }}
@@ -123,7 +123,7 @@
                         .progress-bar.progress-bar-info(v-bind:style='"width: " + skill.defense * 10 + "%"')
             .panel.panel-danger.text-center
               .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests')
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests', data-parent='#parent')
                   i.ra.ra-fw.ra-lg.ra-wooden-sign
                   span {{ 'panel.quests' | i18n }} 
                   label.badge {{ quests.length }}

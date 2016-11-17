@@ -149,7 +149,7 @@
       padding-top: 5px;
       padding-bottom: 5px;
     .thumbnail
-      width: 75px;
+      width: 60px;
       margin-bottom: 10px;
     #title
       margin-top: 10px;
