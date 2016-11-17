@@ -157,7 +157,7 @@
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
                 span {{ location.Monster.name | i18n }} 
-                label.badge ?
+                label.badge {{ player.level }}
             .panel-body
               .row.vertical-align
                 .col-xs-4
@@ -180,6 +180,22 @@
                 img.icon(v-bind:src='"dist/img/items/weapon/novicesword.png"')
                 span {{ 'button.attack' | i18n }} 
                 span.label.label-danger {{location.Monster.strength}}
+              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons }]')
+                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
+                span {{ spell.name | i18n }} 
+                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
+                span.label.label-primary(v-if='spell.mana > 0') {{ spell.mana }}
+                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                span.label.label-danger(v-if="spell.burn")
+                  i.ra.ra-small-fire
+                span.label.label-success(v-if="spell.cure")
+                  i.ra.ra-leaf
+                span.label.label-warning(v-if="spell.shock")
+                  i.ra.ra-lightning-bolt
+                span.label.label-primary(v-if="spell.freeze")
+                  i.ra.ra-snowflake
+                span.label.label-info(v-if="spell.stun")
+                  i.ra.ra-broken-skull
               a.list-group-item(v-for='skill in location.Monster.Skills', v-bind:class='["list-group-item-" + skill.family, { disabled: !player.states.buttons }]')
                 img.icon(v-bind:src='"dist/img/skills/" + skill.image + ".png"')
                 span {{ skill.name | i18n }} 
@@ -189,12 +205,6 @@
                 span.label.label-success(v-if='skill.agility > 0') {{ skill.agility }}
                 span.label.label-info(v-if='skill.defense > 0') {{ skill.defense }}
                 span.label.label-warning(v-if='skill.stamina > 0') {{ skill.stamina }}
-              a.list-group-item(v-for='spell in location.Monster.Spells', v-bind:class='["list-group-item-" + spell.family, { disabled: !player.states.buttons }]')
-                img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
-                span {{ spell.name | i18n }} 
-                span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
-                span.label.label-primary(v-if='spell.mana > 0') {{ spell.mana }}
-                span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
 </template>
 
 <script>
@@ -262,6 +272,7 @@
       api.getPlayer(this.$route.params.playerId || 1, (data) => {
         this.player.id = data.id;
         this.player.level = data.level;
+        this.player.experience = data.experience;
         this.player.equipments = data.Equipments;
         this.player.spells = data.Spells;
         this.player.skills = data.Skills;
@@ -273,27 +284,33 @@
         this.player.agility = this.agility();
         this.player.intelligence = this.intelligence();
         this.player.defense = this.defense();
-      });
-      api.getLocation(this.$route.params.locationId || 3, (data) => {
-        this.location = data;
-        // extend monster object with states after overriding
-        $.extend(this.location.Monster, { 
-          states: {
-            buttons: true,
-            melee: false,
-            dodge: false,
-            magic: false,
-            buff: false,
-            loot: false,
-            stun: false,
-            freeze: false,
-            cure: false,
-            shock: false,
-            burn: false,
-            dead: false,
-          }
-        });
-        notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(this.location.Monster.name) }));
+        api.getLocation(this.$route.params.locationId || 1, (data) => {
+          this.location = data;
+          this.location.Monster.vitality *= this.player.level;
+          this.location.Monster.strength *= this.player.level;
+          this.location.Monster.agility *= this.player.level;
+          this.location.Monster.intelligence *= this.player.level;
+          this.location.Monster.defense *= this.player.level;
+          this.location.experience *= this.player.level;
+          // extend monster object with states after overriding
+          $.extend(this.location.Monster, { 
+            states: {
+              buttons: true,
+              melee: false,
+              dodge: false,
+              magic: false,
+              buff: false,
+              loot: false,
+              stun: false,
+              freeze: false,
+              cure: false,
+              shock: false,
+              burn: false,
+              dead: false,
+            }
+          });
+          notification.danger(Vue.t('alert.battle.start', { monster: Vue.t(this.location.Monster.name) }));
+        });    
       });
     },
     watch: {

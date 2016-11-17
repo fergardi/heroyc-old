@@ -49,27 +49,89 @@ router.get('/:playerId', function(req, res) {
   });
 });
 
+// get a single player
+router.get('/:playerId/items', function(req, res) {
+  models.Player.findById(req.params.playerId)
+  .then(function(player) {
+    player.getItems()
+    .then(function(items) {
+      res.json({status: 'OK', data: items });
+    });
+  });
+});
+
+// get equipments of a player
+router.get('/:playerId/equipments', function(req, res) {
+  models.Player.find({
+    where: { id: req.params.playerId }
+  })
+  .then(function(player) {
+    models.Item.findAll({
+      where: { 
+        id: { 
+          $in: [
+            player.RingId,
+            player.HelmId,
+            player.NecklaceId,
+            player.WeaponId,
+            player.ArmorId,
+            player.ShieldId,
+            player.GlovesId,
+            player.BootsId,
+            player.PotionId
+          ]
+        } 
+      },
+      order: [['id', 'ASC']]
+    })
+    .then(function(equipments){
+      res.json({status: 'OK', data: equipments });
+    });
+  });
+});
+
 // change equipment of player
 router.put('/:playerId/equipments/:itemId', function(req, res) {
   models.Player.findById(req.params.playerId)
-  .then(function(player){
+  .then(function(player) {
     player.getItems({
       where: { id: req.params.itemId }
     })
-    .then(function(items){
-      if(items.length > 0){
+    .then(function(items) {
+      if (items.length > 0) {
         item = items[0];
-        switch(item.type){
+        switch (item.type) {
+          case 'ring':
+            player.setRing(item);
+            break;
           case 'helm':
             player.setHelm(item);
+            break;
+          case 'necklace':
+            player.setNecklace(item);
+            break;
+          case 'weapon':
+            player.setWeapon(item);
             break;
           case 'armor':
             player.setArmor(item);
             break;
+          case 'shield':
+            player.setShield(item);
+            break;
+          case 'gloves':
+            player.setGloves(item);
+            break;
+          case 'boots':
+            player.setBoots(item);
+            break;
+          case 'potion':
+            player.setPotion(item);
+            break;          
         }
         player.save();
         res.json({status: 'OK'});
-      }else{
+      } else {
         res.json({status: 'KO'});
       }
     });
@@ -81,9 +143,9 @@ router.post('/:playerId/items/add/:itemId', function(req, res) {
   models.Player.findById(req.params.playerId)
   .then(function(player) {
     models.Item.findById(req.params.itemId)
-    .then(function(item){
+    .then(function(item) {
       player.addItem(item)
-      .then(function(){
+      .then(function() {
         res.json({status: 'OK', data: item});          
       });
     });

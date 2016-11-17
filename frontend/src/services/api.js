@@ -140,6 +140,12 @@ const api = {
   addQuest (player, quest) {
     $.post(`${url}/players/${player}/quests/add/${quest}`);
   },
+  getEquipments (player, callback) {
+    $.get(`${url}/players/${player}/equipments`)
+    .then((response) => {
+      callback(response.data);
+    });
+  },
   updateEquipment (player, item, callback) {
     $.put(`${url}/players/${player}/equipments/${item}`)
     .then((ok) => {

@@ -36,6 +36,9 @@ const translation = {
         magic: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and inflicted {damage} to <strong>{defender}</strong> damage',
         heal: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and healed {heal} damage',
         buff: '<strong>{attacker}</strong> buffed with <strong>{skill}</strong>',
+      },
+      inventory: {
+        equip: 'You equiped <strong>{item}</strong>',
       }
     },
     button: {
@@ -353,6 +356,9 @@ const translation = {
         magic: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> a <strong>{defender}</strong> y causa {damage} daño',
         heal: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> y se cura {heal} daño',
         buff: '<strong>{attacker}</strong> se lanza <strong>{skill}</strong>',
+      },
+      inventory: {
+        equip: 'Te has equipado con <strong>{item}</strong>',
       }
     },
     button: {

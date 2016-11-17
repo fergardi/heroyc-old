@@ -4,19 +4,18 @@
     "data": {
       "name": "monster.abomination",
       "image": "abomination",
-      "strength": 10,
+      "strength": 8,
       "vitality": 10,
-      "agility": 10,
+      "agility": 1,
       "defense": 10,
-      "intelligence": 10,
+      "intelligence": 2,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.strength2" },
+        { "name": "skill.defense2" }
       ],
       "Spells": [
-        { "name": "spell.shadow4" },
         { "name": "spell.heal4" }
       ]
     }
@@ -26,19 +25,19 @@
     "data": {
       "name": "monster.cyclops",
       "image": "cyclops",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 4,
+      "vitality": 6,
+      "agility": 2,
+      "defense": 2,
+      "intelligence": 4,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.heal4" }
+        { "name": "spell.heal2" },
+        { "name": "spell.heal3" }
       ]
     }
   },
@@ -47,19 +46,18 @@
     "data": {
       "name": "monster.demon",
       "image": "demon",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 4,
+      "vitality": 5,
+      "agility": 6,
+      "defense": 2,
+      "intelligence": 4,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.intelligence1" }
       ],
       "Spells": [
-        { "name": "spell.fire+" }
+        { "name": "spell.fire2" }
       ]
     }
   },
@@ -75,11 +73,15 @@
       "intelligence": 10,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality2" },
+        { "name": "skill.strength2" },
+        { "name": "skill.intelligence2" },
+        { "name": "skill.agility2" },
+        { "name": "skill.defense2" }
       ],
       "Spells": [
+        { "name": "spell.shadow4" },
         { "name": "spell.fire4" },
         { "name": "spell.heal4" }
       ]
@@ -90,19 +92,21 @@
     "data": {
       "name": "monster.gargoyle",
       "image": "gargoyle",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 4,
+      "vitality": 3,
+      "agility": 1,
+      "defense": 8,
+      "intelligence": 2,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.defense1" },
+        { "name": "skill.defense2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.heal1" },
+        { "name": "spell.shadow2" },
+        { "name": "spell.shadow3" }
       ]
     }
   },
@@ -111,19 +115,21 @@
     "data": {
       "name": "monster.ghost",
       "image": "ghost",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
+      "strength": 3,
+      "vitality": 4,
+      "agility": 8,
+      "defense": 1,
       "intelligence": 10,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.intelligence2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow1" },
+        { "name": "spell.shadow2" },
+        { "name": "spell.shadow3" },
+        { "name": "spell.shadow4" }
       ]
     }
   },
@@ -132,19 +138,18 @@
     "data": {
       "name": "monster.golem",
       "image": "golem",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 8,
+      "vitality": 8,
+      "agility": 1,
+      "defense": 7,
+      "intelligence": 1,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.strength2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.heal1" }
       ]
     }
   },
@@ -153,19 +158,20 @@
     "data": {
       "name": "monster.knight",
       "image": "knight",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 2,
+      "vitality": 4,
+      "agility": 8,
+      "defense": 7,
+      "intelligence": 6,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.strength2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.ice2" },
+        { "name": "spell.fire2" },
+        { "name": "spell.shadow2" }
       ]
     }
   },
@@ -174,19 +180,21 @@
     "data": {
       "name": "monster.liche",
       "image": "liche",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 2,
+      "vitality": 8,
+      "agility": 2,
+      "defense": 4,
+      "intelligence": 8,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.intelligence1" },
+        { "name": "skill.intelligence2" },
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow4" },
+        { "name": "spell.heal2" }
       ]
     }
   },
@@ -195,19 +203,21 @@
     "data": {
       "name": "monster.medusa",
       "image": "medusa",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 4,
+      "vitality": 5,
+      "agility": 3,
+      "defense": 4,
+      "intelligence": 8,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.intelligence1" },
+        { "name": "skill.intelligence2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.ice1" },
+        { "name": "spell.ice2" },
+        { "name": "spell.ice3" }
       ]
     }
   },
@@ -216,19 +226,19 @@
     "data": {
       "name": "monster.mummy",
       "image": "mummy",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 3,
+      "vitality": 8,
+      "agility": 2,
+      "defense": 5,
+      "intelligence": 4,
       "type": "primary",
       "icon": "crystal-ball",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow2" },
+        { "name": "spell.heal1" }
       ]
     }
   },
@@ -237,19 +247,20 @@
     "data": {
       "name": "monster.phoenix",
       "image": "phoenix",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 7,
+      "vitality": 5,
+      "agility": 8,
+      "defense": 3,
+      "intelligence": 6,
       "type": "danger",
       "icon": "monster-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.agility1" },
+        { "name": "skill.agility2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.fire3" },
+        { "name": "spell.heal4" }
       ]
     }
   },
@@ -258,19 +269,19 @@
     "data": {
       "name": "monster.rat",
       "image": "rat",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 2,
+      "vitality": 3,
+      "agility": 6,
+      "defense": 2,
+      "intelligence": 3,
       "type": "success",
       "icon": "raven",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.agility1" },
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.heal1" }
       ]
     }
   },
@@ -279,19 +290,20 @@
     "data": {
       "name": "monster.skeleton",
       "image": "skeleton",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 4,
+      "vitality": 8,
+      "agility": 3,
+      "defense": 2,
+      "intelligence": 4,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality2" },
+        { "name": "skill.strength2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow1" },
+        { "name": "spell.shadow2" }
       ]
     }
   },
@@ -300,19 +312,18 @@
     "data": {
       "name": "monster.snake",
       "image": "snake",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 2,
+      "vitality": 2,
+      "agility": 9,
+      "defense": 3,
+      "intelligence": 4,
       "type": "success",
       "icon": "raven",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.agility1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.heal" }
       ]
     }
   },
@@ -321,19 +332,19 @@
     "data": {
       "name": "monster.spider",
       "image": "spider",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 7,
+      "vitality": 4,
+      "agility": 4,
+      "defense": 2,
+      "intelligence": 6,
       "type": "success",
       "icon": "raven",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow1" },
+        { "name": "spell.ice2" }
       ]
     }
   },
@@ -342,19 +353,20 @@
     "data": {
       "name": "monster.wolf",
       "image": "wolf",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 8,
+      "vitality": 4,
+      "agility": 6,
+      "defense": 3,
+      "intelligence": 2,
       "type": "success",
       "icon": "raven",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.agility1" },
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow3" },
+        { "name": "spell.ice" }
       ]
     }
   },
@@ -363,19 +375,18 @@
     "data": {
       "name": "monster.worm",
       "image": "worm",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 6,
+      "vitality": 4,
+      "agility": 2,
+      "defense": 2,
+      "intelligence": 5,
       "type": "success",
       "icon": "raven",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow3" }
       ]
     }
   },
@@ -384,19 +395,25 @@
     "data": {
       "name": "monster.yeti",
       "image": "yeti",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 8,
+      "vitality": 8,
+      "agility": 3,
+      "defense": 8,
+      "intelligence": 6,
       "type": "warning",
       "icon": "muscle-fat",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality2" },
+        { "name": "skill.strength2" },
+        { "name": "skill.defense2" },
+        { "name": "skill.intelligence2" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.ice1" },
+        { "name": "spell.ice2" },
+        { "name": "spell.ice3" },
+        { "name": "spell.ice4" },
+        { "name": "spell.heal2" }
       ]
     }
   },
@@ -405,19 +422,22 @@
     "data": {
       "name": "monster.zombie",
       "image": "zombie",
-      "strength": 10,
-      "vitality": 10,
-      "agility": 10,
-      "defense": 10,
-      "intelligence": 10,
+      "strength": 2,
+      "vitality": 9,
+      "agility": 1,
+      "defense": 5,
+      "intelligence": 3,
       "type": "info",
       "icon": "broken-skull",
-      "experience": 10,
       "Skills": [
-        { "name": "skill.vitality" }
+        { "name": "skill.vitality1" },
+        { "name": "skill.strength1" }
       ],
       "Spells": [
-        { "name": "spell.shadow1" }
+        { "name": "spell.shadow2" },
+        { "name": "spell.shadow3" },
+        { "name": "spell.heal1" },
+        { "name": "spell.heal2" }
       ]
     }
   }

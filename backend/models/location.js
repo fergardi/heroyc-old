@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     lat: DataTypes.FLOAT(10,8),
     lng: DataTypes.FLOAT(10,8),
     experience: DataTypes.INTEGER,
+    gold: DataTypes.INTEGER,
     type: DataTypes.STRING,
     image: DataTypes.STRING
   }, {

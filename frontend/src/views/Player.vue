@@ -33,40 +33,22 @@
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + defense + "%"')
                   .progress
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
-          .panel.panel-default.text-center
-            .panel-heading
-              .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests')
-                i.ra.ra-fw.ra-lg.ra-wooden-sign
-                span {{ 'panel.quests' | i18n }} 
-                label.badge {{ quests.length }}
-            .panel-collapse.collapse(id='quests')
-              .panel-body
-                .row
-                  .col-xs-4(v-for='quest in quests')
-                    img.thumbnail.slot(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+            .panel-body
+              .row
+                .col-xs-4(v-for='equipment in equipments')
+                  img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
+                  .progress
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
         .col-md-6.col-xs-6
           .panel-group(id='parent')
-            .panel.panel-warning.text-center
-              .panel-heading
-                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#inventory')
-                  i.fa.fa-fw.fa-lg.fa-sitemap
-                  span {{ 'panel.inventory' | i18n }} 
-                  label.badge 9
-              .panel-collapse.collapse(id='inventory')
-                .panel-body
-                  .row
-                    .col-xs-4(v-for='equipment in equipments')
-                      img.thumbnail.slot(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
-                      .progress
-                        .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-primary(v-bind:style='"width: " + equipment.intelligence * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-danger(v-bind:style='"width: " + equipment.vitality * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-success(v-bind:style='"width: " + equipment.agility * 10 + "%"')
-                      .progress
-                        .progress-bar.progress-bar-info(v-bind:style='"width: " + equipment.defense * 10 + "%"')
             .panel.panel-success.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#items')
@@ -118,7 +100,7 @@
                         .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
                       .progress
                         .progress-bar.progress-bar-primary(v-bind:style='"width: " + spell.mana * 10 + "%"')
-            .panel.panel-danger.text-center
+            .panel.panel-warning.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#skills')
                   i.ra.ra-fw.ra-lg.ra-aura
@@ -139,6 +121,17 @@
                         .progress-bar.progress-bar-success(v-bind:style='"width: " + skill.agility * 10 + "%"')
                       .progress
                         .progress-bar.progress-bar-info(v-bind:style='"width: " + skill.defense * 10 + "%"')
+            .panel.panel-danger.text-center
+              .panel-heading
+                .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#quests')
+                  i.ra.ra-fw.ra-lg.ra-wooden-sign
+                  span {{ 'panel.quests' | i18n }} 
+                  label.badge {{ quests.length }}
+              .panel-collapse.collapse(id='quests')
+                .panel-body
+                  .row
+                    .col-xs-4(v-for='quest in quests')
+                      img.thumbnail.slot(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
 </template>
 
 <script>
@@ -186,7 +179,7 @@
         equip: function(item) {
           api.updateEquipment(self.id, item.id, (data) => {
             self.equipments = data.Equipments;
-            notification.success('You equiped <strong>' + item.name + '</strong>');
+            notification.success(Vue.t('alert.inventory.equip', { item: Vue.t(item.name) }));
           });
         }
       },

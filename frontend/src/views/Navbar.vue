@@ -59,55 +59,49 @@
                     router-link(to='/location', data-toggle='collapse' data-target='.navbar-collapse.in')
                       i.ra.ra-fw.ra-crossed-axes
                       | {{ 'title.ruins' | i18n }}
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                i.fa.fa-lg.fa-fw.fa-book
-                | {{ 'title.account' | i18n }}
-                i.fa.fa-lg.fa-fw.fa-caret-down
-              ul.dropdown-menu
-                  li
-                    router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-player
-                      | {{ 'title.player' | i18n }}
-                  li.divider
-                  li
-                    router-link(to='/items', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-crossed-axes
-                      | {{ 'title.items' | i18n }}
-                  li
-                    router-link(to='/resources', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-gold-bar
-                      | {{ 'title.resources' | i18n }}
-                  li
-                    router-link(to='/spells', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-crystal-wand
-                      | {{ 'title.spells' | i18n }}
-                  li
-                    router-link(to='/skills', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-aura
-                      | {{ 'title.skills' | i18n }}
-                  li
-                    router-link(to='/recipes', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-scroll-unfurled
-                      | {{ 'title.recipes' | i18n }}
-                  li
-                    router-link(to='/monsters', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-hydra
-                      | {{ 'title.monsters' | i18n }}
-                  li.divider
-                  li
-                    a.pointer(@click="localize('en')", data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-wooden-sign
-                      | {{ 'language.english' | i18n }}
-                  li
-                    a.pointer(@click="localize('es')", data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-wooden-sign
-                      | {{ 'language.spanish' | i18n }}
-                  li.divider
-                  li
-                    a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
-                      i.ra.ra-fw.ra-key
-                      | {{ 'button.logout' | i18n }}
+            li
+              router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-player
+                | {{ 'title.player' | i18n }}
+            li.divider
+            li
+              router-link(to='/items', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-crossed-axes
+                | {{ 'title.items' | i18n }}
+            li
+              router-link(to='/resources', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-gold-bar
+                | {{ 'title.resources' | i18n }}
+            li
+              router-link(to='/spells', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-crystal-wand
+                | {{ 'title.spells' | i18n }}
+            li
+              router-link(to='/skills', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-aura
+                | {{ 'title.skills' | i18n }}
+            li
+              router-link(to='/recipes', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-scroll-unfurled
+                | {{ 'title.recipes' | i18n }}
+            li
+              router-link(to='/monsters', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-hydra
+                | {{ 'title.monsters' | i18n }}
+            li.divider
+            li
+              a.pointer(@click="localize('en')", data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-wooden-sign
+                | {{ 'language.english' | i18n }}
+            li
+              a.pointer(@click="localize('es')", data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-wooden-sign
+                | {{ 'language.spanish' | i18n }}
+            li.divider
+            li
+              a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
+                i.ra.ra-fw.ra-key
+                | {{ 'button.logout' | i18n }}
 </template>
 
 <script>

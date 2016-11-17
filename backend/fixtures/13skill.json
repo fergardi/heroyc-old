@@ -3,7 +3,7 @@
     "model": "Skill",
     "data": {
       "name": "skill.vitality1",
-      "vitality": 2,
+      "vitality": 6,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
@@ -18,12 +18,12 @@
     "model": "Skill",
     "data": {
       "name": "skill.vitality2",
-      "vitality": 5,
+      "vitality": 10,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
-      "stamina": 5,
+      "stamina": 3,
       "family": "danger",
       "icon": "aura",
       "image": "vitality2"
@@ -79,7 +79,7 @@
     "data": {
       "name": "skill.strength2",
       "vitality": 0,
-      "strength": 8,
+      "strength": 10,
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
@@ -96,9 +96,9 @@
       "vitality": 0,
       "strength": 0,
       "agility": 0,
-      "intelligence": 5,
+      "intelligence": 8,
       "defense": 0,
-      "stamina": 3,
+      "stamina": 4,
       "family": "primary",
       "icon": "aura",
       "image": "intelligence1"
@@ -111,9 +111,9 @@
       "vitality": 0,
       "strength": 0,
       "agility": 0,
-      "intelligence": 5,
+      "intelligence": 10,
       "defense": 0,
-      "stamina": 3,
+      "stamina": 6,
       "family": "primary",
       "icon": "aura",
       "image": "intelligence2"
@@ -128,7 +128,7 @@
       "agility": 0,
       "intelligence": 0,
       "defense": 5,
-      "stamina": 3,
+      "stamina": 1,
       "family": "info",
       "icon": "aura",
       "image": "defense1"
