@@ -3,7 +3,7 @@ var constants = {
     duration: 2000,
   },
   condition: {
-    chance: 20,
+    chance: 50,
   },
   api: '//localhost:3000/api',
   easing: {

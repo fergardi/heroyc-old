@@ -37,6 +37,11 @@ const translation = {
         magic: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and inflicted {damage} to <strong>{defender}</strong> damage',
         heal: '<strong>{attacker}</strong> casted <strong>{spell}</strong> and healed {heal} damage',
         buff: '<strong>{attacker}</strong> buffed with <strong>{skill}</strong>',
+        burn: '<strong>{attacker}</strong> <span class="label label-danger">Burns</span> <strong>{defender}</strong> and removes {quantity} vitality',
+        poison: '<strong>{attacker}</strong> <span class="label label-success">Poisons</span> <strong>{defender}</strong> and removes {quantity} agility',
+        freeze: '<strong>{attacker}</strong> <span class="label label-primary">Freezes</span> <strong>{defender}</strong> and removes {quantity} intelligence',
+        stun: '<strong>{attacker}</strong> <span class="label label-info">Stuns</span> <strong>{defender}</strong> and removes {quantity} defense',
+        shock: '<strong>{attacker}</strong> <span class="label label-warning">Shocks</span> <strong>{defender}</strong> and removes {quantity} strength',
       },
       inventory: {
         equip: 'You equiped <span class="label label-{rarity}">{item}</span>',
@@ -369,6 +374,11 @@ const translation = {
         magic: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> a <strong>{defender}</strong> y causa {damage} daño',
         heal: '<strong>{attacker}</strong> lanza <strong>{spell}</strong> y se cura {heal} daño',
         buff: '<strong>{attacker}</strong> se lanza <strong>{skill}</strong>',
+        burn: '<strong>{attacker}</strong> <span class="label label-danger">Quema</span> a <strong>{defender}</strong> y quita {quantity} vida',
+        poison: '<strong>{attacker}</strong> <span class="label label-success">Envenena</span> a <strong>{defender}</strong> y quita {quantity} agilidad',
+        freeze: '<strong>{attacker}</strong> <span class="label label-primary">Congela</span> a <strong>{defender}</strong> y quita {quantity} inteligencia',
+        stun: '<strong>{attacker}</strong> <span class="label label-info">Aturde</span> a <strong>{defender}</strong> y quita {quantity} defensa',
+        shock: '<strong>{attacker}</strong> <span class="label label-warning">Electrifica</span> a <strong>{defender}</strong> y quita {quantity} fuerza',
       },
       inventory: {
         equip: 'Te has equipado con <span class="label label-{rarity}">{item}</span>',
