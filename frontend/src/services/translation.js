@@ -394,7 +394,7 @@ const translation = {
       }
     },
     button: {
-      attack: 'Atacar',
+      attack: 'Ataque',
       buy: 'Comprar',
       logout: 'Salir',
       login: 'Entrar',

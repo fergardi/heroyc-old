@@ -15,7 +15,7 @@
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.items')")
       .row.equals
         .col-xs-12(v-if='!filtered.length')
-          .well.text-center
+          .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
             | {{ 'title.none' | i18n }}
         .col-xs-3(v-for='item in filtered')
