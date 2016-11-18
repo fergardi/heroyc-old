@@ -4,6 +4,7 @@
     "password": "root",
     "database": "heroyc",
     "host": "localhost",
-    "dialect": "mariadb"
+    "dialect": "mariadb",
+    "logging": false
   }
 }

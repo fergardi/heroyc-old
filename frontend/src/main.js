@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueInternalization from 'vue-i18n'
-import translation from './services/translation'
+import VueSocketio from 'vue-socket.io'
 
 import App from './App.vue'
 import Home from './views/Home.vue'
@@ -18,6 +18,8 @@ import Location from './views/Location.vue'
 import Forge from './views/Forge.vue'
 import Market from './views/Market.vue'
 import World from './views/World.vue'
+
+import translation from './services/translation'
 import auth from './services/auth'
 import notification from './services/notification'
 
@@ -35,6 +37,9 @@ Object.keys(translation).forEach(function (lang) {
 Vue.filter('i18n', function(string) {
   return Vue.t(string);
 });
+
+// socketio
+Vue.use(VueSocketio, 'http://localhost:3000');
 
 // routes
 var router = new VueRouter({
