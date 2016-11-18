@@ -24,6 +24,10 @@
                 i.fa.fa-chevron-left
               input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
       .row
+        .col-xs-12(v-if='!filtered.length')
+          .well.text-center
+            i.fa.fa-fw.fa-lg.fa-exclamation-triangle
+            | {{ 'title.none' | i18n }}
         .col-md-3.col-xs-4(v-for='sale in filtered')
           .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
             .panel-heading

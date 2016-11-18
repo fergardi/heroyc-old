@@ -14,7 +14,11 @@
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.inn')")
       .row.equals
-        .col-md-3.col-xs-4(v-for='quest in quests')
+        .col-xs-12(v-if='!filtered.length')
+          .well.text-center
+            i.fa.fa-fw.fa-lg.fa-exclamation-triangle
+            | {{ 'title.none' | i18n }}
+        .col-md-3.col-xs-4(v-for='quest in filtered')
           .panel.text-center(v-bind:class='"panel-" + quest.rarity')
             .panel-heading
               .panel-title
@@ -55,7 +59,7 @@
     methods: {
       accept (quest) {
         api.addQuest(auth.id || 1, quest.id);
-        notification.success(Vue.t('alert.quest.accept', { name: Vue.t(quest.name) }));
+        notification.success(Vue.t('alert.inn.accept', { name: Vue.t(quest.name), rarity: quest.rarity }));
       }
     },
     computed: {

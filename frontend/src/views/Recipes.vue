@@ -14,6 +14,10 @@
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
       .row.equals
+        .col-xs-12(v-if='!filtered.length')
+          .well.text-center
+            i.fa.fa-fw.fa-lg.fa-exclamation-triangle
+            | {{ 'title.none' | i18n }}
         .col-md-3.col-xs-4(v-for='recipe in filtered')
           .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
             .panel-heading

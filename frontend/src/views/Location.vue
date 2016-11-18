@@ -139,7 +139,7 @@
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/resources/" + location.Resource.image + ".png"', v-bind:class='"panel-" + location.Resource.rarity')
               p {{ location.Resource.description }}
-          .panel.text-center.animated(v-bind:class='["panel-" + location.Spell.family, { tada: location.Monster.states.dead }, { removed: !location.Monster.states.loot }]', v-if='location.Spell')
+          .panel.text-center.animated.tada(v-bind:class='"panel-" + location.Spell.family', v-if='location.Spell', v-show='location.Monster.states.loot')
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Spell.icon')  
@@ -244,6 +244,7 @@
 
 <script>
   import api from '../services/api'
+  import auth from '../services/auth'
   import notification from '../services/notification'
   import Vue from 'vue'
   export default {
@@ -303,7 +304,7 @@
     },
     created () {
       self = this;
-      api.getPlayer(this.$route.params.playerId || 1, (data) => {
+      api.getPlayer(auth.id || 1, (data) => {
         this.player.id = data.id;
         this.player.level = data.level;
         this.player.experience = data.experience;
@@ -343,11 +344,11 @@
     },
     watch: {
       'location.Monster.vitality': (value) => {
-        if (value <= 0) {       
-          notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
+        if (value <= 0) {
           self.location.Monster.states.dead = true;
           self.location.Monster.states.loot = true;
           setTimeout(() => {
+            notification.success(Vue.t('alert.battle.win', { monster: Vue.t(self.location.Monster.name) }));
             api.addExperience(self.player.id, self.location.experience);
             notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
             api.addGold(self.player.id, self.location.gold);
@@ -372,7 +373,7 @@
               api.addSkill(self.player.id, self.location.Skill.id);
               notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
             }
-          }, constants.notification.duration);
+          }, constants.notification.duration * 3);
         }
       },
       'player.vitality': (value) => {
@@ -380,7 +381,7 @@
           setTimeout(() => {
             notification.danger(Vue.t('alert.battle.lose'));
             self.player.states.dead = true;
-          }, constants.notification.duration);
+          }, constants.notification.duration * 3);
         }
       }
     },

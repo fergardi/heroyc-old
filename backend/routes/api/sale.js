@@ -43,7 +43,19 @@ router.delete('/:saleId/buy/:playerId', function(req, res) {
           player.addItem(sale.Item);
         }
         if (sale.Resource !== null) {
-          player.addResource(sale.Resource); 
+          player.getResources({ where: { id: sale.Resource.id } })
+          .then(function(resources) {
+            if (resources.length > 0) {
+              resource = resources[0];
+              resource.PlayerResource.quantity += parseInt(1);
+              resource.PlayerResource.save();
+            } else {
+              models.Resource.findById(sale.Resource.id)
+              .then(function(resource) {
+                player.addResource(resource, { quantity: parseInt(1) });
+              });
+            }
+          });
         }
         if (sale.Recipe !== null) {
           player.addRecipe(sale.Recipe);

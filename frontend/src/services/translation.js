@@ -39,16 +39,16 @@ const translation = {
         buff: '<strong>{attacker}</strong> buffed with <strong>{skill}</strong>',
       },
       inventory: {
-        equip: 'You equiped <strong>{item}</strong>',
+        equip: 'You equiped <span class="label label-{rarity}">{item}</span>',
       },
       city: {
-        purchase: 'You spent <strong>{gold}</strong> gold purchasing <strong>{name}</strong>',
+        buy: 'You spent <span class="label label-warning">{gold} gold</span> to buy <span class="label label-{rarity}">{name}</span>',
       },
-      quest: {
-        accept: 'You accepted the mission <strong>{name}</strong>',
+      inn: {
+        accept: 'You accepted the quest <span class="label label-{rarity}">{name}</span>',
       },
       forge: {
-        craft: 'You crafted the item <strong>{name}</strong>',
+        craft: 'You used <span class="label label-{originalRarity}">{original}</span> with <span class="label label-{resourceRarity}">{resource}</span> to create <span class="label label-{resultRarity}">{result}</span>',
       }
     },
     button: {
@@ -95,6 +95,7 @@ const translation = {
       platinum: 'Platinum',
       market: 'Market',
       account: 'Account',
+      none: 'No results',
     },
     subtitle: {
       login: 'Login',
@@ -370,16 +371,16 @@ const translation = {
         buff: '<strong>{attacker}</strong> se lanza <strong>{skill}</strong>',
       },
       inventory: {
-        equip: 'Te has equipado con <strong>{item}</strong>',
+        equip: 'Te has equipado con <span class="label label-{rarity}">{item}</span>',
       },
       city: {
-        purchase: 'Has gastado <strong>{gold}</strong> oro en comprar <strong>{name}</strong>',
+        buy: 'Has gastado <span class="label label-warning">{gold} oro</span> en comprar <span class="label label-{rarity}">{name}</span>',
       },
-      quest: {
-        accept: 'Has aceptado la mision <strong>{name}</strong>',
+      inn: {
+        accept: 'Has aceptado la mision <span class="label label-{rarity}">{name}</span>',
       },
       forge: {
-        craft: 'Has creado el objeto <strong>{name}</strong>',
+        craft: 'Has juntado <span class="label label-{originalRarity}">{original}</span> con <span class="label label-{resourceRarity}">{resource}</span> para crear <span class="label label-{resultRarity}">{result}</span>',
       }
     },
     button: {
@@ -427,6 +428,7 @@ const translation = {
       platinum: 'Platino',
       market: 'Mercado',
       account: 'Cuenta',
+      none: 'No hay resultados',
     },
     subtitle: {
       login: 'Acceder',

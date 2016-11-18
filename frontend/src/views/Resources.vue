@@ -14,7 +14,11 @@
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.resources')")
       .row.equals
-        .col-md-3.col-xs-3(v-for='resource in filtered')
+        .col-xs-12(v-if='!filtered.length')
+          .well.text-center
+            i.fa.fa-fw.fa-lg.fa-exclamation-triangle
+            | {{ 'title.none' | i18n }}
+        .col-xs-3(v-for='resource in filtered')
           .panel.text-center(v-bind:class='"panel-" + resource.rarity')
             .panel-heading
               .panel-title
