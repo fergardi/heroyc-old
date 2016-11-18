@@ -124,8 +124,14 @@
                   label.badge {{ quests.length }}
               .panel-collapse.collapse(id='quests')
                 .panel-body
-                  .col-xs-4(v-for='quest in quests')
-                    img.thumbnail.img-responsive(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+                  .col-xs-6(v-for='quest in quests')
+                    img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+                    .row
+                      .col-xs-4(v-for="resource in quest.Resources")
+                        img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                    span.label.label-default(v-if='quest.experience > 0') {{ quest.experience }}
+                    span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
+                    span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
             .panel.panel-default.text-center
               .panel-heading
                 .panel-title.accordion-toggle.collapsed(data-toggle='collapse', href='#recipes', data-parent='#parent')
