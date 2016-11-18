@@ -11,48 +11,50 @@
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
             li
-              router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-player
-                | {{ 'title.player' | i18n }}
-            li.divider
-            li
               router-link(to='/items', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-crossed-axes
+                i.ra.ra-fw.ra-lg.ra-crossed-axes
                 | {{ 'title.items' | i18n }}
             li
               router-link(to='/resources', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-gold-bar
+                i.ra.ra-fw.ra-lg.ra-gold-bar
                 | {{ 'title.resources' | i18n }}
             li
               router-link(to='/spells', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-crystal-wand
+                i.ra.ra-fw.ra-lg.ra-crystal-wand
                 | {{ 'title.spells' | i18n }}
             li
               router-link(to='/skills', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-aura
+                i.ra.ra-fw.ra-lg.ra-aura
                 | {{ 'title.skills' | i18n }}
             li
               router-link(to='/recipes', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-scroll-unfurled
+                i.ra.ra-fw.ra-lg.ra-scroll-unfurled
                 | {{ 'title.recipes' | i18n }}
             li
               router-link(to='/monsters', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-hydra
+                i.ra.ra-fw.ra-lg.ra-hydra
                 | {{ 'title.monsters' | i18n }}
-            li.divider
-            li
-              a.pointer(@click="localize('en')", data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-wooden-sign
-                | {{ 'language.english' | i18n }}
-            li
-              a.pointer(@click="localize('es')", data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-wooden-sign
-                | {{ 'language.spanish' | i18n }}
-            li.divider
-            li
-              a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
-                i.ra.ra-fw.ra-key
-                | {{ 'button.logout' | i18n }}
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown')
+                i.ra.ra-fw.ra-lg.ra-player
+                | {{ 'title.account' | i18n }}
+              ul.dropdown-menu
+                li
+                  router-link(to='/player', data-toggle='collapse' data-target='.navbar-collapse.in')
+                    i.ra.ra-fw.ra-lg.ra-player
+                    | {{ 'title.player' | i18n }}
+                li
+                  a.pointer(@click="localize('en')", data-toggle='collapse' data-target='.navbar-collapse.in')
+                    i.ra.ra-fw.ra-lg.ra-wooden-sign
+                    | {{ 'language.english' | i18n }}
+                li
+                  a.pointer(@click="localize('es')", data-toggle='collapse' data-target='.navbar-collapse.in')
+                    i.ra.ra-fw.ra-lg.ra-wooden-sign
+                    | {{ 'language.spanish' | i18n }}
+                li
+                  a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
+                    i.ra.ra-fw.ra-lg.ra-key
+                    | {{ 'button.logout' | i18n }}
 </template>
 
 <script>

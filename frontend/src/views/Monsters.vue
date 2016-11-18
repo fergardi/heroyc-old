@@ -27,15 +27,15 @@
             .panel-body
               img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type', data-toggle='tooltip', v-bind:title='monster.name')
               .progress
-                .progress-bar.progress-bar-warning(v-bind:style='"width: " + monster.strength + "%"')
+                .progress-bar.progress-bar-warning(v-bind:style='"width: " + monster.strength * 10 + "%"')
               .progress
-                .progress-bar.progress-bar-primary(v-bind:style='"width: " + monster.intelligence + "%"')
+                .progress-bar.progress-bar-primary(v-bind:style='"width: " + monster.intelligence * 10 + "%"')
               .progress
-                .progress-bar.progress-bar-danger(v-bind:style='"width: " + monster.vitality + "%"')
+                .progress-bar.progress-bar-danger(v-bind:style='"width: " + monster.vitality * 10 + "%"')
               .progress
-                .progress-bar.progress-bar-success(v-bind:style='"width: " + monster.agility + "%"')
+                .progress-bar.progress-bar-success(v-bind:style='"width: " + monster.agility * 10 + "%"')
               .progress
-                .progress-bar.progress-bar-info(v-bind:style='"width: " + monster.defense + "%"')
+                .progress-bar.progress-bar-info(v-bind:style='"width: " + monster.defense * 10 + "%"')
 </template>
 
 <script>
