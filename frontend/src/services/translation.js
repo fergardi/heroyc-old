@@ -176,7 +176,7 @@ const translation = {
         thunder: 'Thunder Sword',
         flaming: 'Flaming Sword',
         frozen: 'Frozen Sword',
-        acqua: 'Acqua Sword',
+        venom: 'Venom Sword',
         dark: 'Dark Sword',
       },
       staff: {
@@ -184,7 +184,7 @@ const translation = {
         flaming: 'Flaming Staff',
         dark: 'Dark Staff',
         frozen: 'Frozen Staff',
-        acqua: 'Acqua Staff',
+        venom: 'Venom Staff',
       },
       bow: {
         curve: 'Curve Bow',
@@ -509,7 +509,7 @@ const translation = {
         thunder: 'Espada Electrica',
         flaming: 'Espada Llameante',
         frozen: 'Espada Heladora',
-        acqua: 'Espada Acuosa',
+        venom: 'Espada Venenosa',
         dark: 'Espada Oscura',
       },
       staff: {
@@ -517,7 +517,7 @@ const translation = {
         flaming: 'Vara Llameante',
         dark: 'Vara Oscura',
         frozen: 'Vara Heladora',
-        acqua: 'Vara Acuosa',
+        venom: 'Vara Venenosa',
       },
       bow: {
         curve: 'Arco Curvo',

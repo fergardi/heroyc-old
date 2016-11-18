@@ -14,12 +14,9 @@ router.get('/', function(req, res) {
 router.get('/:playerId', function(req, res) {
   models.Player.find({
     where: { id: req.params.playerId }, 
-    include: [models.Item, models.Spell, models.Resource, models.Skill, models.Quest, { model: models.Recipe, include: [{ model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}]}], 
+    include: [models.Item, models.Spell, models.Resource, models.Skill, { model: models.Quest, include: models.Resource }, { model: models.Recipe, include: [{ model: models.Item, as: 'Original'}, { model: models.Resource }, { model: models.Item, as: 'Result'}]}], 
     order: [
-      [models.Item, 'id', 'ASC'], 
-      [models.Spell, 'id', 'ASC'], 
-      [models.Resource, 'id', 'ASC'],
-      [models.Resource, 'rarity', 'ASC']
+      [models.Item, 'id', 'ASC']
     ]
   })
   .then(function(player) {

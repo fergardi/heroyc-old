@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     heal: DataTypes.INTEGER,
     mana: DataTypes.INTEGER,
     burn: DataTypes.BOOLEAN,
-    cure: DataTypes.BOOLEAN,
+    poison: DataTypes.BOOLEAN,
     shock: DataTypes.BOOLEAN,
     stun: DataTypes.BOOLEAN,
     freeze: DataTypes.BOOLEAN,

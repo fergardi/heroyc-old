@@ -13,17 +13,7 @@
               .panel-title
                 i.ra.ra-lg.ra-fw.ra-player-king
                 span {{ player.name }} 
-                label.badge {{ player.level }} 
-                span.label.label-danger(v-if="player.burn")
-                  i.ra.ra-small-fire
-                span.label.label-success(v-if="player.cure")
-                  i.ra.ra-leaf
-                span.label.label-warning(v-if="player.shock")
-                  i.ra.ra-lightning-bolt
-                span.label.label-primary(v-if="player.freeze")
-                  i.ra.ra-snowflake
-                span.label.label-info(v-if="player.stun")
-                  i.ra.ra-broken-skull
+                label.badge {{ player.level }}
             .panel-body
               .vertical-align
                 .col-xs-4
@@ -46,8 +36,8 @@
                   span.label.label-danger {{ player.strength }}
                   span.label.label-danger(v-if="player.weapon.burn")
                     i.ra.ra-small-fire
-                  span.label.label-success(v-if="player.weapon.cure")
-                    i.ra.ra-leaf
+                  span.label.label-success(v-if="player.weapon.poison")
+                    i.ra.ra-droplet
                   span.label.label-warning(v-if="player.weapon.shock")
                     i.ra.ra-lightning-bolt
                   span.label.label-primary(v-if="player.weapon.freeze")
@@ -62,8 +52,8 @@
                   span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
                   span.label.label-danger(v-if="spell.burn")
                     i.ra.ra-small-fire
-                  span.label.label-success(v-if="spell.cure")
-                    i.ra.ra-leaf
+                  span.label.label-success(v-if="spell.poison")
+                    i.ra.ra-droplet
                   span.label.label-warning(v-if="spell.shock")
                     i.ra.ra-lightning-bolt
                   span.label.label-primary(v-if="spell.freeze")
@@ -99,8 +89,8 @@
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + location.Item.defense * 10 + "%"')
               span.label.label-danger(v-if="location.Item.burn")
                 i.ra.ra-small-fire
-              span.label.label-success(v-if="location.Item.cure")
-                i.ra.ra-leaf
+              span.label.label-success(v-if="location.Item.poison")
+                i.ra.ra-droplet
               span.label.label-warning(v-if="location.Item.shock")
                 i.ra.ra-lightning-bolt
               span.label.label-primary(v-if="location.Item.freeze")
@@ -154,8 +144,8 @@
                 .progress-bar.progress-bar-primary(v-bind:style='"width: " + location.Spell.mana * 10 + "%"')
               span.label.label-danger(v-if="location.Spell.burn")
                 i.ra.ra-small-fire
-              span.label.label-success(v-if="location.Spell.cure")
-                i.ra.ra-leaf
+              span.label.label-success(v-if="location.Spell.poison")
+                i.ra.ra-droplet
               span.label.label-warning(v-if="location.Spell.shock")
                 i.ra.ra-lightning-bolt
               span.label.label-primary(v-if="location.Spell.freeze")
@@ -184,17 +174,7 @@
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Monster.icon ')
                 span {{ location.Monster.name | i18n }} 
-                label.badge {{ player.level }} 
-                span.label.label-danger(v-if="location.Monster.burn")
-                  i.ra.ra-small-fire
-                span.label.label-success(v-if="location.Monster.cure")
-                  i.ra.ra-leaf
-                span.label.label-warning(v-if="location.Monster.shock")
-                  i.ra.ra-lightning-bolt
-                span.label.label-primary(v-if="location.Monster.freeze")
-                  i.ra.ra-snowflake
-                span.label.label-info(v-if="location.Monster.stun")
-                  i.ra.ra-broken-skull
+                label.badge {{ player.level }}
             .panel-body
               .vertical-align
                 .col-xs-4
@@ -223,8 +203,8 @@
                   span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
                   span.label.label-danger(v-if="spell.burn")
                     i.ra.ra-small-fire
-                  span.label.label-success(v-if="spell.cure")
-                    i.ra.ra-leaf
+                  span.label.label-success(v-if="spell.poison")
+                    i.ra.ra-droplet
                   span.label.label-warning(v-if="spell.shock")
                     i.ra.ra-lightning-bolt
                   span.label.label-primary(v-if="spell.freeze")
@@ -273,11 +253,6 @@
             dodge: false,
             magic: false,
             buff: false,
-            stun: false,
-            freeze: false,
-            cure: false,
-            shock: false,
-            burn: false,
             dead: false
           }
         },
@@ -290,11 +265,6 @@
               dodge: false,
               magic: false,
               buff: false,
-              stun: false,
-              freeze: false,
-              cure: false,
-              shock: false,
-              burn: false,
               dead: false,
               loot: false
             }
@@ -321,6 +291,7 @@
         this.player.defense = this.defense();
         api.getLocation(this.$route.params.locationId || 1, (data) => {
           this.location = data;
+          this.location.Monster.vitality *= 10;
           // extend monster object with states after overriding
           $.extend(this.location.Monster, { 
             states: {
@@ -329,11 +300,6 @@
               dodge: false,
               magic: false,
               buff: false,
-              stun: false,
-              freeze: false,
-              cure: false,
-              shock: false,
-              burn: false,
               dead: false,
               loot: false
             }
@@ -432,6 +398,26 @@
           defender.states.magic = true;
           notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
           defender.vitality = Math.max(0, defender.vitality - spell.damage);
+          if (spell.burn && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+            defender.vitality = Math.max(0, defender.vitality - 5);
+            notification.info(Vue.t('alert.battle.burn'));
+          }
+          if (spell.poison && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+            defender.agility = Math.max(0, defender.agility - 5);
+            notification.info(Vue.t('alert.battle.poison'));
+          }
+          if (spell.stun && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+            defender.defense = Math.max(0, defender.defense - 5);
+            notification.info(Vue.t('alert.battle.stun'));
+          }
+          if (spell.shock && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+            defender.strength = Math.max(0, defender.strength - 5);
+            notification.info(Vue.t('alert.battle.shock'));
+          }
+          if (spell.freeze && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+            defender.intelligence = Math.max(0, defender.intelligence - 5);
+            notification.info(Vue.t('alert.battle.freeze'));
+          }
         } else {
           attacker.states.magic = true;
           notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), spell: Vue.t(spell.name), heal: spell.heal }));

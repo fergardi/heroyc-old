@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     agility: DataTypes.INTEGER,
     freeze: DataTypes.BOOLEAN,
     burn: DataTypes.BOOLEAN,
-    cure: DataTypes.BOOLEAN,
+    poison: DataTypes.BOOLEAN,
     shock: DataTypes.BOOLEAN,
     stun: DataTypes.BOOLEAN,
     image: DataTypes.STRING,

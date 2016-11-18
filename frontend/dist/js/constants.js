@@ -2,6 +2,9 @@ var constants = {
   notification: {
     duration: 2000,
   },
+  condition: {
+    chance: 20,
+  },
   api: '//localhost:3000/api',
   easing: {
     // no easing, no acceleration

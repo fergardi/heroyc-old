@@ -33,8 +33,8 @@
                 .progress-bar.progress-bar-success(v-bind:style='"width: " + spell.heal * 10 + "%"')
               span.label.label-danger(v-if="spell.burn")
                 i.ra.ra-small-fire
-              span.label.label-success(v-if="spell.cure")
-                i.ra.ra-leaf
+              span.label.label-success(v-if="spell.poison")
+                i.ra.ra-droplet
               span.label.label-warning(v-if="spell.shock")
                 i.ra.ra-lightning-bolt
               span.label.label-primary(v-if="spell.freeze")

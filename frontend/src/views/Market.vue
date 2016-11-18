@@ -48,8 +48,8 @@
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Item.defense * 10 + "%"')
               span.label.label-danger(v-if="sale.Item.burn")
                 i.ra.ra-small-fire
-              span.label.label-success(v-if="sale.Item.cure")
-                i.ra.ra-leaf
+              span.label.label-success(v-if="sale.Item.poison")
+                i.ra.ra-droplet
               span.label.label-warning(v-if="sale.Item.shock")
                 i.ra.ra-lightning-bolt
               span.label.label-primary(v-if="sale.Item.freeze")
@@ -95,8 +95,8 @@
                   .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Recipe.Result.defense * 10 + "%"')
                 span.label.label-danger(v-if="sale.Recipe.Result.burn")
                   i.ra.ra-small-fire
-                span.label.label-success(v-if="sale.Recipe.Result.cure")
-                  i.ra.ra-leaf
+                span.label.label-success(v-if="sale.Recipe.Result.poison")
+                  i.ra.ra-droplet
                 span.label.label-warning(v-if="sale.Recipe.Result.shock")
                   i.ra.ra-lightning-bolt
                 span.label.label-primary(v-if="sale.Recipe.Result.freeze")

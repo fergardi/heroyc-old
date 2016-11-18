@@ -38,8 +38,8 @@
                 .progress-bar.progress-bar-info(v-bind:style='"width: " + item.defense * 10 + "%"')
               span.label.label-danger(v-if="item.burn")
                 i.ra.ra-small-fire
-              span.label.label-success(v-if="item.cure")
-                i.ra.ra-leaf
+              span.label.label-success(v-if="item.poison")
+                i.ra.ra-droplet
               span.label.label-warning(v-if="item.shock")
                 i.ra.ra-lightning-bolt
               span.label.label-primary(v-if="item.freeze")
