@@ -113,6 +113,7 @@
   import api from '../services/api'
   import auth from '../services/auth'
   import notification from '../services/notification'
+  import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'
   export default {
     name: 'City',
@@ -133,11 +134,19 @@
         });
       });
     },
+    sockets:{
+      connect (){
+        console.info('Socket connected, waiting for new data...');
+      },
+      updateSales (data) {
+        console.info('New sales incoming, updating list!')
+        this.sales = data;
+      }
+    },
     methods: {
       buy (sale) {
         api.buySale(auth.id || 1, sale.id, (sales) => {
           this.gold -= sale.gold;
-          this.sales = sales;
           if (sale.Item !== null) {
             notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Item.name), rarity: sale.Item.rarity }));
           }

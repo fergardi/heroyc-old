@@ -2,6 +2,8 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
+var socketio = require('../../services/socketio').io();
+
 // get all sales outside market
 router.get('/', function(req, res) {
   models.Sale.findAll({
@@ -73,6 +75,7 @@ router.delete('/:saleId/buy/:playerId', function(req, res) {
             order: [['createdAt', 'DESC']]
           })
           .then(function(sales) {
+            socketio.emit('updateSales', sales);
             res.json({status: 'ok', data: sales});
           });
         } else {
@@ -82,6 +85,7 @@ router.delete('/:saleId/buy/:playerId', function(req, res) {
             order: [['createdAt', 'DESC']]
           })
           .then(function(sales) {
+            socketio.emit('updateSales', sales);
             res.json({status: 'ok', data: sales});
           });
         }
