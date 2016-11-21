@@ -136,10 +136,10 @@
     },
     sockets:{
       connect (){
-        console.info('Socket connected, waiting for new data...');
+        //console.info('Socket connected, waiting for new data...');
       },
       updateSales (data) {
-        console.info('New sales incoming, updating list!')
+        //console.info('New sales incoming, updating list!')
         this.sales = data;
       }
     },
