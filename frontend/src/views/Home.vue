@@ -51,7 +51,6 @@
   import auth from '../services/auth'
   import notification from '../services/notification'
   import Vue from 'vue'
-  import VueSocketio from 'vue-socket.io'
   export default {
     name: 'Home',
     data () { 
@@ -65,14 +64,6 @@
           username: 'e@mail.com',
           password: 'password'
         },
-      }
-    },
-    sockets:{
-      connect: function(){
-        console.info('Socket connected...');
-      },
-      datetime: function(datetime){
-        console.log('This method was fired by the socket server at ', datetime);
       }
     },
     methods: {

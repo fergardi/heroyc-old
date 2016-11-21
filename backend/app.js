@@ -5,10 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var models = require('./models');
-
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-// uncomment after placing your favicon in /public
+app.use(function(req, res, next){
+  res.io = io;
+  next();
+});
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -48,4 +53,4 @@ app.use(function(err, req, res, next) {
   res.json(err);
 });
 
-module.exports = app;
+module.exports = { app: app, server: server };

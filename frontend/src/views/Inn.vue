@@ -42,6 +42,7 @@
   import api from '../services/api'
   import auth from '../services/auth'
   import notification from '../services/notification'
+  import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'
   export default {
     name: 'Inn',
@@ -55,6 +56,15 @@
       api.getQuests((data) => {
         this.quests = data;
       });
+    },
+    sockets:{
+      connect (){
+        console.info('Socket connected, waiting for new data...');
+      },
+      updateQuests (data) {
+        console.info('New quest incoming, updating list!')
+        this.quests = data;
+      }
     },
     methods: {
       accept (quest) {

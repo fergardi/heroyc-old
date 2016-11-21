@@ -13,45 +13,45 @@ var factory = {
   latitude () {
     return parseFloat((Math.random() * (42.55666577380774 - 42.61952832509911) + 42.61952832509911).toFixed(10));
   },
-  build () {
+  build (sequelize) {
     var name = factory.type();
     var location = {
-      model: "Location",
-      data: {
-        image: name,
-        type: 'title.' + name,
-        lat: factory.latitude(),
-        lng: factory.longitude(),
-      }
+      image: name,
+      type: 'title.' + name,
+      lat: factory.latitude(),
+      lng: factory.longitude(),
     };
     if (factory.bad.indexOf(name) !== -1)  {
-      location.data.MonsterId = Math.ceil(Math.random() * 20);
-      location.data.experience = Math.ceil(Math.random() * 10);
-      location.data.gold = Math.ceil(Math.random() * 10);
+      location.MonsterId = Math.ceil(Math.random() * 20);
+      location.experience = Math.ceil(Math.random() * 25);
+      location.gold = Math.ceil(Math.random() * 10);
       switch (name) {
         case 'mine':
-          location.data.ResourceId = Math.ceil(Math.random() * 24);
+          location.ResourceId = Math.ceil(Math.random() * 24);
           break;
         case 'dungeon':
-          location.data.ItemId = Math.ceil(Math.random() * 70);
+          location.ItemId = Math.ceil(Math.random() * 70);
           break;
         case 'tower':
-          location.data.SpellId = Math.ceil(Math.random() * 20);
+          location.SpellId = Math.ceil(Math.random() * 20);
           break;
         case 'castle':
-          location.data.SkillId = Math.ceil(Math.random() * 10);
+          location.SkillId = Math.ceil(Math.random() * 10);
           break;
         case 'ruins':
-          location.data.RecipeId = Math.ceil(Math.random() * 4);
+          location.RecipeId = Math.ceil(Math.random() * 4);
           break;
       }
     }
+    if (sequelize) {
+      location = { model: "Location", data: location };
+    }
     return location;
   },
-  bulk (quantity) {
+  bulk (quantity, sequelize) {
     var locations = [];
     for (var i = 0; i < quantity; i++) {
-      locations.push(factory.build());
+      locations.push(factory.build(sequelize));
     }
     return locations;
   }
