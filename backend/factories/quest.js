@@ -12,6 +12,13 @@ var factory = {
     return factory.images[Math.floor(Math.random() * factory.images.length)];
   },
   build (sequelize) {
+    var res = [];
+    while(res.length < 3) {
+      var num = Math.floor(Math.random() * 23) + 1;
+      if (res.indexOf(num) === -1) {
+        res.push(num);
+      }
+    }
     var quest = {
       icon: "torch",
       name: factory.name(),
@@ -20,11 +27,7 @@ var factory = {
       gold: Math.ceil(Math.random() * 10),
       platinum: Math.floor(Math.random() * 2),
       experience: Math.ceil(Math.random() * 25),
-      Resources: [
-        Math.floor(Math.random() * 23) + 1,
-        Math.floor(Math.random() * 23) + 1,
-        Math.floor(Math.random() * 23) + 1
-      ]
+      Resources: res
     };
     if (sequelize) {
       quest = { model: "Quest", data: quest };
