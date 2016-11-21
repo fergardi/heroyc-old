@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var models = require('./models');
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var io = require('./services/socketio').init(server);
 
 app.use(function(req, res, next){
   res.io = io;
@@ -53,4 +53,4 @@ app.use(function(err, req, res, next) {
   res.json(err);
 });
 
-module.exports = { app: app, server: server };
+module.exports = { app: app, server: server, socketio: io };

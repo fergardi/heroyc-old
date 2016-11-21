@@ -3,6 +3,26 @@ var express = require('express');
 var router  = express.Router();
 
 var factory = require('../../factories/quest');
+var cron = require('../../services/cron');
+var socketio = require('../../services/socketio').io();
+
+// crontab a new quest
+cron.schedule('*/30 * * * * *', function(){
+  var created = factory.build();
+  models.Quest.create(created)
+  .then(function(quest) {
+    quest.setResources(created.Resources);
+    quest.reload()
+    .then(function(quest) {
+      models.Quest.findAll({
+        include: [models.Resource]
+      })
+      .then(function(quests) {
+        socketio.emit('updateQuests', quests);
+      });
+    });
+  });
+});
 
 // get all quests
 router.get('/', function(req, res) {
@@ -26,25 +46,6 @@ router.get('/:id', function(req, res) {
     } else {
       res.json({status: 'ko'});
     }
-  });
-});
-
-// add a quest and update sockets listeners
-router.post('/add', function(req, res) {
-  var created = factory.build();
-  models.Quest.create(created)
-  .then(function(quest) {
-    quest.setResources(created.Resources);
-    quest.reload()
-    .then(function(quest) {
-      models.Quest.findAll({
-        include: [models.Resource]
-      })
-      .then(function(quests) {
-        res.io.emit('updateQuests', quests);
-        res.json({status: 'ok', data: quests});
-      });
-    });
   });
 });
 

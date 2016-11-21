@@ -1,5 +1,5 @@
 var factory = {
-  names: ['Quest Example Name 1','Quest Example Name 2'],
+  names: ['quest.one','quest.two'],
   name () {
     return factory.names[Math.floor(Math.random() * factory.names.length)];
   },
@@ -7,7 +7,7 @@ var factory = {
   rarity () {
     return factory.rarities[Math.floor(Math.random() * factory.rarities.length)];
   },
-  images: ['chest'],
+  images: ['chest','bone','key','map','mirror','scroll','telescope','torch'],
   image () {
     return factory.images[Math.floor(Math.random() * factory.images.length)];
   },
@@ -20,7 +20,11 @@ var factory = {
       gold: Math.ceil(Math.random() * 10),
       platinum: Math.floor(Math.random() * 2),
       experience: Math.ceil(Math.random() * 25),
-      Resources: [1,2,3]
+      Resources: [
+        Math.floor(Math.random() * 23) + 1,
+        Math.floor(Math.random() * 23) + 1,
+        Math.floor(Math.random() * 23) + 1
+      ]
     };
     if (sequelize) {
       quest = { model: "Quest", data: quest };
