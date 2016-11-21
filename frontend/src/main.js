@@ -39,7 +39,7 @@ Vue.filter('i18n', function(string) {
 });
 
 // socketio
-Vue.use(VueSocketio, 'http://localhost:3000');
+Vue.use(VueSocketio, constants.socket);
 
 // routes
 var router = new VueRouter({

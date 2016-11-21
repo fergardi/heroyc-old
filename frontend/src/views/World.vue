@@ -70,7 +70,6 @@
           speed: this.options.speed,
           curve: this.options.curve,
           zoom: this.options.zoom
-          //easing: constants.easing.easeOutQuad
         });
       },
       updatePosition (position) {
