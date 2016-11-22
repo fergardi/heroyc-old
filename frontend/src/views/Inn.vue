@@ -23,7 +23,7 @@
             .panel-heading
               .panel-title
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + quest.icon')  
-                span {{ quest.name | i18n }} ({{ quest.id }})
+                span {{ quest.name | i18n }}
             .panel-body
               img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
               .row

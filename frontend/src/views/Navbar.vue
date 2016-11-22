@@ -84,4 +84,6 @@
 </script>
 
 <style lang='stylus' scoped>
+  li.dropdown a
+    cursor: pointer;
 </style>
