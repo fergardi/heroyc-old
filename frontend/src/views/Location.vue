@@ -291,7 +291,7 @@
         this.player.defense = this.defense();
         api.getLocation(this.$route.params.locationId || 1, (data) => {
           this.location = data;
-          this.location.Monster.vitality *= 10;
+          this.location.Monster.vitality *= 5 * this.player.level;
           // extend monster object with states after overriding
           $.extend(this.location.Monster, { 
             states: {

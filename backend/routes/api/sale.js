@@ -42,19 +42,31 @@ router.delete('/:saleId/buy/:playerId', function(req, res) {
         player.platinum -= sale.platinum;
         player.save();
         if (sale.Item !== null) {
-          player.addItem(sale.Item);
+          player.getItems({ where: { id: sale.Item.id } })
+          .then(function(items) {
+            if (items.length > 0) {
+              item = items[0];
+              item.PlayerItem.quantity++;
+              item.PlayerItem.save();
+            } else {
+              models.Item.findById(sale.Item.id)
+              .then(function(item) {
+                player.addItem(item, { quantity: 1 });
+              });
+            }
+          });
         }
         if (sale.Resource !== null) {
           player.getResources({ where: { id: sale.Resource.id } })
           .then(function(resources) {
             if (resources.length > 0) {
               resource = resources[0];
-              resource.PlayerResource.quantity += parseInt(1);
+              resource.PlayerResource.quantity++;
               resource.PlayerResource.save();
             } else {
               models.Resource.findById(sale.Resource.id)
               .then(function(resource) {
-                player.addResource(resource, { quantity: parseInt(1) });
+                player.addResource(resource, { quantity: 1 });
               });
             }
           });
