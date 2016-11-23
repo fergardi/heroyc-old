@@ -199,8 +199,8 @@
                   img.icon(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"')
                   span {{ spell.name | i18n }} 
                   span.label.label-danger(v-if='spell.damage > 0') {{ spell.damage }}
-                  span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
                   span.label.label-success(v-if='spell.heal > 0') {{ spell.heal }}
+                  span.label.label-primary(v-if='spell.mana > 0') {{ -spell.mana }}
                   span.label.label-danger(v-if="spell.burn")
                     i.ra.ra-small-fire
                   span.label.label-success(v-if="spell.poison")
@@ -318,28 +318,26 @@
           notification.success(Vue.t('alert.battle.loot.experience', { experience: self.location.experience }));
           api.addGold(self.player.id, self.location.gold);
           notification.success(Vue.t('alert.battle.loot.gold', { gold: self.location.gold }));
-          setTimeout(() => {
-            if (self.location.Spell) {
-              api.addSpell(self.player.id, self.location.Spell.id);
-              notification.success(Vue.t('alert.battle.loot.spell', { spell: Vue.t(self.location.Spell.name) }));
-            }
-            if (self.location.Recipe) {
-              api.addRecipe(self.player.id, self.location.Recipe.id);
-              notification.success(Vue.t('alert.battle.loot.recipe', { recipe: Vue.t(self.location.Recipe.Result.name) }));
-            }
-            if (self.location.Resource) {
-              api.addResource(self.player.id, self.location.Resource.id, 1);
-              notification.success(Vue.t('alert.battle.loot.resource', { resource: Vue.t(self.location.Resource.name) }));
-            }
-            if (self.location.Item) {
-              api.addItem(self.player.id, self.location.Item.id);
-              notification.success(Vue.t('alert.battle.loot.item', { item: Vue.t(self.location.Item.name) }));
-            }
-            if (self.location.Skill) {
-              api.addSkill(self.player.id, self.location.Skill.id);
-              notification.success(Vue.t('alert.battle.loot.skill', { skill: Vue.t(self.location.Skill.name) }));
-            }
-          }, constants.notification.duration);
+          if (self.location.Spell) {
+            api.addSpell(self.player.id, self.location.Spell.id);
+            notification.success(Vue.t('alert.battle.loot.spell', { family: self.location.Spell.family, spell: Vue.t(self.location.Spell.name) }));
+          }
+          if (self.location.Recipe) {
+            api.addRecipe(self.player.id, self.location.Recipe.id);
+            notification.success(Vue.t('alert.battle.loot.recipe', { rarity: self.location.Recipe.Result.rarity, recipe: Vue.t(self.location.Recipe.Result.name) }));
+          }
+          if (self.location.Resource) {
+            api.addResource(self.player.id, self.location.Resource.id, 1);
+            notification.success(Vue.t('alert.battle.loot.resource', { rarity: self.location.Resource.rarity, resource: Vue.t(self.location.Resource.name) }));
+          }
+          if (self.location.Item) {
+            api.addItem(self.player.id, self.location.Item.id);
+            notification.success(Vue.t('alert.battle.loot.item', { rarity: self.location.Item.rarity, item: Vue.t(self.location.Item.name) }));
+          }
+          if (self.location.Skill) {
+            api.addSkill(self.player.id, self.location.Skill.id);
+            notification.success(Vue.t('alert.battle.loot.skill', { family: self.location.Skill.family, skill: Vue.t(self.location.Skill.name) }));
+          }
         }
       },
       'player.vitality': (value) => {
@@ -416,7 +414,7 @@
         attacker.intelligence = Math.max(0, attacker.intelligence - spell.mana);
         if (spell.damage > 0) {
           defender.states.magic = true;
-          notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), family: Vue.t(spell.family), spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
+          notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), family: spell.family, spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
           defender.vitality = Math.max(0, defender.vitality - spell.damage);
           if (spell.burn && Math.floor(Math.random() * 100) <= constants.condition.chance) {
             defender.vitality = Math.max(0, defender.vitality - 5);
@@ -440,7 +438,7 @@
           }
         } else {
           attacker.states.magic = true;
-          notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), family: Vue.t(spell.family), spell: Vue.t(spell.name), heal: spell.heal }));
+          notification.success(Vue.t('alert.battle.heal', { attacker: Vue.t(attacker.name), family: spell.family, spell: Vue.t(spell.name), heal: spell.heal }));
           attacker.vitality = Math.min(100, attacker.vitality + spell.heal);
         }
         setTimeout(() => {
@@ -459,7 +457,7 @@
         attacker.states.buttons = false;
         defender.states.buttons = false;
         attacker.states.buff = true;
-        notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), family: Vue.t(skill.family), skill: Vue.t(skill.name) }));
+        notification.success(Vue.t('alert.battle.buff', { attacker: Vue.t(attacker.name), family: skill.family, skill: Vue.t(skill.name) }));
         attacker.strength = Math.max(0, attacker.strength - skill.stamina);
         attacker.vitality = Math.min(100, attacker.vitality + skill.vitality);
         attacker.strength = Math.min(100, attacker.strength + skill.strength);

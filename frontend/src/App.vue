@@ -94,7 +94,7 @@
   span.label
     border: 1px solid #000;
   span.label + span.label
-    margin-left: 5px;
+    margin-left: 2px;
   #title form
     display: inline-block;
     width: 100%;

@@ -1,6 +1,6 @@
 var constants = {
   notification: {
-    duration: 2000,
+    duration: 3000,
   },
   condition: {
     chance: 100,

@@ -6,8 +6,8 @@ var factory = require('../../factories/quest');
 var cron = require('../../services/cron');
 var socketio = require('../../services/socketio').io();
 
-// crontab a new quest every hour
-cron.schedule('* 0 * * * *', function(){
+// crontab a new quest
+cron.schedule('0 * */4 * * *', function(){
   var created = factory.build();
   models.Quest.create(created)
   .then(function(quest) {
@@ -15,6 +15,10 @@ cron.schedule('* 0 * * * *', function(){
     quest.reload()
     .then(function(quest) {
       models.Quest.findAll({
+        where: {createdAt: {
+          $lt: new Date(),
+          $gt: new Date(new Date() - 24 * 60 * 60 * 1000)
+        }},
         include: [models.Resource]
       })
       .then(function(quests) {
@@ -27,6 +31,10 @@ cron.schedule('* 0 * * * *', function(){
 // get all quests
 router.get('/', function(req, res) {
   models.Quest.findAll({
+    where: {createdAt: {
+      $lt: new Date(),
+      $gt: new Date(new Date() - 24 * 60 * 60 * 1000)
+    }},
     include: [models.Resource]
   })
   .then(function(quests) {

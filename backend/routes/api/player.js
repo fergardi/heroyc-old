@@ -153,12 +153,25 @@ router.post('/:playerId/quests/add/:questId', function(req, res) {
 router.post('/:playerId/items/add/:itemId', function(req, res) {
   models.Player.findById(req.params.playerId)
   .then(function(player) {
-    models.Item.findById(req.params.itemId)
-    .then(function(item) {
-      player.addItem(item)
-      .then(function() {
-        res.json({status: 'OK', data: item});          
-      });
+    player.getItems({ where: { id: req.params.itemId } })
+    .then(function(items){
+      if(items.length > 0){
+        item = items[0];
+        item.PlayerItem.quantity++;
+        item.PlayerItem.save();
+        res.json({status: 'OK', data: item});
+      }else{
+        models.Item.findById(req.params.itemId)
+        .then(function(item){
+          player.addItem(item, { quantity: 1 })
+          .then(function(){
+            player.getItems({ where: { id: req.params.itemId } })
+            .then(function(items){
+              res.json({status: 'OK', data: items[0]});
+            });
+          });
+        });
+      }
     });
   });
 });
@@ -205,21 +218,21 @@ router.post('/:playerId/recipes/add/:recipeId', function(req, res) {
   });
 });
 
-// add resource and quantity to player
-router.post('/:playerId/resources/add/:resourceId/:quantity', function(req, res) {
+// add resource to player
+router.post('/:playerId/resources/add/:resourceId', function(req, res) {
   models.Player.findById(req.params.playerId)
   .then(function(player) {
     player.getResources({ where: { id: req.params.resourceId } })
     .then(function(resources){
       if(resources.length > 0){
         resource = resources[0];
-        resource.PlayerResource.quantity += parseInt(req.params.quantity);
+        resource.PlayerResource.quantity++;
         resource.PlayerResource.save();
         res.json({status: 'OK', data: resource});
       }else{
         models.Resource.findById(req.params.resourceId)
         .then(function(resource){
-          player.addResource(resource, { quantity: parseInt(req.params.quantity) })
+          player.addResource(resource, { quantity: 1 })
           .then(function(){
             player.getResources({ where: { id: req.params.resourceId } })
             .then(function(resources){
