@@ -111,7 +111,7 @@
 
 <script>
   import api from '../services/api'
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import notification from '../services/notification'
   import Vue from 'vue'
   export default {
@@ -126,7 +126,7 @@
       }
     },
     created () {
-      api.getPlayer(auth.id || 1, (player) => {
+      api.getPlayer(authentication.id || 1, (player) => {
         this.platinum = player.platinum;
         api.getMarket((sales) => {
           this.sales = sales;
@@ -135,7 +135,7 @@
     },
     methods: {
       buy (sale) {
-        api.buySale(auth.id || 1, sale.id, (sales) => {
+        api.buySale(authentication.id || 1, sale.id, (sales) => {
           this.platinum -= sale.platinum;
           this.sales = sales;
           if (sale.Item !== null) {

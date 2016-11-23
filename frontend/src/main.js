@@ -20,7 +20,7 @@ import Market from './views/Market.vue'
 import World from './views/World.vue'
 
 import translation from './services/translation'
-import auth from './services/auth'
+import authentication from './services/authentication'
 import notification from './services/notification'
 
 // router
@@ -80,9 +80,9 @@ new Vue({
   router
 }).$mount('#app');
 
-// redirect to home if not auth
+// redirect to home if not authentication
 router.beforeEach((to, from, next) => {
-  if ((secured.indexOf(to.name) !== -1) && !auth.logged) {
+  if ((secured.indexOf(to.name) !== -1) && !authentication.logged) {
     router.push({ path: '/' });
     notification.danger(Vue.t('alert.login.secure'));
   } else {

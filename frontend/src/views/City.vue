@@ -111,7 +111,7 @@
 
 <script>
   import api from '../services/api'
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import notification from '../services/notification'
   import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'
@@ -127,7 +127,7 @@
       }
     },
     created () {
-      api.getPlayer(auth.id || 1, (player) => {
+      api.getPlayer(authentication.id || 1, (player) => {
         this.gold = player.gold;
         api.getSales((sales) => {
           this.sales = sales;
@@ -145,7 +145,7 @@
     },
     methods: {
       buy (sale) {
-        api.buySale(auth.id || 1, sale.id, (sales) => {
+        api.buySale(authentication.id || 1, sale.id, (sales) => {
           this.gold -= sale.gold;
           if (sale.Item !== null) {
             notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Item.name), rarity: sale.Item.rarity }));

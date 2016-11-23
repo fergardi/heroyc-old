@@ -58,7 +58,7 @@
 
 <script>
   import api from '../services/api'
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import notification from '../services/notification'
   import Vue from 'vue'
   export default {
@@ -70,7 +70,7 @@
       }
     },
     created () {
-      api.getPlayer(auth.id || 1, (data) => {
+      api.getPlayer(authentication.id || 1, (data) => {
         this.recipes = data.Recipes;
       });
     },

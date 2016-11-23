@@ -40,7 +40,7 @@
 
 <script>
   import api from '../services/api'
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import notification from '../services/notification'
   import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'
@@ -68,7 +68,7 @@
     },
     methods: {
       accept (quest) {
-        api.addQuest(auth.id || 1, quest.id);
+        api.addQuest(authentication.id || 1, quest.id);
         notification.success(Vue.t('alert.inn.accept', { name: Vue.t(quest.name), rarity: quest.rarity }));
       }
     },

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import translation from '../services/translation'
   import notification from '../services/notification'
   import Vue from 'vue'
@@ -70,14 +70,14 @@
         notification.success(Vue.t('language.change'));
       },
       logout () {
-        auth.logout();
+        authentication.logout();
         notification.success(Vue.t('alert.login.logout'));
         this.$router.push({ path: '/' });
       }
     },
     computed: {
       logged () {
-        return auth.logged;
+        return authentication.logged;
       }
     }
   }

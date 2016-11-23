@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  import auth from '../services/auth'
+  import authentication from '../services/authentication'
   import notification from '../services/notification'
   import Vue from 'vue'
   export default {
@@ -68,7 +68,7 @@
     },
     methods: {
       login () {
-        auth.login(this.credentials, (success) => {
+        authentication.login(this.credentials, (success) => {
           if (success) {
             notification.success(Vue.t('alert.login.ok'));
             this.$router.push({ name: 'player' });
@@ -78,7 +78,7 @@
         });
       },
       register () {
-        auth.register(this.information, (success) => {
+        authentication.register(this.information, (success) => {
           if (success) {
             notification.success(Vue.t('alert.register.ok'));
             this.$router.push({ name: 'world' });
