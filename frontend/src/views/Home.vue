@@ -71,7 +71,7 @@
         authentication.login(this.credentials, (success) => {
           if (success) {
             notification.success(Vue.t('alert.login.ok'));
-            this.$router.push({ name: 'player' });
+            this.$router.push({ name: 'world' });
           } else {
             notification.danger(Vue.t('alert.login.error'));
           }
@@ -81,7 +81,7 @@
         authentication.register(this.information, (success) => {
           if (success) {
             notification.success(Vue.t('alert.register.ok'));
-            this.$router.push({ name: 'world' });
+            this.$router.push({ name: 'player' });
           } else {
             notification.danger(Vue.t('alert.register.error'));
           }

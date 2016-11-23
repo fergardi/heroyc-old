@@ -92,8 +92,9 @@
     color: #00f;
     background-color: #2e64fe;
   span.label
-    margin-left: 3px;
     border: 1px solid #000;
+  span.label + span.label
+    margin-left: 5px;
   #title form
     display: inline-block;
     width: 100%;

@@ -34,8 +34,8 @@
       this.createMap();
       api.getLocations((data) => {
         this.drawLocations(data);
-        this.geoLocate();
       });
+      setInterval(this.geoLocate(), 60000);
     },
     methods: {
       createMap () {
@@ -60,6 +60,7 @@
         //this.map.touchZoomRotate.disable();
       },
       geoLocate () {
+        console.log('Geolocating...');
         navigator.geolocation.getCurrentPosition((position) => {
           this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
         });
