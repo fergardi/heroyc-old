@@ -4,7 +4,7 @@
     .container.fixed
       .row
         .col-md-offset-6.col-md-6.col-xs-12.alerts
-    transition(name="router", enter-active-class="animated fadeInLeft", leave-active-class="animated fadeOutRight")
+    transition(name="router", appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="out-in")
       router-view
 </template>
 
@@ -16,19 +16,13 @@
 </script>
 
 <style lang="stylus">
-  .container.animated
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
   /* MAIN */
   html
   body
   .fullheight
     height: 100%;
   body
-    //background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
