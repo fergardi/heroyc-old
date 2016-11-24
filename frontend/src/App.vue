@@ -4,7 +4,8 @@
     .container.fixed
       .row
         .col-md-offset-6.col-md-6.col-xs-12.alerts
-    router-view
+    transition(name="router", enter-active-class="animated fadeInLeft", leave-active-class="animated fadeOutRight")
+      router-view
 </template>
 
 <script>
@@ -15,6 +16,12 @@
 </script>
 
 <style lang="stylus">
+  .container.animated
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
   /* MAIN */
   html
   body
