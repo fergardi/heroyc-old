@@ -13,19 +13,20 @@
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.resources')")
-      .row.equals
-        .col-xs-12(v-if='!filtered.length')
+      .row
+        .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
             | {{ 'title.none' | i18n }}
-        .col-xs-3(v-for='resource in filtered')
-          .panel.text-center(v-bind:class='"panel-" + resource.rarity')
-            .panel-heading
-              .panel-title
-                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
-                span {{ resource.name | i18n }}
-            .panel-body
-              img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+        transition-group(tag='div', enter-active-class='animated fadeIn')
+          .col-xs-3(v-for='resource in filtered', v-bind:key='resource.id')
+            .panel.text-center(v-bind:class='"panel-" + resource.rarity')
+              .panel-heading
+                .panel-title
+                  i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
+                  span {{ resource.name | i18n }}
+              .panel-body
+                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
 </template>
 
 <script>

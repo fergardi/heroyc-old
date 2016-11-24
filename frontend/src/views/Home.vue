@@ -7,7 +7,7 @@
             h1 {{ 'title.home' | i18n }} | 
               small {{ 'subtitle.home' | i18n }}
       .row#title
-        .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3.animated.bounceIn
+        .col-md-4.col-md-offset-4.col-xs-6.col-xs-offset-3
           ul.nav.nav-pills
             li.active
               a(href="#login", data-toggle="tab")

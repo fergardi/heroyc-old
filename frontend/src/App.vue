@@ -4,7 +4,7 @@
     .container.fixed
       .row
         .col-md-offset-6.col-md-6.col-xs-12.alerts
-    transition(name="router", appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="out-in")
+    transition(appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="out-in")
       router-view
 </template>
 
@@ -22,7 +22,7 @@
   .fullheight
     height: 100%;
   body
-    background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
+    //background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

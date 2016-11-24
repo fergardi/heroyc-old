@@ -13,34 +13,35 @@
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.recipes')")
-      .row.equals
-        .col-xs-12(v-if='!filtered.length')
+      .row
+        .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
             | {{ 'title.none' | i18n }}
-        .col-md-3.col-xs-4(v-for='recipe in filtered')
-          .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
-            .panel-heading
-              .panel-title
-                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
-                span {{ recipe.Result.name | i18n }}
-            .panel-body
-              .col-xs-6
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
-              .col-xs-6
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
-              .col-xs-12
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
-                .progress
-                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
-                .progress
-                  .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
+        transition-group(tag='div', enter-active-class='animated fadeIn')
+          .col-md-3.col-xs-4(v-for='recipe in filtered', v-bind:key='recipe.id')
+            .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
+              .panel-heading
+                .panel-title
+                  i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
+                  span {{ recipe.Result.name | i18n }}
+              .panel-body
+                .col-xs-6
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+                .col-xs-6
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+                .col-xs-12
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+                  .progress
+                    .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-primary(v-bind:style='"width: " + recipe.Result.intelligence * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-danger(v-bind:style='"width: " + recipe.Result.vitality * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-success(v-bind:style='"width: " + recipe.Result.agility * 10 + "%"')
+                  .progress
+                    .progress-bar.progress-bar-info(v-bind:style='"width: " + recipe.Result.defense * 10 + "%"')
 </template>
 
 <script>

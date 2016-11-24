@@ -13,29 +13,30 @@
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.monsters')")
-      .row.equals
-        .col-xs-12(v-if='!filtered.length')
+      .row
+        .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
             | {{ 'title.none' | i18n }}
-        .col-xs-3(v-for='monster in filtered')
-          .panel.text-center(v-bind:class='"panel-" + monster.type')
-            .panel-heading
-              .panel-title
-                i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + monster.icon')
-                span {{ monster.name | i18n }}
-            .panel-body
-              img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type', data-toggle='tooltip', v-bind:title='monster.name')
-              .progress
-                .progress-bar.progress-bar-warning(v-bind:style='"width: " + monster.strength * 10 + "%"')
-              .progress
-                .progress-bar.progress-bar-primary(v-bind:style='"width: " + monster.intelligence * 10 + "%"')
-              .progress
-                .progress-bar.progress-bar-danger(v-bind:style='"width: " + monster.vitality * 10 + "%"')
-              .progress
-                .progress-bar.progress-bar-success(v-bind:style='"width: " + monster.agility * 10 + "%"')
-              .progress
-                .progress-bar.progress-bar-info(v-bind:style='"width: " + monster.defense * 10 + "%"')
+        transition-group(tag='div', enter-active-class='animated fadeIn')
+          .col-xs-3(v-for='monster in filtered', v-bind:key='monster.id')
+            .panel.text-center(v-bind:class='"panel-" + monster.type')
+              .panel-heading
+                .panel-title
+                  i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + monster.icon')
+                  span {{ monster.name | i18n }}
+              .panel-body
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type', data-toggle='tooltip', v-bind:title='monster.name')
+                .progress
+                  .progress-bar.progress-bar-warning(v-bind:style='"width: " + monster.strength * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-primary(v-bind:style='"width: " + monster.intelligence * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-danger(v-bind:style='"width: " + monster.vitality * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-success(v-bind:style='"width: " + monster.agility * 10 + "%"')
+                .progress
+                  .progress-bar.progress-bar-info(v-bind:style='"width: " + monster.defense * 10 + "%"')
 </template>
 
 <script>
