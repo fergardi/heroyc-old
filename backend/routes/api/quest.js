@@ -7,7 +7,7 @@ var cron = require('../../services/cron');
 var socketio = require('../../services/socketio').io();
 
 // crontab a new quest
-cron.schedule('0 0 */8 * * *', function(){
+cron.schedule('*/5 * * * * *', function(){
   var created = factory.build();
   models.Quest.create(created)
   .then(function(quest) {

@@ -29,7 +29,7 @@
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn', leave-active-class='animated fadeOut')
-          .col-md-3.col-xs-4(v-for='sale in filtered', v-bind:key='sale.id')
+          .col-md-3.col-xs-4.slide(v-for='sale in filtered', v-bind:key='sale.id')
             .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
               .panel-heading
                 .panel-title
