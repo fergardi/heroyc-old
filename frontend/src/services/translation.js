@@ -64,6 +64,7 @@ const translation = {
       register: 'Register',
       craft: 'Craft',
       accept: 'Accept',
+      confirm: 'Confirm',
     },
     panel: {
       login: 'Login',
@@ -402,6 +403,7 @@ const translation = {
       register: 'Registro',
       craft: 'Fabricar',
       accept: 'Aceptar',
+      confirm: 'Confirmar',
     },
     panel: {
       login: 'Entrar',

@@ -26,7 +26,7 @@
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + monster.icon')
                   span {{ monster.name | i18n }}
               .panel-body
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type', data-toggle='tooltip', v-bind:title='monster.name')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + monster.image + ".png"', v-bind:class='"panel-" + monster.type')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + monster.strength * 10 + "%"')
                 .progress

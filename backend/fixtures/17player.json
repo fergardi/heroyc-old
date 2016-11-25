@@ -16,8 +16,8 @@
         { "name": "skill.vitality1" }
       ],
       "Resources": [],
-      "Recipes": [],
-      "Quests": [],
+      "Recipes": [1],
+      "Quests": [1],
       "Items": [
         { "name": "item.ring.novice", "_through": { "quantity": 1 } },
         { "name": "item.helm.novice", "_through": { "quantity": 1 } },

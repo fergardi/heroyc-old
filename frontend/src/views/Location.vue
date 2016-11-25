@@ -76,7 +76,7 @@
                 i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + location.Item.icon')  
                 span {{ location.Item.name | i18n }}
             .panel-body
-              img.thumbnail(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity', data-toggle='tooltip', v-bind:title='location.Item.name')
+              img.thumbnail(v-bind:src='"dist/img/items/" + location.Item.type + "/" + location.Item.image + ".png"', v-bind:class='"panel-" + location.Item.rarity')
               .progress
                 .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Item.strength * 10 + "%"')
               .progress

@@ -13,7 +13,7 @@
               .input-group-addon
                 i.fa.fa-search
               input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.forge')")
-      .row.equals
+      .row
         .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
@@ -27,11 +27,11 @@
                   span {{ recipe.Result.name | i18n }}
               .panel-body
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity', data-toggle='tooltip', v-bind:title='recipe.Original.name')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family', data-toggle='tooltip', v-bind:title='recipe.Resource.name')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
                 .col-xs-12
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity', data-toggle='tooltip', v-bind:title='recipe.Result.name')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
                   .progress
@@ -52,14 +52,14 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="recipe.Result.stun")
                     i.ra.ra-broken-skull
-                .btn-group.btn-block.dropup
-                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='true ? "btn-success" : "btn-danger disabled"')
-                    | {{ 'button.craft' | i18n }} 
-                    span.label.label-warning {{ sale.gold }} 
-                  ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='craft(recipe)')
-                      | {{ 'button.confirm' | i18n }} 
-                      i.fa.fa-lg.fa-check      
+                  .btn-group.btn-block.dropup
+                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(recipe) ? "btn-success" : "btn-danger disabled"')
+                      | {{ 'button.craft' | i18n }} 
+                      span.label.label-warning {{ recipe.gold }} 
+                    ul.dropdown-menu.btn-block.text-center
+                      button.btn.btn-block.btn-success(v-on:click='craft(recipe)')
+                        | {{ 'button.confirm' | i18n }} 
+                        i.fa.fa-lg.fa-check      
 </template>
 
 <script>
@@ -81,6 +81,9 @@
       });
     },
     methods: {
+      can (recipe) {
+        return false;
+      },
       craft (recipe) {
         notification.success(Vue.t('alert.forge.craft', { original: Vue.t(recipe.Original.name), originalRarity: recipe.Original.rarity, resource: Vue.t(recipe.Resource.name), resourceRarity: recipe.Resource.rarity, result: Vue.t(recipe.Result.name), resultRarity: recipe.Result.rarity }));
       }

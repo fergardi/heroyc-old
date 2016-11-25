@@ -2,6 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Recipe = sequelize.define('Recipe', {
+    gold: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

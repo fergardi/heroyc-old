@@ -112,14 +112,14 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="sale.Recipe.Result.stun")
                     i.ra.ra-broken-skull
-                .btn-group.btn-block.dropup
-                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
-                    | {{ 'button.buy' | i18n }} 
-                    span.label.label-warning {{ sale.gold }} 
-                  ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
-                      | {{ 'button.confirm' | i18n }} 
-                      i.fa.fa-lg.fa-check 
+                  .btn-group.btn-block.dropup
+                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
+                      | {{ 'button.buy' | i18n }} 
+                      span.label.label-warning {{ sale.gold }} 
+                    ul.dropdown-menu.btn-block.text-center
+                      button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                        | {{ 'button.confirm' | i18n }} 
+                        i.fa.fa-lg.fa-check 
 </template>
 
 <script>
