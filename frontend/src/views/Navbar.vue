@@ -3,11 +3,12 @@
     nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
       .container-fluid
         .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
-            i.fa.fa-fw.fa-lg.fa-bars
           router-link.navbar-brand(to='/world', data-toggle='collapse' data-target='.navbar-collapse.in')
             i.fa.fa-fw.fa-lg.fa-globe
             | {{ 'title.world' | i18n }}
+          h4.navbar-text.hidden-md.hidden-lg Heroyc
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
+            i.fa.fa-fw.fa-lg.fa-bars
         .collapse.navbar-collapse(id='nav')
           ul.nav.navbar-nav.navbar-right
             li
@@ -83,7 +84,11 @@
   }
 </script>
 
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
   li.dropdown a
     cursor: pointer;
+  .navbar-text
+    position: absolute;
+    width: 100%;
+    text-align: center;
 </style>
