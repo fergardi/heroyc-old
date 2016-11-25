@@ -135,6 +135,10 @@
   .nav-pills li a
     background-color: #fff;
     color: #333333;
+  .text-center
+    text-align: center !important;
+  ul.dropdown-menu
+    padding: 0;
     
   /* RESPONSIVE */
   @media all and (max-width: 768px)

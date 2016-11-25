@@ -52,9 +52,14 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="recipe.Result.stun")
                     i.ra.ra-broken-skull
-                  button.btn.btn-success.btn-block(v-on:click='craft(recipe)')
-                    i.fa.fa-lg.fa-check
-                    | {{ 'button.craft' | i18n }}
+                .btn-group.btn-block.dropup
+                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='true ? "btn-success" : "btn-danger disabled"')
+                    | {{ 'button.craft' | i18n }} 
+                    span.label.label-warning {{ sale.gold }} 
+                  ul.dropdown-menu.btn-block.text-center
+                    button.btn.btn-block.btn-success(v-on:click='craft(recipe)')
+                      | {{ 'button.confirm' | i18n }} 
+                      i.fa.fa-lg.fa-check      
 </template>
 
 <script>

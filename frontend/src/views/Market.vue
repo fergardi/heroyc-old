@@ -57,10 +57,14 @@
                   i.ra.ra-snowflake
                 span.label.label-info(v-if="sale.Item.stun")
                   i.ra.ra-broken-skull
-                button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
-                  i.fa.fa-lg.fa-check
-                  | {{ 'button.buy' | i18n }} 
-                  span.label.label-info {{ sale.platinum }}
+                .btn-group.btn-block.dropup
+                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                    | {{ 'button.buy' | i18n }} 
+                    span.label.label-warning {{ sale.platinum }} 
+                  ul.dropdown-menu.btn-block.text-center
+                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                      | {{ 'button.confirm' | i18n }} 
+                      i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity', v-if='sale.Resource')
               .panel-heading
                 .panel-title
@@ -68,10 +72,14 @@
                   span {{ sale.Resource.name | i18n }} 
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
-                button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
-                  i.fa.fa-lg.fa-check
-                  | {{ 'button.buy' | i18n }} 
-                  span.label.label-info {{ sale.platinum }}
+                .btn-group.btn-block.dropup
+                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                    | {{ 'button.buy' | i18n }} 
+                    span.label.label-warning {{ sale.platinum }} 
+                  ul.dropdown-menu.btn-block.text-center
+                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                      | {{ 'button.confirm' | i18n }} 
+                      i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity', v-if='sale.Recipe')
               .panel-heading
                 .panel-title
@@ -104,10 +112,14 @@
                     i.ra.ra-snowflake
                   span.label.label-info(v-if="sale.Recipe.Result.stun")
                     i.ra.ra-broken-skull
-                  button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='sale.gold <= gold ? "btn-success" : "btn-danger disabled"')
-                    i.fa.fa-lg.fa-check 
-                    | {{ 'button.buy' | i18n }} 
-                    span.label.label-info {{ sale.platinum }}
+                  .btn-group.btn-block.dropup
+                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                      | {{ 'button.buy' | i18n }} 
+                      span.label.label-warning {{ sale.platinum }} 
+                    ul.dropdown-menu.btn-block.text-center
+                      button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                        | {{ 'button.confirm' | i18n }} 
+                        i.fa.fa-lg.fa-check 
 </template>
 
 <script>

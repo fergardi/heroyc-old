@@ -34,9 +34,13 @@
                 span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
                 span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
               .panel-body
-                button.btn.btn-success.btn-block(v-on:click='accept(quest)')
-                  i.fa.fa-lg.fa-check
-                  | {{ 'button.accept' | i18n }}
+                .btn-group.btn-block.dropup
+                  button.btn.btn-success.btn-block.dropdown-toggle(data-toggle="dropdown")
+                    | {{ 'button.accept' | i18n }} 
+                  ul.dropdown-menu.btn-block.text-center
+                    button.btn.btn-block.btn-success(v-on:click='accept(quest)')
+                      | {{ 'button.confirm' | i18n }} 
+                      i.fa.fa-lg.fa-check 
 </template>
 
 <script>
