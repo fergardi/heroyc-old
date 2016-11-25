@@ -5,8 +5,8 @@
       "name": "Fergardi",
       "level": 1,
       "experience": 0,
-      "gold": 10,
-      "platinum": 0,
+      "gold": 5,
+      "platinum": 1,
       "image": "avatar",
       "Spells": [
         { "name": "spell.heal1" },
@@ -16,8 +16,8 @@
         { "name": "skill.vitality1" }
       ],
       "Resources": [],
-      "Recipes": [1],
-      "Quests": [1],
+      "Recipes": [],
+      "Quests": [],
       "Items": [
         { "name": "item.ring.novice", "_through": { "quantity": 1 } },
         { "name": "item.helm.novice", "_through": { "quantity": 1 } },
