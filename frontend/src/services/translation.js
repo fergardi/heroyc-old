@@ -242,6 +242,7 @@ const translation = {
       }
     },
     resource: {
+      description: 'Used for crafting and quests',
       amethist: 'Amethist',
       coal: 'Coal',
       scale: 'Scale',
@@ -580,6 +581,7 @@ const translation = {
       }
     },
     resource: {
+      description: 'Empleado para recetas y misiones',
       amethist: 'Amatista',
       coal: 'Carbon',
       fang: 'Colmillo',

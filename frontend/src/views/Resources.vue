@@ -27,6 +27,7 @@
                   span {{ resource.name | i18n }}
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                span {{ resource.description | i18n }}
 </template>
 
 <script>

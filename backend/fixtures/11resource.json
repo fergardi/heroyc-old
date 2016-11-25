@@ -5,7 +5,7 @@
       "name": "resource.grape",
       "rarity": "success",
       "icon": "apple",
-      "description": "Description",
+      "description": "resource.description",
       "image": "grape"
     }
   },
@@ -15,7 +15,7 @@
       "name": "resource.lemmon",
       "rarity": "success",
       "icon": "apple",
-      "description": "Description",
+      "description": "resource.description",
       "image": "lemmon"
     }
   },
@@ -25,7 +25,7 @@
       "name": "resource.raspberry",
       "rarity": "success",
       "icon": "apple",
-      "description": "Description",
+      "description": "resource.description",
       "image": "raspberry"
     }
   },
@@ -35,7 +35,7 @@
       "name": "resource.strawberry",
       "rarity": "success",
       "icon": "apple",
-      "description": "Description",
+      "description": "resource.description",
       "image": "strawberry"
     }
   },
@@ -45,7 +45,7 @@
       "name": "resource.pear",
       "rarity": "success",
       "icon": "apple",
-      "description": "Description",
+      "description": "resource.description",
       "image": "pear"
     }
   },
@@ -55,7 +55,7 @@
       "name": "resource.wood",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "wood"
     }
   },
@@ -65,7 +65,7 @@
       "name": "resource.stone",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "stone"
     }
   },
@@ -75,7 +75,7 @@
       "name": "resource.coal",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "coal"
     }
   },
@@ -85,7 +85,7 @@
       "name": "resource.flask",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "flask"
     }
   },
@@ -95,7 +95,7 @@
       "name": "resource.skull",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "skull"
     }
   },
@@ -105,7 +105,7 @@
       "name": "resource.fur",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "fur"
     }
   },
@@ -115,7 +115,7 @@
       "name": "resource.fang",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "fang"
     }
   },
@@ -125,7 +125,7 @@
       "name": "resource.scale",
       "rarity": "danger",
       "icon": "rune-stone",
-      "description": "Description",
+      "description": "resource.description",
       "image": "scale"
     }
   },
@@ -135,7 +135,7 @@
       "name": "resource.ingot.gold",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "goldingot"
     }
   },
@@ -145,7 +145,7 @@
       "name": "resource.ingot.silver",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "silveringot"
     }
   },
@@ -155,7 +155,7 @@
       "name": "resource.ingot.copper",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "copperingot"
     }
   },
@@ -165,7 +165,7 @@
       "name": "resource.ingot.metal",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "metalingot"
     }
   },
@@ -175,7 +175,7 @@
       "name": "resource.ingot.steel",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "steelingot"
     }
   },
@@ -185,7 +185,7 @@
       "name": "resource.ingot.ebony",
       "rarity": "primary",
       "icon": "gold-bar",
-      "description": "Description",
+      "description": "resource.description",
       "image": "ebonyingot"
     }
   },
@@ -195,7 +195,7 @@
       "name": "resource.amethist",
       "rarity": "info",
       "icon": "diamond",
-      "description": "Description",
+      "description": "resource.description",
       "image": "amethist"
     }
   },
@@ -205,7 +205,7 @@
       "name": "resource.topaz",
       "rarity": "info",
       "icon": "diamond",
-      "description": "Description",
+      "description": "resource.description",
       "image": "topaz"
     }
   },
@@ -215,7 +215,7 @@
       "name": "resource.saphire",
       "rarity": "info",
       "icon": "diamond",
-      "description": "Description",
+      "description": "resource.description",
       "image": "saphire"
     }
   },
@@ -225,7 +225,7 @@
       "name": "resource.emmerald",
       "rarity": "info",
       "icon": "diamond",
-      "description": "Description",
+      "description": "resource.description",
       "image": "emmerald"
     }
   },
@@ -235,7 +235,7 @@
       "name": "resource.ruby",
       "rarity": "info",
       "icon": "diamond",
-      "description": "Description",
+      "description": "resource.description",
       "image": "ruby"
     }
   }

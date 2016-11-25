@@ -4,7 +4,7 @@
     .container.fixed
       .row
         .col-md-offset-6.col-md-6.col-xs-12.alerts
-    transition(appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="out-in")
+    transition(appear, appear-active-class="animated fadeIn router", enter-active-class="animated fadeIn router", leave-active-class="animated fadeOut router", mode="out-in")
       router-view
 </template>
 
@@ -139,6 +139,8 @@
     text-align: center !important;
   ul.dropdown-menu
     padding: 0;
+  .animated.router
+    animation-duration: 0.5s;
     
   /* RESPONSIVE */
   @media all and (max-width: 768px)
