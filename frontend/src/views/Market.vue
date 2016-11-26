@@ -58,7 +58,7 @@
                 span.label.label-info(v-if="sale.Item.stun")
                   i.ra.ra-broken-skull
                 .btn-group.btn-block.dropup
-                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.platinum }} 
                   ul.dropdown-menu.btn-block.text-center
@@ -73,7 +73,7 @@
               .panel-body
                 img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
                 .btn-group.btn-block.dropup
-                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                  button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.platinum }} 
                   ul.dropdown-menu.btn-block.text-center
@@ -113,7 +113,7 @@
                   span.label.label-info(v-if="sale.Recipe.Result.stun")
                     i.ra.ra-broken-skull
                   .btn-group.btn-block.dropup
-                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='sale.platinum <= platinum ? "btn-success" : "btn-danger disabled"')
+                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.buy' | i18n }} 
                       span.label.label-warning {{ sale.platinum }} 
                     ul.dropdown-menu.btn-block.text-center
@@ -147,6 +147,9 @@
       });
     },
     methods: {
+      can (platinum) {
+        return platinum <= this.platinum;
+      },
       buy (sale) {
         api.buySale(authentication.id || 1, sale.id, (sales) => {
           this.platinum -= sale.platinum;

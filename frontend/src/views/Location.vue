@@ -17,7 +17,7 @@
             .panel-body
               .vertical-align
                 .col-xs-4
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/player/" + player.image + ".png"')
+                  img.thumbnail.img-responsive.pull-left(v-bind:src='"dist/img/player/" + player.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + player.strength + "%"')
@@ -178,7 +178,7 @@
             .panel-body
               .vertical-align
                 .col-xs-4
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"')
+                  img.thumbnail.img-responsive.pull-left(v-bind:src='"dist/img/monsters/" + location.Monster.image + ".png"')
                 .col-xs-8
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + location.Monster.strength + "%"')

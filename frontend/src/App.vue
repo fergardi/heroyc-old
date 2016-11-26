@@ -22,7 +22,7 @@
   .fullheight
     height: 100%;
   body
-    //background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/50/b0/31/50b03186899160af37b930057fe69c46.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -139,8 +139,6 @@
     text-align: center !important;
   ul.dropdown-menu
     padding: 0;
-  .animated.router
-    animation-duration: 0.5s;
     
   /* RESPONSIVE */
   @media all and (max-width: 768px)
