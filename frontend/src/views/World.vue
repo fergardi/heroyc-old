@@ -84,11 +84,6 @@
           var shadow = document.createElement('div');
           shadow.className = 'map-avatar-shadow';
           marker.appendChild(shadow);
-          /*
-          marker.addEventListener('dblclick', (event) => {
-            this.$router.push({ name: 'player' });
-          });
-          */
           this.avatar = new mapboxgl.Marker(marker, { offset: [-30, -77] }).setLngLat(position).addTo(this.map);
         } else {
           this.avatar.setLngLat(position);
@@ -102,6 +97,7 @@
       },
       addLocation (location) {
         var marker = document.createElement('div');
+        marker.className = 'text-center';
         marker.id = location.id;
         marker.style.zIndex = 5;
         marker.addEventListener('click', (e) => {
@@ -138,7 +134,11 @@
         icon.onload = () => {
           new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
         };
-        icon.src = 'dist/img/locations/' + location.image + '.png';        
+        icon.src = 'dist/img/locations/' + location.image + '.png';
+        var expiration = document.createElement('span');
+        expiration.className = 'label label-default';
+        expiration.appendChild(document.createTextNode(location.createdAt));
+        marker.appendChild(expiration);
       },
       close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
@@ -178,8 +178,8 @@
   .mapboxgl-canvas
     height: 100% !important;
   .map-location
-    width: 100%;
     cursor: pointer;
+    display: block;
   .map-location:hover
     -webkit-animation: tada 1s;
     animation: tada 1s;

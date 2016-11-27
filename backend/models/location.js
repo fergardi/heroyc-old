@@ -30,8 +30,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Recipe.hasMany(models.Location);
         models.Location.belongsTo(models.Recipe);
       }
-    },
-    timestamps: false
+    }
   });
 
   return Location;

@@ -49,6 +49,7 @@
     z-index: 9999;
     opacity: 0.95;
   .alert
+    border: 1px solid white;
     margin-bottom: 5px;
     margin-top: 10px;
     pointer-events: all;

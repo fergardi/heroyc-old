@@ -5,7 +5,7 @@
     "database": "heroyc",
     "host": "localhost",
     "dialect": "mariadb",
-    "logging": true
+    "logging": false
   },
   "prod": {
     "username": "",
