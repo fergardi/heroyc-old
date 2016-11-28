@@ -1,0 +1,16 @@
+[
+  {
+    "model": "Advice",
+    "data": {
+      "text": "advice.bla",
+      "color": "success"
+    }
+  },
+  {
+    "model": "Advice",
+    "data": {
+      "text": "advice.ble",
+      "color": "danger"
+    }
+  }
+]

@@ -169,6 +169,12 @@ const api = {
         callback(response.data);
       })
     });
+  },
+  getAdvices (callback) {
+    $.get(`${url}/advices`)
+    .then((response) => {
+      callback(response.data);
+    });
   }
 }
 

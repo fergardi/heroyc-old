@@ -6,7 +6,8 @@
           router-link.navbar-brand(to='/world', data-toggle='collapse' data-target='.navbar-collapse.in')
             i.fa.fa-fw.fa-lg.fa-globe
             | {{ 'title.world' | i18n }}
-          h4.navbar-text.hidden-md.hidden-lg Heroyc
+          transition(appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="in-out")
+            span.label(v-bind:class='"label-" + advice.color') {{ advice.text | i18n }}
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
             i.fa.fa-fw.fa-lg.fa-bars
         .collapse.navbar-collapse(id='nav')
@@ -62,9 +63,24 @@
   import authentication from '../services/authentication'
   import translation from '../services/translation'
   import notification from '../services/notification'
+  import api from '../services/api'
   import Vue from 'vue'
   export default {
     name: 'Navbar',
+    data () {
+      return {
+        advices: [],
+        advice: {},
+      }
+    },
+    created () {
+      api.getAdvices((data) => {
+        this.advices = data;
+        setInterval(() => {
+          this.advice = this.advices[Math.floor(Math.random() * this.advices.length)];
+        }, constants.notification.duration);
+      });
+    },
     methods: {
       localize (lang) {
         Vue.config.lang = lang;
@@ -87,8 +103,6 @@
 <style lang="stylus" scoped>
   li.dropdown a
     cursor: pointer;
-  .navbar-text
-    position: absolute;
-    width: 100%;
-    text-align: center;
+  .navbar-header span
+    margin: 16px;
 </style>

@@ -5,6 +5,10 @@ const translation = {
       spanish: 'Spanish',
       change: 'You changed the language to English',
     },
+    advice: {
+      bla: 'Blah',
+      ble: 'Bleh'
+    },
     alert: {
       map: {
         away: 'You are too far away from this',
@@ -343,6 +347,10 @@ const translation = {
       english: 'Ingles',
       spanish: 'Español',
       change: 'Has cambiado el idioma a Español',
+    },
+    advice: {
+      bla: 'Bla',
+      ble: 'Ble'
     },
     alert: {
       map: {

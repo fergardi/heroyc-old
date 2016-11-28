@@ -19,8 +19,8 @@
           center: [-5.5, 42.5],
           pitch: 45,
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
-          //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
-          style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+          style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
+          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
           range: 1000,
           speed: 1,
@@ -128,6 +128,10 @@
             notification.danger(Vue.t('alert.map.away'));
           }
         });
+        var expiration = document.createElement('span');
+        expiration.className = 'label label-default map-location-expiration';
+        expiration.appendChild(document.createTextNode(location.createdAt));
+        marker.appendChild(expiration);
         var icon = new Image();
         marker.appendChild(icon);
         icon.className = 'map-location animated';
@@ -135,10 +139,6 @@
           new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
         };
         icon.src = 'dist/img/locations/' + location.image + '.png';
-        var expiration = document.createElement('span');
-        expiration.className = 'label label-default';
-        expiration.appendChild(document.createTextNode(location.createdAt));
-        marker.appendChild(expiration);
       },
       close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
@@ -183,6 +183,8 @@
   .map-location:hover
     -webkit-animation: tada 1s;
     animation: tada 1s;
+  .map-location-expiration
+    display: block;
   .map-avatar
     width: 60px;
     height: 60px;

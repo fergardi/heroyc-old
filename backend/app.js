@@ -28,6 +28,7 @@ app.use('/api/resources', require('./routes/api/resource'));
 app.use('/api/players', require('./routes/api/player'));
 app.use('/api/recipes', require('./routes/api/recipe'));
 app.use('/api/quests', require('./routes/api/quest'));
+app.use('/api/advices', require('./routes/api/advice'));
 app.use('/api/skills', require('./routes/api/skill'));
 app.use('/api/sales', require('./routes/api/sale'));
 app.use('/api/items', require('./routes/api/item'));
