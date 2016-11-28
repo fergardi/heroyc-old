@@ -345,7 +345,7 @@
           setTimeout(() => {
             notification.danger(Vue.t('alert.battle.lose'));
             self.player.states.dead = true;
-          }, constants.notification.duration);
+          }, constants.notification);
         }
       }
     },
@@ -370,42 +370,42 @@
           notification.warning(Vue.t('alert.battle.dodge', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name) }));
           setTimeout(() => {
             defender.states.dodge = false;
-          }, constants.notification.duration);
+          }, constants.notification);
         } else {
           defender.states.melee = true;
           var damage = attacker.strength - Math.ceil(attacker.strength * defender.defense / 100);
           notification.danger(Vue.t('alert.battle.melee', { attacker: Vue.t(attacker.name), damage: damage, defender: Vue.t(defender.name) }));
           defender.vitality = Math.max(0, defender.vitality - damage);
-          if (attacker.weapon && attacker.weapon.burn && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (attacker.weapon && attacker.weapon.burn && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.vitality = Math.max(0, defender.vitality - 5);
             notification.info(Vue.t('alert.battle.burn', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (attacker.weapon && attacker.weapon.poison && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (attacker.weapon && attacker.weapon.poison && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.agility = Math.max(0, defender.agility - 5);
             notification.info(Vue.t('alert.battle.poison', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (attacker.weapon && attacker.weapon.stun && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (attacker.weapon && attacker.weapon.stun && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.defense = Math.max(0, defender.defense - 5);
             notification.info(Vue.t('alert.battle.stun', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (attacker.weapon && attacker.weapon.shock && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (attacker.weapon && attacker.weapon.shock && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.strength = Math.max(0, defender.strength - 5);
             notification.info(Vue.t('alert.battle.shock', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (attacker.weapon && attacker.weapon.freeze && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (attacker.weapon && attacker.weapon.freeze && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.intelligence = Math.max(0, defender.intelligence - 5);
             notification.info(Vue.t('alert.battle.freeze', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
           setTimeout(() => {
             defender.states.melee = false;
-          }, constants.notification.duration);
+          }, constants.notification);
         }
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, constants.notification.duration * 2);
+          }, constants.notification * 2);
         }
       },
       magic (attacker, defender, spell, counter) {
@@ -416,23 +416,23 @@
           defender.states.magic = true;
           notification.info(Vue.t('alert.battle.magic', { attacker: Vue.t(attacker.name), family: spell.family, spell: Vue.t(spell.name), damage: spell.damage, defender: Vue.t(defender.name) }));
           defender.vitality = Math.max(0, defender.vitality - spell.damage);
-          if (spell.burn && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (spell.burn && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.vitality = Math.max(0, defender.vitality - 5);
             notification.info(Vue.t('alert.battle.burn', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (spell.poison && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (spell.poison && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.agility = Math.max(0, defender.agility - 5);
             notification.info(Vue.t('alert.battle.poison', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (spell.stun && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (spell.stun && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.defense = Math.max(0, defender.defense - 5);
             notification.info(Vue.t('alert.battle.stun', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (spell.shock && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (spell.shock && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.strength = Math.max(0, defender.strength - 5);
             notification.info(Vue.t('alert.battle.shock', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
-          if (spell.freeze && Math.floor(Math.random() * 100) <= constants.condition.chance) {
+          if (spell.freeze && Math.floor(Math.random() * 100) <= constants.condition) {
             defender.intelligence = Math.max(0, defender.intelligence - 5);
             notification.info(Vue.t('alert.battle.freeze', { attacker: Vue.t(attacker.name), defender: Vue.t(defender.name), quantity: 5 }));
           }
@@ -444,13 +444,13 @@
         setTimeout(() => {
           defender.states.magic = false;
           attacker.states.magic = false;
-        }, constants.notification.duration);
+        }, constants.notification);
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, constants.notification.duration * 2);
+          }, constants.notification * 2);
         }
       },
       buff (attacker, defender, skill, counter) {
@@ -466,13 +466,13 @@
         attacker.defense = Math.min(100, attacker.defense + skill.defense);    
         setTimeout(() => {
           attacker.states.buff = false;
-        }, constants.notification.duration);
+        }, constants.notification);
         if (attacker.vitality > 0 && defender.vitality > 0) {
           setTimeout(() => {
             attacker.states.buttons = true;
             defender.states.buttons = true;
             if (counter) this.counterattack();
-          }, constants.notification.duration * 2);
+          }, constants.notification * 2);
         }
       },
       strength () {

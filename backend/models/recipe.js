@@ -17,7 +17,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Recipe.belongsTo(models.Item, { as: 'Result', foreignKey: 'ResultId' });
       }
     },
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   });
 
   return Recipe;

@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         models.User.belongsTo(models.Player);
         models.Player.hasOne(models.User);
       }
-    }
+    },
+    freezeTableName: true
   });
 
   return User;

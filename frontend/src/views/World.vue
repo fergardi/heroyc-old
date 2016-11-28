@@ -7,6 +7,7 @@
 <script>
   import api from '../services/api.js'
   import notification from '../services/notification'
+  import moment from 'moment'
   import Vue from 'vue'
   export default {
     name: 'World',
@@ -60,7 +61,6 @@
         //this.map.touchZoomRotate.disable();
       },
       geoLocate () {
-        console.log('Geolocating...');
         navigator.geolocation.getCurrentPosition((position) => {
           this.updatePosition(new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude));
         });
@@ -129,8 +129,9 @@
           }
         });
         var expiration = document.createElement('span');
-        expiration.className = 'label label-default map-location-expiration';
-        expiration.appendChild(document.createTextNode(location.createdAt));
+        expiration.className = 'label label-default';
+        var seconds = moment(location.createdAt).add(constants.expiration, 'minutes').unix() - moment(new Date()).unix();
+        expiration.appendChild(document.createTextNode(seconds));
         marker.appendChild(expiration);
         var icon = new Image();
         marker.appendChild(icon);
@@ -165,6 +166,11 @@
       toDeg (rad) {
         return rad * 180 / Math.PI;
       }
+    },
+    computed: {
+      expiration () {
+        return 0;
+      }
     }
   }
 </script>
@@ -183,8 +189,6 @@
   .map-location:hover
     -webkit-animation: tada 1s;
     animation: tada 1s;
-  .map-location-expiration
-    display: block;
   .map-avatar
     width: 60px;
     height: 60px;

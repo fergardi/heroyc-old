@@ -78,7 +78,7 @@
         this.advices = data;
         setInterval(() => {
           this.advice = this.advices[Math.floor(Math.random() * this.advices.length)];
-        }, constants.notification.duration);
+        }, constants.notification);
       });
     },
     methods: {
@@ -104,5 +104,5 @@
   li.dropdown a
     cursor: pointer;
   .navbar-header span
-    margin: 16px;
+    margin-top: 16px;
 </style>

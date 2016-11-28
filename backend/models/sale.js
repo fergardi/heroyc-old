@@ -19,7 +19,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Recipe.hasMany(models.Sale);
         models.Sale.belongsTo(models.Recipe);
       }
-    }
+    },
+    freezeTableName: true
   });
 
   return Sale;

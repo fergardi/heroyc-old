@@ -25,7 +25,8 @@ module.exports = function(sequelize, DataTypes) {
         var PlayerItem = sequelize.define('PlayerItem', {
           quantity: DataTypes.INTEGER
         }, {
-          timestamps: false
+          timestamps: false,
+          freezeTableName: true
         });
         models.Item.belongsToMany(models.Player, {through: PlayerItem});
         models.Player.belongsToMany(models.Item, {through: PlayerItem});
@@ -39,7 +40,8 @@ module.exports = function(sequelize, DataTypes) {
         var PlayerResource = sequelize.define('PlayerResource', {
           quantity: DataTypes.INTEGER
         }, {
-          timestamps: false
+          timestamps: false,
+          freezeTableName: true
         });
         models.Resource.belongsToMany(models.Player, {through: PlayerResource});
         models.Player.belongsToMany(models.Resource, {through: PlayerResource});
@@ -51,7 +53,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Player.belongsToMany(models.Quest, {through: 'PlayerQuest'});
       }
     },
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   });
 
   return Player;

@@ -16,7 +16,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Quest.belongsToMany(models.Resource, {through: 'QuestResource'});
         models.Resource.belongsToMany(models.Quest, {through: 'QuestResource'});
       }
-    }
+    },
+    freezeTableName: true
   });
 
   return Quest;

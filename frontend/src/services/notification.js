@@ -3,7 +3,7 @@ const notification = {
     $('.alerts').notify({
       type: type,
       message: { html: '<i class="fa fa-fw fa-lg fa-'+ icon +'"></i> ' + text + '!' },
-      fadeOut: { enabled: true, delay: constants.notification.duration }
+      fadeOut: { enabled: true, delay: constants.notification }
     }).show();
   },
   success (text) {

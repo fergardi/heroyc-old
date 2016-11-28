@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     text: DataTypes.STRING,
     color: DataTypes.STRING
   }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   });
 
   return Advice;

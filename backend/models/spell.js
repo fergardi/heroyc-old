@@ -16,7 +16,8 @@ module.exports = function(sequelize, DataTypes) {
     icon: DataTypes.STRING,
     image: DataTypes.STRING
   }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   });
 
   return Spell;

@@ -8,7 +8,8 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.STRING,
     icon: DataTypes.STRING
   }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   });
 
   return Resource;
