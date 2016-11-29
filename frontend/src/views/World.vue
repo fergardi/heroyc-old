@@ -8,6 +8,7 @@
   import api from '../services/api.js'
   import notification from '../services/notification'
   import moment from 'moment'
+  import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'
   export default {
     name: 'World',
@@ -39,6 +40,14 @@
         this.drawLocations(data);
       });
       setInterval(this.geoLocate(), 60000);
+    },
+    sockets:{
+      connect (){
+        //console.info('Socket connected, waiting for new data...');
+      },
+      updateLocations (location) {
+        this.addLocation(location);
+      }
     },
     methods: {
       createMap () {
@@ -99,16 +108,15 @@
       },
       addLocation (location) {
         var marker = document.createElement('div');
-        marker.className = 'text-center map-location';
+        marker.className = 'text-center map-location animated fadeIn';
         marker.id = location.id;
         marker.style.zIndex = 5;
         var expiration = document.createElement('span');
         expiration.className = 'map-expiration label label-success';
         var expired = false;
-        console.log(moment(location.createdAt).add(constants.expiration + Math.random() * 60, 'seconds').toDate());
-        $(expiration).countdown(moment(location.createdAt).add(constants.expiration + Math.random() * 60, 'seconds').toDate(), function(event) {
+        $(expiration).countdown(moment(location.createdAt).add(constants.expiration + Math.floor(Math.random() * 10), 'seconds').toDate(), function(event) {
           $(this).html(event.strftime('%M:%S'));
-          if (expired) {
+          if (event.offset.totalSeconds <= constants.expiration && expired) {
             self.removeLocation(location);
           } else if (event.offset.totalSeconds <= constants.expiration / 16 && !expired) {
             expired = true;
@@ -156,12 +164,11 @@
         icon.src = 'dist/img/locations/' + location.image + '.png';
       },
       removeLocation (location) {
-        let found = this.markers.find(l => l._element.id == location.id)
+        var found = this.markers.find(l => parseInt(l._element.id) === parseInt(location.id))
         if (found) {
           found.remove();
           this.markers.splice(this.markers.indexOf(found), 1);
         }
-        //this.addLocation(api.removeLocation(location.id));
       },
       close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));

@@ -58,17 +58,17 @@
       }
     },
     created () {
-      api.getQuests((data) => {
-        this.quests = data;
+      api.getQuests((quests) => {
+        this.quests = quests;
       });
     },
     sockets:{
       connect (){
         //console.info('Socket connected, waiting for new data...');
       },
-      updateQuests (data) {
+      updateQuests (quests) {
         //console.info('New quest incoming, updating list!')
-        this.quests = data;
+        this.quests = quests;
       }
     },
     methods: {
