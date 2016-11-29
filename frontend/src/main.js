@@ -44,7 +44,7 @@ Vue.use(VueSocketio, constants.socket);
 // routes
 var router = new VueRouter({
   routes: [
-    { path: '/', component: Home, name: 'home' },
+    { path: '/', component: Home },
     { path: '/home', component: Home, name: 'home' },
     { path: '/world', component: World, name: 'world' },
     { path: '/items', component: Items, name: 'items' },

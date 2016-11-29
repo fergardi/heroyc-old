@@ -87,7 +87,7 @@
       updatePosition (position) {
         if (this.avatar === null) {
           var marker = document.createElement('div');
-          marker.style.zIndex = 10;
+          marker.className = 'map-position';
           var icon = document.createElement('img');
           icon.src = 'dist/img/player/avatar.png';
           icon.className = 'map-avatar animated infinite bounce';
@@ -110,7 +110,6 @@
         var marker = document.createElement('div');
         marker.className = 'text-center map-location animated fadeIn';
         marker.id = location.id;
-        marker.style.zIndex = 5;
         var expiration = document.createElement('span');
         expiration.className = 'map-expiration label label-success';
         var expired = false;
@@ -219,6 +218,8 @@
   .map-expiration
     margin-bottom: 5px;
     z-index: 20;
+  .map-position
+    z-index: 50;
   .map-avatar
     width: 60px;
     height: 60px;
