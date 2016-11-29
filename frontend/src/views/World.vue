@@ -28,7 +28,8 @@
           curve: 1,
           interactive: true
         },
-        avatar: null
+        avatar: null,
+        markers: []
       }
     },
     mounted () {
@@ -104,11 +105,13 @@
         var expiration = document.createElement('span');
         expiration.className = 'map-expiration label label-success';
         var expired = false;
+        console.log(moment(location.createdAt).add(constants.expiration + Math.random() * 60, 'seconds').toDate());
         $(expiration).countdown(moment(location.createdAt).add(constants.expiration + Math.random() * 60, 'seconds').toDate(), function(event) {
           $(this).html(event.strftime('%M:%S'));
-          if (event.offset.totalSeconds <= constants.expiration / 16 && !expired) {
-            expired = true;
+          if (expired) {
             self.removeLocation(location);
+          } else if (event.offset.totalSeconds <= constants.expiration / 16 && !expired) {
+            expired = true;
           } else if (event.offset.totalSeconds <= constants.expiration / 8 && $(this).hasClass('label-warning')) {
             $(this).removeClass('label-warning').addClass('label-danger');
           } else if (event.offset.totalSeconds <= constants.expiration / 4 && $(this).hasClass('label-success')) {
@@ -148,13 +151,17 @@
         marker.appendChild(icon);
         icon.className = 'map-icon animated';
         icon.onload = () => {
-          new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
+          this.markers.push(new mapboxgl.Marker(marker, { id: location.id, offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map));
         };
         icon.src = 'dist/img/locations/' + location.image + '.png';
       },
       removeLocation (location) {
-        console.log('Removing a location!');
-        //this.locations.splice(this.locations.indexOf(location.id), 1);
+        let found = this.markers.find(l => l._element.id == location.id)
+        if (found) {
+          found.remove();
+          this.markers.splice(this.markers.indexOf(found), 1);
+        }
+        //this.addLocation(api.removeLocation(location.id));
       },
       close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));

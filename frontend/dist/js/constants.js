@@ -1,5 +1,5 @@
 var constants = {
-  expiration: 300,
+  expiration: 120,
   notification: 3000,
   condition: 100,
   api: '//localhost:3000/api',
