@@ -7,7 +7,7 @@
     "dialect": "mariadb",
     "logging": false
   },
-  "prod": {
+  "production": {
     "username": "",
     "password": "",
     "database": "heroyc",

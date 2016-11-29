@@ -11,7 +11,7 @@ const constants = {
     sync: true,
     fixtures: true
   },
-  prod: {
+  production: {
     quest: {
       cron: '0 0 * * * *',
       deadline: 86400
