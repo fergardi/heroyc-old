@@ -32,6 +32,7 @@
       }
     },
     mounted () {
+      self = this;
       this.createMap();
       api.getLocations((data) => {
         this.drawLocations(data);
@@ -97,12 +98,26 @@
       },
       addLocation (location) {
         var marker = document.createElement('div');
-        marker.className = 'text-center';
+        marker.className = 'text-center map-location';
         marker.id = location.id;
         marker.style.zIndex = 5;
+        var expiration = document.createElement('span');
+        expiration.className = 'map-expiration label label-success';
+        var expired = false;
+        $(expiration).countdown(moment(location.createdAt).add(constants.expiration + Math.random() * 60, 'seconds').toDate(), function(event) {
+          $(this).html(event.strftime('%M:%S'));
+          if (event.offset.totalSeconds <= constants.expiration / 16 && !expired) {
+            expired = true;
+            self.removeLocation(location);
+          } else if (event.offset.totalSeconds <= constants.expiration / 8 && $(this).hasClass('label-warning')) {
+            $(this).removeClass('label-warning').addClass('label-danger');
+          } else if (event.offset.totalSeconds <= constants.expiration / 4 && $(this).hasClass('label-success')) {
+            $(this).removeClass('label-success').addClass('label-warning');
+          }
+        });
         marker.addEventListener('click', (e) => {
           e.preventDefault();
-          if (this.close(location)) {
+          if (this.close(location) && !expired) {
             switch(location.image){
               case 'city':
                 this.$router.push({ name: 'city' });
@@ -125,21 +140,21 @@
                 break;
             }  
           } else {
-            notification.danger(Vue.t('alert.map.away'));
+            notification.danger(Vue.t('alert.map.closed'));
           }
         });
-        var expiration = document.createElement('span');
-        expiration.className = 'label label-default';
-        var seconds = moment(location.createdAt).add(constants.expiration, 'minutes').unix() - moment(new Date()).unix();
-        expiration.appendChild(document.createTextNode(seconds));
         marker.appendChild(expiration);
         var icon = new Image();
         marker.appendChild(icon);
-        icon.className = 'map-location animated';
+        icon.className = 'map-icon animated';
         icon.onload = () => {
           new mapboxgl.Marker(marker, { offset: [-icon.naturalWidth/2, -icon.naturalHeight] }).setLngLat([location.lng, location.lat]).addTo(this.map);
         };
         icon.src = 'dist/img/locations/' + location.image + '.png';
+      },
+      removeLocation (location) {
+        console.log('Removing a location!');
+        //this.locations.splice(this.locations.indexOf(location.id), 1);
       },
       close (position) {
         //console.log('The distance between ',this.avatar.getLngLat(),' and ',position,' is ',this.distance(this.avatar.getLngLat(), position));
@@ -166,11 +181,6 @@
       toDeg (rad) {
         return rad * 180 / Math.PI;
       }
-    },
-    computed: {
-      expiration () {
-        return 0;
-      }
     }
   }
 </script>
@@ -184,11 +194,17 @@
   .mapboxgl-canvas
     height: 100% !important;
   .map-location
+    opacity: 0.90;
+  .map-icon
     cursor: pointer;
     display: block;
-  .map-location:hover
+    z-index: 10;
+  .map-icon:hover
     -webkit-animation: tada 1s;
     animation: tada 1s;
+  .map-expiration
+    margin-bottom: 5px;
+    z-index: 20;
   .map-avatar
     width: 60px;
     height: 60px;

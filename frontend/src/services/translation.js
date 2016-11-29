@@ -11,7 +11,7 @@ const translation = {
     },
     alert: {
       map: {
-        away: 'You are too far away from this',
+        closed: 'You are either too far away or too late',
       },
       login: {
         ok: 'Welcome back, Hero',
@@ -354,7 +354,7 @@ const translation = {
     },
     alert: {
       map: {
-        away: 'Estas demasiado lejos de ese sitio',
+        closed: 'Estas demasiado lejos o llegas demasiado tarde',
       },
       login: {
         ok: 'Bienvenido de nuevo, Heroe',
