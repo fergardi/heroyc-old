@@ -2,6 +2,7 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
+var moment = require('moment');
 var factory = require('../../factories/quest');
 var cron = require('../../services/cron');
 var socketio = require('../../services/socketio').io();
@@ -16,8 +17,8 @@ cron.schedule('0 0 * * * *', function(){
     .then(function(quest) {
       models.Quest.findAll({
         where: {createdAt: {
-          $lt: new Date(),
-          $gt: new Date(new Date() - 24 * 60 * 60 * 1000)
+          $lt: moment(),
+          $gt: moment().subtract(1, 'day')
         }},
         include: [models.Resource]
       })
@@ -32,8 +33,8 @@ cron.schedule('0 0 * * * *', function(){
 router.get('/', function(req, res) {
   models.Quest.findAll({
     where: {createdAt: {
-      $lt: new Date(),
-      $gt: new Date(new Date() - 24 * 60 * 60 * 1000)
+      $lt: moment(),
+      $gt: moment().subtract(1, 'day')
     }},
     include: [models.Resource]
   })
