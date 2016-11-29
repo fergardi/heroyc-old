@@ -2,12 +2,17 @@
 var debug = require('debug')('nodapi');
 var app = require('../app').app;
 var models = require('../models');
+var env = process.env.NODE_ENV || 'dev';
 
-models.sequelize.sync({force: true})
+var constants = require('../config/constants');
+
+models.sequelize.sync({force: constants[env].sync})
 .then(function() {
-	const fixtures = require('sequelize-fixtures');
-  console.log('Loading fixtures...');
-	fixtures.loadFile('./fixtures/*.*', models);
+  if (constants[env].fixtures) {
+  	const fixtures = require('sequelize-fixtures');
+    console.log('Loading fixtures...');
+  	fixtures.loadFile('./fixtures/*.*', models);
+  }
 });
 
 var server = require('../app').server;
