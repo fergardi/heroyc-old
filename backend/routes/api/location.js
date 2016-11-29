@@ -2,13 +2,14 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
+var constants = require('../../config/constants');
 var moment = require('moment');
 var factory = require('../../factories/location');
 var cron = require('../../services/cron');
 var socketio = require('../../services/socketio').io();
 
 // crontab a new location
-cron.schedule('0 * * * * *', function(){
+cron.schedule(constants.location.cron, function(){
   models.Location.create(factory.build())
   .then(function(location) {
     socketio.emit('updateLocations', location);
@@ -19,7 +20,7 @@ cron.schedule('0 * * * * *', function(){
 router.get('/', (req, res) => {
   models.Location.findAll({
     where: {createdAt: {
-      $gt: moment().subtract(900, 'seconds'),
+      $gt: moment().subtract(constants.location.deadline, 'seconds'),
       $lt: moment()
     }},
   })

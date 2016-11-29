@@ -2,13 +2,14 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
+var constants = require('../../config/constants');
 var moment = require('moment');
 var factory = require('../../factories/quest');
 var cron = require('../../services/cron');
 var socketio = require('../../services/socketio').io();
 
 // crontab a new quest
-cron.schedule('0 0 * * * *', function(){
+cron.schedule(constants.quest.cron, function(){
   var created = factory.build();
   models.Quest.create(created)
   .then(function(quest) {
@@ -18,7 +19,7 @@ cron.schedule('0 0 * * * *', function(){
       models.Quest.findAll({
         where: {createdAt: {
           $lt: moment(),
-          $gt: moment().subtract(1, 'day')
+          $gt: moment().subtract(constants.quest.deadline, 'seconds')
         }},
         include: [models.Resource]
       })
@@ -34,7 +35,7 @@ router.get('/', function(req, res) {
   models.Quest.findAll({
     where: {createdAt: {
       $lt: moment(),
-      $gt: moment().subtract(1, 'day')
+      $gt: moment().subtract(constants.quest.deadline, 'seconds')
     }},
     include: [models.Resource]
   })
