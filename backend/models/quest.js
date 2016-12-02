@@ -13,8 +13,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // m2m association
-        models.Quest.belongsToMany(models.Resource, {through: 'QuestResource'});
-        models.Resource.belongsToMany(models.Quest, {through: 'QuestResource'});
+        var QuestResource = sequelize.define('QuestResource', {
+        }, {
+          timestamps: false,
+          freezeTableName: true
+        });
+        models.Quest.belongsToMany(models.Resource, {through: QuestResource});
+        models.Resource.belongsToMany(models.Quest, {through: QuestResource});
       }
     },
     freezeTableName: true

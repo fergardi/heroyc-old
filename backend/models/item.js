@@ -3,6 +3,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
+    image: DataTypes.STRING,
+    icon: DataTypes.STRING,
     type: DataTypes.STRING,
     rarity: DataTypes.STRING,
     strength: DataTypes.INTEGER,
@@ -10,13 +12,26 @@ module.exports = function(sequelize, DataTypes) {
     vitality: DataTypes.INTEGER,
     intelligence: DataTypes.INTEGER,
     agility: DataTypes.INTEGER,
-    freeze: DataTypes.BOOLEAN,
-    burn: DataTypes.BOOLEAN,
-    poison: DataTypes.BOOLEAN,
-    shock: DataTypes.BOOLEAN,
-    stun: DataTypes.BOOLEAN,
-    image: DataTypes.STRING,
-    icon: DataTypes.STRING
+    freeze: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    burn: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    poison: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    shock: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    stun: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     timestamps: false,
     freezeTableName: true

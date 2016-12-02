@@ -1,5 +1,5 @@
 'use strict';
 
-var location = require('../factories/location');
+var factory = require('../factories/location');
 
-module.exports = location.bulk(10, true);
+module.exports = factory.bulk(10, true);

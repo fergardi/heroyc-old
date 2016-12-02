@@ -1,5 +1,5 @@
 'use strict';
 
-var quest = require('../factories/quest');
+var factory = require('../factories/quest');
 
-module.exports = quest.bulk(3, true);
+module.exports = factory.bulk(3, true);

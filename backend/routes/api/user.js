@@ -2,6 +2,8 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
+var factory = require('../../factories/player');
+
 // get all users
 router.get('/', function(req, res) {
 	models.User.findAll()
@@ -29,9 +31,15 @@ router.post('/register', function(req, res) {
 	})
 	.then(function(user) {
 		if (user === null)  {
+			var created = factory.build(req.body.name);
 			models.User.create(req.body)
 			.then(function(user) {
-				res.json({status: 'ok', data: user});
+				models.Player.create(created)
+				.then(function(player) {
+					player.addItems(created.Items);
+					user.setPlayer(player);
+					res.json({status: 'ok', data: user});
+				})
 			});	
 		} else {
 			res.json({status: 'ko'});

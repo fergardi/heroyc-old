@@ -3,6 +3,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Spell = sequelize.define('Spell', {
     name: DataTypes.STRING,
+    icon: DataTypes.STRING,
+    image: DataTypes.STRING,
     type: DataTypes.STRING,
     family: DataTypes.STRING,
     damage: DataTypes.INTEGER,
@@ -12,9 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     poison: DataTypes.BOOLEAN,
     shock: DataTypes.BOOLEAN,
     stun: DataTypes.BOOLEAN,
-    freeze: DataTypes.BOOLEAN,
-    icon: DataTypes.STRING,
-    image: DataTypes.STRING
+    freeze: DataTypes.BOOLEAN
   }, {
     timestamps: false,
     freezeTableName: true

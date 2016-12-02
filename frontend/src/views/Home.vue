@@ -38,7 +38,7 @@
                     span {{ 'panel.register' | i18n }}
                 .panel-body
                   form
-                    input.form-control(type='text', id='nick', v-bind:placeholder="$t('placeholder.nick')", v-model='information.nick', required)
+                    input.form-control(type='text', id='name', v-bind:placeholder="$t('placeholder.name')", v-model='information.name', required)
                     input.form-control(type='email', id='username', v-bind:placeholder="$t('placeholder.username')", v-model='information.username', required)
                     input.form-control(type='password', id='password', v-bind:placeholder="$t('placeholder.password')", v-model='information.password', required)
                     br
@@ -60,7 +60,7 @@
           password: 'test'
         },
         information: {
-          nick: 'username',
+          name: 'username',
           username: 'e@mail.com',
           password: 'password'
         },
