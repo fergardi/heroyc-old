@@ -24,6 +24,28 @@
                 i.fa.fa-chevron-left
               input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
       .row
+        .col-md-4(v-for='pack in packs')
+          .panel.text-center(v-bind:class='"panel-" + pack.rarity')
+            .panel-heading
+              .panel-title
+                i.fa.fa-fw.fa-lg.fa-paypal
+                span {{ pack.name | i18n }} 
+            .panel-body
+              .col-xs-12.space-down
+                img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.rarity')
+              .col-xs-12.space-down
+                span.label.label-warning {{ pack.gold }} 
+              .col-xs-12.space-down
+                span.label.label-info {{ pack.platinum }} 
+              .btn-group.btn-block.dropup
+                button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.rarity')
+                  | {{ 'button.buy' | i18n }} 
+                  span.label.label-success {{ pack.euro }} € 
+                ul.dropdown-menu.btn-block.text-center
+                  button.btn.btn-block(v-on:click='paypal(pack)', v-bind:class='"btn-" + pack.rarity')
+                    | {{ 'button.confirm' | i18n }} 
+                    i.fa.fa-lg.fa-paypal 
+      .row
         .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
             i.fa.fa-fw.fa-lg.fa-exclamation-triangle
@@ -36,7 +58,7 @@
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
                   span {{ sale.Item.name | i18n }} 
               .panel-body
-                img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
+                img.thumbnail(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Item.strength * 10 + "%"')
                 .progress
@@ -71,7 +93,7 @@
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
                   span {{ sale.Resource.name | i18n }} 
               .panel-body
-                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
+                img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
                 .btn-group.btn-block.dropup
                   button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
@@ -87,11 +109,11 @@
                   span {{ sale.Recipe.Result.name | i18n }} 
               .panel-body
                 .col-xs-6
-                  img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
                 .col-xs-6
-                  img.thumbnail.resource(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
+                  img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
                 .col-xs-12
-                  img.thumbnail.item(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
                   .progress
@@ -102,24 +124,24 @@
                     .progress-bar.progress-bar-success(v-bind:style='"width: " + sale.Recipe.Result.agility * 10 + "%"')
                   .progress
                     .progress-bar.progress-bar-info(v-bind:style='"width: " + sale.Recipe.Result.defense * 10 + "%"')
-                  span.label.label-danger(v-if="sale.Recipe.Result.burn")
+                  span.label.label-danger(v-if='sale.Recipe.Result.burn')
                     i.ra.ra-small-fire
-                  span.label.label-success(v-if="sale.Recipe.Result.poison")
+                  span.label.label-success(v-if='sale.Recipe.Result.poison')
                     i.ra.ra-droplet
-                  span.label.label-warning(v-if="sale.Recipe.Result.shock")
+                  span.label.label-warning(v-if='sale.Recipe.Result.shock')
                     i.ra.ra-lightning-bolt
-                  span.label.label-primary(v-if="sale.Recipe.Result.freeze")
+                  span.label.label-primary(v-if='sale.Recipe.Result.freeze')
                     i.ra.ra-snowflake
-                  span.label.label-info(v-if="sale.Recipe.Result.stun")
+                  span.label.label-info(v-if='sale.Recipe.Result.stun')
                     i.ra.ra-broken-skull
                   .btn-group.btn-block.dropup
-                    button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
+                    button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.buy' | i18n }} 
                       span.label.label-info {{ sale.platinum }} 
                     ul.dropdown-menu.btn-block.text-center
                       button.btn.btn-block.btn-success(v-on:click='buy(sale)')
                         | {{ 'button.confirm' | i18n }} 
-                        i.fa.fa-lg.fa-check 
+                        i.fa.fa-lg.fa-check    
 </template>
 
 <script>
@@ -135,15 +157,19 @@
         min: 0,
         max: 9999,
         sales: [],
+        packs: [],
         platinum: 0
       }
     },
     created () {
       api.getPlayer(authentication.id || 1, (player) => {
         this.platinum = player.platinum;
-        api.getMarket((sales) => {
-          this.sales = sales;
-        });
+      });
+      api.getMarket((sales) => {
+        this.sales = sales;
+      });
+      api.getPacks((packs) => {
+        this.packs = packs;
       });
     },
     methods: {
@@ -165,6 +191,9 @@
           }
           notification.success(Vue.t('alert.market.purchase', { platinum: sale.platinum , name: Vue.t(purchase) }));
         });
+      },
+      paypal (sale) {
+        notification.success('TODO');
       }
     },
     computed: {

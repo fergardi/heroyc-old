@@ -340,6 +340,11 @@ const translation = {
       telescope: 'Pirate Telescope',
       bone: 'Cursed Bone',
       torch: 'Fired Torch',
+    },
+    pack: {
+      epic: 'Epic Pack',
+      legendary: 'Legendary Pack',
+      heroyc: 'Heroyc Pack'
     }
   },
   es: {
@@ -684,6 +689,11 @@ const translation = {
       telescope: 'Telescopio Pirata',
       bone: 'Hueso Maldito',
       torch: 'Antorcha Encendida',
+    },
+    pack: {
+      epic: 'Pack Epico',
+      legendary: 'Pack Legendario',
+      heroyc: 'Pack Heroico'
     }
   }
 };

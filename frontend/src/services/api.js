@@ -6,6 +6,7 @@ var recipes = [];
 var spells = [];
 var skills = [];
 var monsters = [];
+var packs = [];
 
 const api = {
   getItems (callback) {
@@ -106,6 +107,17 @@ const api = {
     .then((response) => {
       callback(response.data);
     });
+  },
+  getPacks (callback) {
+    if (packs.length === 0) {
+      $.get(`${url}/packs`)
+      .then((response) => {
+        packs = response.data;
+        callback(packs);
+      });
+    } else {
+      callback(packs);
+    }
   },
   getLocations (callback) {
     $.get(`${url}/locations`)

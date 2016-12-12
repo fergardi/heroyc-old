@@ -1,0 +1,35 @@
+[
+  {
+    "model": "Pack",
+    "data": {
+      "name": "pack.epic",
+      "image": "epic",
+      "rarity": "primary",
+      "platinum": 10,
+      "gold": 50,
+      "euro": 0.99
+    }
+  },
+  {
+    "model": "Pack",
+    "data": {
+      "name": "pack.legendary",
+      "image": "legendary",
+      "rarity": "warning",
+      "platinum": 50,
+      "gold": 250,
+      "euro": 2.99
+    }
+  },
+  {
+    "model": "Pack",
+    "data": {
+      "name": "pack.heroyc",
+      "image": "heroyc",
+      "rarity": "info",
+      "platinum": 100,
+      "gold": 500,
+      "euro": 4.99
+    }
+  }
+]

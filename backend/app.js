@@ -31,6 +31,7 @@ app.use('/api/quests', require('./routes/api/quest'));
 app.use('/api/advices', require('./routes/api/advice'));
 app.use('/api/skills', require('./routes/api/skill'));
 app.use('/api/sales', require('./routes/api/sale'));
+app.use('/api/packs', require('./routes/api/pack'));
 app.use('/api/items', require('./routes/api/item'));
 
 // catch 404 and forward to error handler
