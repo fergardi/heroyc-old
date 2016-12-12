@@ -194,27 +194,27 @@
         }
       },
       created: function() {
-        api.getPlayer(1, (data) => {
-          this.id = data.id;
-          this.equipments = data.Equipments;
-          this.items = data.Items;
-          this.spells = data.Spells;
-          this.skills = data.Skills;
-          this.quests = data.Quests;
-          this.resources = data.Resources;
-          this.recipes = data.Recipes;
-          this.name = data.name;
-          this.level = data.level;
-          this.experience = data.experience;
-          this.image = data.image;
-          this.gold = data.gold;
-          this.platinum = data.platinum;
+        api.getPlayer(1, (player) => {
+          this.id = player.id;
+          this.equipments = player.Equipments;
+          this.items = player.Items;
+          this.spells = player.Spells;
+          this.skills = player.Skills;
+          this.quests = player.Quests;
+          this.resources = player.Resources;
+          this.recipes = player.Recipes;
+          this.name = player.name;
+          this.level = player.level;
+          this.experience = player.experience;
+          this.image = player.image;
+          this.gold = player.gold;
+          this.platinum = player.platinum;
         });
       },
       methods: {
         equip: function(item) {
-          api.updateEquipment(this.id, item.id, (data) => {
-            this.equipments = data.Equipments;
+          api.updateEquipment(this.id, item.id, (player) => {
+            this.equipments = player.Equipments;
             notification.success(Vue.t('alert.inventory.equip', { item: Vue.t(item.name) }));
           });
         }

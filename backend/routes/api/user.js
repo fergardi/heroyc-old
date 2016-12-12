@@ -8,18 +8,18 @@ var factory = require('../../factories/player');
 router.get('/', function(req, res) {
 	models.User.findAll()
 	.then(function(users) {
-		res.json({status: 'ok', data: users});
+		res.status(200).json(users);
 	});
 });
 
 // get single user
-router.get('/:id', function(req, res) {
-	models.User.findById(req.params.id)
+router.get('/:userId', function(req, res) {
+	models.User.findById(req.params.userId)
 	.then(function(user) {
-		if (user !== null) {
-			res.json({status: 'ok', data: user});
+		if (user) {
+			res.status(200).json(user);
 		} else {
-			res.json({status: 'ko'});
+			res.status(418).end();
 		}
 	});
 });
@@ -30,7 +30,7 @@ router.post('/register', function(req, res) {
 		where: { username: req.body.username }
 	})
 	.then(function(user) {
-		if (user === null)  {
+		if (!user)  {
 			var created = factory.build(req.body.name);
 			models.User.create(req.body)
 			.then(function(user) {
@@ -38,11 +38,11 @@ router.post('/register', function(req, res) {
 				.then(function(player) {
 					player.addItems(created.Items);
 					user.setPlayer(player);
-					res.json({status: 'ok', data: user});
+					res.status(200).json(user);
 				})
 			});	
 		} else {
-			res.json({status: 'ko'});
+			res.status(418).end();
 		}
 	})
 });
@@ -53,10 +53,10 @@ router.post('/login', function(req, res) {
 		where: { username: req.body.username, password: req.body.password }
 	})
 	.then(function(user) {
-		if (user !== null) {
-			res.json({status: 'ok', data: user});
+		if (user) {
+			res.status(200).json(user);
 		} else {
-			res.json({status: 'ko'});
+			res.status(418).end();
 		}
 	});
 });

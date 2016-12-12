@@ -2,29 +2,23 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
-// GET
+// get all items
 router.get('/', function(req, res) {
   models.Item.findAll()
   .then(function(items) {
-    res.json({status: 'ok', data: items});
+    res.status(200).json(items);
   });
 });
-// GET
-router.get('/:id', function(req, res) {
-  models.Item.findById(req.params.id)
+
+// get single item
+router.get('/:itemId', function(req, res) {
+  models.Item.findById(req.params.itemId)
   .then(function(item) {
-    if (item !== null) {
-      res.json({status: 'ok', data: item});
+    if (item) {
+      res.status(200).json(item);
     } else {
-      res.json({status: 'ko'});
+      res.status(418).end();
     }
-  });
-});
-// POST
-router.post('/', function(req, res) {
-  models.Item.create(req.body)
-  .then(function(item) {
-    res.json({status: 'ok', data: item});
   });
 });
 

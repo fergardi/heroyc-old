@@ -56,8 +56,8 @@
       }
     },
     created () {
-      api.getSpells((data) => {
-        this.spells = data;
+      api.getSpells((spells) => {
+        this.spells = spells;
       });
     },
     computed: {

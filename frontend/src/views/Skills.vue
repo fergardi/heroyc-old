@@ -52,8 +52,8 @@
       }
     },
     created () {
-      api.getSkills((data) => {
-        this.skills = data;
+      api.getSkills((skills) => {
+        this.skills = skills;
       });
     },
     computed: {

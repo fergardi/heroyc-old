@@ -274,24 +274,24 @@
     },
     created () {
       self = this;
-      api.getPlayer(authentication.id || 1, (data) => {
-        this.player.id = data.id;
-        this.player.level = data.level;
-        this.player.experience = data.experience;
-        this.player.equipments = data.Equipments;
-        this.player.spells = data.Spells;
-        this.player.skills = data.Skills;
-        this.player.image = data.image;
-        this.player.name = data.name;
-        this.player.weapon = data.Equipments[3];
+      api.getPlayer(authentication.id || 1, (player) => {
+        this.player.id = player.id;
+        this.player.level = player.level;
+        this.player.experience = player.experience;
+        this.player.equipments = player.Equipments;
+        this.player.spells = player.Spells;
+        this.player.skills = player.Skills;
+        this.player.image = player.image;
+        this.player.name = player.name;
+        this.player.weapon = player.Equipments[3];
         this.player.vitality = this.vitality();
         this.player.strength = this.strength();
         this.player.agility = this.agility();
         this.player.intelligence = this.intelligence();
         this.player.defense = this.defense();
-        api.getLocation(this.$route.params.locationId || 1, (data) => {
-          this.location = data;
-          this.location.Monster.vitality *= 5 * this.player.level;
+        api.getLocation(this.$route.params.locationId || 1, (location) => {
+          this.location = location;
+          this.location.Monster.vitality *= this.player.level * 5;
           // extend monster object with states after overriding
           $.extend(this.location.Monster, { 
             states: {

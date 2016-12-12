@@ -51,8 +51,8 @@
       }
     },
     created () {
-      api.getMonsters((data) => {
-        this.monsters = data;
+      api.getMonsters((monsters) => {
+        this.monsters = monsters;
       });
     },
     computed: {

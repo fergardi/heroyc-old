@@ -63,6 +63,11 @@ const translation = {
       city: {
         buy: 'You spent <span class="label label-warning">{gold} gold</span> to buy <span class="label label-{rarity}">{name}</span>',
       },
+      market: {
+        buy: 'You spent <span class="label label-info">{platinum} platinum</span> to buy <span class="label label-{rarity}">{name}</span>',
+        paypal: 'You bought the <span class="label label-{rarity}">{name}</span> pack, thanks for your support!',
+        error: 'An error ocurred',
+      },
       inn: {
         accept: 'You accepted the quest <span class="label label-{rarity}">{name}</span>',
       },
@@ -420,6 +425,11 @@ const translation = {
       },
       city: {
         buy: 'Has gastado <span class="label label-warning">{gold} oro</span> en comprar <span class="label label-{rarity}">{name}</span>',
+      },
+      market: {
+        buy: 'Has gastado <span class="label label-info">{platinum} platino</span> en comprar <span class="label label-{rarity}">{name}</span>',
+        paypal: 'Has comprado el pack <span class="label label-{rarity}">{name}</span>, gracias por tu soporte!',
+        error: 'Ha ocurrido un error',
       },
       inn: {
         accept: 'Has aceptado la mision <span class="label label-{rarity}">{name}</span>',

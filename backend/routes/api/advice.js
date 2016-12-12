@@ -6,7 +6,7 @@ var router  = express.Router();
 router.get('/', function(req, res) {
   models.Advice.findAll()
   .then(function(advices) {
-    res.json({status: 'ok', data: advices});
+    res.status(200).json(advices);
   });
 });
 

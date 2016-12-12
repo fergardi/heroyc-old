@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     include: [models.Spell, models.Skill]
   })
   .then(function(monsters) {
-    res.json({status: 'ok', data: monsters});
+    res.status(200).json(monsters);
   });
 });
 
@@ -18,8 +18,12 @@ router.get('/:monsterId', function(req, res) {
     where: { id: req.params.monsterId },
     include: [models.Spell, models.Skill]
   })
-  .then(function(monsters) {
-    res.json({status: 'ok', data: monsters});
+  .then(function(monster) {
+    if (monster) {
+      res.status(200).json(monster);
+    } else {
+      res.status(418).end();
+    }
   });
 });
 

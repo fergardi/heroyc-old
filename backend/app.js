@@ -45,14 +45,14 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.json(err);
+    res.status(418).end();
   });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.json(err);
+  res.status(418).end();
 });
 
 module.exports = { app: app, server: server, socketio: io };

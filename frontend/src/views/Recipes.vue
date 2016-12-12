@@ -56,8 +56,8 @@
       }
     },
     created () {
-      api.getRecipes((data) => {
-        this.recipes = data;
+      api.getRecipes((recipes) => {
+        this.recipes = recipes;
       });
     },
     computed: {

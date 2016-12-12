@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
     }},
   })
   .then((locations) => {
-    res.json({status: 'ok', data: locations});
+    res.status(200).json(locations);
   });
 });
 
@@ -44,7 +44,11 @@ router.get('/:locationId', (req, res) => {
     ]
   })
   .then((location) => {
-    res.json({status: 'ok', data: location});
+    if (location){
+      res.status(200).json(location);
+    } else {
+      res.status(418).end();
+    }
   });
 });
 

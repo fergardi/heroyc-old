@@ -189,11 +189,19 @@
           if (sale.Recipe !== null) {
             var purchase = sale.Recipe.Result.name;
           }
-          notification.success(Vue.t('alert.market.purchase', { platinum: sale.platinum , name: Vue.t(purchase) }));
+          notification.success(Vue.t('alert.market.buy', { platinum: sale.platinum , name: Vue.t(purchase) }));
         });
       },
-      paypal (sale) {
-        notification.danger('TODO');
+      paypal (pack) {
+        api.buyPack(authentication.id || 1, pack.id, (player, pack, error) => {
+          if (!error) {
+            api.addGold(player.id, pack.gold);
+            api.addPlatinum(player.id, pack.platinum);
+            notification.success(Vue.t('alert.market.paypal', { rarity: sale.rarity, name: Vue.t(pack.name) }));
+          } else {
+            notification.danger(Vue.t('alert.market.error'));
+          }
+        })
       }
     },
     computed: {

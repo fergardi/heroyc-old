@@ -2,11 +2,11 @@ var models  = require('../../models');
 var express = require('express');
 var router  = express.Router();
 
-// GET
+// get all resources
 router.get('/', function(req, res) {
   models.Resource.findAll()
   .then(function(resources) {
-    res.json({status: 'ok', data: resources});
+    res.status(200).json(resources);
   });
 });
 

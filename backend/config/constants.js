@@ -8,6 +8,22 @@ const constants = {
       cron: '0 * * * * *',
       deadline: 900
     },
+    database: {
+      username: 'root',
+      password: 'root',
+      database: 'heroyc',
+      host: 'localhost',
+      dialect: 'mariadb',
+      logging: true
+    },
+    paypal: {
+      username: 'username',
+      password: 'password',
+      signature: 'signature',
+      return: '/',
+      cancel: '/',
+      debug: true
+    },
     sync: true,
     fixtures: true
   },
@@ -19,6 +35,22 @@ const constants = {
     location: {
       cron: '0 * * * * *',
       deadline: 900
+    },
+    database: {
+      username: '',
+      password: '',
+      database: '',
+      host: '',
+      dialect: '',
+      logging: false
+    },
+    paypal: {
+      username: '',
+      password: '',
+      signature: '',
+      return: '',
+      cancel: '',
+      debug: false
     },
     sync: true,
     fixtures: true

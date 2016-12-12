@@ -18,11 +18,11 @@
         current: {},
         options: {
           zoom: 15,
-          center: [-5.5, 42.5],
           pitch: 45,
+          center: [0, 0],
           token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
-          style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
-          //style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
+          //style: 'mapbox://styles/fergardi/civamajjq003t2imgv46s299o',
+          style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
           range: 1000,
           speed: 1,
@@ -36,10 +36,10 @@
     mounted () {
       self = this;
       this.createMap();
-      api.getLocations((data) => {
-        this.drawLocations(data);
+      api.getLocations((locations) => {
+        this.drawLocations(locations);
       });
-      setInterval(this.geoLocate(), 60000);
+      setInterval(this.geoLocate(), 5000);
     },
     sockets:{
       connect (){
@@ -54,10 +54,10 @@
         mapboxgl.accessToken = this.options.token;
         this.map = new mapboxgl.Map({
           container: 'map',
+          center: this.options.center,
           style: this.options.style,
           pitch: this.options.pitch,
           zoom: this.options.zoom,
-          center: this.options.center,
           interactive: this.options.interactive,
           attributionControl: { position: this.position }
         });
@@ -77,7 +77,7 @@
         });
       },
       move (position) {
-        this.map.flyTo({
+        this.map.jumpTo({
           center: position,
           speed: this.options.speed,
           curve: this.options.curve,

@@ -6,7 +6,7 @@ var router  = express.Router();
 router.get('/', function(req, res) {
   models.Skill.findAll()
   .then(function(skills) {
-    res.json({status: 'ok', data: skills});
+    res.status(200).json(skills)
   });
 });
 

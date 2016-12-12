@@ -14,20 +14,24 @@ cron.schedule(constants[env].quest.cron, function(){
   var created = factory.build();
   models.Quest.create(created)
   .then(function(quest) {
-    quest.setResources(created.Resources);
-    quest.reload()
-    .then(function(quest) {
-      models.Quest.findAll({
-        where: {createdAt: {
-          $lt: moment(),
-          $gt: moment().subtract(constants[env].quest.deadline, 'seconds')
-        }},
-        include: [models.Resource]
-      })
-      .then(function(quests) {
-        socketio.emit('updateQuests', quests);
+    if (quest) {
+      quest.setResources(created.Resources);
+      quest.reload()
+      .then(function(quest) {
+        models.Quest.findAll({
+          where: {createdAt: {
+            $lt: moment(),
+            $gt: moment().subtract(constants[env].quest.deadline, 'seconds')
+          }},
+          include: [models.Resource]
+        })
+        .then(function(quests) {
+          socketio.emit('updateQuests', quests);
+        });
       });
-    });
+    } else {
+      res.status(418).end();
+    }
   });
 });
 
@@ -41,21 +45,21 @@ router.get('/', function(req, res) {
     include: [models.Resource]
   })
   .then(function(quests) {
-    res.json({status: 'ok', data: quests});
+    res.status(200).json(quests);
   });
 });
 
 // get single quest
-router.get('/:id', function(req, res) {
+router.get('/:questId', function(req, res) {
   models.Quest.find({
-    where: { id: req.params.id },
+    where: { id: req.params.questId },
     include: [models.Resource]
   })
   .then(function(quest) {
-    if (quest !== null) {
-      res.json({status: 'ok', data: quest});
+    if (quest) {
+      res.status(200).json(quest);
     } else {
-      res.json({status: 'ko'});
+      res.status(418).end();
     }
   });
 });

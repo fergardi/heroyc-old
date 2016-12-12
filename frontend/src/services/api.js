@@ -13,8 +13,8 @@ const api = {
     if (items.length === 0) {
       $.get(`${url}/items`)
       .then((response) => {
-        items = response.data;
-        callback(items);
+        items = response;
+        callback(response);
       });
     } else {
       callback(items);
@@ -27,7 +27,7 @@ const api = {
     if (resources.length === 0) {
       $.get(`${url}/resources`)
       .then((response) => {
-        resources = response.data;
+        resources = response;
         callback(resources);
       });
     } else {
@@ -41,7 +41,7 @@ const api = {
     if (recipes.length === 0) {
       $.get(`${url}/recipes`)
       .then((response) => {
-        recipes = response.data;
+        recipes = response;
         callback(recipes);
       });
     } else {
@@ -55,7 +55,7 @@ const api = {
     if (spells.length === 0) {
       $.get(`${url}/spells`)
       .then((response) => {
-        spells = response.data;
+        spells = response;
         callback(spells);
       });
     } else {
@@ -69,7 +69,7 @@ const api = {
     if (skills.length === 0) {
       $.get(`${url}/skills`)
       .then((response) => {
-        skills = response.data;
+        skills = response;
         callback(skills);
       });
     } else {
@@ -83,7 +83,7 @@ const api = {
     if (monsters.length === 0) {
       $.get(`${url}/monsters`)
       .then((response) => {
-        monsters = response.data;
+        monsters = response;
         callback(monsters);
       });
     } else {
@@ -93,66 +93,69 @@ const api = {
   getSales (callback) {
     $.get(`${url}/sales`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   buySale(player, sale, callback) {
     $.delete(`${url}/sales/${sale}/buy/${player}`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getMarket (callback) {
     $.get(`${url}/sales/market`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getPacks (callback) {
     if (packs.length === 0) {
       $.get(`${url}/packs`)
       .then((response) => {
-        packs = response.data;
+        packs = response;
         callback(packs);
       });
     } else {
       callback(packs);
     }
   },
+  buyPack(player, pack, callback) {
+    
+  },
   getLocations (callback) {
     $.get(`${url}/locations`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getLocation (id, callback) {
     $.get(`${url}/locations/${id}`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   addLocation (callback) {
     $.post(`${url}/locations/add`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getPlayers (callback) {
     $.get(`${url}/players`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getPlayer (player, callback) {
     $.get(`${url}/players/${player}`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   getQuests (callback) {
     $.get(`${url}/quests`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   addQuest (player, quest) {
@@ -170,7 +173,7 @@ const api = {
   getEquipments (player, callback) {
     $.get(`${url}/players/${player}/equipments`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   },
   updateEquipment (player, item, callback) {
@@ -178,14 +181,14 @@ const api = {
     .then((ok) => {
       $.get(`${url}/players/${player}`)
       .then((response) => {
-        callback(response.data);
+        callback(response);
       })
     });
   },
   getAdvices (callback) {
     $.get(`${url}/advices`)
     .then((response) => {
-      callback(response.data);
+      callback(response);
     });
   }
 }

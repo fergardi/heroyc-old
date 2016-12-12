@@ -78,7 +78,7 @@
         this.advices = data;
         setInterval(() => {
           this.advice = this.advices[Math.floor(Math.random() * this.advices.length)];
-        }, constants.notification);
+        }, constants.notification * 4);
       });
     },
     methods: {

@@ -61,8 +61,8 @@
       }
     },
     created () {
-      api.getItems((data) => {
-        this.items = data;
+      api.getItems((items) => {
+        this.items = items;
       });
     },
     computed: {

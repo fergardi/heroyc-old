@@ -42,8 +42,8 @@
       }
     },
     created () {
-      api.getResources((data) => {
-        this.resources = data;
+      api.getResources((resources) => {
+        this.resources = resources;
       });
     },
     computed: {
