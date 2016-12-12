@@ -1,6 +1,6 @@
 let api = constants.api;
 
-export default {
+const authentication = {
   logged: false,
   id: null,
   login (credentials, callback) {
@@ -28,3 +28,5 @@ export default {
     });
   }
 }
+
+export default authentication;
