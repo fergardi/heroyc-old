@@ -14,7 +14,7 @@ const constants = {
       database: 'heroyc',
       host: 'localhost',
       dialect: 'mariadb',
-      logging: true
+      logging: false
     },
     paypal: {
       username: 'username',

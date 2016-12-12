@@ -344,7 +344,7 @@ router.get('/:playerId/pack/:packId', function(req, res) {
       .then(function(pack) {
         if (pack) {
           // paypal.pay('Invoice number', amount, 'description', 'currency', requireAddress, callback);
-          paypal.pay(new Date(), pack.euro, pack.descriptionm, 'EUR', false, (err, url) => {
+          paypal.pay('0001', pack.euro, pack.descriptionm, 'EUR', false, (err, url) => {
             if (err) {
               res.status(418).end();
             } else {
