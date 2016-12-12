@@ -6,8 +6,18 @@ const translation = {
       change: 'You changed the language to English',
     },
     advice: {
-      bla: 'Blah',
-      ble: 'Bleh'
+      gold: 'The Gold is used to buy in the City',
+      platinum: 'The Platinum is used to buy in the Market',
+      city: 'The City sells Items, Recipes and Resources de otros jugadores',
+      market: 'The Market sells Items, Recipes and Resources especiales',
+      forje: 'The Forge allows to craft new Items',
+      inn: 'The Inn offer Quests to earn Gold, Platinum and Experience',
+      castle: 'The Castle hosts Monsters and rewards with Skills',
+      tower: 'The Tower hosts Monsters and rewards with Spells',
+      dungeon: 'The Dungeon hosts Monsters and rewards with Items',
+      mine: 'The Mine hosts Monsters and rewards with Resources',
+      ruins: 'The Ruins hosts Monsters and rewards with Recipes',
+      world: 'The World allows you to reach interesting Places',
     },
     alert: {
       map: {
@@ -354,8 +364,18 @@ const translation = {
       change: 'Has cambiado el idioma a Español',
     },
     advice: {
-      bla: 'Bla',
-      ble: 'Ble'
+      gold: 'El Oro sirve para comprar en la Ciudad',
+      platinum: 'El Platino sirve para comprar en el Mercado',
+      city: 'La Ciudad vende Objetos, Recetas y Recursos de otros jugadores',
+      market: 'El Mercado vende Objetos, Recetas y Recursos especiales',
+      forje: 'La Forja permite conseguir nuevos Objetos',
+      inn: 'La Posada ofrece Misiones para ganar Oro, Platino y Experiencia',
+      castle: 'El Castillo alberga Monstruos y recompensa con Habilidades',
+      tower: 'La Torre alberga Monstruos y recompensa con Hechizos',
+      dungeon: 'La Mazmorra alberga Monstruos y recompensa con Objetos',
+      mine: 'La Mina alberga Monstruos y recompensa con Recursos',
+      ruins: 'Las Ruinas albergan Monstruos y recompensa con Recetas',
+      world: 'El Mundo te permite llegar a Lugares interesantes',
     },
     alert: {
       map: {

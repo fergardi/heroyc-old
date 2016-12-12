@@ -62,7 +62,7 @@
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.gold }} 
                   ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                    button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }} 
                       i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity', v-if='sale.Resource')
@@ -77,7 +77,7 @@
                     | {{ 'button.buy' | i18n }} 
                     span.label.label-warning {{ sale.gold }} 
                   ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                    button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }} 
                       i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity', v-if='sale.Recipe')
@@ -117,7 +117,7 @@
                       | {{ 'button.buy' | i18n }} 
                       span.label.label-warning {{ sale.gold }} 
                     ul.dropdown-menu.btn-block.text-center
-                      button.btn.btn-block.btn-success(v-on:click='buy(sale)')
+                      button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                         | {{ 'button.confirm' | i18n }} 
                         i.fa.fa-lg.fa-check 
 </template>

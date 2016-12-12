@@ -4,7 +4,7 @@
       .row.hidden-xs
         .col-xs-12
           .page-header
-            h1 {{ 'title.market' | i18n }} | 
+            h1 {{ 'title.market' | i18n }} |
               small {{ 'subtitle.market' | i18n }}
       .row#title
         form.form-horizontal.form-group
@@ -12,39 +12,17 @@
             .input-group
               .input-group-addon
                 i.fa.fa-search
-              input(v-model='filter', type='search', class='form-control', v-bind:placeholder="$t('placeholder.market')")
+              input.form-control(v-model='filter', type='search', v-bind:placeholder="$t('placeholder.market')")
           .col-xs-3
             .input-group
               .input-group-addon
                 i.fa.fa-chevron-right
-              input(v-model='min', type='number', min='0', class='form-control', v-bind:placeholder="$t('placeholder.min')")
+              input.form-control(v-model='min', type='number', min='0', v-bind:placeholder="$t('placeholder.min')")
           .col-xs-3
             .input-group
               .input-group-addon
                 i.fa.fa-chevron-left
-              input(v-model='max', type='number', max='9999', class='form-control', v-bind:placeholder="$t('placeholder.max')")
-      .row
-        .col-md-4(v-for='pack in packs')
-          .panel.text-center(v-bind:class='"panel-" + pack.rarity')
-            .panel-heading
-              .panel-title
-                i.fa.fa-fw.fa-lg.fa-paypal
-                span {{ pack.name | i18n }} 
-            .panel-body
-              .col-xs-12.space-down
-                img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.rarity')
-              .col-xs-12.space-down
-                span.label.label-warning {{ pack.gold }} 
-              .col-xs-12.space-down
-                span.label.label-info {{ pack.platinum }} 
-              .btn-group.btn-block.dropup
-                button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.rarity')
-                  | {{ 'button.buy' | i18n }} 
-                  span.label.label-success {{ pack.euro }} € 
-                ul.dropdown-menu.btn-block.text-center
-                  button.btn.btn-block(v-on:click='paypal(pack)', v-bind:class='"btn-" + pack.rarity')
-                    | {{ 'button.confirm' | i18n }} 
-                    i.fa.fa-lg.fa-paypal 
+              input.form-control(v-model='max', type='number', max='9999', v-bind:placeholder="$t('placeholder.max')")
       .row
         .col-xs-12.animated.fadeIn(v-if='!filtered.length')
           .well.well-sm.text-center
@@ -56,7 +34,7 @@
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
-                  span {{ sale.Item.name | i18n }} 
+                  span {{ sale.Item.name | i18n }}
               .panel-body
                 img.thumbnail(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
                 .progress
@@ -82,31 +60,31 @@
                 .btn-group.btn-block.dropup
                   button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
-                    span.label.label-info {{ sale.platinum }} 
+                    span.label.label-info {{ sale.platinum }}
                   ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
-                      | {{ 'button.confirm' | i18n }} 
+                    button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
+                      | {{ 'button.confirm' | i18n }}
                       i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity', v-if='sale.Resource')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
-                  span {{ sale.Resource.name | i18n }} 
+                  span {{ sale.Resource.name | i18n }}
               .panel-body
                 img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
                 .btn-group.btn-block.dropup
                   button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
-                    span.label.label-info {{ sale.platinum }} 
+                    span.label.label-info {{ sale.platinum }}
                   ul.dropdown-menu.btn-block.text-center
-                    button.btn.btn-block.btn-success(v-on:click='buy(sale)')
-                      | {{ 'button.confirm' | i18n }} 
+                    button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
+                      | {{ 'button.confirm' | i18n }}
                       i.fa.fa-lg.fa-check 
             .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity', v-if='sale.Recipe')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
-                  span {{ sale.Recipe.Result.name | i18n }} 
+                  span {{ sale.Recipe.Result.name | i18n }}
               .panel-body
                 .col-xs-6
                   img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
@@ -137,11 +115,33 @@
                   .btn-group.btn-block.dropup
                     button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.buy' | i18n }} 
-                      span.label.label-info {{ sale.platinum }} 
+                      span.label.label-info {{ sale.platinum }}
                     ul.dropdown-menu.btn-block.text-center
-                      button.btn.btn-block.btn-success(v-on:click='buy(sale)')
-                        | {{ 'button.confirm' | i18n }} 
+                      button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
+                        | {{ 'button.confirm' | i18n }}
                         i.fa.fa-lg.fa-check    
+      .row
+        .col-xs-4(v-for='pack in packs')
+          .panel.text-center(v-bind:class='"panel-" + pack.rarity')
+            .panel-heading
+              .panel-title
+                i.fa.fa-fw.fa-lg.fa-paypal
+                span {{ pack.name | i18n }}
+            .panel-body
+              .col-xs-12.space-down
+                img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.rarity')
+              .col-xs-12.space-down
+                span.label.label-warning {{ pack.gold }}
+              .col-xs-12.space-down
+                span.label.label-info {{ pack.platinum }}
+              .btn-group.btn-block.dropup
+                button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.rarity')
+                  | {{ 'button.buy' | i18n }} 
+                  span.label.label-default {{ pack.euro }} €
+                ul.dropdown-menu.btn-block.text-center
+                  button.btn.btn-block(v-on:click='paypal(pack)', v-bind:class='"btn-" + pack.rarity')
+                    | {{ 'button.confirm' | i18n }}
+                    i.fa.fa-lg.fa-paypal 
 </template>
 
 <script>
@@ -193,7 +193,7 @@
         });
       },
       paypal (sale) {
-        notification.success('TODO');
+        notification.danger('TODO');
       }
     },
     computed: {

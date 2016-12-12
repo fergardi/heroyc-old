@@ -118,8 +118,8 @@
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
+    font-size: 90% !important;
     font-weight: bold;
-    font-size: inherit;
     line-height: 1;
     vertical-align: baseline;
     white-space: nowrap;

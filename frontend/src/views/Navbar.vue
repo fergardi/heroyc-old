@@ -104,5 +104,5 @@
   li.dropdown a
     cursor: pointer;
   .navbar-header span
-    margin-top: 16px;
+    margin-top: 17px;
 </style>

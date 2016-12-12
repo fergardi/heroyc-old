@@ -57,7 +57,7 @@
                       | {{ 'button.craft' | i18n }} 
                       span.label.label-warning {{ recipe.gold }} 
                     ul.dropdown-menu.btn-block.text-center
-                      button.btn.btn-block.btn-success(v-on:click='craft(recipe)')
+                      button.btn.btn-block(v-on:click='craft(recipe)', v-bind:class='can(recipe) ? "btn-success" : "btn-danger disabled"')
                         | {{ 'button.confirm' | i18n }} 
                         i.fa.fa-lg.fa-check      
 </template>
@@ -73,11 +73,17 @@
       return {
         filter: '',
         recipes: [],
+        items: [],
+        equipments: [],
+        resources: []
       }
     },
     created () {
       api.getPlayer(authentication.id || 1, (data) => {
         this.recipes = data.Recipes;
+        this.items = data.Items;
+        this.equipments = data.Equipments;
+        this.resources = data.Resources;
       });
     },
     methods: {
