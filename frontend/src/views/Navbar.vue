@@ -74,8 +74,9 @@
       }
     },
     created () {
-      api.getAdvices((data) => {
-        this.advices = data;
+      api.getAdvices((advices) => {
+        this.advices = advices;
+        this.advice = this.advices[0];
         setInterval(() => {
           this.advice = this.advices[Math.floor(Math.random() * this.advices.length)];
         }, constants.notification * 4);
