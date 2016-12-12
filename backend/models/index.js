@@ -7,7 +7,7 @@ var env = process.env.NODE_ENV || 'dev';
 //var config = require(path.join(__dirname, '..', 'config', 'database.json'))[env];
 //var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var constants = require('../config/constants');
-var sequelize = new Sequelize(constants[env].database.database, constants[env].database.username, constants[env].database.password);
+var sequelize = new Sequelize(constants[env].database.database, constants[env].database.username, constants[env].database.password, constants[env].database);
 var db = {};
 
 fs

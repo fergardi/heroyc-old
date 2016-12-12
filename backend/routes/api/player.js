@@ -343,6 +343,7 @@ router.get('/:playerId/pack/:packId', function(req, res) {
       models.Pack.findById(req.params.packId)
       .then(function(pack) {
         if (pack) {
+          // https://github.com/totaljs/node-paypal-express-checkout
           // paypal.pay('Invoice number', amount, 'description', 'currency', requireAddress, callback);
           paypal.pay('0001', pack.euro, pack.descriptionm, 'EUR', false, (err, url) => {
             if (err) {
