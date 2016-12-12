@@ -3,6 +3,7 @@
     "model": "Pack",
     "data": {
       "name": "pack.epic",
+      "description": "pack.description",
       "image": "epic",
       "rarity": "primary",
       "platinum": 10,
@@ -14,6 +15,7 @@
     "model": "Pack",
     "data": {
       "name": "pack.legendary",
+      "description": "pack.description",
       "image": "legendary",
       "rarity": "warning",
       "platinum": 50,
@@ -25,6 +27,7 @@
     "model": "Pack",
     "data": {
       "name": "pack.heroyc",
+      "description": "pack.description",
       "image": "heroyc",
       "rarity": "info",
       "platinum": 100,

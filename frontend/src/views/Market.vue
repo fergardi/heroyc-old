@@ -130,9 +130,8 @@
             .panel-body
               .col-xs-12.space-down
                 img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.rarity')
-              .col-xs-12.space-down
+                p {{ pack.description | i18n }}
                 span.label.label-warning {{ pack.gold }}
-              .col-xs-12.space-down
                 span.label.label-info {{ pack.platinum }}
               .btn-group.btn-block.dropup
                 button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.rarity')

@@ -3,6 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Pack = sequelize.define('Pack', {
     name: DataTypes.STRING,
+    description: DataTypes.STRING,
     image: DataTypes.STRING,
     rarity: DataTypes.STRING,
     platinum: DataTypes.INTEGER,

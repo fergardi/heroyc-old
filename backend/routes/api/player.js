@@ -343,16 +343,21 @@ router.get('/:playerId/pack/:packId', function(req, res) {
       models.Pack.findById(req.params.packId)
       .then(function(pack) {
         if (pack) {
-          if (true) { //TODO PAYPAL
-            player.gold += pack.gold;
-            player.platinum += pack.platinum;
-            player.save()
-            .then(function(player) {
-              res.status(200).json(player);
-            });
-          }
+          // paypal.pay('Invoice number', amount, 'description', 'currency', requireAddress, callback);
+          paypal.pay(new Date(), pack.euro, pack.descriptionm, 'EUR', false, (err, url) => {
+            if (err) {
+              res.status(418).end();
+            } else {
+              player.gold += pack.gold;
+              player.platinum += pack.platinum;
+              player.save()
+              .then(function(player) {
+                res.status(200).json(player);
+              });  
+            }
+          });
         } else {
-          res.status(418).end();     
+          res.status(418).end();
         }
       });
     } else {

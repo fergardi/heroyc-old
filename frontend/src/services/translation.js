@@ -359,7 +359,8 @@ const translation = {
     pack: {
       epic: 'Epic Pack',
       legendary: 'Legendary Pack',
-      heroyc: 'Heroyc Pack'
+      heroyc: 'Heroyc Pack',
+      description: 'Pack of Gold and Platinum',
     }
   },
   es: {
@@ -723,7 +724,8 @@ const translation = {
     pack: {
       epic: 'Pack Epico',
       legendary: 'Pack Legendario',
-      heroyc: 'Pack Heroico'
+      heroyc: 'Pack Heroico',
+      description: 'Pack de Oro y Platino',
     }
   }
 };
