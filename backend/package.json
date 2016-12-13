@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon ./bin/server.js",
     "prod": "cross-env NODE_ENV=production node ./bin/server.js",
-    "deploy": "cross-env NODE_ENV=production pm2 start ./bin/server.js"
+    "deploy": "cross-env NODE_ENV=production pm2 start -f ./bin/server.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",

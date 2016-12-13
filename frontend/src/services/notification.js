@@ -1,3 +1,5 @@
+import constants from '../config/constants';
+
 const notification = {
   alert (text, type, icon) {
     $('.alerts').notify({

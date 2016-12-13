@@ -1,3 +1,5 @@
+import constants from '../config/constants';
+
 let url = constants.api;
 
 var items = [];

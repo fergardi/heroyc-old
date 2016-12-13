@@ -3,9 +3,8 @@
 var fs = require('fs');
 var path = require('path');
 var Sequelize = require('sequelize');
-var env = process.env.NODE_ENV || 'dev';
 var constants = require('../config/constants');
-var sequelize = new Sequelize(constants[env].database.database, constants[env].database.username, constants[env].database.password, constants[env].database);
+var sequelize = new Sequelize(constants.database.dbname, constants.database.username, constants.database.password, constants.database);
 var db = {};
 
 fs

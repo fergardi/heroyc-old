@@ -11,7 +11,7 @@ const constants = {
     database: {
       username: 'root',
       password: 'root',
-      database: 'heroyc',
+      dbname: 'heroyc',
       host: 'localhost',
       dialect: 'mariadb',
       logging: false
@@ -39,7 +39,7 @@ const constants = {
     database: {
       username: '',
       password: '',
-      database: '',
+      dbname: '',
       host: '',
       dialect: '',
       logging: false
@@ -57,4 +57,6 @@ const constants = {
   }
 };
 
-module.exports = constants;
+var env = process.env.NODE_ENV || 'dev';
+
+module.exports = constants[env];

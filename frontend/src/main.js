@@ -22,6 +22,7 @@ import World from './views/World.vue'
 import translation from './services/translation'
 import authentication from './services/authentication'
 import notification from './services/notification'
+import constants from './config/constants'
 
 // router
 Vue.use(VueRouter);

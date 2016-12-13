@@ -1,3 +1,5 @@
+import constants from '../config/constants'
+
 let api = constants.api;
 
 const authentication = {
