@@ -7,6 +7,7 @@
 <script>
   import api from '../services/api.js'
   import notification from '../services/notification'
+  import constants from './config/constants'
   import moment from 'moment'
   import VueSocketio from 'vue-socket.io'
   import Vue from 'vue'

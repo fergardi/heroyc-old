@@ -63,6 +63,7 @@
   import authentication from '../services/authentication'
   import translation from '../services/translation'
   import notification from '../services/notification'
+  import constants from '../config/constants'
   import api from '../services/api'
   import Vue from 'vue'
   export default {
