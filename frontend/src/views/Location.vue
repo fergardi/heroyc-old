@@ -226,7 +226,7 @@
   import api from '../services/api'
   import authentication from '../services/authentication'
   import notification from '../services/notification'
-  import constants from './config/constants'
+  import constants from '../config/constants'
   import Vue from 'vue'
   export default {
     name: 'Location',
