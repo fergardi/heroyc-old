@@ -31,3 +31,5 @@ Icon
 # NODEJS
 node_modules/
 node_modules/*
+
+config/constants.js
