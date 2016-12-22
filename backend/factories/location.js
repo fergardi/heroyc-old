@@ -24,26 +24,26 @@ var factory = {
       lng: factory.longitude(),
     };
     if (factory.bad.indexOf(name) !== -1)  {
-      location.MonsterId = Math.floor(Math.random() * 19) + 1;
-      location.experience = Math.ceil(Math.random() * 25);
-      location.gold = Math.ceil(Math.random() * 10);
+      location.MonsterId = Math.ceil(Math.random() * constants.location.monsters - 1) + 1;
       switch (name) {
         case 'mine':
-          location.ResourceId = Math.floor(Math.random() * 23) + 1;
+          location.ResourceId = Math.ceil(Math.random() * constants.location.resources - 1) + 1;
           break;
         case 'dungeon':
-          location.ItemId = Math.floor(Math.random() * 69) + 1;
+          location.ItemId = Math.ceil(Math.random() * constants.location.items - 1) + 1;
           break;
         case 'tower':
-          location.SpellId = Math.floor(Math.random() * 19) + 1;
+          location.SpellId = Math.ceil(Math.random() * constants.location.spells - 1) + 1;
           break;
         case 'castle':
-          location.SkillId = Math.floor(Math.random() * 9) + 1;
+          location.SkillId = Math.ceil(Math.random() * constants.location.skills - 1) + 1;
           break;
         case 'ruins':
-          location.RecipeId = Math.floor(Math.random() * 3) + 1;
+          location.RecipeId = Math.ceil(Math.random() * constants.location.recipes - 1) + 1;
           break;
       }
+      location.experience = Math.ceil(Math.random() * constants.location.experience);
+      location.gold = Math.ceil(Math.random() * constants.location.gold);
     }
     if (sequelize) {
       location = { model: "Location", data: location };
