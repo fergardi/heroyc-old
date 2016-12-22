@@ -24,22 +24,22 @@ var factory = {
       lng: factory.longitude(),
     };
     if (factory.bad.indexOf(name) !== -1)  {
-      location.MonsterId = Math.ceil(Math.random() * constants.location.monsters - 1) + 1;
+      location.MonsterId = Math.floor(Math.random() * constants.location.monsters) + 1;
       switch (name) {
         case 'mine':
-          location.ResourceId = Math.ceil(Math.random() * constants.location.resources - 1) + 1;
+          location.ResourceId = Math.floor(Math.random() * constants.location.resources) + 1;
           break;
         case 'dungeon':
-          location.ItemId = Math.ceil(Math.random() * constants.location.items - 1) + 1;
+          location.ItemId = Math.floor(Math.random() * constants.location.items) + 1;
           break;
         case 'tower':
-          location.SpellId = Math.ceil(Math.random() * constants.location.spells - 1) + 1;
+          location.SpellId = Math.floor(Math.random() * constants.location.spells) + 1;
           break;
         case 'castle':
-          location.SkillId = Math.ceil(Math.random() * constants.location.skills - 1) + 1;
+          location.SkillId = Math.floor(Math.random() * constants.location.skills) + 1;
           break;
         case 'ruins':
-          location.RecipeId = Math.ceil(Math.random() * constants.location.recipes - 1) + 1;
+          location.RecipeId = Math.floor(Math.random() * constants.location.recipes) + 1;
           break;
       }
       location.experience = Math.ceil(Math.random() * constants.location.experience);

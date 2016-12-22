@@ -97,6 +97,7 @@ const translation = {
       recipes: 'Recipes',
     },
     title: {
+      about: 'About',
       login: 'Login',
       world: 'World',
       player: 'Player',
@@ -123,6 +124,7 @@ const translation = {
       none: 'No results',
     },
     subtitle: {
+      about: 'About',
       login: 'Login',
       world: 'World',
       player: 'Player',
@@ -461,6 +463,7 @@ const translation = {
       recipes: 'Recetas',
     },
     title: {
+      about: 'Acerca de',
       login: 'Acceder',
       world: 'Mundo',
       player: 'Personaje',
@@ -488,6 +491,7 @@ const translation = {
       none: 'No hay resultados',
     },
     subtitle: {
+      about: 'Acerca de',
       login: 'Acceder',
       world: 'Mundo',
       player: 'Personaje',

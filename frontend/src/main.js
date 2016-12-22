@@ -18,6 +18,7 @@ import Location from './views/Location.vue'
 import Forge from './views/Forge.vue'
 import Market from './views/Market.vue'
 import World from './views/World.vue'
+import About from './views/About.vue'
 
 import translation from './services/translation'
 import authentication from './services/authentication'
@@ -46,6 +47,7 @@ Vue.use(VueSocketio, constants.socket);
 var router = new VueRouter({
   routes: [
     { path: '/', component: Home },
+    { path: '/about', component: About, name: 'about' },
     { path: '/home', component: Home, name: 'home' },
     { path: '/world', component: World, name: 'world' },
     { path: '/items', component: Items, name: 'items' },

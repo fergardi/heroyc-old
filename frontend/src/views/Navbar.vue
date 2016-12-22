@@ -54,6 +54,10 @@
                     i.ra.ra-fw.ra-lg.ra-wooden-sign
                     | {{ 'language.spanish' | i18n }}
                 li
+                  router-link(to='/about', data-toggle='collapse' data-target='.navbar-collapse.in')
+                    i.ra.ra-fw.ra-lg.ra-question
+                    | {{ 'title.about' | i18n }}
+                li
                   a.pointer(@click='logout', data-toggle='collapse' data-target='.navbar-collapse.in')
                     i.ra.ra-fw.ra-lg.ra-key
                     | {{ 'button.logout' | i18n }}
