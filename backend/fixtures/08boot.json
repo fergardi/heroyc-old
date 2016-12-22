@@ -4,14 +4,15 @@
     "data": {
       "name": "item.boots.winged",
       "type": "boot",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 5,
       "strength": 3,
       "agility": 6,
       "intelligence": 1,
       "defense": 2,
       "icon": "boot-stomp",
-      "image": "winged"
+      "image": "winged",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.boots.novice",
       "type": "boot",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "boot-stomp",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.boots.strong",
       "type": "boot",
-      "rarity": "info",
+      "class": "info",
       "vitality": 4,
       "strength": 6,
       "agility": 0,
       "intelligence": 0,
       "defense": 4,
       "icon": "boot-stomp",
-      "image": "strong"
+      "image": "strong",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.boots.elven",
       "type": "boot",
-      "rarity": "success",
+      "class": "success",
       "vitality": 3,
       "strength": 0,
       "agility": 10,
       "intelligence": 0,
       "defense": 0,
       "icon": "boot-stomp",
-      "image": "elven"
+      "image": "elven",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.boots.dragon",
       "type": "boot",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 8,
       "strength": 8,
       "agility": 8,
       "intelligence": 8,
       "defense": 8,
       "icon": "boot-stomp",
-      "image": "dragon"
+      "image": "dragon",
+      "rarity": 100
     }
   },
   {
@@ -79,14 +84,15 @@
     "data": {
       "name": "item.boots.stone",
       "type": "boot",
-      "rarity": "primary",
+      "class": "primary",
       "vitality": 4,
       "strength": 3,
       "agility": 0,
       "intelligence": 0,
       "defense": 6,
       "icon": "boot-stomp",
-      "image": "stone"
+      "image": "stone",
+      "rarity": 100
     }
   },
   {
@@ -94,14 +100,15 @@
     "data": {
       "name": "item.boots.hunter",
       "type": "boot",
-      "rarity": "info",
+      "class": "info",
       "vitality": 2,
       "strength": 1,
       "agility": 4,
       "intelligence": 0,
       "defense": 2,
       "icon": "boot-stomp",
-      "image": "hunter"
+      "image": "hunter",
+      "rarity": 100
     }
   }
 ]

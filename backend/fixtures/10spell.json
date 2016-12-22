@@ -12,9 +12,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "danger",
+      "class": "danger",
       "icon": "fire",
-      "image": "fire1"
+      "image": "fire1",
+      "rarity": 100
     }
   },
   {
@@ -30,9 +31,10 @@
       "poison": false,
       "shock": false,
       "burn": true,
-      "family": "danger",
+      "class": "danger",
       "icon": "fire",
-      "image": "fire2"
+      "image": "fire2",
+      "rarity": 100
     }
   },
   {
@@ -48,9 +50,10 @@
       "poison": false,
       "shock": false,
       "burn": true,
-      "family": "danger",
+      "class": "danger",
       "icon": "fire",
-      "image": "fire3"
+      "image": "fire3",
+      "rarity": 100
     }
   },
   {
@@ -66,9 +69,10 @@
       "poison": false,
       "shock": false,
       "burn": true,
-      "family": "danger",
+      "class": "danger",
       "icon": "fire",
-      "image": "fire4"
+      "image": "fire4",
+      "rarity": 100
     }
   },
   {
@@ -84,9 +88,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "primary",
+      "class": "primary",
       "icon": "ice-cube",
-      "image": "ice1"
+      "image": "ice1",
+      "rarity": 100
     }
   },
   {
@@ -102,9 +107,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "primary",
+      "class": "primary",
       "icon": "ice-cube",
-      "image": "ice2"
+      "image": "ice2",
+      "rarity": 100
     }
   },
   {
@@ -120,9 +126,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "primary",
+      "class": "primary",
       "icon": "ice-cube",
-      "image": "ice3"
+      "image": "ice3",
+      "rarity": 100
     }
   },
   {
@@ -138,9 +145,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "primary",
+      "class": "primary",
       "icon": "ice-cube",
-      "image": "ice4"
+      "image": "ice4",
+      "rarity": 100
     }
   },
   {
@@ -156,9 +164,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "warning",
+      "class": "warning",
       "icon": "lightning-trio",
-      "image": "lightning1"
+      "image": "lightning1",
+      "rarity": 100
     }
   },
   {
@@ -174,9 +183,10 @@
       "poison": false,
       "shock": true,
       "burn": false,
-      "family": "warning",
+      "class": "warning",
       "icon": "lightning-trio",
-      "image": "lightning2"
+      "image": "lightning2",
+      "rarity": 100
     }
   },
   {
@@ -192,9 +202,10 @@
       "poison": false,
       "shock": true,
       "burn": false,
-      "family": "warning",
+      "class": "warning",
       "icon": "lightning-trio",
-      "image": "lightning3"
+      "image": "lightning3",
+      "rarity": 100
     }
   },
   {
@@ -210,9 +221,10 @@
       "poison": false,
       "shock": true,
       "burn": true,
-      "family": "warning",
+      "class": "warning",
       "icon": "lightning-trio",
-      "image": "lightning4"
+      "image": "lightning4",
+      "rarity": 100
     }
   },
   {
@@ -228,9 +240,10 @@
       "poison": true,
       "shock": false,
       "burn": false,
-      "family": "info",
+      "class": "info",
       "icon": "bone-bite",
-      "image": "shadow1"
+      "image": "shadow1",
+      "rarity": 100
     }
   },
   {
@@ -246,9 +259,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "info",
+      "class": "info",
       "icon": "bone-bite",
-      "image": "shadow2"
+      "image": "shadow2",
+      "rarity": 100
     }
   },
   {
@@ -264,9 +278,10 @@
       "poison": true,
       "shock": false,
       "burn": false,
-      "family": "info",
+      "class": "info",
       "icon": "bone-bite",
-      "image": "shadow3"
+      "image": "shadow3",
+      "rarity": 100
     }
   },
   {
@@ -282,9 +297,10 @@
       "poison": true,
       "shock": false,
       "burn": false,
-      "family": "info",
+      "class": "info",
       "icon": "bone-bite",
-      "image": "shadow4"
+      "image": "shadow4",
+      "rarity": 100
     }
   },
   {
@@ -300,9 +316,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "success",
+      "class": "success",
       "icon": "zigzag-leaf",
-      "image": "heal1"
+      "image": "heal1",
+      "rarity": 100
     }
   },
   {
@@ -318,9 +335,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "success",
+      "class": "success",
       "icon": "zigzag-leaf",
-      "image": "heal2"
+      "image": "heal2",
+      "rarity": 100
     }
   },
   {
@@ -336,9 +354,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "success",
+      "class": "success",
       "icon": "zigzag-leaf",
-      "image": "heal3"
+      "image": "heal3",
+      "rarity": 100
     }
   },
   {
@@ -354,9 +373,10 @@
       "poison": false,
       "shock": false,
       "burn": false,
-      "family": "success",
+      "class": "success",
       "icon": "zigzag-leaf",
-      "image": "heal4"
+      "image": "heal4",
+      "rarity": 100
     }
   }
 ]

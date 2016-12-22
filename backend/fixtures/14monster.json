@@ -9,8 +9,9 @@
       "agility": 1,
       "defense": 10,
       "intelligence": 2,
-      "type": "info",
+      "class": "info",
       "icon": "broken-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.strength2" },
         { "name": "skill.defense2" }
@@ -30,8 +31,9 @@
       "agility": 2,
       "defense": 2,
       "intelligence": 4,
-      "type": "warning",
+      "class": "warning",
       "icon": "muscle-fat",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.strength1" }
       ],
@@ -51,8 +53,9 @@
       "agility": 6,
       "defense": 2,
       "intelligence": 4,
-      "type": "danger",
+      "class": "danger",
       "icon": "monster-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.intelligence1" }
       ],
@@ -71,8 +74,9 @@
       "agility": 10,
       "defense": 10,
       "intelligence": 10,
-      "type": "danger",
+      "class": "danger",
       "icon": "monster-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality2" },
         { "name": "skill.strength2" },
@@ -97,8 +101,9 @@
       "agility": 1,
       "defense": 8,
       "intelligence": 2,
-      "type": "warning",
+      "class": "warning",
       "icon": "muscle-fat",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.defense1" },
         { "name": "skill.defense2" }
@@ -120,8 +125,9 @@
       "agility": 8,
       "defense": 1,
       "intelligence": 10,
-      "type": "info",
+      "class": "info",
       "icon": "broken-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.intelligence2" }
       ],
@@ -143,8 +149,9 @@
       "agility": 1,
       "defense": 7,
       "intelligence": 1,
-      "type": "warning",
+      "class": "warning",
       "icon": "muscle-fat",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.strength2" }
       ],
@@ -163,8 +170,9 @@
       "agility": 8,
       "defense": 7,
       "intelligence": 6,
-      "type": "primary",
+      "class": "primary",
       "icon": "crystal-ball",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.strength2" }
       ],
@@ -185,8 +193,9 @@
       "agility": 2,
       "defense": 4,
       "intelligence": 8,
-      "type": "info",
+      "class": "info",
       "icon": "broken-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.intelligence1" },
         { "name": "skill.intelligence2" },
@@ -208,8 +217,9 @@
       "agility": 3,
       "defense": 4,
       "intelligence": 8,
-      "type": "primary",
+      "class": "primary",
       "icon": "crystal-ball",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.intelligence1" },
         { "name": "skill.intelligence2" }
@@ -231,8 +241,9 @@
       "agility": 2,
       "defense": 5,
       "intelligence": 4,
-      "type": "primary",
+      "class": "primary",
       "icon": "crystal-ball",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality1" }
       ],
@@ -252,8 +263,9 @@
       "agility": 8,
       "defense": 3,
       "intelligence": 6,
-      "type": "danger",
+      "class": "danger",
       "icon": "monster-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.agility1" },
         { "name": "skill.agility2" }
@@ -274,8 +286,9 @@
       "agility": 6,
       "defense": 2,
       "intelligence": 3,
-      "type": "success",
+      "class": "success",
       "icon": "raven",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.agility1" },
         { "name": "skill.strength1" }
@@ -295,8 +308,9 @@
       "agility": 3,
       "defense": 2,
       "intelligence": 4,
-      "type": "info",
+      "class": "info",
       "icon": "broken-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality2" },
         { "name": "skill.strength2" }
@@ -317,8 +331,9 @@
       "agility": 9,
       "defense": 3,
       "intelligence": 4,
-      "type": "success",
+      "class": "success",
       "icon": "raven",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.agility1" }
       ],
@@ -337,8 +352,9 @@
       "agility": 4,
       "defense": 2,
       "intelligence": 6,
-      "type": "success",
+      "class": "success",
       "icon": "raven",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.strength1" }
       ],
@@ -358,8 +374,9 @@
       "agility": 6,
       "defense": 3,
       "intelligence": 2,
-      "type": "success",
+      "class": "success",
       "icon": "raven",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.agility1" },
         { "name": "skill.strength1" }
@@ -380,8 +397,9 @@
       "agility": 2,
       "defense": 2,
       "intelligence": 5,
-      "type": "success",
+      "class": "success",
       "icon": "raven",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality2" }
       ],
@@ -400,8 +418,9 @@
       "agility": 3,
       "defense": 8,
       "intelligence": 6,
-      "type": "warning",
+      "class": "warning",
       "icon": "muscle-fat",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality2" },
         { "name": "skill.strength2" },
@@ -427,8 +446,9 @@
       "agility": 1,
       "defense": 5,
       "intelligence": 3,
-      "type": "info",
+      "class": "info",
       "icon": "broken-skull",
+      "rarity": 100,
       "Skills": [
         { "name": "skill.vitality1" },
         { "name": "skill.strength1" }

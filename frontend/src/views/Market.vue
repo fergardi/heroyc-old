@@ -30,13 +30,13 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-md-3.col-xs-4(v-for='sale in filtered', v-bind:key='sale.id')
-            .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
+            .panel.text-center(v-bind:class='"panel-" + sale.Item.class', v-if='sale.Item')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon')  
                   span {{ sale.Item.name | i18n }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
+                img.thumbnail(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.class')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Item.strength * 10 + "%"')
                 .progress
@@ -65,13 +65,13 @@
                     button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }}
                       i.fa.fa-lg.fa-check 
-            .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity', v-if='sale.Resource')
+            .panel.text-center(v-bind:class='"panel-" + sale.Resource.class', v-if='sale.Resource')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
                   span {{ sale.Resource.name | i18n }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
+                img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.class')
                 .btn-group.btn-block.dropup
                   button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
@@ -80,18 +80,18 @@
                     button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.platinum) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }}
                       i.fa.fa-lg.fa-check 
-            .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity', v-if='sale.Recipe')
+            .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.class', v-if='sale.Recipe')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
                   span {{ sale.Recipe.Result.name | i18n }}
               .panel-body
                 .col-xs-6
-                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.class')
                 .col-xs-6
-                  img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
+                  img.thumbnail(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.class')
                 .col-xs-12
-                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
+                  img.thumbnail(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.class')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
                   .progress
@@ -122,23 +122,23 @@
                         i.fa.fa-lg.fa-check    
       .row
         .col-xs-4(v-for='pack in packs')
-          .panel.text-center(v-bind:class='"panel-" + pack.rarity')
+          .panel.text-center(v-bind:class='"panel-" + pack.class')
             .panel-heading
               .panel-title
                 i.fa.fa-fw.fa-lg.fa-paypal
                 span {{ pack.name | i18n }}
             .panel-body
               .col-xs-12.space-down
-                img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.rarity')
+                img.thumbnail(v-bind:src='"dist/img/packs/" + pack.image + ".png"', v-bind:class='"panel-" + pack.class')
                 p {{ pack.description | i18n }}
                 span.label.label-warning {{ pack.gold }}
                 span.label.label-info {{ pack.platinum }}
               .btn-group.btn-block.dropup
-                button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.rarity')
+                button.btn.btn-block.dropdown-toggle(data-toggle='dropdown', v-bind:class='"btn-" + pack.class')
                   | {{ 'button.buy' | i18n }} 
                   span.label.label-default {{ pack.euro }} €
                 ul.dropdown-menu.btn-block.text-center
-                  button.btn.btn-block(v-on:click='paypal(pack)', v-bind:class='"btn-" + pack.rarity')
+                  button.btn.btn-block(v-on:click='paypal(pack)', v-bind:class='"btn-" + pack.class')
                     | {{ 'button.confirm' | i18n }}
                     i.fa.fa-lg.fa-paypal 
 </template>
@@ -196,7 +196,7 @@
           if (!error) {
             api.addGold(player.id, pack.gold);
             api.addPlatinum(player.id, pack.platinum);
-            notification.success(Vue.t('alert.market.paypal', { rarity: sale.rarity, name: Vue.t(pack.name) }));
+            notification.success(Vue.t('alert.market.paypal', { class: sale.class, name: Vue.t(pack.name) }));
           } else {
             notification.danger(Vue.t('alert.market.error'));
           }

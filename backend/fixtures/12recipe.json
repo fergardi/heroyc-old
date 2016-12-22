@@ -5,7 +5,8 @@
       "gold": 1,
       "OriginalId": 45,
       "ResourceId": 6,
-      "ResultId": 35
+      "ResultId": 35,
+      "rarity": 100
     }
   },
   {
@@ -14,7 +15,8 @@
       "gold": 1,
       "OriginalId": 9,
       "ResourceId": 4,
-      "ResultId": 22
+      "ResultId": 22,
+      "rarity": 100
     }
   },
   {
@@ -23,7 +25,8 @@
       "gold": 1,
       "OriginalId": 11,
       "ResourceId": 12,
-      "ResultId": 12
+      "ResultId": 12,
+      "rarity": 100
     }
   },
   {
@@ -32,7 +35,8 @@
       "gold": 1,
       "OriginalId": 30,
       "ResourceId": 8,
-      "ResultId": 50
+      "ResultId": 50,
+      "rarity": 100
     }
   }
 ]

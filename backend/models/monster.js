@@ -4,13 +4,14 @@ module.exports = function(sequelize, DataTypes) {
   var Monster = sequelize.define('Monster', {
     name: DataTypes.STRING,
     icon: DataTypes.STRING,
-    type: DataTypes.STRING,
+    class: DataTypes.STRING,
     image: DataTypes.STRING,
     strength: DataTypes.INTEGER,
     vitality: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
     agility: DataTypes.INTEGER,
-    intelligence: DataTypes.INTEGER
+    intelligence: DataTypes.INTEGER,
+    rarity: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

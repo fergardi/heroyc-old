@@ -20,16 +20,16 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-md-3.col-xs-4(v-for='quest in filtered', v-bind:key='quest.id')
-            .panel.text-center(v-bind:class='"panel-" + quest.rarity')
+            .panel.text-center(v-bind:class='"panel-" + quest.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + quest.icon')  
                   span {{ quest.name | i18n }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+                img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.class')
                 .row
                   .col-xs-4(v-for="resource in quest.Resources")
-                    img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.class')
                 span.label.label-default(v-if='quest.experience > 0') {{ quest.experience }}
                 span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
                 span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
@@ -74,7 +74,7 @@
     methods: {
       accept (quest) {
         api.addQuest(authentication.id || 1, quest.id);
-        notification.success(Vue.t('alert.inn.accept', { name: Vue.t(quest.name), rarity: quest.rarity }));
+        notification.success(Vue.t('alert.inn.accept', { name: Vue.t(quest.name), class: quest.class }));
       }
     },
     computed: {

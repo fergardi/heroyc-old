@@ -20,14 +20,14 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-xs-3(v-for='spell in filtered', v-bind:key='spell.id')
-            .panel.text-center(v-bind:class='"panel-" + spell.family')
+            .panel.text-center(v-bind:class='"panel-" + spell.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + spell.icon')  
                   span {{ spell.name | i18n }} 
                   span.label.label-primary {{ -spell.mana }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                img.thumbnail(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.class')
                 .progress
                   .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
                 .progress

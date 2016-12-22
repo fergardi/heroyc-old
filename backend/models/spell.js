@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     icon: DataTypes.STRING,
     image: DataTypes.STRING,
     type: DataTypes.STRING,
-    family: DataTypes.STRING,
+    class: DataTypes.STRING,
     damage: DataTypes.INTEGER,
     heal: DataTypes.INTEGER,
     mana: DataTypes.INTEGER,
@@ -14,7 +14,8 @@ module.exports = function(sequelize, DataTypes) {
     poison: DataTypes.BOOLEAN,
     shock: DataTypes.BOOLEAN,
     stun: DataTypes.BOOLEAN,
-    freeze: DataTypes.BOOLEAN
+    freeze: DataTypes.BOOLEAN,
+    rarity: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

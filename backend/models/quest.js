@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Quest = sequelize.define('Quest', {
     name: DataTypes.STRING,
-    rarity: DataTypes.STRING,
+    class: DataTypes.STRING,
     image: DataTypes.STRING,
     experience: DataTypes.INTEGER,
     gold: DataTypes.INTEGER,

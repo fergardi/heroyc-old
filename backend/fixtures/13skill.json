@@ -9,9 +9,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 2,
-      "family": "danger",
+      "class": "danger",
       "icon": "aura",
-      "image": "vitality1"
+      "image": "vitality1",
+      "rarity": 100
     }
   },
   {
@@ -24,9 +25,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 3,
-      "family": "danger",
+      "class": "danger",
       "icon": "aura",
-      "image": "vitality2"
+      "image": "vitality2",
+      "rarity": 100
     }
   },
   {
@@ -39,9 +41,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 3,
-      "family": "success",
+      "class": "success",
       "icon": "aura",
-      "image": "agility1"
+      "image": "agility1",
+      "rarity": 100
     }
   },
   {
@@ -54,9 +57,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 5,
-      "family": "success",
+      "class": "success",
       "icon": "aura",
-      "image": "agility2"
+      "image": "agility2",
+      "rarity": 100
     }
   },
   {
@@ -69,9 +73,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 2,
-      "family": "warning",
+      "class": "warning",
       "icon": "aura",
-      "image": "strength1"
+      "image": "strength1",
+      "rarity": 100
     }
   },
   {
@@ -84,9 +89,10 @@
       "intelligence": 0,
       "defense": 0,
       "stamina": 3,
-      "family": "warning",
+      "class": "warning",
       "icon": "aura",
-      "image": "strength2"
+      "image": "strength2",
+      "rarity": 100
     }
   },
   {
@@ -99,9 +105,10 @@
       "intelligence": 8,
       "defense": 0,
       "stamina": 4,
-      "family": "primary",
+      "class": "primary",
       "icon": "aura",
-      "image": "intelligence1"
+      "image": "intelligence1",
+      "rarity": 100
     }
   },
   {
@@ -114,9 +121,10 @@
       "intelligence": 10,
       "defense": 0,
       "stamina": 6,
-      "family": "primary",
+      "class": "primary",
       "icon": "aura",
-      "image": "intelligence2"
+      "image": "intelligence2",
+      "rarity": 100
     }
   },
   {
@@ -129,9 +137,10 @@
       "intelligence": 0,
       "defense": 5,
       "stamina": 1,
-      "family": "info",
+      "class": "info",
       "icon": "aura",
-      "image": "defense1"
+      "image": "defense1",
+      "rarity": 100
     }
   },
   {
@@ -144,9 +153,10 @@
       "intelligence": 0,
       "defense": 9,
       "stamina": 3,
-      "family": "info",
+      "class": "info",
       "icon": "aura",
-      "image": "defense2"
+      "image": "defense2",
+      "rarity": 100
     }
   }
 ]

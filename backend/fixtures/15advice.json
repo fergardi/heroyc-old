@@ -3,84 +3,84 @@
     "model": "Advice",
     "data": {
       "text": "advice.gold",
-      "color": "warning"
+      "class": "warning"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.platinum",
-      "color": "info"
+      "class": "info"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.city",
-      "color": "success"
+      "class": "success"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.market",
-      "color": "primary"
+      "class": "primary"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.forje",
-      "color": "danger"
+      "class": "danger"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.inn",
-      "color": "warning"
+      "class": "warning"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.castle",
-      "color": "warning"
+      "class": "warning"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.tower",
-      "color": "info"
+      "class": "info"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.dungeon",
-      "color": "danger"
+      "class": "danger"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.mine",
-      "color": "success"
+      "class": "success"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.ruins",
-      "color": "primary"
+      "class": "primary"
     }
   },
   {
     "model": "Advice",
     "data": {
       "text": "advice.world",
-      "color": "success"
+      "class": "success"
     }
   }
 ]

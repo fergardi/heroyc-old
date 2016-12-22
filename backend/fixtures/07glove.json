@@ -4,14 +4,15 @@
     "data": {
       "name": "item.gloves.novice",
       "type": "glove",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "hand",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.gloves.leather",
       "type": "glove",
-      "rarity": "success",
+      "class": "success",
       "vitality": 2,
       "strength": 3,
       "agility": 4,
       "intelligence": 3,
       "defense": 2,
       "icon": "hand",
-      "image": "leather"
+      "image": "leather",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.gloves.elven",
       "type": "glove",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 3,
       "strength": 2,
       "agility": 6,
       "intelligence": 1,
       "defense": 2,
       "icon": "hand",
-      "image": "elven"
+      "image": "elven",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.gloves.magic",
       "type": "glove",
-      "rarity": "info",
+      "class": "info",
       "vitality": 3,
       "strength": 0,
       "agility": 2,
       "intelligence": 10,
       "defense": 2,
       "icon": "hand",
-      "image": "magic"
+      "image": "magic",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.gloves.metal",
       "type": "glove",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 4,
       "strength": 6,
       "agility": 0,
       "intelligence": 0,
       "defense": 6,
       "icon": "hand",
-      "image": "metal"
+      "image": "metal",
+      "rarity": 100
     }
   },
   {
@@ -79,14 +84,15 @@
     "data": {
       "name": "item.gloves.ninja",
       "type": "glove",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 2,
       "strength": 4,
       "agility": 10,
       "intelligence": 0,
       "defense": 0,
       "icon": "hand",
-      "image": "ninja"
+      "image": "ninja",
+      "rarity": 100
     }
   },
   {
@@ -94,14 +100,15 @@
     "data": {
       "name": "item.gloves.scale",
       "type": "glove",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 6,
       "strength": 6,
       "agility": 6,
       "intelligence": 6,
       "defense": 6,
       "icon": "hand",
-      "image": "scale"
+      "image": "scale",
+      "rarity": 100
     }
   }
 ]

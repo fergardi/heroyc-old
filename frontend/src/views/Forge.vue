@@ -20,18 +20,18 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-md-3.col-xs-4(v-for='recipe in filtered', v-bind:key='recipe.id')
-            .panel.text-center(v-bind:class='"panel-" + recipe.Result.rarity')
+            .panel.text-center(v-bind:class='"panel-" + recipe.Result.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + recipe.Result.icon')  
                   span {{ recipe.Result.name | i18n }}
               .panel-body
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.class')
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.class')
                 .col-xs-12
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.class')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
                   .progress
@@ -91,7 +91,7 @@
         return false;
       },
       craft (recipe) {
-        notification.success(Vue.t('alert.forge.craft', { original: Vue.t(recipe.Original.name), originalRarity: recipe.Original.rarity, resource: Vue.t(recipe.Resource.name), resourceRarity: recipe.Resource.rarity, result: Vue.t(recipe.Result.name), resultRarity: recipe.Result.rarity }));
+        notification.success(Vue.t('alert.forge.craft', { original: Vue.t(recipe.Original.name), originalRarity: recipe.Original.class, resource: Vue.t(recipe.Resource.name), resourceRarity: recipe.Resource.class, result: Vue.t(recipe.Result.name), resultRarity: recipe.Result.class }));
       }
     },
     computed: {

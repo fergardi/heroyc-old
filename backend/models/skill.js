@@ -5,13 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     icon: DataTypes.STRING,
     image: DataTypes.STRING,
-    family: DataTypes.STRING,
+    class: DataTypes.STRING,
     vitality: DataTypes.INTEGER,
     strength: DataTypes.INTEGER,
     intelligence: DataTypes.INTEGER,
     agility: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
-    stamina: DataTypes.INTEGER
+    stamina: DataTypes.INTEGER,
+    rarity: DataTypes.INTEGER
   }, {
     timestamps: false,
     freezeTableName: true

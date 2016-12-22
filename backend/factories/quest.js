@@ -1,7 +1,7 @@
 var factory = {
-  rarities: ['success', 'info', 'primary', 'danger', 'warning'],
-  rarity () {
-    return factory.rarities[Math.floor(Math.random() * factory.rarities.length)];
+  classes: ['success', 'info', 'primary', 'danger', 'warning'],
+  class () {
+    return factory.classes[Math.floor(Math.random() * factory.classes.length)];
   },
   images: ['chest','bone','key','map','mirror','scroll','telescope','torch'],
   image () {
@@ -19,7 +19,7 @@ var factory = {
     var quest = {
       icon: 'torch',
       name: 'quest.' + image,
-      rarity: factory.rarity(),
+      class: factory.class(),
       image: image,
       gold: Math.ceil(Math.random() * 10),
       platinum: Math.floor(Math.random() * 2),

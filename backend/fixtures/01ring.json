@@ -4,14 +4,15 @@
     "data": {
       "name": "item.ring.vitality",
       "type": "ring",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 5,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
       "icon": "sapphire",
-      "image": "vitality"
+      "image": "vitality",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.ring.strength",
       "type": "ring",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 0,
       "strength": 5,
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
       "icon": "sapphire",
-      "image": "strength"
+      "image": "strength",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.ring.agility",
       "type": "ring",
-      "rarity": "success",
+      "class": "success",
       "vitality": 0,
       "strength": 0,
       "agility": 5,
       "intelligence": 0,
       "defense": 0,
       "icon": "sapphire",
-      "image": "agility"
+      "image": "agility",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.ring.intelligence",
       "type": "ring",
-      "rarity": "primary",
+      "class": "primary",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
       "intelligence": 5,
       "defense": 0,
       "icon": "sapphire",
-      "image": "intelligence"
+      "image": "intelligence",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.ring.defense",
       "type": "ring",
-      "rarity": "info",
+      "class": "info",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
       "defense": 5,
       "icon": "sapphire",
-      "image": "defense"
+      "image": "defense",
+      "rarity": 100
     }
   },
   {
@@ -79,14 +84,15 @@
     "data": {
       "name": "item.ring.novice",
       "type": "ring",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "sapphire",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   }
 ]

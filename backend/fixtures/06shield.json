@@ -4,14 +4,15 @@
     "data": {
       "name": "item.shield.golden",
       "type": "shield",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 6,
       "strength": 6,
       "agility": 6,
       "intelligence": 6,
       "defense": 6,
       "icon": "heavy-shield",
-      "image": "golden"
+      "image": "golden",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.shield.novice",
       "type": "shield",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "heavy-shield",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.shield.metal",
       "type": "shield",
-      "rarity": "primary",
+      "class": "primary",
       "vitality": 2,
       "strength": 3,
       "agility": 2,
       "intelligence": 0,
       "defense": 4,
       "icon": "heavy-shield",
-      "image": "metal"
+      "image": "metal",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.shield.stone",
       "type": "shield",
-      "rarity": "info",
+      "class": "info",
       "vitality": 4,
       "strength": 4,
       "agility": 4,
       "intelligence": 4,
       "defense": 4,
       "icon": "heavy-shield",
-      "image": "stone"
+      "image": "stone",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.shield.dark",
       "type": "shield",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": -5,
       "strength": 0,
       "agility": 0,
       "intelligence": -5,
       "defense": 10,
       "icon": "heavy-shield",
-      "image": "dark"
+      "image": "dark",
+      "rarity": 100
     }
   },
   {
@@ -79,14 +84,15 @@
     "data": {
       "name": "item.shield.mirror",
       "type": "shield",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 4,
       "strength": 6,
       "agility": 4,
       "intelligence": 5,
       "defense": 8,
       "icon": "heavy-shield",
-      "image": "mirror"
+      "image": "mirror",
+      "rarity": 100
     }
   }
 ]

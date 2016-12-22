@@ -3,240 +3,264 @@
     "model": "Resource",
     "data": {
       "name": "resource.grape",
-      "rarity": "success",
+      "class": "success",
       "icon": "apple",
       "description": "resource.description",
-      "image": "grape"
+      "image": "grape",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.lemmon",
-      "rarity": "success",
+      "class": "success",
       "icon": "apple",
       "description": "resource.description",
-      "image": "lemmon"
+      "image": "lemmon",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.raspberry",
-      "rarity": "success",
+      "class": "success",
       "icon": "apple",
       "description": "resource.description",
-      "image": "raspberry"
+      "image": "raspberry",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.strawberry",
-      "rarity": "success",
+      "class": "success",
       "icon": "apple",
       "description": "resource.description",
-      "image": "strawberry"
+      "image": "strawberry",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.pear",
-      "rarity": "success",
+      "class": "success",
       "icon": "apple",
       "description": "resource.description",
-      "image": "pear"
+      "image": "pear",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.wood",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "wood"
+      "image": "wood",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.stone",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "stone"
+      "image": "stone",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.coal",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "coal"
+      "image": "coal",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.flask",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "flask"
+      "image": "flask",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.skull",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "skull"
+      "image": "skull",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.fur",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "fur"
+      "image": "fur",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.fang",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "fang"
+      "image": "fang",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.scale",
-      "rarity": "danger",
+      "class": "danger",
       "icon": "rune-stone",
       "description": "resource.description",
-      "image": "scale"
+      "image": "scale",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.gold",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "goldingot"
+      "image": "goldingot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.silver",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "silveringot"
+      "image": "silveringot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.copper",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "copperingot"
+      "image": "copperingot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.metal",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "metalingot"
+      "image": "metalingot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.steel",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "steelingot"
+      "image": "steelingot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ingot.ebony",
-      "rarity": "primary",
+      "class": "primary",
       "icon": "gold-bar",
       "description": "resource.description",
-      "image": "ebonyingot"
+      "image": "ebonyingot",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.amethist",
-      "rarity": "info",
+      "class": "info",
       "icon": "diamond",
       "description": "resource.description",
-      "image": "amethist"
+      "image": "amethist",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.topaz",
-      "rarity": "info",
+      "class": "info",
       "icon": "diamond",
       "description": "resource.description",
-      "image": "topaz"
+      "image": "topaz",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.saphire",
-      "rarity": "info",
+      "class": "info",
       "icon": "diamond",
       "description": "resource.description",
-      "image": "saphire"
+      "image": "saphire",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.emmerald",
-      "rarity": "info",
+      "class": "info",
       "icon": "diamond",
       "description": "resource.description",
-      "image": "emmerald"
+      "image": "emmerald",
+      "rarity": 100
     }
   },
   {
     "model": "Resource",
     "data": {
       "name": "resource.ruby",
-      "rarity": "info",
+      "class": "info",
       "icon": "diamond",
       "description": "resource.description",
-      "image": "ruby"
+      "image": "ruby",
+      "rarity": 100
     }
   }
 ]

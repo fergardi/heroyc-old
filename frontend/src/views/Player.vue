@@ -35,7 +35,7 @@
                     .progress-bar.progress-bar-default(v-bind:style='"width: " + experience + "%"')
               br
               .col-xs-4(v-for='equipment in equipments')
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.rarity')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + equipment.type + "/" + equipment.image + ".png"', v-bind:class='"panel-" + equipment.class')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + equipment.strength * 10 + "%"')
                 .progress
@@ -57,7 +57,7 @@
               .panel-collapse.collapse(id='items')
                 .panel-body
                   .col-xs-4(v-for='item in items')
-                    img.thumbnail.img-responsive.pointer(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity', @click='equip(item)')
+                    img.thumbnail.img-responsive.pointer(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.class', @click='equip(item)')
                     .progress
                       .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                     .progress
@@ -77,7 +77,7 @@
               .panel-collapse.collapse(id='resources')
                 .panel-body
                   .col-xs-4(v-for='resource in resources')
-                    img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.class')
                     br
                     label.badge {{ resource.PlayerResource.quantity }}
             .panel.panel-info.text-center
@@ -89,7 +89,7 @@
               .panel-collapse.collapse(id='spells')
                 .panel-body
                   .col-xs-4(v-for='spell in spells')
-                    img.thumbnail.img-responsive(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.family')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/spells/" + spell.type + "/" + spell.image + ".png"', v-bind:class='"panel-" + spell.class')
                     .progress
                       .progress-bar.progress-bar-danger(v-bind:style='"width: " + spell.damage * 10 + "%"')
                     .progress
@@ -105,7 +105,7 @@
               .panel-collapse.collapse(id='skills')
                 .panel-body
                   .col-xs-4(v-for='skill in skills')
-                    img.thumbnail.img-responsive(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
+                    img.thumbnail.img-responsive(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.class')
                     .progress
                       .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
                     .progress
@@ -125,10 +125,10 @@
               .panel-collapse.collapse(id='quests')
                 .panel-body
                   .col-xs-6(v-for='quest in quests')
-                    img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.rarity')
+                    img.thumbnail(v-bind:src='"dist/img/quests/" + quest.image + ".png"', v-bind:class='"panel-" + quest.class')
                     .row
                       .col-xs-4(v-for="resource in quest.Resources")
-                        img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                        img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.class')
                     span.label.label-default(v-if='quest.experience > 0') {{ quest.experience }}
                     span.label.label-warning(v-if='quest.gold > 0') {{ quest.gold }}
                     span.label.label-info(v-if='quest.platinum > 0') {{ quest.platinum }}
@@ -142,11 +142,11 @@
                 .panel-body
                   .col-xs-6(v-for='recipe in recipes')
                     .col-xs-6
-                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.rarity')
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Original.type + "/" + recipe.Original.image + ".png"', v-bind:class='"panel-" + recipe.Original.class')
                     .col-xs-6
-                      img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.family')
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + recipe.Resource.image + ".png"', v-bind:class='"panel-" + recipe.Resource.class')
                     .col-xs-12
-                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.rarity')
+                      img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + recipe.Result.type + "/" + recipe.Result.image + ".png"', v-bind:class='"panel-" + recipe.Result.class')
                       .progress
                         .progress-bar.progress-bar-warning(v-bind:style='"width: " + recipe.Result.strength * 10 + "%"')
                       .progress

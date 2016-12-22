@@ -4,14 +4,15 @@
     "data": {
       "name": "item.helm.novice",
       "type": "helm",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "knight-helmet",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.helm.chain",
       "type": "helm",
-      "rarity": "success",
+      "class": "success",
       "vitality": 4,
       "strength": 2,
       "agility": 0,
       "intelligence": 0,
       "defense": 2,
       "icon": "knight-helmet",
-      "image": "chain"
+      "image": "chain",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.helm.plate",
       "type": "helm",
-      "rarity": "primary",
+      "class": "primary",
       "vitality": 5,
       "strength": 3,
       "agility": 0,
       "intelligence": 0,
       "defense": 4,
       "icon": "knight-helmet",
-      "image": "plate"
+      "image": "plate",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.helm.wizard",
       "type": "helm",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 2,
       "strength": 0,
       "agility": 0,
       "intelligence": 6,
       "defense": 0,
       "icon": "knight-helmet",
-      "image": "wizard"
+      "image": "wizard",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.helm.witch",
       "type": "helm",
-      "rarity": "info",
+      "class": "info",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
       "intelligence": 10,
       "defense": 0,
       "icon": "knight-helmet",
-      "image": "witch"
+      "image": "witch",
+      "rarity": 100
     }
   }
 ]

@@ -6,12 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.STRING,
     icon: DataTypes.STRING,
     type: DataTypes.STRING,
-    rarity: DataTypes.STRING,
+    class: DataTypes.STRING,
     strength: DataTypes.INTEGER,
     defense: DataTypes.INTEGER,
     vitality: DataTypes.INTEGER,
     intelligence: DataTypes.INTEGER,
     agility: DataTypes.INTEGER,
+    rarity: DataTypes.INTEGER,
     freeze: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

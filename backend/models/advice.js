@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Advice = sequelize.define('Advice', {
     text: DataTypes.STRING,
-    color: DataTypes.STRING
+    class: DataTypes.STRING
   }, {
     timestamps: false,
     freezeTableName: true

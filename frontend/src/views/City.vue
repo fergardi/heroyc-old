@@ -30,13 +30,13 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn', leave-active-class='animated fadeOut')
           .col-md-3.col-xs-4.slide(v-for='sale in filtered', v-bind:key='sale.id')
-            .panel.text-center(v-bind:class='"panel-" + sale.Item.rarity', v-if='sale.Item')
+            .panel.text-center(v-bind:class='"panel-" + sale.Item.class', v-if='sale.Item')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Item.icon') 
                   span {{ sale.Item.name | i18n }} 
               .panel-body
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.rarity')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Item.type + "/" + sale.Item.image + ".png"', v-bind:class='"panel-" + sale.Item.class')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Item.strength * 10 + "%"')
                 .progress
@@ -65,13 +65,13 @@
                     button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }} 
                       i.fa.fa-lg.fa-check 
-            .panel.text-center(v-bind:class='"panel-" + sale.Resource.rarity', v-if='sale.Resource')
+            .panel.text-center(v-bind:class='"panel-" + sale.Resource.class', v-if='sale.Resource')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Resource.icon')  
                   span {{ sale.Resource.name | i18n }} 
               .panel-body
-                img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.rarity')
+                img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Resource.image + ".png"', v-bind:class='"panel-" + sale.Resource.class')
                 .btn-group.btn-block.dropup
                   button.btn.btn-block.dropdown-toggle(data-toggle="dropdown", v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                     | {{ 'button.buy' | i18n }} 
@@ -80,18 +80,18 @@
                     button.btn.btn-block(v-on:click='buy(sale)', v-bind:class='can(sale.gold) ? "btn-success" : "btn-danger disabled"')
                       | {{ 'button.confirm' | i18n }} 
                       i.fa.fa-lg.fa-check 
-            .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.rarity', v-if='sale.Recipe')
+            .panel.text-center(v-bind:class='"panel-" + sale.Recipe.Result.class', v-if='sale.Recipe')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + sale.Recipe.Result.icon')  
                   span {{ sale.Recipe.Result.name | i18n }} 
               .panel-body
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Original.type + "/" + sale.Recipe.Original.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Original.class')
                 .col-xs-6
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.family')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/resources/" + sale.Recipe.Resource.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Resource.class')
                 .col-xs-12
-                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.rarity')
+                  img.thumbnail.img-responsive(v-bind:src='"dist/img/items/" + sale.Recipe.Result.type + "/" + sale.Recipe.Result.image + ".png"', v-bind:class='"panel-" + sale.Recipe.Result.class')
                   .progress
                     .progress-bar.progress-bar-warning(v-bind:style='"width: " + sale.Recipe.Result.strength * 10 + "%"')
                   .progress
@@ -164,13 +164,13 @@
         api.buySale(authentication.id || 1, sale.id, (sales) => {
           this.gold -= sale.gold;
           if (sale.Item !== null) {
-            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Item.name), rarity: sale.Item.rarity }));
+            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Item.name), class: sale.Item.class }));
           }
           if (sale.Resource !== null) {
-            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Resource.name), rarity: sale.Resource.rarity }))
+            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Resource.name), class: sale.Resource.class }))
           }
           if (sale.Recipe !== null) {
-            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Recipe.Result.name), rarity: sale.Recipe.Result.rarity }))
+            notification.success(Vue.t('alert.city.buy', { gold: sale.gold , name: Vue.t(sale.Recipe.Result.name), class: sale.Recipe.Result.class }))
           }
         });
       }

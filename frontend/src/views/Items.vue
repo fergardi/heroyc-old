@@ -20,13 +20,13 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-xs-3(v-for='item in filtered', v-bind:key='item.id')
-            .panel.text-center(v-bind:class='"panel-" + item.rarity')
+            .panel.text-center(v-bind:class='"panel-" + item.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + item.icon')  
                   span {{ item.name | i18n }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.rarity')
+                img.thumbnail(v-bind:src='"dist/img/items/" + item.type + "/" + item.image + ".png"', v-bind:class='"panel-" + item.class')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + item.strength * 10 + "%"')
                 .progress

@@ -4,14 +4,15 @@
     "data": {
       "name": "item.necklace.stone",
       "type": "necklace",
-      "rarity": "success",
+      "class": "success",
       "vitality": 5,
       "strength": 5,
       "agility": 0,
       "intelligence": 0,
       "defense": 5,
       "icon": "gem-pendant",
-      "image": "stone"
+      "image": "stone",
+      "rarity": 100
     }
   },
   {
@@ -19,14 +20,15 @@
     "data": {
       "name": "item.necklace.frozen",
       "type": "necklace",
-      "rarity": "info",
+      "class": "info",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
       "defense": 10,
       "icon": "gem-pendant",
-      "image": "frozen"
+      "image": "frozen",
+      "rarity": 100
     }
   },
   {
@@ -34,14 +36,15 @@
     "data": {
       "name": "item.necklace.novice",
       "type": "necklace",
-      "rarity": "default",
+      "class": "default",
       "vitality": 1,
       "strength": 1,
       "agility": 1,
       "intelligence": 1,
       "defense": 1,
       "icon": "gem-pendant",
-      "image": "novice"
+      "image": "novice",
+      "rarity": 100
     }
   },
   {
@@ -49,14 +52,15 @@
     "data": {
       "name": "item.necklace.holy",
       "type": "necklace",
-      "rarity": "warning",
+      "class": "warning",
       "vitality": 5,
       "strength": 5,
       "agility": 5,
       "intelligence": 5,
       "defense": 5,
       "icon": "gem-pendant",
-      "image": "holy"
+      "image": "holy",
+      "rarity": 100
     }
   },
   {
@@ -64,14 +68,15 @@
     "data": {
       "name": "item.necklace.gold",
       "type": "necklace",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 3,
       "strength": 3,
       "agility": 3,
       "intelligence": 3,
       "defense": 3,
       "icon": "gem-pendant",
-      "image": "gold"
+      "image": "gold",
+      "rarity": 100
     }
   },
   {
@@ -79,14 +84,15 @@
     "data": {
       "name": "item.necklace.mana",
       "type": "necklace",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 0,
       "strength": 0,
       "agility": 0,
       "intelligence": 10,
       "defense": 0,
       "icon": "gem-pendant",
-      "image": "mana"
+      "image": "mana",
+      "rarity": 100
     }
   },
   {
@@ -94,14 +100,15 @@
     "data": {
       "name": "item.necklace.life",
       "type": "necklace",
-      "rarity": "danger",
+      "class": "danger",
       "vitality": 10,
       "strength": 0,
       "agility": 0,
       "intelligence": 0,
       "defense": 0,
       "icon": "gem-pendant",
-      "image": "life"
+      "image": "life",
+      "rarity": 100
     }
   }
 ]

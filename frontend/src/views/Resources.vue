@@ -20,13 +20,13 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-xs-3(v-for='resource in filtered', v-bind:key='resource.id')
-            .panel.text-center(v-bind:class='"panel-" + resource.rarity')
+            .panel.text-center(v-bind:class='"panel-" + resource.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + resource.icon')  
                   span {{ resource.name | i18n }}
               .panel-body
-                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.rarity')
+                img.thumbnail.resource(v-bind:src='"dist/img/resources/" + resource.image + ".png"', v-bind:class='"panel-" + resource.class')
                 p {{ resource.description | i18n }}
 </template>
 

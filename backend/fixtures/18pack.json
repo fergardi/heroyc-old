@@ -5,7 +5,7 @@
       "name": "pack.epic",
       "description": "pack.description",
       "image": "epic",
-      "rarity": "primary",
+      "class": "primary",
       "platinum": 10,
       "gold": 50,
       "euro": 0.99
@@ -17,7 +17,7 @@
       "name": "pack.legendary",
       "description": "pack.description",
       "image": "legendary",
-      "rarity": "warning",
+      "class": "warning",
       "platinum": 50,
       "gold": 250,
       "euro": 2.99
@@ -29,7 +29,7 @@
       "name": "pack.heroyc",
       "description": "pack.description",
       "image": "heroyc",
-      "rarity": "info",
+      "class": "info",
       "platinum": 100,
       "gold": 500,
       "euro": 4.99

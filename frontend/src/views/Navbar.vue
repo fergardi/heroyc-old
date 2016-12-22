@@ -7,7 +7,7 @@
             i.fa.fa-fw.fa-lg.fa-globe
             | {{ 'title.world' | i18n }}
           transition(appear, appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut", mode="in-out")
-            span.label(v-bind:class='"label-" + advice.color') {{ advice.text | i18n }}
+            span.label(v-bind:class='"label-" + advice.class') {{ advice.text | i18n }}
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#nav', aria-expanded='false', aria-controls='navbar')
             i.fa.fa-fw.fa-lg.fa-bars
         .collapse.navbar-collapse(id='nav')

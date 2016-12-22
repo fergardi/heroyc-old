@@ -20,14 +20,14 @@
             | {{ 'title.none' | i18n }}
         transition-group(tag='div', enter-active-class='animated fadeIn')
           .col-xs-3(v-for='skill in filtered', v-bind:key='skill.id')
-            .panel.text-center(v-bind:class='"panel-" + skill.family')
+            .panel.text-center(v-bind:class='"panel-" + skill.class')
               .panel-heading
                 .panel-title
                   i.ra.ra-fw.ra-lg(v-bind:class='"ra-" + skill.icon')
                   span {{ skill.name | i18n }} 
                   span.label.label-warning {{ -skill.stamina }}
               .panel-body
-                img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.family')
+                img.thumbnail(v-bind:src='"dist/img/skills/" + skill.image + ".png"', v-bind:class='"panel-" + skill.class')
                 .progress
                   .progress-bar.progress-bar-warning(v-bind:style='"width: " + skill.strength * 10 + "%"')
                 .progress
