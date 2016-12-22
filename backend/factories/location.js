@@ -1,3 +1,5 @@
+var constants = require('../config/constants');
+
 var factory = {
   good: ['inn', 'forge', 'city', 'market'],
   bad: ['mine', 'dungeon', 'castle', 'tower','ruins'],
@@ -8,10 +10,10 @@ var factory = {
     return factory.types()[Math.floor(Math.random() * factory.types().length)];
   },
   longitude () {
-    return parseFloat(-(Math.random() * (5.603843017110297 - 5.546525069080559) + 5.546525069080559).toFixed(10));
+    return parseFloat(-(Math.random() * (constants.location.coordinates.longitude.max - constants.location.coordinates.longitude.min) + constants.location.coordinates.longitude.min).toFixed(10));
   },
   latitude () {
-    return parseFloat((Math.random() * (42.55666577380774 - 42.61952832509911) + 42.61952832509911).toFixed(10));
+    return parseFloat((Math.random() * (constants.location.coordinates.latitude.max - constants.location.coordinates.latitude.min) + constants.location.coordinates.latitude.min).toFixed(10));
   },
   build (sequelize) {
     var name = factory.type();
